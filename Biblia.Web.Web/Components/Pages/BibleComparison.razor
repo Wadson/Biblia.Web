@@ -1,0 +1,102 @@
+@page "/comparacao"
+@rendermode InteractiveServer
+@inject Biblia.Application.Interfaces.IBibleComparisonService Comparison
+@inject Biblia.Application.Interfaces.IBibleVersionManager Manager
+@inject Biblia.Application.Interfaces.IBibleRepository Bible
+
+<PageTitle>Comparação — BíbliaTema</PageTitle>
+
+<PageHeader Title="Comparação bíblica" Eyebrow="BÍBLIA" />
+
+<div class="panel">
+    <div class="form-grid">
+        <label>
+            Livro
+            <select @bind="book">
+                @foreach (var item in books)
+                {
+                    <option value="@item.BookReferenceId">@item.Name</option>
+                }
+            </select>
+        </label>
+        <label>Capítulo<input type="number" min="1" @bind="chapter" /></label>
+        <label>Versículo<input type="number" min="1" @bind="verse" /></label>
+        <button class="btn primary" @onclick="Compare">Comparar</button>
+    </div>
+    <p class="muted">A comparação mostra o mesmo versículo em todas as versões habilitadas.</p>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(message))
+{
+    <div class="notice">@message</div>
+}
+
+<div class="comparison-results" aria-label="Comparação vertical de versões bíblicas">
+    @foreach (var item in result)
+    {
+        <article class="card comparison-card">
+            <header class="comparison-card-header">
+                <h2 class="comparison-version-title">@VersionName(item.VersionCode) <small>(@item.VersionCode)</small></h2>
+                <span class="badge">@StatusLabel(item.Status)</span>
+            </header>
+            @foreach (var itemVerse in item.Verses)
+            {
+                <div class="comparison-verse">
+                    <b class="verse-num">@itemVerse.Verse</b>
+                    <span>@itemVerse.Text</span>
+                </div>
+            }
+            @if (item.Message is not null)
+            {
+                <p class="muted">@item.Message</p>
+            }
+        </article>
+    }
+</div>
+
+@code {
+    private int book = 1;
+    private int chapter = 1;
+    private int verse = 1;
+    private string? message;
+    private IReadOnlyList<BibleBook> books = [];
+    private IReadOnlyList<BibleComparisonItem> result = [];
+    private IReadOnlyList<BibleVersionCatalogEntry> versionCatalog = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        versionCatalog = await Manager.GetVersionsAsync();
+        var active = await Manager.GetActiveVersionAsync();
+        if (active is null)
+        {
+            message = "Nenhuma versão bíblica ativa está disponível.";
+            return;
+        }
+
+        books = await Bible.GetBooksAsync(active.Code);
+        book = books.FirstOrDefault()?.BookReferenceId ?? 1;
+    }
+
+    private string VersionName(string code) => versionCatalog.FirstOrDefault(x => x.Code.Equals(code, StringComparison.OrdinalIgnoreCase))?.DisplayName ?? code;
+    private static string StatusLabel(BibleComparisonStatus status) => status switch
+    {
+        BibleComparisonStatus.Available => "Disponível",
+        BibleComparisonStatus.Missing => "Não disponível",
+        BibleComparisonStatus.Ambiguous => "Referência ambígua",
+        BibleComparisonStatus.Error => "Erro",
+        _ => status.ToString()
+    };
+
+    private async Task Compare()
+    {
+        message = null;
+        var codes = (await Manager.GetVersionsAsync())
+            .Where(item => item.IsInstalled && item.IsEnabled)
+            .Select(item => item.Code)
+            .ToArray();
+
+        result = await Comparison.CompareAsync(book, chapter, verse, verse, codes);
+        if (result.Count == 0)
+            message = "Nenhuma versão habilitada está disponível para comparação.";
+    }
+}

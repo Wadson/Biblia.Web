@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Biblia.Web.ApiService/Biblia.Web.ApiService.csproj" />
+  <Project Path="Biblia.Web.AppHost/Biblia.Web.AppHost.csproj" />
+  <Project Path="Biblia.Web.Core/Biblia.Web.Core.csproj" />
+  <Project Path="Biblia.Web.ServiceDefaults/Biblia.Web.ServiceDefaults.csproj" />
+  <Project Path="Biblia.Web.Tests/Biblia.Web.Tests.csproj" />
+  <Project Path="Biblia.Web.Web/Biblia.Web.Web.csproj" />
+</Solution>

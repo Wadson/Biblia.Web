@@ -1,0 +1,17 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.5.3">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AspireUseCliBundle>true</AspireUseCliBundle>
+    <UserSecretsId>2ef47ae5-e8fb-466d-a237-ed97b0f2dcb3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Biblia.Web.ApiService\Biblia.Web.ApiService.csproj" />
+    <ProjectReference Include="..\Biblia.Web.Web\Biblia.Web.Web.csproj" />
+  </ItemGroup>
+
+</Project>

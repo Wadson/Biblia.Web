@@ -1,0 +1,8 @@
+@page "/pesquisar-biblia"
+@rendermode InteractiveServer
+@inject Biblia.Application.Interfaces.IBibleSearchService SearchService
+@inject Biblia.Application.Interfaces.IBibleVersionManager Versions
+<PageTitle>Pesquisar — BíbliaTema</PageTitle><PageHeader Title="Pesquisar na Bíblia" Eyebrow="BÍBLIA" />
+<div class="panel"><div class="form-grid"><label>Texto<input @bind="query" placeholder="Digite uma palavra ou expressão" /></label><label>Versão<select @bind="version">@foreach(var v in versions){<option value="@v.Code">@v.Code</option>}</select></label><button class="btn primary" @onclick="Search">Pesquisar</button></div></div>
+@if(result is not null){<p class="muted">@result.TotalReturned resultado(s) em @result.Elapsed.TotalMilliseconds.ToString("0") ms</p><div class="card-grid">@foreach(var item in result.Items){<article class="card"><strong>@item.BookName @item.Chapter:@item.Verse</strong><p>@item.Text</p><span class="badge">@item.VersionCode</span></article>}</div>}
+@code{string query="",version="";IReadOnlyList<BibleVersionCatalogEntry> versions=[];BibleSearchResult? result;protected override async Task OnInitializedAsync(){versions=(await Versions.GetVersionsAsync()).Where(x=>x.IsInstalled&&x.IsEnabled).ToArray();version=versions.FirstOrDefault()?.Code??"";}async Task Search(){if(query.Trim().Length<2)return;result=await SearchService.SearchAsync(new(query,[version],null,null,0,100));}}

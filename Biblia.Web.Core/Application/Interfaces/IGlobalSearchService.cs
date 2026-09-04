@@ -1,0 +1,1 @@
+using Biblia.Domain.Entities;namespace Biblia.Application.Interfaces;public interface IGlobalSearchService{Task<IReadOnlyList<GlobalSearchResult>> SearchAsync(string? query,bool includeThemes=true,bool includeReferences=true,CancellationToken cancellationToken=default);}
