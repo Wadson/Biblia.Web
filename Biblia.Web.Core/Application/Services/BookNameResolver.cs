@@ -13,11 +13,6 @@ public sealed class BookNameResolver(
     IBibleRepository bible,
     ILogger<BookNameResolver> logger) : IBookNameResolver
 {
-    private static readonly string[] CanonicalBooks =
-    [
-        "Gênesis","Êxodo","Levítico","Números","Deuteronômio","Josué","Juízes","Rute","1 Samuel","2 Samuel","1 Reis","2 Reis","1 Crônicas","2 Crônicas","Esdras","Neemias","Ester","Jó","Salmos","Provérbios","Eclesiastes","Cânticos","Isaías","Jeremias","Lamentações de Jeremias","Ezequiel","Daniel","Oséias","Joel","Amós","Obadias","Jonas","Miquéias","Naum","Habacuque","Sofonias","Ageu","Zacarias","Malaquias","Mateus","Marcos","Lucas","João","Atos","Romanos","1 Coríntios","2 Coríntios","Gálatas","Efésios","Filipenses","Colossenses","1 Tessalonicenses","2 Tessalonicenses","1 Timóteo","2 Timóteo","Tito","Filemom","Hebreus","Tiago","1 Pedro","2 Pedro","1 João","2 João","3 João","Judas","Apocalipse"
-    ];
-
     public async Task<IReadOnlyList<ReferenceDisplay>> ResolveAsync(IReadOnlyList<SavedReferenceDetails> references, CancellationToken cancellationToken = default)
     {
         var allVersions = await catalog.GetAllAsync(cancellationToken);
@@ -39,7 +34,7 @@ public sealed class BookNameResolver(
                 }
                 names.TryGetValue(details.Reference.BookReferenceId, out name);
             }
-            name ??= details.Reference.BookReferenceId is >= 1 and <= 66 ? CanonicalBooks[details.Reference.BookReferenceId - 1] : null;
+            name ??= details.Reference.BookReferenceId is >= 1 and <= 66 ? BibleCanonicalOrder.Books[details.Reference.BookReferenceId - 1].Name : null;
             if (name is null)
             {
                 name = $"Livro não disponível (cód. {details.Reference.BookReferenceId})";

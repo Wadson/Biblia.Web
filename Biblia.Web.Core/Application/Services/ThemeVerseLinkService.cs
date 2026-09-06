@@ -1,3 +1,4 @@
+using Biblia.Domain.Rules;
 using Biblia.Application.Interfaces;
 using Biblia.Application.Interfaces.Repositories;
 using Biblia.Domain.Entities;
@@ -59,7 +60,7 @@ public sealed class ThemeVerseLinkService(
             throw new InvalidOperationException("A versão selecionada não está disponível.");
         var links = await references.GetThemeLinksAsync(themeId, cancellationToken);
         var details = new List<(ReferenceTheme Link, SavedReference Reference)>();
-        foreach (var link in links)
+        foreach (var link in links.DistinctBy(x => x.ReferenceId))
         {
             var saved = await references.GetAsync(link.ReferenceId, cancellationToken);
             if (saved is not null) details.Add((link, saved));
@@ -67,7 +68,7 @@ public sealed class ThemeVerseLinkService(
         var books = (await bible.GetBooksAsync(version.Code, cancellationToken)).ToDictionary(x => x.BookReferenceId, x => x.Name);
         var verseCache = new Dictionary<(int Book, int Chapter), IReadOnlyList<BibleVerse>>();
         var result = new List<ThemeVerseLinkDisplay>();
-        foreach (var item in details.OrderBy(x => x.Reference.BookReferenceId).ThenBy(x => x.Reference.Chapter).ThenBy(x => x.Reference.VerseStart))
+        foreach (var item in details.OrderBy(x => BibleCanonicalOrder.Key(x.Reference)))
         {
             var key = (item.Reference.BookReferenceId, item.Reference.Chapter);
             if (!verseCache.TryGetValue(key, out var chapterVerses))
@@ -75,7 +76,7 @@ public sealed class ThemeVerseLinkService(
             var text = string.Join(" ", chapterVerses.Where(x => x.Verse >= item.Reference.VerseStart && x.Verse <= item.Reference.VerseEnd).Select(x => x.Text));
             var bookName = books.GetValueOrDefault(item.Reference.BookReferenceId, $"Livro {item.Reference.BookReferenceId}");
             result.Add(new(item.Reference.Id, themeId, bookName, item.Reference.BookReferenceId, item.Reference.Chapter, item.Reference.VerseStart,
-                $"{bookName} {item.Reference.Chapter}:{item.Reference.VerseStart}", text, version.Code, version.DisplayName, item.Link.Observation, item.Link.CreatedAt, item.Link.UpdatedAt));
+                BibleReferenceFormatter.Format(bookName, item.Reference.Chapter, item.Reference.VerseStart, item.Reference.VerseEnd), text, version.Code, version.DisplayName, item.Link.Observation, item.Link.CreatedAt, item.Link.UpdatedAt, item.Reference.VerseEnd));
         }
         return result;
     }

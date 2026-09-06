@@ -59,7 +59,7 @@ public sealed class PdfService : IPdfService
 internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken ct, PdfReportTypographyOptions typography) : IDisposable
 {
     private const double TopMargin = 40, InnerMargin = 58, OuterMargin = 40, Bottom = 795;
-    private const double Width = 497.28, TocNumberWidth = 36, TocEntryGap = 10, TocHeadingHeight = 35;
+    private const double Width = 497.28, TocNumberWidth = 36, TocEntryGap = 4, TocHeadingHeight = 35;
     private double Margin => BindingMargin(document.PageCount);
     private static double BindingMargin(int pageNumber) => pageNumber % 2 == 1 ? InnerMargin : OuterMargin;
     private const double Padding = 13, Gap = 10, LineHeight = 14, Radius = 9;
@@ -144,8 +144,9 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
 
     private void AddThemeTableOfContentsEntry(ThemeVerseReportSection section, int index)
     {
-        var lines = Wrap(section.Theme.Name, tocReference, Width - TocNumberWidth - Padding);
-        var height = lines.Count * LineHeight + LineHeight + TocEntryGap;
+        var title = $"{section.Theme.Name} ({section.References.Count} ref.)";
+        var lines = Wrap(title, tocReference, Width - TocNumberWidth - Padding);
+        var height = lines.Count * LineHeight + TocEntryGap;
         if (height > Bottom - TopMargin - TocHeadingHeight)
             throw new InvalidOperationException("Nome do tema excede uma página do sumário.");
         if (y + height > Bottom)
@@ -154,13 +155,12 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
             TableOfContentsHeading(true);
         }
         DrawLines(lines, Margin, y, Blue);
-        var numberTop = y + lines.Count * LineHeight;
-        var count = Count(section.References.Count, "referência", "referências");
-        Text(count, small, Muted, Margin, numberTop);
-        var guideStart = Margin + graphics.MeasureString(count, small).Width + Padding;
+        var numberTop = y + (lines.Count - 1) * LineHeight;
+        var guideStart = Margin + lines[^1].Runs.Sum(run => graphics.MeasureString(run.Text, run.Font).Width) + Padding;
         var guideEnd = Margin + Width - TocNumberWidth - Padding;
-        graphics.DrawLine(new XPen(Color(Muted), .5) { DashStyle = XDashStyle.Dot },
-            guideStart, numberTop + 8, guideEnd, numberTop + 8);
+        if (guideStart < guideEnd)
+            graphics.DrawLine(new XPen(Color(Muted), .5) { DashStyle = XDashStyle.Dot },
+                guideStart, numberTop + 8, guideEnd, numberTop + 8);
         contents.Add(new(CreateThemeBookmarkName(section, index), document.Pages[^1], Margin, y, height, numberTop));
         y += height;
     }
@@ -211,11 +211,10 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
 
     private void MainHeader(ThemeVerseReport report)
     {
-        var labels = new[] { "VERSÃO DA BÍBLIA", "GERADO EM", "RESUMO DO FILTRO" };
-        var values = new[] { report.VersionLabel,
-            report.GeneratedAt.ToLocalTime().ToString("dd/MM/yyyy 'às' HH:mm", Portuguese),
+        var labels = new[] { "GERADO EM", "RESUMO DO FILTRO" };
+        var values = new[] { report.GeneratedAt.ToLocalTime().ToString("dd/MM/yyyy 'às' HH:mm", Portuguese),
             Count(report.Sections.Count, "Tema", "Temas") + " • " + Count(report.Sections.Sum(s => s.References.Count), "Referência", "Referências") };
-        var columnWidth = (Width - 36) / 3;
+        var columnWidth = (Width - 36) / 2;
         var lines = values.Select(v => Wrap(v, bold, columnWidth - 12)).ToArray();
         var height = 111 + lines.Max(l => l.Count) * LineHeight;
         Box(Margin, y, Width, height, Blue, Blue);
@@ -235,13 +234,16 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
 
     private double ThemeHeight(ThemeVerseReportSection section) => Wrap(section.Theme.Name, heading, Width - Padding * 2).Count * 22 + 32;
 
+    private static string CardTitle(ThemeVerseReportReference item) =>
+        string.IsNullOrWhiteSpace(item.VersionCode) ? item.FormattedReference : $"{item.FormattedReference}  [{item.VersionCode}]";
+
     private double CardHeight(ThemeVerseReportReference item) =>
-        2 * Padding + Wrap(item.FormattedReference, reference, Width - 2 * Padding).Count * ReferenceLine + 7
+        2 * Padding + Wrap(CardTitle(item), reference, Width - 2 * Padding).Count * ReferenceLine + 7
         + Wrap(item.PassageText, verse, Width - 2 * Padding, true).Count * VerseLine
         + (string.IsNullOrWhiteSpace(item.Observation) ? 0 : NoteOverhead + Wrap(item.Observation, observation, Width - 4 * Padding).Count * ObservationLine);
 
     private double MinimumCardHeight(ThemeVerseReportReference item) =>
-        Wrap(item.FormattedReference, reference, Width - 2 * Padding).Count * ReferenceLine + 7
+        Wrap(CardTitle(item), reference, Width - 2 * Padding).Count * ReferenceLine + 7
         + 2 * Padding + 3 * Math.Max(VerseLine, ObservationLine);
 
     private void ThemeHeader(ThemeVerseReportSection section, bool continuation, double reserve = 65)
@@ -250,10 +252,11 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
         if (y + height + reserve > Bottom) NewPage();
         if (!continuation) RegisterThemeDestination(section);
         var accent = SafeAccent(section.Theme.ColorHex);
+        Box(Margin, y - 4, Width, height - 6, "#174F7D", "#174F7D");
         graphics.DrawLine(new XPen(Color(accent), 3), Margin, y + 2, Margin, y + height - 14);
-        DrawLines(Wrap(section.Theme.Name, heading, Width - Padding * 2), Margin + 10, y, Ink, 22);
+        DrawLines(Wrap(section.Theme.Name, heading, Width - Padding * 2), Margin + 10, y, "#FFFFFF", 22);
         y += height - 28;
-        Text(Count(section.References.Count, "referência", "referências") + (continuation ? " • continuação" : ""), small, Muted, Margin + 10, y);
+        Text(Count(section.References.Count, "referência", "referências") + (continuation ? " • continuação" : ""), small, "#DCEEFF", Margin + 10, y);
         y += 17;
         graphics.DrawLine(new XPen(Color(Border), 1), Margin, y, Margin + Width, y);
         y += 11;
@@ -261,7 +264,7 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
 
     private void Card(ThemeVerseReportSection section, ThemeVerseReportReference item)
     {
-        var title = Wrap(item.FormattedReference, reference, Width - 2 * Padding);
+        var title = Wrap(CardTitle(item), reference, Width - 2 * Padding);
         var passage = Wrap(item.PassageText, verse, Width - 2 * Padding, true);
         var note = string.IsNullOrWhiteSpace(item.Observation) ? new List<Line>() : Wrap(item.Observation, observation, Width - 4 * Padding);
         var titleHeight = title.Count * ReferenceLine + 7;

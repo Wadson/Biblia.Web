@@ -40,7 +40,7 @@ public sealed class BibleVersionManagerTests
     }
 
     private sealed class ManifestProvider:IBibleVersionManifestProvider{public Task<BibleVersionManifest> GetManifestAsync(CancellationToken cancellationToken=default)=>Task.FromResult(new BibleVersionManifest(1,"ACF",[new("ACF","Almeida Corrigida e Fiel","pt-BR","ACF.sqlite",2,new string('A',64),BibleVersionValidationStatus.Compatible,null)]));}
-    private sealed class Validator:IBibleValidationService{public Task<BibleValidationResult> ValidateAsync(string databasePath,CancellationToken cancellationToken=default)=>Task.FromResult(new BibleValidationResult(BibleVersionValidationStatus.Compatible,"ACF","Almeida Corrigida e Fiel",2,66,31102,0,[]));}
+    private sealed class Validator:IBibleValidationService{public Task<IReadOnlyList<string>> ValidateCanonicalBooksAsync(string path,CancellationToken ct=default)=>Task.FromResult<IReadOnlyList<string>>([]);public Task<BibleValidationResult> ValidateAsync(string databasePath,CancellationToken cancellationToken=default)=>Task.FromResult(new BibleValidationResult(BibleVersionValidationStatus.Compatible,"ACF","Almeida Corrigida e Fiel",2,66,31102,0,[]));}
     private sealed class FixedClock(DateTimeOffset value):IClock{public DateTimeOffset UtcNow{get;}=value;}
 }
 

@@ -1,0 +1,13 @@
+D:\Projetos\Biblia.Web\Biblia.Web.Core\bin\Release\net10.0\Biblia.Web.Core.deps.json
+D:\Projetos\Biblia.Web\Biblia.Web.Core\bin\Release\net10.0\Biblia.Web.Core.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Core\bin\Release\net10.0\Biblia.Web.Core.pdb
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\Biblia.Web.Core.csproj.AssemblyReference.cache
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\Biblia.Web.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\Biblia.Web.Core.AssemblyInfoInputs.cache
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\Biblia.Web.Core.AssemblyInfo.cs
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\Biblia.Web.Core.csproj.CoreCompileInputs.cache
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\Biblia.Web.Core.sourcelink.json
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\Biblia.Web.Core.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\refint\Biblia.Web.Core.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\Biblia.Web.Core.pdb
+D:\Projetos\Biblia.Web\Biblia.Web.Core\obj\PdfHighlight\Release\net10.0\ref\Biblia.Web.Core.dll

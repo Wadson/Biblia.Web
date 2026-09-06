@@ -1,0 +1,20 @@
+{
+  "backup": "C:\\Users\\WRSoft\\AppData\\Local\\BibliaTema\\backups\\indice-setting-20260906-202856.db",
+  "database": "C:\\Users\\WRSoft\\AppData\\Local\\BibliaTema\\bibliatema.db",
+  "integrity": [
+    [
+      "ok"
+    ]
+  ],
+  "all_table_rows_unchanged": true,
+  "counts": {
+    "BibleVersionCatalog": 7,
+    "ReferenceTheme": 130,
+    "SavedReference": 132,
+    "SchemaMigration": 4,
+    "Setting": 6,
+    "Theme": 9,
+    "sqlite_sequence": 3
+  },
+  "operation": "REINDEX sqlite_autoindex_Setting_1"
+}

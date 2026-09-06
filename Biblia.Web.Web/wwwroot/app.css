@@ -7,3 +7,5 @@
 .app-page-header{display:grid;grid-template-columns:1fr minmax(240px,2fr) 1fr;align-items:center!important}
 .page-header-title{text-align:center}.page-header-title p{margin:.2rem}.page-header-side.end{text-align:right}
 @media(max-width:760px){.app-page-header{grid-template-columns:auto 1fr auto;gap:8px}.page-header-title .muted{display:none}.page-header-side .btn{padding:8px}.comparison-card{flex-basis:auto!important}}
+
+.vertical-search-results{display:flex;flex-direction:column;gap:14px;margin:16px 0 30px;width:100%}.vertical-search-results>.card{width:100%;min-width:0;overflow-wrap:anywhere}.vertical-search-results>.card p{line-height:1.6}

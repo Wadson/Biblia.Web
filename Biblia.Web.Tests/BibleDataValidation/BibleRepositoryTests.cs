@@ -1,3 +1,4 @@
+using Biblia.Domain.Rules;
 using Biblia.Application.Interfaces;
 using Biblia.Domain.Entities;
 using Biblia.Domain.ValueObjects;
@@ -20,7 +21,7 @@ public sealed class BibleRepositoryTests
             var first=Path.Combine(root,"ONE.sqlite");var second=Path.Combine(root,"TWO.sqlite");
             await CreateAsync(first,101,"Texto um",false);await CreateAsync(second,9001,"Texto dois",true);
             var repository=new BibleRepository(new VersionManager(new Dictionary<string,string>{{"ONE",first},{"TWO",second}}));
-            Assert.Equal(43,(await repository.GetBooksAsync("ONE")).Single().BookReferenceId);
+            Assert.Equal(43,(await repository.GetBooksAsync("ONE")).Single(b => b.Name == "João").BookReferenceId);
             Assert.Equal(3,(await repository.GetChaptersAsync("ONE",43)).Single());
             Assert.Equal("Texto um",(await repository.GetVerseAsync("ONE",new BibleReference(43,3,16))).Single().Text);
             var candidates=await repository.GetVerseAsync("TWO",new BibleReference(43,3,16));Assert.Equal(2,candidates.Count);Assert.Contains(candidates,x=>x.Text=="Texto dois");
@@ -29,7 +30,15 @@ public sealed class BibleRepositoryTests
         }
         finally{SqliteConnection.ClearAllPools();if(Directory.Exists(root))Directory.Delete(root,true);}
     }
-    private static async Task CreateAsync(string path,int id,string text,bool duplicate){await using var c=new SqliteConnection($"Data Source={path};Pooling=False");await c.OpenAsync();await using var cmd=c.CreateCommand();cmd.CommandText="CREATE TABLE book(id INTEGER PRIMARY KEY,book_reference_id INTEGER,testament_reference_id INTEGER,name TEXT);CREATE TABLE verse(id INTEGER PRIMARY KEY,book_id INTEGER,chapter INTEGER,verse INTEGER,text TEXT);INSERT INTO book VALUES(7,43,2,'João');INSERT INTO verse VALUES($id,7,3,16,$text);"+(duplicate?"INSERT INTO verse VALUES($id+1,7,3,16,'Texto duplicado');":"");cmd.Parameters.AddWithValue("$id",id);cmd.Parameters.AddWithValue("$text",text);await cmd.ExecuteNonQueryAsync();}
+    private static async Task CreateAsync(string path,int id,string text,bool duplicate){await using var c=new SqliteConnection($"Data Source={path};Pooling=False");await c.OpenAsync();await using var cmd=c.CreateCommand();cmd.CommandText="CREATE TABLE book(id INTEGER PRIMARY KEY,book_reference_id INTEGER,testament_reference_id INTEGER,name TEXT);CREATE TABLE verse(id INTEGER PRIMARY KEY,book_id INTEGER,chapter INTEGER,verse INTEGER,text TEXT);INSERT INTO book VALUES(7,43,2,'João');INSERT INTO verse VALUES($id,7,3,16,$text);"+(duplicate?"INSERT INTO verse VALUES($id+1,7,3,16,'Texto duplicado');":"");cmd.Parameters.AddWithValue("$id",id);cmd.Parameters.AddWithValue("$text",text);await cmd.ExecuteNonQueryAsync();
+        foreach (var book in BibleCanonicalOrder.Books.Where(b => b.BookReferenceId != 43))
+        {
+            cmd.CommandText="INSERT INTO book VALUES($id,$canonical,$testament,$name)";cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("$id",10000+book.BookReferenceId);cmd.Parameters.AddWithValue("$canonical",book.BookReferenceId);
+            cmd.Parameters.AddWithValue("$testament",book.TestamentReferenceId);cmd.Parameters.AddWithValue("$name",book.Name);
+            await cmd.ExecuteNonQueryAsync();
+        }
+    }
     private sealed class VersionManager(IReadOnlyDictionary<string,string> paths):IBibleVersionManager
     {
         public Task<string> ResolveDatabasePathAsync(string code,CancellationToken cancellationToken=default)=>Task.FromResult(paths[code.ToUpperInvariant()]);

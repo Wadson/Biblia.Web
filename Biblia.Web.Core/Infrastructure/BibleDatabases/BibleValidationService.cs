@@ -1,3 +1,4 @@
+using Biblia.Domain.Rules;
 using Biblia.Application.Interfaces;
 using Biblia.Domain.Entities;
 using Biblia.Domain.Enums;
@@ -8,6 +9,21 @@ namespace Biblia.Infrastructure.BibleDatabases;
 
 public sealed class BibleValidationService(ILogger<BibleValidationService> logger) : IBibleValidationService
 {
+    public async Task<IReadOnlyList<string>> ValidateCanonicalBooksAsync(string databasePath, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var cs = new SqliteConnectionStringBuilder { DataSource = Path.GetFullPath(databasePath), Mode = SqliteOpenMode.ReadOnly, Pooling = false }.ToString();
+            await using var connection = new SqliteConnection(cs);
+            await connection.OpenAsync(cancellationToken);
+            return BibleCanonicalOrder.ValidateBooks(await BibleBookReader.ReadAsync(connection, cancellationToken));
+        }
+        catch (Exception ex) when (ex is SqliteException or IOException or UnauthorizedAccessException)
+        {
+            return [$"Não foi possível validar a identidade canônica: {ex.Message}"];
+        }
+    }
+
     private static readonly IReadOnlyDictionary<string, string[]> RequiredColumns = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase)
     {
         ["book"] = ["id", "book_reference_id", "testament_reference_id", "name"],
@@ -38,6 +54,8 @@ public sealed class BibleValidationService(ILogger<BibleValidationService> logge
             }
 
             if (issues.Count > 0) return Incompatible(null, issues);
+
+            issues.AddRange(BibleCanonicalOrder.ValidateBooks(await BibleBookReader.ReadAsync(connection, cancellationToken)));
 
             var metadata = await ReadMetadataAsync(connection, cancellationToken);
             metadata.TryGetValue("name", out var name);

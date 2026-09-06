@@ -19,3 +19,8 @@ D:\Projetos\Biblia.Web\tmp\pdfs\typography-runner\ThemeReportQa.deps.json
 D:\Projetos\Biblia.Web\tmp\pdfs\typography-runner\ThemeReportQa.runtimeconfig.json
 D:\Projetos\Biblia.Web\tmp\pdfs\typography-runner\ThemeReportQa.dll
 D:\Projetos\Biblia.Web\tmp\pdfs\typography-runner\ThemeReportQa.pdb
+D:\Projetos\Biblia.Web\tmp\canonical\qa-runner\ThemeReportQa.exe
+D:\Projetos\Biblia.Web\tmp\canonical\qa-runner\ThemeReportQa.deps.json
+D:\Projetos\Biblia.Web\tmp\canonical\qa-runner\ThemeReportQa.runtimeconfig.json
+D:\Projetos\Biblia.Web\tmp\canonical\qa-runner\ThemeReportQa.dll
+D:\Projetos\Biblia.Web\tmp\canonical\qa-runner\ThemeReportQa.pdb

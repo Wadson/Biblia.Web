@@ -16,9 +16,9 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
     private CancellationToken Ct => TestContext.Current.CancellationToken;
     private static Theme Theme(int id, string? color = "#336699") => new(id, new[] { "Santidade", "Esperança", "Comunhão" }[(id - 1) % 3], color!, null, Now, Now);
     private static ThemeVerseReportReference Reference(int id, string? observation = null, string? text = null) =>
-        new(id, $"João 3:{id}", text ?? $"{id} Deus é amor: ação, fé, bênção e paz — “graça”. MARCADOR{id:D3}.", observation, 43, 3, id, id);
+        new(id, $"João 3:{id}", text ?? $"{id} Deus é amor: ação, fé, bênção e paz — “graça”. MARCADOR{id:D3}.", observation, 43, 3, id, id, "ACF");
     private static ThemeVerseReport Report(params ThemeVerseReportSection[] sections) =>
-        new("Temas e versículos", "ACF - Almeida Corrigida e Fiel", Now, sections.Length, sections.Sum(s => s.References.Count), sections);
+        new("Temas e versículos", Now, sections.Length, sections.Sum(s => s.References.Count), sections);
     private Task<string> Generate(ThemeVerseReport report) => new PdfService(new TestPaths(root)).CreateThemeVersePdfAsync(report, Ct);
     private static string Text(PdfDocument pdf) => string.Join("\n", pdf.GetPages().Select(p => ContentOrderTextExtractor.GetText(p)));
     private static string Compact(string text) => Regex.Replace(text, @"\s+", "");
@@ -38,7 +38,8 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
         Assert.Contains("ação, fé, bênção e paz — “graça”", text);
         Assert.Contains("Observação do vínculo: coração e união.", text);
         Assert.Contains(Now.ToLocalTime().ToString("dd/MM/yyyy 'às' HH:mm", CultureInfo.GetCultureInfo("pt-BR")), text);
-        Assert.Contains("ACF - Almeida Corrigida e Fiel", text);
+        Assert.Contains("[ACF]", text);
+        Assert.DoesNotContain("VERSÃO DA BÍBLIA", text);
         Assert.Contains("Página 1 de 1", text);
         Assert.Contains(pdf.GetPage(1).Letters, l => l.Value == "1" && (l.FontName?.Contains("Semi") ?? false));
     }
@@ -83,7 +84,8 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
             Assert.InRange(page.Width, 595, 596);
             Assert.InRange(page.Height, 841, 843);
             Assert.All(page.Letters, l => { Assert.InRange(l.BoundingBox.Left, 39, 557); Assert.InRange(l.BoundingBox.Bottom, 12, 803); });
-            foreach (var section in sections.Where(s => page.Text.Contains(s.Theme.Name)))
+            // TOC mentions are links, not body headers requiring a card on that page.
+            foreach (var section in sections.Where(s => !page.Text.Contains("SUMÁRIO") && page.Text.Contains(s.Theme.Name)))
                 Assert.Contains(section.References, r => page.Text.Contains(r.FormattedReference));
         }
     }

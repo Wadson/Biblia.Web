@@ -34,6 +34,15 @@ public sealed class InitialBibleInstallationServiceTests
             Assert.Equal(bytes,await File.ReadAllBytesAsync(Path.Combine(directory,"Bibles","ACF.sqlite")));
             var version=(await catalog.GetByCodeAsync("ACF"))!;Assert.True(version.IsInstalled);Assert.True(version.IsEnabled);
             Assert.Equal("ACF",(await manager.GetActiveVersionAsync())!.Code);
+
+            // An unchanged file matching the manifest hash must still be revalidated.
+            validator.Invalid = true;
+            await Assert.ThrowsAsync<InvalidOperationException>(() => installer.InstallAsync());
+            version = (await catalog.GetByCodeAsync("ACF"))!;
+            Assert.Equal(BibleVersionValidationStatus.Incompatible, version.ValidationStatus);
+            Assert.False(version.IsEnabled);
+            Assert.Equal(1, source.OpenCount);
+            Assert.Equal(bytes, await File.ReadAllBytesAsync(Path.Combine(directory,"Bibles","ACF.sqlite")));
         }
         finally{SqliteConnection.ClearAllPools();if(Directory.Exists(directory))Directory.Delete(directory,true);}
     }
@@ -41,7 +50,7 @@ public sealed class InitialBibleInstallationServiceTests
     private sealed class Paths(string root):IAppPaths{public string AppDataDirectory=>root;public string CacheDirectory=>Path.Combine(root,"cache");public string GetPrivateFilePath(string fileName)=>Path.Combine(root,fileName);}
     private sealed class ManifestProvider(BibleVersionManifest value):IBibleVersionManifestProvider{public Task<BibleVersionManifest> GetManifestAsync(CancellationToken cancellationToken=default)=>Task.FromResult(value);}
     private sealed class PackageSource(byte[] bytes):IPackagedBibleSource{public int OpenCount{get;private set;}public Task<Stream> OpenReadAsync(string databaseFileName,CancellationToken cancellationToken=default){OpenCount++;return Task.FromResult<Stream>(new MemoryStream(bytes,false));}}
-    private sealed class Validator:IBibleValidationService{public Task<BibleValidationResult> ValidateAsync(string databasePath,CancellationToken cancellationToken=default)=>Task.FromResult(new BibleValidationResult(BibleVersionValidationStatus.Compatible,"ACF","ACF",2,66,31102,0,[]));}
+    private sealed class Validator:IBibleValidationService{public bool Invalid {get;set;} public Task<IReadOnlyList<string>> ValidateCanonicalBooksAsync(string path,CancellationToken ct=default)=>Task.FromResult<IReadOnlyList<string>>(Invalid ? ["Identidade canônica inválida"] : []);public Task<BibleValidationResult> ValidateAsync(string databasePath,CancellationToken cancellationToken=default)=>Task.FromResult(new BibleValidationResult(BibleVersionValidationStatus.Compatible,"ACF","ACF",2,66,31102,0,[]));}
     private sealed class FixedClock(DateTimeOffset value):IClock{public DateTimeOffset UtcNow{get;}=value;}
 }
 

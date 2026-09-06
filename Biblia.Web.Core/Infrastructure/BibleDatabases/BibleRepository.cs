@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+using Biblia.Domain.Rules;
 using Biblia.Application.Interfaces;
 using Biblia.Domain.Entities;
 using Biblia.Domain.ValueObjects;
@@ -7,6 +9,7 @@ namespace Biblia.Infrastructure.BibleDatabases;
 
 public sealed class BibleRepository(IBibleVersionManager versions):IBibleRepository
 {
+    private readonly ConcurrentDictionary<string, (long Length, DateTime Modified)> validated = new(StringComparer.OrdinalIgnoreCase);
     public async Task<IReadOnlyList<BibleBook>> GetBooksAsync(string versionCode,CancellationToken token=default)
     {
         var result=new List<BibleBook>();await using var c=await OpenAsync(versionCode,token);await using var cmd=c.CreateCommand();cmd.CommandText="SELECT book_reference_id,testament_reference_id,name FROM book ORDER BY book_reference_id;";await using var r=await cmd.ExecuteReaderAsync(token);while(await r.ReadAsync(token))result.Add(new(r.GetInt32(0),r.GetInt32(1),r.GetString(2)));return result;
@@ -36,6 +39,18 @@ public sealed class BibleRepository(IBibleVersionManager versions):IBibleReposit
     }
     private async Task<SqliteConnection> OpenAsync(string code,CancellationToken token)
     {
-        var path=await versions.ResolveDatabasePathAsync(code,token);var cs=new SqliteConnectionStringBuilder{DataSource=path,Mode=SqliteOpenMode.ReadOnly,Pooling=false}.ToString();var c=new SqliteConnection(cs);try{await c.OpenAsync(token);return c;}catch{await c.DisposeAsync();throw;}
+        var path=await versions.ResolveDatabasePathAsync(code,token);var cs=new SqliteConnectionStringBuilder{DataSource=path,Mode=SqliteOpenMode.ReadOnly,Pooling=false}.ToString();var c=new SqliteConnection(cs);try
+        {
+            await c.OpenAsync(token);
+            var file = new FileInfo(path);
+            var stamp = (file.Length, file.LastWriteTimeUtc);
+            if (!validated.TryGetValue(path, out var previous) || previous != stamp)
+            {
+                var issues = BibleCanonicalOrder.ValidateBooks(await BibleBookReader.ReadAsync(c, token));
+                if (issues.Count > 0) throw new InvalidDataException($"Versão {code} incompatível: {string.Join(" ", issues)}");
+                validated[path] = stamp;
+            }
+            return c;
+        }catch{await c.DisposeAsync();throw;}
     }
 }

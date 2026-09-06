@@ -1,0 +1,16 @@
+Assembly: D:\Projetos\Biblia.Web\tools\ReportAudit\bin\Release\net10.0\Biblia.Web.Core.dll
+Overview: ReportsOverview { Themes = 9, References = 132, ReferencesWithComments = 0, ThemeVerseLinks = 130 }
+BuildThemes OK: 9 temas; 130 vínculos
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 11: 'database disk image is malformed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CancellationToken cancellationToken)
+   at Biblia.Infrastructure.Repositories.SettingsRepository.GetAsync(String key, CancellationToken token)
+   at Biblia.Infrastructure.Repositories.SettingsRepository.GetAsync(String key, CancellationToken token)
+   at Biblia.Infrastructure.Repositories.SettingsRepository.GetAsync(String key, CancellationToken token)
+   at Biblia.Application.Services.SettingsService.GetAsync(String key, CancellationToken cancellationToken)
+   at Biblia.Application.Services.PdfReportSettings.GetPdfTypographyAsync(ISettingsService settings, CancellationToken ct)
+   at Biblia.Infrastructure.Files.PdfService.CreateThemeVersePdfAsync(ThemeVerseReport report, CancellationToken ct)
+   at Program.<Main>$(String[] args) in D:\Projetos\Biblia.Web\tools\ReportAudit\Program.cs:line 25

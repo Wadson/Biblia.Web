@@ -1,10 +1,9 @@
 namespace Biblia.Domain.Entities;
 
-public sealed record ThemeVerseReportRequest(long? ThemeId, string BibleVersionCode);
+public sealed record ThemeVerseReportRequest(long? ThemeId);
 
 public sealed record ThemeVerseReport(
     string Title,
-    string VersionLabel,
     DateTimeOffset GeneratedAt,
     int ThemeCount,
     int ReferenceCount,
@@ -20,4 +19,5 @@ public sealed record ThemeVerseReportReference(
     int BookReferenceId,
     int Chapter,
     int VerseStart,
-    int VerseEnd);
+    int VerseEnd,
+    string VersionCode = "");

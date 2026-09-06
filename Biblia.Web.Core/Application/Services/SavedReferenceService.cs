@@ -1,3 +1,4 @@
+using Biblia.Domain.Rules;
 using Biblia.Application.Interfaces;
 using Biblia.Application.Interfaces.Repositories;
 using Biblia.Domain.Entities;
@@ -7,7 +8,8 @@ namespace Biblia.Application.Services;
 
 public sealed class SavedReferenceService(ISavedReferenceRepository repository) : ISavedReferenceService
 {
-    public Task<IReadOnlyList<SavedReferenceDetails>> SearchAsync(string? query, CancellationToken cancellationToken = default) => repository.SearchAsync(query, cancellationToken);
+    public async Task<IReadOnlyList<SavedReferenceDetails>> SearchAsync(string? query, CancellationToken cancellationToken = default)
+        => (await repository.SearchAsync(query, cancellationToken)).OrderBy(x => BibleCanonicalOrder.Key(x.Reference)).ToArray();
     public Task<SavedReferenceDetails?> GetDetailsAsync(long id, CancellationToken cancellationToken = default) => repository.GetDetailsAsync(id, cancellationToken);
     public async Task<SavedReferenceDetails?> FindCanonicalAsync(int bookReferenceId, int chapter, int verseStart, int verseEnd, CancellationToken cancellationToken = default)
     {

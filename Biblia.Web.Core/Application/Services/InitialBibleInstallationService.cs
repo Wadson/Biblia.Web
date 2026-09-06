@@ -55,6 +55,18 @@ public sealed class InitialBibleInstallationService(
             }
         }
 
+        // Recheck legacy installations (including imported databases). Manifest/hash alone
+        // cannot establish the canonical identity contract enforced by this application.
+        foreach (var version in (await catalog.GetAllAsync(cancellationToken)).Where(v => v.IsInstalled))
+        {
+            var issues = string.IsNullOrWhiteSpace(version.InstalledPath)
+                ? new[] { "Arquivo da versão instalada ausente." }
+                : await validator.ValidateCanonicalBooksAsync(version.InstalledPath, cancellationToken);
+            if (issues.Count > 0)
+                await catalog.UpdateAsync(version with { IsEnabled = false, ValidationStatus = BibleVersionValidationStatus.Incompatible,
+                    ValidationMessage = string.Join(" ", issues), UpdatedAt = clock.UtcNow }, cancellationToken);
+        }
+
         await versionManager.SetActiveVersionAsync(manifest.DefaultVersionCode,cancellationToken);
     }
 

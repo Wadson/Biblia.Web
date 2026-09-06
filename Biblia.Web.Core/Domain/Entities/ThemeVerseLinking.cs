@@ -29,4 +29,5 @@ public sealed record ThemeVerseLinkDisplay(
     string VersionName,
     string? Observation,
     DateTimeOffset CreatedAt,
-    DateTimeOffset UpdatedAt);
+    DateTimeOffset UpdatedAt,
+    int VerseEnd);

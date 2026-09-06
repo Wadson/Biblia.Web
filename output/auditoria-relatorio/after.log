@@ -1,0 +1,4 @@
+Assembly: D:\Projetos\Biblia.Web\tools\ReportAudit\bin\Release\net10.0\Biblia.Web.Core.dll
+Overview: ReportsOverview { Themes = 9, References = 132, ReferencesWithComments = 0, ThemeVerseLinks = 130 }
+BuildThemes OK: 9 temas; 130 vínculos
+PDF OK: D:\Projetos\Biblia.Web\output\auditoria-relatorio\after\Cache\exports\temas-versiculos-20260906-232804-f273ccd6be74495ea6eb675fdff264e3.pdf

@@ -1,0 +1,17 @@
+{
+  "IntegrityCheck": [
+    [
+      "ok"
+    ]
+  ],
+  "AllTableRowsUnchanged": true,
+  "Rows": {
+    "SchemaMigration": 3,
+    "Theme": 1,
+    "sqlite_sequence": 3,
+    "BibleVersionCatalog": 7,
+    "SavedReference": 5,
+    "ReferenceTheme": 5,
+    "Setting": 6
+  }
+}

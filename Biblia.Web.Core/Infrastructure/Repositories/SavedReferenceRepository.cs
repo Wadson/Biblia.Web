@@ -60,7 +60,7 @@ public sealed class SavedReferenceRepository : SqliteRepositoryBase, ISavedRefer
                    OR CAST(BookReferenceId AS TEXT) LIKE '%' || $query || '%'
                    OR CAST(Chapter AS TEXT) LIKE '%' || $query || '%'
                    OR COALESCE(Comment, '') LIKE '%' || $query || '%' COLLATE NOCASE
-                ORDER BY UpdatedAt DESC;
+                ORDER BY BookReferenceId,Chapter,VerseStart,VerseEnd,Id;
                 """;
             AddNullable(cmd.Parameters, "$query", string.IsNullOrWhiteSpace(query) ? null : query.Trim());
             await using var r = await cmd.ExecuteReaderAsync(cancellationToken);
@@ -100,7 +100,7 @@ public sealed class SavedReferenceRepository : SqliteRepositoryBase, ISavedRefer
         if(await cmd.ExecuteNonQueryAsync(cancellationToken)!=1) throw new KeyNotFoundException("Referência não encontrada.");
     }
 
-    public Task AddThemeAsync(long referenceId,long themeId,CancellationToken cancellationToken=default) => ExecuteLinkAsync("INSERT INTO ReferenceTheme(ReferenceId,ThemeId) VALUES($reference,$theme);",referenceId,themeId,cancellationToken);
+    public Task AddThemeAsync(long referenceId,long themeId,CancellationToken cancellationToken=default) => ExecuteLinkAsync("INSERT INTO ReferenceTheme(ReferenceId,ThemeId,BibleVersionId) VALUES($reference,$theme,(SELECT PreferredBibleVersionId FROM SavedReference WHERE Id=$reference));",referenceId,themeId,cancellationToken);
     public Task RemoveThemeAsync(long referenceId,long themeId,CancellationToken cancellationToken=default) => ExecuteLinkAsync("DELETE FROM ReferenceTheme WHERE ReferenceId=$reference AND ThemeId=$theme;",referenceId,themeId,cancellationToken);
     public async Task SetThemesAsync(long referenceId, IReadOnlyCollection<long> themeIds, CancellationToken cancellationToken = default)
     {
@@ -110,14 +110,18 @@ public sealed class SavedReferenceRepository : SqliteRepositoryBase, ISavedRefer
         {
             await using var delete = c.CreateCommand();
             delete.Transaction = transaction;
-            delete.CommandText = "DELETE FROM ReferenceTheme WHERE ReferenceId=$reference;";
+            var retained = themeIds.Distinct().ToArray();
+            var parameters = retained.Select((_, i) => "$keep" + i).ToArray();
+            delete.CommandText = "DELETE FROM ReferenceTheme WHERE ReferenceId=$reference" +
+                (retained.Length == 0 ? ";" : $" AND ThemeId NOT IN ({string.Join(',', parameters)});");
+            for (var i = 0; i < retained.Length; i++) delete.Parameters.AddWithValue(parameters[i], retained[i]);
             delete.Parameters.AddWithValue("$reference", referenceId);
             await delete.ExecuteNonQueryAsync(cancellationToken);
             foreach (var themeId in themeIds.Distinct())
             {
                 await using var insert = c.CreateCommand();
                 insert.Transaction = transaction;
-                insert.CommandText = "INSERT INTO ReferenceTheme(ReferenceId,ThemeId) VALUES($reference,$theme);";
+                insert.CommandText = "INSERT OR IGNORE INTO ReferenceTheme(ReferenceId,ThemeId,BibleVersionId) SELECT $reference,$theme,PreferredBibleVersionId FROM SavedReference WHERE Id=$reference;";
                 insert.Parameters.AddWithValue("$reference", referenceId);
                 insert.Parameters.AddWithValue("$theme", themeId);
                 await insert.ExecuteNonQueryAsync(cancellationToken);
@@ -162,7 +166,8 @@ public sealed class SavedReferenceRepository : SqliteRepositoryBase, ISavedRefer
                     await update.ExecuteNonQueryAsync(cancellationToken);
                 }
                 await using var link = connection.CreateCommand(); link.Transaction = transaction;
-                link.CommandText = "INSERT OR IGNORE INTO ReferenceTheme(ReferenceId,ThemeId,Observation,CreatedAt,UpdatedAt) VALUES($reference,$theme,$observation,$now,$now);";
+                link.CommandText = "INSERT OR IGNORE INTO ReferenceTheme(ReferenceId,ThemeId,Observation,CreatedAt,UpdatedAt,BibleVersionId) VALUES($reference,$theme,$observation,$now,$now,$version);";
+                link.Parameters.AddWithValue("$version", preferredVersionId);
                 link.Parameters.AddWithValue("$reference", referenceId); link.Parameters.AddWithValue("$theme", themeId);
                 AddNullable(link.Parameters, "$observation", CleanObservation(selection.Observation));
                 link.Parameters.AddWithValue("$now", _clock.UtcNow.ToString("O"));
@@ -180,7 +185,7 @@ public sealed class SavedReferenceRepository : SqliteRepositoryBase, ISavedRefer
         await using var connection = await Database.OpenConnectionAsync(cancellationToken);
         await using var command = connection.CreateCommand();
         command.CommandText = """
-            SELECT rt.ReferenceId,rt.ThemeId,rt.Observation,rt.CreatedAt,rt.UpdatedAt
+            SELECT rt.ReferenceId,rt.ThemeId,rt.Observation,rt.CreatedAt,rt.UpdatedAt,rt.BibleVersionId
             FROM ReferenceTheme rt
             INNER JOIN SavedReference r ON r.Id=rt.ReferenceId
             WHERE rt.ThemeId=$theme
@@ -192,7 +197,7 @@ public sealed class SavedReferenceRepository : SqliteRepositoryBase, ISavedRefer
         {
             var created = reader.IsDBNull(3) ? DateTimeOffset.UnixEpoch : DateTimeOffset.Parse(reader.GetString(3));
             var updated = reader.IsDBNull(4) ? created : DateTimeOffset.Parse(reader.GetString(4));
-            result.Add(new(reader.GetInt64(0), reader.GetInt64(1), reader.IsDBNull(2) ? null : reader.GetString(2), created, updated));
+            result.Add(new(reader.GetInt64(0), reader.GetInt64(1), reader.IsDBNull(2) ? null : reader.GetString(2), created, updated, reader.IsDBNull(5) ? null : reader.GetInt64(5)));
         }
         return result;
     }

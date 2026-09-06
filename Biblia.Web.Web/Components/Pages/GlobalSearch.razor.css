@@ -1,0 +1,6 @@
+.global-search-results {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin: 16px 0 30px;
+}

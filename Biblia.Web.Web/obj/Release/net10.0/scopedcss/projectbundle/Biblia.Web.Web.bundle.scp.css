@@ -198,6 +198,13 @@ main[b-6pehqo76qy] {
         overflow-y: auto;
     }
 }
+/* /Components/Pages/GlobalSearch.razor.rz.scp.css */
+.global-search-results[b-w2ksojt1fp] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin: 16px 0 30px;
+}
 /* /Components/Shared/PdfTypographySettings.razor.rz.scp.css */
 .pdf-preview[b-1j01o9uaon] { margin: 1rem 0; padding: 1rem; border: 1px solid #dce4ee; border-radius: 9px; background: #fff; color: #172033; overflow-wrap: anywhere; line-height: 1.5; }
 .pdf-preview > strong[b-1j01o9uaon] { color: #2458cb; }

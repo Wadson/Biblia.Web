@@ -23,17 +23,14 @@ public sealed class ReportService(
     public async Task<ThemeVerseReport> BuildThemesAsync(ThemeVerseReportRequest request, CancellationToken ct = default)
     {
         ct.ThrowIfCancellationRequested();
-        var version = await versions.GetByCodeAsync(request.BibleVersionCode, ct)
-            ?? throw new InvalidOperationException("A versão bíblica selecionada não existe.");
-        if (!version.IsInstalled || !version.IsEnabled || version.ValidationStatus == BibleVersionValidationStatus.Incompatible)
-            throw new InvalidOperationException("A versão bíblica selecionada não está disponível.");
+        var catalog = (await versions.GetAllAsync(ct)).ToDictionary(v => v.Id);
+        var booksByVersion = new Dictionary<long, Dictionary<int, string>>();
 
         var selected = (await themes.GetAllAsync(ct))
             .Where(x => request.ThemeId is null || x.Id == request.ThemeId)
             .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase).ToArray();
         if (request.ThemeId is not null && selected.Length == 0) throw new KeyNotFoundException("Tema não encontrado.");
 
-        var books = (await bible.GetBooksAsync(version.Code, ct)).ToDictionary(x => x.BookReferenceId, x => x.Name);
         var sections = new List<ThemeVerseReportSection>();
         foreach (var theme in selected)
         {
@@ -45,6 +42,15 @@ public sealed class ReportService(
                 ct.ThrowIfCancellationRequested();
                 var saved = await references.GetAsync(link.ReferenceId, ct)
                     ?? throw new InvalidOperationException($"Referência vinculada ao tema '{theme.Name}' não encontrada.");
+                if (link.BibleVersionId is not long versionId || !catalog.TryGetValue(versionId, out var version))
+                    throw new InvalidOperationException($"O vínculo da referência {saved.Id} no tema '{theme.Name}' não possui uma versão bíblica registrada. Refaça a vinculação selecionando a versão desejada.");
+                if (!version.IsInstalled || !version.IsEnabled || version.ValidationStatus == BibleVersionValidationStatus.Incompatible)
+                    throw new InvalidOperationException($"A versão {version.Code} gravada no vínculo da referência {saved.Id} não está disponível. O relatório não foi gerado.");
+                if (!booksByVersion.TryGetValue(versionId, out var books))
+                {
+                    books = (await bible.GetBooksAsync(version.Code, ct)).ToDictionary(x => x.BookReferenceId, x => x.Name);
+                    booksByVersion.Add(versionId, books);
+                }
                 var passage = await bible.GetPassageAsync(version.Code, saved.BookReferenceId, saved.Chapter, saved.VerseStart, saved.VerseEnd, ct);
                 var verseNumbers = passage.Verses.Where(v => !string.IsNullOrWhiteSpace(v.Text)).Select(v => v.Verse).ToHashSet();
                 if (Enumerable.Range(saved.VerseStart, saved.VerseEnd - saved.VerseStart + 1).Any(v => !verseNumbers.Contains(v)))
@@ -53,12 +59,11 @@ public sealed class ReportService(
                 items.Add(new(saved.Id,
                     BibleReferenceFormatter.Format(book, saved.Chapter, saved.VerseStart, saved.VerseEnd),
                     string.Join(" ", passage.Verses.Select(x => $"{x.Verse} {x.Text}")), link.Observation,
-                    saved.BookReferenceId, saved.Chapter, saved.VerseStart, saved.VerseEnd));
+                    saved.BookReferenceId, saved.Chapter, saved.VerseStart, saved.VerseEnd, version.Code));
             }
-            sections.Add(new(theme, items.OrderBy(x => x.BookReferenceId).ThenBy(x => x.Chapter)
-                .ThenBy(x => x.VerseStart).ThenBy(x => x.VerseEnd).ThenBy(x => x.SavedReferenceId).ToArray()));
+            sections.Add(new(theme, items.OrderBy(x => BibleCanonicalOrder.Key(x)).ToArray()));
         }
-        return new("Temas e versículos", $"{version.Code} - {version.DisplayName}", clock.UtcNow,
+        return new("Temas e versículos", clock.UtcNow,
             sections.Count, sections.Sum(x => x.References.Count), sections);
     }
 }

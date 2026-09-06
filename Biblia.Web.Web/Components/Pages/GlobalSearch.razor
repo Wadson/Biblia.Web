@@ -2,5 +2,5 @@
 @rendermode InteractiveServer
 @inject Biblia.Application.Interfaces.IGlobalSearchService Service
 <PageTitle>Pesquisa global — BíbliaTema</PageTitle><PageHeader Title="Pesquisa global" Eyebrow="SISTEMA" /><div class="panel"><div class="form-grid"><label>Pesquisar<input @bind="query" /></label><label><input type="checkbox" @bind="themes" /> Temas</label><label><input type="checkbox" @bind="references" /> Referências</label><button class="btn primary" @onclick="Search">Pesquisar</button></div></div>
-<div class="card-grid">@foreach(var item in results){<article class="card"><span class="badge">@item.Kind</span><h2>@item.Title</h2><p>@item.Summary</p></article>}</div>
+<div class="vertical-search-results">@foreach(var item in results){<article class="card"><span class="badge">@item.Kind</span><h2>@item.Title</h2><p>@item.Summary</p></article>}</div>
 @code{string query="";bool themes=true,references=true;IReadOnlyList<GlobalSearchResult> results=[];async Task Search()=>results=await Service.SearchAsync(query,themes,references);}

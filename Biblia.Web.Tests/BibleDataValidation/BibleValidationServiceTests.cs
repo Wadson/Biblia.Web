@@ -1,3 +1,4 @@
+using Biblia.Domain.Rules;
 using Biblia.Domain.Enums;
 using Biblia.Infrastructure.BibleDatabases;
 using Microsoft.Data.Sqlite;
@@ -32,9 +33,9 @@ public sealed class BibleValidationServiceTests
         finally{SqliteConnection.ClearAllPools();if(Directory.Exists(directory))Directory.Delete(directory,true);}
     }
 
-    private static async Task CreateBibleAsync(string path)
+    internal static async Task CreateBibleAsync(string path)
     {
-        await using var c=new SqliteConnection($"Data Source={path}");await c.OpenAsync();await using var cmd=c.CreateCommand();
+        await using var c=new SqliteConnection($"Data Source={path};Pooling=False");await c.OpenAsync();await using var cmd=c.CreateCommand();
         cmd.CommandText="""
             CREATE TABLE book(id INTEGER PRIMARY KEY,book_reference_id INTEGER,testament_reference_id INTEGER,name TEXT);
             CREATE TABLE metadata(key TEXT PRIMARY KEY,value TEXT);
@@ -44,6 +45,14 @@ public sealed class BibleValidationServiceTests
             WITH RECURSIVE n(x) AS (VALUES(1) UNION ALL SELECT x+1 FROM n WHERE x<30000) INSERT INTO verse SELECT x,((x-1)%66)+1,((x-1)/1000)+1,((x-1)%1000)+1,'Texto '||x FROM n;
             """;
         await cmd.ExecuteNonQueryAsync();
+        foreach (var book in BibleCanonicalOrder.Books)
+        {
+            cmd.CommandText = "UPDATE book SET name=$name WHERE book_reference_id=$id";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("$name", book.Name);
+            cmd.Parameters.AddWithValue("$id", book.BookReferenceId);
+            await cmd.ExecuteNonQueryAsync();
+        }
     }
 }
 

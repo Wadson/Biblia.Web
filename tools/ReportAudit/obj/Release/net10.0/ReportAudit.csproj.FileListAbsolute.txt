@@ -1,0 +1,16 @@
+D:\Projetos\Biblia.Web\tools\ReportAudit\bin\Release\net10.0\ReportAudit.exe
+D:\Projetos\Biblia.Web\tools\ReportAudit\bin\Release\net10.0\ReportAudit.deps.json
+D:\Projetos\Biblia.Web\tools\ReportAudit\bin\Release\net10.0\ReportAudit.runtimeconfig.json
+D:\Projetos\Biblia.Web\tools\ReportAudit\bin\Release\net10.0\ReportAudit.dll
+D:\Projetos\Biblia.Web\tools\ReportAudit\bin\Release\net10.0\ReportAudit.pdb
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ReportAudit.csproj.AssemblyReference.cache
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ReportAudit.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ReportAudit.AssemblyInfoInputs.cache
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ReportAudit.AssemblyInfo.cs
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ReportAudit.csproj.CoreCompileInputs.cache
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ReportAudit.sourcelink.json
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ReportAudit.dll
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\refint\ReportAudit.dll
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ReportAudit.pdb
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ReportAudit.genruntimeconfig.cache
+D:\Projetos\Biblia.Web\tools\ReportAudit\obj\Release\net10.0\ref\ReportAudit.dll

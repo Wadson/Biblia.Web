@@ -68,7 +68,7 @@ public sealed class ThemeTableOfContentsTests : IDisposable
         var report = original with { Sections = [original.Sections[0] with { References = original.Sections[0].References.Take(1).ToArray() }] };
         using var pdf = PdfDocument.Open(await Generate(report));
         Validate(pdf, report);
-        Assert.Contains("1 referência", pdf.GetPage(1).Text);
+        Assert.Contains("(1 ref.)", pdf.GetPage(1).Text);
     }
 
     [Fact]
@@ -109,9 +109,9 @@ public sealed class ThemeTableOfContentsTests : IDisposable
                 l.BoundingBox.Top <= link.Rectangle.Top).ToArray();
             var number = string.Concat(region.Where(l => l.BoundingBox.Left > link.Rectangle.Right - 36).Select(l => l.Value));
             Assert.Equal(bookmark.PageNumber.ToString(CultureInfo.InvariantCulture), number);
-            var count = $"{section.References.Count} {(section.References.Count == 1 ? "referência" : "referências")}";
+            var count = $"({section.References.Count} ref.)";
             Assert.Contains(count, string.Concat(region.Select(l => l.Value)));
-            Assert.Equal(section.Theme.Name.Replace(" ", ""), string.Concat(region.Where(l => Math.Abs(l.FontSize - 10) < .1).Select(l => l.Value)).Replace(" ", ""));
+            Assert.Equal(($"{section.Theme.Name} {count}").Replace(" ", ""), string.Concat(region.Where(l => Math.Abs(l.FontSize - 10) < .1).Select(l => l.Value)).Replace(" ", ""));
         }
         foreach (var page in pdf.GetPages())
         {

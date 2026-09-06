@@ -6,7 +6,7 @@ namespace Biblia.Infrastructure.AppDatabase;
 
 public sealed class AppDatabase : IAppDatabase
 {
-    public const int CurrentSchemaVersion = 3;
+    public const int CurrentSchemaVersion = 4;
     private readonly ILogger<AppDatabase> _logger;
     private readonly SemaphoreSlim _initializationGate = new(1, 1);
     private bool _initialized;
@@ -103,6 +103,7 @@ public sealed class AppDatabase : IAppDatabase
         if (version < 1) await ApplyMigration1Async(connection, cancellationToken);
         if (version < 2) await ApplyMigration2Async(connection, cancellationToken);
         if (version < 3) await ApplyMigration3Async(connection, cancellationToken);
+        if (version < 4) await ApplyMigration4Async(connection, cancellationToken);
         _initialized = true;
         _logger.LogInformation("Banco do aplicativo inicializado no schema {SchemaVersion}.", CurrentSchemaVersion);
     }
@@ -218,6 +219,23 @@ public sealed class AppDatabase : IAppDatabase
             await transaction.CommitAsync(cancellationToken);
         }
         catch { await transaction.RollbackAsync(cancellationToken); throw; }
+    }
+
+    private static async Task ApplyMigration4Async(SqliteConnection connection, CancellationToken cancellationToken)
+    {
+        await using var transaction = connection.BeginTransaction();
+        await using var command = connection.CreateCommand();
+        command.Transaction = transaction;
+        command.CommandText = """
+            ALTER TABLE ReferenceTheme ADD COLUMN BibleVersionId INTEGER NULL REFERENCES BibleVersionCatalog(Id) ON DELETE RESTRICT;
+            UPDATE ReferenceTheme SET BibleVersionId = (
+                SELECT PreferredBibleVersionId FROM SavedReference WHERE Id = ReferenceTheme.ReferenceId
+            );
+            INSERT INTO SchemaMigration(Version, AppliedAt) VALUES(4, $now);
+            """;
+        command.Parameters.AddWithValue("$now", DateTimeOffset.UtcNow.ToString("O"));
+        await command.ExecuteNonQueryAsync(cancellationToken);
+        await transaction.CommitAsync(cancellationToken);
     }
 
     private static async Task ExecuteNonQueryAsync(SqliteConnection connection, string sql, CancellationToken cancellationToken)

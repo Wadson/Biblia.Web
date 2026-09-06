@@ -203,3 +203,9 @@ main[b-6pehqo76qy] {
 .pdf-preview > strong[b-1j01o9uaon] { color: #2458cb; }
 .pdf-preview p[b-1j01o9uaon] { margin: .5rem 0; }
 .pdf-preview-note[b-1j01o9uaon] { padding: .75rem; border: 1px solid #f7e6ad; border-left: 3px solid #ec9b0b; border-radius: 9px; background: #fffae8; color: #85450c; }
+.panel[b-1j01o9uaon] { color: var(--text); background: var(--surface-card); }
+input[b-1j01o9uaon] { color: var(--text); background: var(--surface-card); }
+input:focus-visible[b-1j01o9uaon], button:focus-visible[b-1j01o9uaon] { outline: 2px solid #2458cb; outline-offset: 2px; }
+@media (prefers-color-scheme: dark) {
+    .panel[b-1j01o9uaon] { --text: #edf2fa; --surface-card: #172033; color-scheme: dark; border-color: #52627c; }
+}

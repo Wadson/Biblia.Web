@@ -6,6 +6,23 @@ using Biblia.Infrastructure.AppDatabase;
 using Biblia.Infrastructure.Repositories;
 using Microsoft.Extensions.Logging.Abstractions;
 
+if (args.Length > 1 && args[0] == "audit-canonical")
+{
+    var validator = new Biblia.Infrastructure.BibleDatabases.BibleValidationService(NullLogger<Biblia.Infrastructure.BibleDatabases.BibleValidationService>.Instance);
+    var audit = new List<object>();
+    var invalid = false;
+    foreach (var directory in args.Skip(1))
+        foreach (var file in Directory.EnumerateFiles(directory, "*.sqlite", SearchOption.AllDirectories).Order())
+        {
+            var issues = await validator.ValidateCanonicalBooksAsync(file);
+            invalid |= issues.Count != 0;
+            audit.Add(new { Path = Path.GetFullPath(file), Sha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(await File.ReadAllBytesAsync(file))), Issues = issues });
+        }
+    Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(audit, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+    Environment.ExitCode = invalid ? 1 : 0;
+    return;
+}
+
 if (args.Length == 2 && args[1].StartsWith("typography"))
 {
     var root = Path.GetFullPath(args[0]);

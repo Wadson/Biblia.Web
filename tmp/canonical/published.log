@@ -1,0 +1,20 @@
+info: Biblia.Infrastructure.AppDatabase.AppDatabase[0]
+      Banco do aplicativo inicializado no schema 3.
+info: Biblia.Application.Services.BibleVersionManager[0]
+      Vers∆o b°blica ativa alterada para ACF.
+info: Biblia.Application.Services.AppInitializationService[0]
+      Inicializaá∆o do aplicativo conclu°da.
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://127.0.0.1:5089
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\Publicacao\Biblia.Web
+info: Biblia.Application.Services.ThemeVerseLinkService[0]
+      Observaá∆o do v°nculo 6/84 atualizada
+info: Biblia.Application.Services.ThemeVerseLinkService[0]
+      Referància 87 desvinculada do tema 6; referància preservada
+info: Biblia.Application.Services.ThemeVerseLinkService[0]
+      Lote vinculado ao tema 6: 1 selecionados, 0 criados, 1 reutilizados, 1 v°nculos e 0 existentes

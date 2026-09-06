@@ -5,4 +5,5 @@ public sealed record ReferenceTheme(
     long ThemeId,
     string? Observation,
     DateTimeOffset CreatedAt,
-    DateTimeOffset UpdatedAt);
+    DateTimeOffset UpdatedAt,
+    long? BibleVersionId = null);

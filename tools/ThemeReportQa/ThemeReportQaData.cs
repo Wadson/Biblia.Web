@@ -17,9 +17,9 @@ public static class ThemeReportQaData
                     "Texto sintético de QA: o amor inspira a ação, a fé fortalece a esperança e a comunhão promove o cuidado com o próximo.", t % 10 == 0 ? 6 : 1)),
                 i == 2 && t % 10 == 0 ? string.Join(" ", Enumerable.Repeat("Observação longa do vínculo: reflexão, gratidão e perseverança.", 85)) :
                 i == 1 ? "Observação do vínculo: uma reflexão para a família." : null,
-                43, t, i, i)).ToArray();
+                43, t, i, i, i % 2 == 0 ? "NVI" : "ACF")).ToArray();
             return new ThemeVerseReportSection(new(t, name, t % 2 == 0 ? "#18864B" : "#336699", null, now, now), items);
         }).ToArray();
-        return new("Temas e versículos", "ACF - Almeida Corrigida e Fiel", now, sections.Length, sections.Sum(s => s.References.Count), sections);
+        return new("Temas e versículos", now, sections.Length, sections.Sum(s => s.References.Count), sections);
     }
 }
