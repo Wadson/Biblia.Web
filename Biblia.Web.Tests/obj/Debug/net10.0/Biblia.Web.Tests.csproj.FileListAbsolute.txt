@@ -210,3 +210,11 @@ D:\Projetos\Biblia.Web\Biblia.Web.Tests\obj\Debug\net10.0\refint\Biblia.Web.Test
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\obj\Debug\net10.0\Biblia.Web.Tests.pdb
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\obj\Debug\net10.0\Biblia.Web.Tests.genruntimeconfig.cache
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\obj\Debug\net10.0\ref\Biblia.Web.Tests.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Tests\obj\Debug\net10.0\Biblia.Web.Tests.sourcelink.json
+D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\UglyToad.PdfPig.Core.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\UglyToad.PdfPig.DocumentLayoutAnalysis.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\UglyToad.PdfPig.Fonts.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\UglyToad.PdfPig.Package.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\UglyToad.PdfPig.Tokenization.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\UglyToad.PdfPig.Tokens.dll
+D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\UglyToad.PdfPig.dll

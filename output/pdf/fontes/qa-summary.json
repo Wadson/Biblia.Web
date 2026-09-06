@@ -1,0 +1,23 @@
+[
+  {
+    "mode": "padrao",
+    "pages": 27,
+    "references": 96,
+    "toc_pages": 2,
+    "embedded_fonts": true
+  },
+  {
+    "mode": "minimo",
+    "pages": 26,
+    "references": 96,
+    "toc_pages": 2,
+    "embedded_fonts": true
+  },
+  {
+    "mode": "maximo",
+    "pages": 89,
+    "references": 96,
+    "toc_pages": 2,
+    "embedded_fonts": true
+  }
+]

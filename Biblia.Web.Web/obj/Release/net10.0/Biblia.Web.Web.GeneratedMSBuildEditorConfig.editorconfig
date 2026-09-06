@@ -110,3 +110,7 @@ build_metadata.AdditionalFiles.CssScope = b-6pehqo76qy
 [D:/Projetos/Biblia.Web/Biblia.Web.Web/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-rxmcrc8mqc
+
+[D:/Projetos/Biblia.Web/Biblia.Web.Web/Components/Shared/PdfTypographySettings.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcUGRmVHlwb2dyYXBoeVNldHRpbmdzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-1j01o9uaon

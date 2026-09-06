@@ -10,3 +10,4 @@ D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\Release\net10.0\Biblia.Web
 D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\Release\net10.0\refint\Biblia.Web.ServiceDefaults.dll
 D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\Release\net10.0\Biblia.Web.ServiceDefaults.pdb
 D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\Release\net10.0\ref\Biblia.Web.ServiceDefaults.dll
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\Release\net10.0\Biblia.Web.ServiceDefaults.sourcelink.json

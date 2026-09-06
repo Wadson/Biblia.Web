@@ -2,8 +2,10 @@
   <PropertyGroup><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><IsPackable>false</IsPackable><IsTestProject>true</IsTestProject></PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageReference Include="PdfPig" Version="0.1.14" />
     <PackageReference Include="xunit.v3" Version="3.2.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5"><PrivateAssets>all</PrivateAssets><IncludeAssets>runtime;build;native;contentfiles;analyzers;buildtransitive</IncludeAssets></PackageReference>
     <ProjectReference Include="..\Biblia.Web.Core\Biblia.Web.Core.csproj" />
   </ItemGroup>
+  <ItemGroup><Compile Include="..\tools\ThemeReportQa\ThemeReportQaData.cs" Link="Infrastructure\ThemeReportQaData.cs" /></ItemGroup>
 </Project>

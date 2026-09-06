@@ -362,11 +362,6 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
-        }
       }
     },
     "D:\\Projetos\\Biblia.Web\\Biblia.Web.ServiceDefaults\\Biblia.Web.ServiceDefaults.csproj": {
@@ -882,11 +877,6 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
-        }
       }
     },
     "D:\\Projetos\\Biblia.Web\\Biblia.Web.Web\\Biblia.Web.Web.csproj": {
@@ -1386,11 +1376,6 @@
             "System.Xml.XPath": "(,4.3.32767]",
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
-        }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
         }
       }
     }

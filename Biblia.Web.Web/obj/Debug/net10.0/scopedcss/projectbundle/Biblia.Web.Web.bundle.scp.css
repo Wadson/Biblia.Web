@@ -198,3 +198,8 @@ main[b-6pehqo76qy] {
         overflow-y: auto;
     }
 }
+/* /Components/Shared/PdfTypographySettings.razor.rz.scp.css */
+.pdf-preview[b-1j01o9uaon] { margin: 1rem 0; padding: 1rem; border: 1px solid #dce4ee; border-radius: 9px; background: #fff; color: #172033; overflow-wrap: anywhere; line-height: 1.5; }
+.pdf-preview > strong[b-1j01o9uaon] { color: #2458cb; }
+.pdf-preview p[b-1j01o9uaon] { margin: .5rem 0; }
+.pdf-preview-note[b-1j01o9uaon] { padding: .75rem; border: 1px solid #f7e6ad; border-left: 3px solid #ec9b0b; border-radius: 9px; background: #fffae8; color: #85450c; }

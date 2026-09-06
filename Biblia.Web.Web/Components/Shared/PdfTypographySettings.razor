@@ -1,0 +1,73 @@
+@using Biblia.Application.Services
+@using System.Globalization
+@inject Biblia.Application.Interfaces.ISettingsService Settings
+@inject ILogger<PdfTypographySettings> Logger
+
+<section class="panel">
+    <h2>Personalização do relatório PDF</h2>
+    <p>Escolha os tamanhos em pontos (pt), em incrementos de 0,5 pt.</p>
+    @if (error is not null) { <div class="notice" role="alert">@error</div> }
+    @if (message is not null) { <div class="notice success" role="status">@message</div> }
+    @if (loaded)
+    {
+        <form @onsubmit="Save" @onsubmit:preventDefault>
+            <fieldset disabled="@busy" style="border:0;padding:0;margin:0">
+                <div class="form-grid">
+                    <label>Tamanho da referência bíblica (pt)
+                        <input type="number" required min="@PdfReportTypographyOptions.ReferenceMin" max="@PdfReportTypographyOptions.ReferenceMax" step="0.5" @bind="reference" @bind:event="oninput" />
+                        <small>De @PdfReportTypographyOptions.ReferenceMin a @PdfReportTypographyOptions.ReferenceMax pt</small>
+                    </label>
+                    <label>Tamanho do texto do versículo (pt)
+                        <input type="number" required min="@PdfReportTypographyOptions.VerseMin" max="@PdfReportTypographyOptions.VerseMax" step="0.5" @bind="verse" @bind:event="oninput" />
+                        <small>De @PdfReportTypographyOptions.VerseMin a @PdfReportTypographyOptions.VerseMax pt</small>
+                    </label>
+                    <label>Tamanho da observação (pt)
+                        <input type="number" required min="@PdfReportTypographyOptions.ObservationMin" max="@PdfReportTypographyOptions.ObservationMax" step="0.5" @bind="observation" @bind:event="oninput" />
+                        <small>De @PdfReportTypographyOptions.ObservationMin a @PdfReportTypographyOptions.ObservationMax pt</small>
+                    </label>
+                </div>
+                <div class="pdf-preview" aria-label="Prévia dos tamanhos do relatório PDF">
+                    <strong style="font-size:@(Pt(Preview.PdfReferenceFontSize))">João 13:15</strong>
+                    <p style="font-size:@(Pt(Preview.PdfVerseTextFontSize))"><strong>15</strong> Porque eu vos dei o exemplo, para que, como eu vos fiz, façais vós também.</p>
+                    <div class="pdf-preview-note" style="font-size:@(Pt(Preview.PdfObservationFontSize))"><strong>OBSERVAÇÃO:</strong><br />EXEMPLO: Aquilo que deve ser imitado.</div>
+                </div>
+                <button class="btn primary" type="submit">Salvar tamanhos</button>
+            </fieldset>
+        </form>
+                <ConfirmButton Label="Restaurar tamanhos padrão" Title="Restaurar tamanhos padrão" Message="Deseja restaurar somente os três tamanhos das fontes do relatório PDF?" OnConfirm="Restore" Disabled="@busy" />
+    }
+</section>
+
+@code {
+    double? reference, verse, observation;
+    bool loaded, busy;
+    string? error, message;
+    PdfReportTypographyOptions Preview => new PdfReportTypographyOptions(reference ?? 0, verse ?? 0, observation ?? 0).Normalize();
+    static string Pt(double value) => value.ToString(CultureInfo.InvariantCulture) + "pt";
+    void SetValues(PdfReportTypographyOptions value) { reference = value.PdfReferenceFontSize; verse = value.PdfVerseTextFontSize; observation = value.PdfObservationFontSize; }
+    protected override async Task OnInitializedAsync()
+    {
+        try { SetValues(await Settings.GetPdfTypographyAsync()); loaded = true; }
+        catch (Exception ex) { Logger.LogError(ex, "Falha ao carregar tamanhos do PDF"); error = "Não foi possível carregar os tamanhos. Reabra a página para tentar novamente."; }
+    }
+    async Task Save() => await Persist(false);
+    async Task Restore() => await Persist(true);
+    async Task Persist(bool restore)
+    {
+        if (busy) return;
+        error = message = null;
+        busy = true;
+        try
+        {
+            if (!restore && (reference is null || verse is null || observation is null))
+                throw new ArgumentException("Preencha os três tamanhos com valores numéricos em pt.");
+            var options = restore ? PdfReportTypographyOptions.Default : new(reference!.Value, verse!.Value, observation!.Value);
+            await Settings.SavePdfTypographyAsync(options);
+            SetValues(options);
+            message = "Configurações do relatório salvas com sucesso.";
+        }
+        catch (ArgumentException ex) { error = ex.Message; }
+        catch (Exception ex) { Logger.LogError(ex, "Falha ao salvar tamanhos do PDF"); error = "Não foi possível salvar os tamanhos. Tente novamente."; }
+        finally { busy = false; }
+    }
+}

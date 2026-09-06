@@ -94,8 +94,6 @@ D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\raxty4srpl-{0
 D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\473aqn9d5v-{0}-ogg0o4dxea-ogg0o4dxea.gz
 D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\z75omcuw94-{0}-wyu7y4jcvb-wyu7y4jcvb.gz
 D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\z3tdisev3f-{0}-wfr2hj6447-wfr2hj6447.gz
-D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\cra3cswi74-{0}-eukcevjl7k-eukcevjl7k.gz
-D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\6a2eai0bih-{0}-eukcevjl7k-eukcevjl7k.gz
 D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\staticwebassets.build.json
 D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\staticwebassets.build.json.cache
 D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\staticwebassets.development.json
@@ -175,3 +173,7 @@ D:\Projetos\Biblia.Web\Biblia.Web.Web\bin\Debug\net10.0\runtimes\iossimulator-x6
 D:\Projetos\Biblia.Web\Biblia.Web.Web\bin\Debug\net10.0\runtimes\iossimulator-x86\native\e_sqlite3.a
 D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\pedg35i38p-{0}-2nsrt0vkp3-2nsrt0vkp3.gz
 D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\oylwnnwers-{0}-tdellicp89-tdellicp89.gz
+D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\Biblia.Web.Web.sourcelink.json
+D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\scopedcss\Components\Shared\PdfTypographySettings.razor.rz.scp.css
+D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\cra3cswi74-{0}-d6szxhwcru-d6szxhwcru.gz
+D:\Projetos\Biblia.Web\Biblia.Web.Web\obj\Debug\net10.0\compressed\6a2eai0bih-{0}-d6szxhwcru-d6szxhwcru.gz
