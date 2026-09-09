@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="@Assets["lib/bootstrap/dist/css/bootstrap.min.css"]" />
+    <link rel="stylesheet" href="@Assets["app.css"]" />
+    <link rel="stylesheet" href="@Assets["Biblia.Web.styles.css"]" />
+    <ImportMap />
+    <link rel="icon" type="image/svg+xml" href="appicon.svg" />
+    <link rel="alternate icon" type="image/png" href="appicon.png" />
+    <HeadOutlet />
+</head>
+
+<body>
+    <Routes />
+    <script src="@Assets["_framework/blazor.web.js"]"></script>
+    <script>window.bibliaTema={goBack:function(){if(history.length>1){history.back();return true;}return false;}};</script>
+</body>
+
+</html>

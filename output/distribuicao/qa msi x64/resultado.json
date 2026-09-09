@@ -1,0 +1,75 @@
+{
+  "routes": [
+    {
+      "bytes": 8015,
+      "status": 200,
+      "route": "/"
+    },
+    {
+      "bytes": 11150,
+      "status": 200,
+      "route": "/versoes"
+    },
+    {
+      "bytes": 18400,
+      "status": 200,
+      "route": "/biblia"
+    },
+    {
+      "bytes": 8445,
+      "status": 200,
+      "route": "/temas"
+    },
+    {
+      "bytes": 12672,
+      "status": 200,
+      "route": "/temas/vincular-versiculos"
+    },
+    {
+      "bytes": 8383,
+      "status": 200,
+      "route": "/relatorios"
+    },
+    {
+      "bytes": 10914,
+      "status": 200,
+      "route": "/configuracoes"
+    },
+    {
+      "bytes": 7760,
+      "status": 200,
+      "route": "/app.css"
+    }
+  ],
+  "runtime": [
+    {
+      "name": "Microsoft.NETCore.App",
+      "version": "10.0.11"
+    },
+    {
+      "name": "Microsoft.AspNetCore.App",
+      "version": "10.0.11"
+    }
+  ],
+  "bibles": 7,
+  "modules": [
+    {
+      "ModuleName": "hostfxr.dll",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\msi-extraido-x64\\PFiles64\\Biblia.Web-x64\\hostfxr.dll"
+    },
+    {
+      "ModuleName": "hostpolicy.dll",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\msi-extraido-x64\\PFiles64\\Biblia.Web-x64\\hostpolicy.dll"
+    },
+    {
+      "ModuleName": "coreclr.dll",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\msi-extraido-x64\\PFiles64\\Biblia.Web-x64\\coreclr.dll"
+    },
+    {
+      "ModuleName": "e_sqlite3.DLL",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\msi-extraido-x64\\PFiles64\\Biblia.Web-x64\\e_sqlite3.DLL"
+    }
+  ],
+  "publish": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\msi-extraido-x64\\PFiles64\\Biblia.Web-x64",
+  "result": "PASS"
+}

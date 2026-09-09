@@ -1,0 +1,2245 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="Biblia.Web (x86)" Manufacturer="WRSoft" Version="1.26.907" Language="1046" Scope="perMachine" UpgradeCode="19a42d2f-4571-5cdd-8321-bb77e3483067">
+    <MajorUpgrade DowngradeErrorMessage="Uma versao mais recente ja esta instalada." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+    <Property Id="WINDOWSBUILD">
+      <RegistrySearch Id="WindowsBuild" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="CurrentBuildNumber" Type="raw" />
+    </Property>
+    <Launch Condition="Installed OR WINDOWSBUILD &gt;= 14393" Message="Este aplicativo requer Windows 10/11 atualizado. Windows 7/8/8.1 nao sao suportados." />
+    <Icon Id="AppIcon" SourceFile="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\appico.ico" />
+    <Property Id="ARPPRODUCTICON" Value="AppIcon" />
+    <StandardDirectory Id="ProgramFilesFolder">
+      <Directory Id="INSTALLFOLDER" Name="Biblia.Web-x86">
+        <Directory Id="Dd6c5e3b8683f5f0a1ae71655" Name="wwwroot">
+          <Directory Id="D01b92d52a3d7f0e943a53d49" Name="_framework">
+            <Component Id="C3bfd75ed45329d968a7ea787" Guid="9747dfbb-b895-5b43-99cf-7141cd833993">
+              <File Id="F3bfd75ed45329d968a7ea787" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\_framework\blazor.server.js" KeyPath="yes" />
+            </Component>
+            <Component Id="C01c90f6137893e502c28817f" Guid="3be3ad4d-120c-508b-a2d3-535f98ccb5b9">
+              <File Id="F01c90f6137893e502c28817f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\_framework\blazor.server.js.br" KeyPath="yes" />
+            </Component>
+            <Component Id="C33edb3e7e9403297b796bb76" Guid="f1fed3f2-502c-56a7-9369-81cb2d823273">
+              <File Id="F33edb3e7e9403297b796bb76" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\_framework\blazor.server.js.gz" KeyPath="yes" />
+            </Component>
+            <Component Id="C47d2f091ab20dd60b3e6de77" Guid="85f7cbe9-45e2-5b19-b94c-bea70b7feb7c">
+              <File Id="F47d2f091ab20dd60b3e6de77" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\_framework\blazor.web.js" KeyPath="yes" />
+            </Component>
+            <Component Id="C35e1c56052c4f21e08326587" Guid="4bd848ba-fb7f-5feb-b9db-e1e8260e0241">
+              <File Id="F35e1c56052c4f21e08326587" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\_framework\blazor.web.js.br" KeyPath="yes" />
+            </Component>
+            <Component Id="C03384cc72a2dc0f70896986b" Guid="0e1816f4-b44f-50aa-932a-671fab7085f4">
+              <File Id="F03384cc72a2dc0f70896986b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\_framework\blazor.web.js.gz" KeyPath="yes" />
+            </Component>
+          </Directory>
+          <Directory Id="Dbfcd9bc6d5471c7457c6446f" Name="Components">
+            <Directory Id="Df99f008d3f727bc15f1fa51e" Name="Layout">
+              <Component Id="C13c1aef6748394d6454c7b56" Guid="99a50233-8ea6-5d24-a29c-2e302090d22f">
+                <File Id="F13c1aef6748394d6454c7b56" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\Components\Layout\NavMenu.razor.js" KeyPath="yes" />
+              </Component>
+              <Component Id="C0b0965d16d1fe575223c4e3b" Guid="1074c774-e55a-5263-b7e1-ea8ff4922cdb">
+                <File Id="F0b0965d16d1fe575223c4e3b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\Components\Layout\NavMenu.razor.js.br" KeyPath="yes" />
+              </Component>
+              <Component Id="C05de5adcb1889d1c816fa40a" Guid="89a20609-6c3c-581f-b706-ab118ad386a1">
+                <File Id="F05de5adcb1889d1c816fa40a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\Components\Layout\NavMenu.razor.js.gz" KeyPath="yes" />
+              </Component>
+            </Directory>
+          </Directory>
+          <Directory Id="De046a63113d58d8418d1df31" Name="lib">
+            <Directory Id="D778f9f5be7587c6e382b10b3" Name="bootstrap">
+              <Directory Id="Daf63c6fc0b161d12d7b0ba8d" Name="dist">
+                <Directory Id="Da60223f1e54f3a9ffd2a1c56" Name="css">
+                  <Component Id="Ca5f3999d3b41ffed18efd98d" Guid="c34b6948-33a0-54cb-a88e-562a9ebd070b">
+                    <File Id="Fa5f3999d3b41ffed18efd98d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ce65c5cd63dcb1a818294218d" Guid="d8efc814-b6bd-5924-851f-0bc9fbf3d8a2">
+                    <File Id="Fe65c5cd63dcb1a818294218d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C3332c67a9a54d5b063cfbd7c" Guid="674faa78-a758-5109-8eb5-9648107c7a6f">
+                    <File Id="F3332c67a9a54d5b063cfbd7c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ccd38e3ca3cdaf0d3d502f3d7" Guid="15637b97-896d-5515-9ad8-d4078c08c674">
+                    <File Id="Fcd38e3ca3cdaf0d3d502f3d7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C08526cfd4bc061cb6a9c6b3f" Guid="353ae9a2-8840-5679-9625-36aa837f73ed">
+                    <File Id="F08526cfd4bc061cb6a9c6b3f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ce81561933da8ff72a8dce88d" Guid="15bf9cd7-6652-5045-ad4f-1b7ff4a1f92c">
+                    <File Id="Fe81561933da8ff72a8dce88d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C43fe7d078a98f2ef54305503" Guid="13d51463-c699-5d15-99d0-11e2054e2241">
+                    <File Id="F43fe7d078a98f2ef54305503" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C2d66fbbd619a55d51de2ae66" Guid="c0d04072-34b5-5c07-adba-cc5f1070ebef">
+                    <File Id="F2d66fbbd619a55d51de2ae66" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C30f7933ef5c5b9d2cc142fe3" Guid="ffa0385c-44b7-5c23-9249-403c948270ac">
+                    <File Id="F30f7933ef5c5b9d2cc142fe3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C7d9248e172fede6ec52ea93f" Guid="7ba055e3-08b5-53d7-a947-d57fc0598f9c">
+                    <File Id="F7d9248e172fede6ec52ea93f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C8875f2439fa006b4bffdbe75" Guid="c5026c99-511c-56c2-9cb6-1917da41b9ee">
+                    <File Id="F8875f2439fa006b4bffdbe75" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C58a447a20300d6bffba6e549" Guid="34a5b892-aecc-5e8d-a32d-1eff61d28ac7">
+                    <File Id="F58a447a20300d6bffba6e549" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C4b7290ba03e62274a0d5f45f" Guid="bdf65833-80a0-551c-a493-4ed481097fde">
+                    <File Id="F4b7290ba03e62274a0d5f45f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C0cd2cd88369417e6fe26c293" Guid="2335087a-57c3-534e-b20a-a92b14899729">
+                    <File Id="F0cd2cd88369417e6fe26c293" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cd391b440baeb3fdf202d1e4e" Guid="4a7b27c3-a3ef-5419-89fb-97432bbd4a3b">
+                    <File Id="Fd391b440baeb3fdf202d1e4e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C216257adb8fd5f8c62c9d83b" Guid="7a6984d7-e2eb-5e94-a4e3-c28438739d31">
+                    <File Id="F216257adb8fd5f8c62c9d83b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C2a711dd71e5a4e7ac1cf6f3e" Guid="7b185151-d806-58a5-bf3a-65523cdea792">
+                    <File Id="F2a711dd71e5a4e7ac1cf6f3e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ce7c05dff2fc7ed8cb55853b2" Guid="b3d0cfc1-41fe-504c-a94c-57b9d3484e5f">
+                    <File Id="Fe7c05dff2fc7ed8cb55853b2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C28c3caac290190cfec919f63" Guid="dbd28390-a2de-572b-9b3c-babb9b8da2c8">
+                    <File Id="F28c3caac290190cfec919f63" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cc345561d3f7d946808afebda" Guid="136d6657-7615-583f-9687-4c4624a93160">
+                    <File Id="Fc345561d3f7d946808afebda" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C0e8fd43b53e16fb4164ef6cf" Guid="9171507b-29c5-5e54-8861-119bf3c67e70">
+                    <File Id="F0e8fd43b53e16fb4164ef6cf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ce5e9fe8052c1a92e5314a901" Guid="49c8a01b-04bc-56ec-b896-62ef95dd2e0b">
+                    <File Id="Fe5e9fe8052c1a92e5314a901" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cf3e343a5cda311c8563a784c" Guid="3c659c1b-7937-5d99-9c70-e6a4b1a2188c">
+                    <File Id="Ff3e343a5cda311c8563a784c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ce4ef3019dad947de0dc5ffc9" Guid="bb532859-173c-527b-903b-c8dc16abfd64">
+                    <File Id="Fe4ef3019dad947de0dc5ffc9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cfb3049d83436ff3e21f1e07d" Guid="fe7f611c-74c6-5eb7-a899-26ad721d72e4">
+                    <File Id="Ffb3049d83436ff3e21f1e07d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Caf8eb2203602b88f8130cc0f" Guid="508dbd06-72d0-596e-8a88-bb97a8d97222">
+                    <File Id="Faf8eb2203602b88f8130cc0f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C52ab13e75318396470099f24" Guid="9069c487-a1ff-5b5f-a70d-52209bc297bc">
+                    <File Id="F52ab13e75318396470099f24" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C1ed2988760d7fcc950312c09" Guid="180d4aec-fd74-5ddb-b48e-de1347870283">
+                    <File Id="F1ed2988760d7fcc950312c09" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C2ca315dfcb6ff0c830001d1c" Guid="4c2fc6fb-950c-5514-8991-e2d812ce30c3">
+                    <File Id="F2ca315dfcb6ff0c830001d1c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ce20d30723c943c040c56655b" Guid="ccb60649-8332-57f6-ae8f-63e9037d2a34">
+                    <File Id="Fe20d30723c943c040c56655b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cb3ee74b4a5d835357e80e865" Guid="3324f01e-8c93-55c8-946f-92c9a75719cc">
+                    <File Id="Fb3ee74b4a5d835357e80e865" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C000e87e32e5d85ecc872a05c" Guid="6fb78244-4990-502c-a98e-16808f68a8a3">
+                    <File Id="F000e87e32e5d85ecc872a05c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cdef0dc87d41b6d1d5c9ca3a1" Guid="b1e0e327-0239-5be7-88a9-7539cd32593d">
+                    <File Id="Fdef0dc87d41b6d1d5c9ca3a1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C75b891bf0eeb9719b0d64f3e" Guid="78c80111-e8f6-5e21-884d-4a27d746694c">
+                    <File Id="F75b891bf0eeb9719b0d64f3e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ca90f76591e8ccfbee847f75d" Guid="b337dfe0-26bb-5071-b1b0-dc6f5f33496a">
+                    <File Id="Fa90f76591e8ccfbee847f75d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cb535c641057eb469500bca66" Guid="417b0e19-ac1c-5aea-88d1-a46df0e1549b">
+                    <File Id="Fb535c641057eb469500bca66" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ce9cd425341f4905cbce2e2b1" Guid="35a24910-b76d-5c08-962b-9970a6f2ff3f">
+                    <File Id="Fe9cd425341f4905cbce2e2b1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C286021082590750b6552792e" Guid="2bb774eb-fdcc-5a66-b980-a887803424b6">
+                    <File Id="F286021082590750b6552792e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C131b84689246cc0746b79455" Guid="09e7d75f-9be5-52c3-872a-507457a093c8">
+                    <File Id="F131b84689246cc0746b79455" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C07ed1037696aebb56606a059" Guid="1ebab433-90bc-5c6f-acc8-498e2252d836">
+                    <File Id="F07ed1037696aebb56606a059" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cd998a81b81867dcc1f10b713" Guid="7f728082-20ae-5b8c-8c83-56e2bbc6e213">
+                    <File Id="Fd998a81b81867dcc1f10b713" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cf4bfa7117dbb7b41fd748fb8" Guid="5e50df44-6fc0-5931-84dd-cae1d6591ddc">
+                    <File Id="Ff4bfa7117dbb7b41fd748fb8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C029379dda79082031d96a7c5" Guid="6a7293ff-b969-50cb-a52f-268753d81893">
+                    <File Id="F029379dda79082031d96a7c5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C107c022dc18d68ccf9e61057" Guid="0b13f84c-23fd-58ec-9e95-87cfb0e4fde5">
+                    <File Id="F107c022dc18d68ccf9e61057" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C0460d98fce3c3e1cdf43a1d4" Guid="1368cff0-c5bb-53da-8b51-2fff3d8ac29f">
+                    <File Id="F0460d98fce3c3e1cdf43a1d4" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C416ac565b41f8debd3363ed1" Guid="bf1f5ca0-ef08-5120-b2a9-34551beb24f1">
+                    <File Id="F416ac565b41f8debd3363ed1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C7d588a9ec287f5a21d14adc2" Guid="59a1dc34-5a58-56e7-ae4b-87ee2081dd7a">
+                    <File Id="F7d588a9ec287f5a21d14adc2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cfe2c7b90f8212d889f81cbb1" Guid="d1dc4a87-ba41-5ca8-b23f-1e1e11cf7ed9">
+                    <File Id="Ffe2c7b90f8212d889f81cbb1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cfc714d09a1a7f41c870d1f0a" Guid="f14a2a06-7fc1-55b8-b595-3be95ef33bf2">
+                    <File Id="Ffc714d09a1a7f41c870d1f0a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C30c12a353da901cf0ccd6dd6" Guid="42b6104a-35b2-5310-a568-0507365f10e8">
+                    <File Id="F30c12a353da901cf0ccd6dd6" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C6231ef293ef9b2cb7efc514b" Guid="53cdd79e-5599-56a4-b1d5-c3f74c0fae81">
+                    <File Id="F6231ef293ef9b2cb7efc514b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ccd2434c99280e0936f93e0ae" Guid="4cb86890-fcb6-55b6-96d5-5d69fe2a039a">
+                    <File Id="Fcd2434c99280e0936f93e0ae" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C6af91a4cf88c447b2f065527" Guid="2aa1c5b6-f4fd-59e7-bfa4-7f1986982dac">
+                    <File Id="F6af91a4cf88c447b2f065527" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ce21af76e6babb0c8856f160d" Guid="e96ed36d-09f4-5245-ae6c-20d5e406cbf5">
+                    <File Id="Fe21af76e6babb0c8856f160d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cdb94945682845d2b347e9a55" Guid="66ee500e-f104-556c-9614-3c0e3654f130">
+                    <File Id="Fdb94945682845d2b347e9a55" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C8f4c530b83f5705631225994" Guid="3210ac3e-7d08-58e0-933d-9581cd0160a2">
+                    <File Id="F8f4c530b83f5705631225994" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C74699f71bc3435e500fde93c" Guid="2e89cca7-ba59-56ea-97b8-6b0ba0cc1b2f">
+                    <File Id="F74699f71bc3435e500fde93c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C8de6446cf04f42f85af64e2c" Guid="6647ae52-250b-55cc-ab3a-bd0431964154">
+                    <File Id="F8de6446cf04f42f85af64e2c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cd6e248b0bded2f4a29468faf" Guid="16a81b51-275c-52f4-860d-c1d176318b58">
+                    <File Id="Fd6e248b0bded2f4a29468faf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C0ee65d175aad8e5b92c505d6" Guid="72d1c64b-690f-513b-82f0-0fc3d7437f53">
+                    <File Id="F0ee65d175aad8e5b92c505d6" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C99529030e3f7a6f1360aff81" Guid="95f7e0f8-8be0-53fe-83b5-a6275bf8465e">
+                    <File Id="F99529030e3f7a6f1360aff81" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C0535827f2d75539047c846a5" Guid="7bfce5a8-84d7-5f29-9106-0ae67549184f">
+                    <File Id="F0535827f2d75539047c846a5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C5490960ac3ff319f4861f5bb" Guid="6613fe2f-9a9b-509d-b266-ec3e382dd595">
+                    <File Id="F5490960ac3ff319f4861f5bb" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C15097f67179e274998bca2e7" Guid="1b13c74c-c525-58ac-84a5-24b69ba994ad">
+                    <File Id="F15097f67179e274998bca2e7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cd5035ec4b740b8dbf1cb20ca" Guid="a1c830df-354e-5fb9-9194-a9d5376f2f58">
+                    <File Id="Fd5035ec4b740b8dbf1cb20ca" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C97c358bbe829029ae001b10e" Guid="9f9a6ba7-e74a-5983-9d73-9c798ee873cd">
+                    <File Id="F97c358bbe829029ae001b10e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Caf2887a093f699b5216f63b2" Guid="529fbe8e-b7a8-5cb5-96a1-355b1f367f82">
+                    <File Id="Faf2887a093f699b5216f63b2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C0f734056a02dd5eb33a48a7d" Guid="906964ca-b946-5339-a645-422e53740994">
+                    <File Id="F0f734056a02dd5eb33a48a7d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ceab888ed741e624eb839d63b" Guid="53210953-cd69-5b78-970d-347941e934bd">
+                    <File Id="Feab888ed741e624eb839d63b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C34c22b7d9c8f67be807ed384" Guid="65ddc788-6629-5c82-b709-27b0831331d9">
+                    <File Id="F34c22b7d9c8f67be807ed384" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cb343e42c96faad8cdbfe43e7" Guid="a2c7fd01-600d-50d6-b528-9a0dcf3e1f2e">
+                    <File Id="Fb343e42c96faad8cdbfe43e7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C5d4edcb4877463a63712c72b" Guid="e527ecbd-890a-50cb-a2c6-3647391b1596">
+                    <File Id="F5d4edcb4877463a63712c72b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cd7f76deaaa4c50e46af1414f" Guid="5052946e-71a4-54bf-ae71-69df78f2832c">
+                    <File Id="Fd7f76deaaa4c50e46af1414f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C674c49e956f6fcc1fe1780e9" Guid="cd8ab222-951b-5d9c-b175-c4cbc00d204e">
+                    <File Id="F674c49e956f6fcc1fe1780e9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C338831900dbb7b66fac930af" Guid="71b5b1f7-4d22-5b9b-9b5e-6daf7284399c">
+                    <File Id="F338831900dbb7b66fac930af" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ca7b60d0ba6b295ca81e9d3d1" Guid="8a2050ef-ced1-5ef6-aa34-00377663e1b1">
+                    <File Id="Fa7b60d0ba6b295ca81e9d3d1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C013f932aeecd2be4374ed145" Guid="9bc38de1-6762-5781-8599-1a3dbbf0db91">
+                    <File Id="F013f932aeecd2be4374ed145" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C3c4cfea4a52fbe15b548d671" Guid="4781ace6-10a9-5cf3-88ee-84aa758baf30">
+                    <File Id="F3c4cfea4a52fbe15b548d671" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C00a344b1abe2198e39b2f693" Guid="ac1d3959-4ebb-50fd-ac8c-0190104f139c">
+                    <File Id="F00a344b1abe2198e39b2f693" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cd1f8aaf58863f3e6255e8a89" Guid="f96a0798-3622-50cd-875a-0b8109c1d47b">
+                    <File Id="Fd1f8aaf58863f3e6255e8a89" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C797ec26d68c357310f6dd511" Guid="e1c36617-747c-5bf9-b37e-1dd2d7692c13">
+                    <File Id="F797ec26d68c357310f6dd511" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C976424a3da46e1376232d25c" Guid="e532d327-cbe7-548e-b99c-7108f1c7cec3">
+                    <File Id="F976424a3da46e1376232d25c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C6e00ca5b74dee67b1b8bdcca" Guid="85293c7a-d229-5eb8-99f2-9edd772ec8e3">
+                    <File Id="F6e00ca5b74dee67b1b8bdcca" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C7b1e3ea923bf1e9b1d960961" Guid="94829f33-48ac-5867-bdfb-fa5dd46a1e93">
+                    <File Id="F7b1e3ea923bf1e9b1d960961" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C3c9d3f8a377c4993eef7d128" Guid="85a16870-973a-501e-b188-ae894b791363">
+                    <File Id="F3c9d3f8a377c4993eef7d128" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C523171aca922d123234f5a13" Guid="fe793db4-40ba-572c-b1dd-9ea3b836d6f7">
+                    <File Id="F523171aca922d123234f5a13" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ca44ce68a880e6fd2e149a67c" Guid="55b6a92e-9adc-55a4-97ca-8d65dfcb2de9">
+                    <File Id="Fa44ce68a880e6fd2e149a67c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C101cf2c4b59e279353ef68be" Guid="53334090-62e4-5534-a4b0-4ff59f0391d6">
+                    <File Id="F101cf2c4b59e279353ef68be" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C0bc17f67bce8649e3044feb0" Guid="2ed87c29-691f-501f-8211-b7089639aba1">
+                    <File Id="F0bc17f67bce8649e3044feb0" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C9ca6d8a7268691aa09481941" Guid="95888f95-abc8-53d2-b2bb-63a22c6ffcc4">
+                    <File Id="F9ca6d8a7268691aa09481941" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ca32dd62f7f544bc814506a2b" Guid="4ae12ef5-8251-570b-81e2-e8c4bba24195">
+                    <File Id="Fa32dd62f7f544bc814506a2b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Ce29d9b30a33c6bfdce24ba5c" Guid="10365f41-689e-5ad7-80d0-1d7fb987fe72">
+                    <File Id="Fe29d9b30a33c6bfdce24ba5c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C5d63b55c030eb504d5f2fb65" Guid="406b1845-0e6a-5044-9353-e3466c28091a">
+                    <File Id="F5d63b55c030eb504d5f2fb65" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C5ed89fbc77ead1bb2a684458" Guid="b6e42e19-de02-5352-9c57-6f7527a2328e">
+                    <File Id="F5ed89fbc77ead1bb2a684458" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cb8d40ca500110a13862ab644" Guid="06ca36df-b58c-5dd9-9950-2e14def728d6">
+                    <File Id="Fb8d40ca500110a13862ab644" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cb9acf51749377896eadb020f" Guid="a7f6fa28-a977-5bf7-a2d0-7e9a31ec8bf8">
+                    <File Id="Fb9acf51749377896eadb020f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.gz" KeyPath="yes" />
+                  </Component>
+                </Directory>
+                <Directory Id="D97fb5e6815bc223a4406cd46" Name="js">
+                  <Component Id="Cbf39141758b77d8b496bf821" Guid="52983a2d-2026-543f-a9a7-d8cca777515a">
+                    <File Id="Fbf39141758b77d8b496bf821" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cb91ae4dcff7a6dbd8dc8c654" Guid="1a36f91c-884b-581f-910e-1056b484a622">
+                    <File Id="Fb91ae4dcff7a6dbd8dc8c654" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C6d3d63c0e72285a8c68c52c3" Guid="73d14085-6917-5340-9e1a-bdc9c7cf43b2">
+                    <File Id="F6d3d63c0e72285a8c68c52c3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cd1feb79c1a33e65d669cd1e7" Guid="d9ad720f-a27a-5a3f-9580-078638923ca3">
+                    <File Id="Fd1feb79c1a33e65d669cd1e7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C03e2522c6eb348eedce9f464" Guid="6b184ab2-a810-5d15-8d06-02cce3920298">
+                    <File Id="F03e2522c6eb348eedce9f464" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C285d8884c64a5afcd4d1a0ba" Guid="43f20901-1ff3-51d9-8089-908f37ed327c">
+                    <File Id="F285d8884c64a5afcd4d1a0ba" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C0114669c49a1f29b734d5a15" Guid="2fe95787-5443-5516-a2d1-49d2d5ee0600">
+                    <File Id="F0114669c49a1f29b734d5a15" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C7164b3d5df5eed520b60c1d8" Guid="e66d8b8e-3dec-5a59-b9c3-6b0e5a53d7c6">
+                    <File Id="F7164b3d5df5eed520b60c1d8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cd307a8f0df7c2033429385c8" Guid="dd4ccba3-c36c-57b7-b3c9-b81115b67553">
+                    <File Id="Fd307a8f0df7c2033429385c8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C7c460ee60f108036b5554384" Guid="7385dc53-4ac9-5f15-b0f9-b48297b44fa7">
+                    <File Id="F7c460ee60f108036b5554384" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C5d533d539a7c9d9c812a3c99" Guid="ce49496a-2ab3-5617-a9a2-a47104d65b66">
+                    <File Id="F5d533d539a7c9d9c812a3c99" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C5bcfc899d798de4018285cc9" Guid="a6aef1a9-31fa-5d43-b28e-41cb02b5d3c9">
+                    <File Id="F5bcfc899d798de4018285cc9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C04a5daa15b7a0f563d2a4ebb" Guid="419498a5-3ff4-5d22-bc08-ff45213b47c8">
+                    <File Id="F04a5daa15b7a0f563d2a4ebb" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C2eee32f235ebd327011a16de" Guid="3ac5ac07-68fd-5bc3-9185-4c832f44bb85">
+                    <File Id="F2eee32f235ebd327011a16de" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C126baa4ed27c83a0f1d5c68f" Guid="e4e78d71-1edd-5fc8-9877-1b5f6ac96c24">
+                    <File Id="F126baa4ed27c83a0f1d5c68f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C6187ce3ae0a2d35617c60409" Guid="0f2917ba-9d46-5413-b08f-a47a2d73e9d8">
+                    <File Id="F6187ce3ae0a2d35617c60409" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cedc1add8071ac61ece064002" Guid="26b6d9a5-edd0-5f0f-9ef2-34f39c131b0e">
+                    <File Id="Fedc1add8071ac61ece064002" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C22df9fa8de2f68098c9937ff" Guid="d30c0733-6abc-512c-8ab5-0ebc12dda6a2">
+                    <File Id="F22df9fa8de2f68098c9937ff" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cbdd20181b6fa13048fb25923" Guid="991052e2-7537-5bdb-bde9-6ba9b4d84cb6">
+                    <File Id="Fbdd20181b6fa13048fb25923" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cabd156ded0ea60ede750af39" Guid="eca16f54-a5fb-5f31-b550-482377147208">
+                    <File Id="Fabd156ded0ea60ede750af39" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C008624c0069c7c211e937a03" Guid="c265e80f-fe73-554d-91e4-a976c5557edb">
+                    <File Id="F008624c0069c7c211e937a03" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C6a72628464e41aad320b9ae2" Guid="1f554743-02b2-59ef-8acc-b2ea75e64d13">
+                    <File Id="F6a72628464e41aad320b9ae2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C55814320692079d103a339f2" Guid="f3744ac3-8058-5695-a0c9-3d4721506333">
+                    <File Id="F55814320692079d103a339f2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C19d6a78365095d83fefda05a" Guid="8ed19616-37ca-5f80-bf6b-a251df09de7e">
+                    <File Id="F19d6a78365095d83fefda05a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cdb16f6ff1f5dad243ee0a666" Guid="f5260840-9a69-53af-a0ee-8bed5862d345">
+                    <File Id="Fdb16f6ff1f5dad243ee0a666" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.js" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C15858ca700033350bda2e666" Guid="2b4c2c76-0274-5813-98e0-b6083df7a28d">
+                    <File Id="F15858ca700033350bda2e666" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.js.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C6ead80a4269fbb90e67373bf" Guid="59680264-2820-54ba-8313-fb5269468f52">
+                    <File Id="F6ead80a4269fbb90e67373bf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.js.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cce7b90bfec5971cdfdab9ae7" Guid="7a52e2df-dcbf-58ef-9538-4d0a37a6d5b8">
+                    <File Id="Fce7b90bfec5971cdfdab9ae7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cb979d4bd777b8b984b876d1f" Guid="dcdd787c-2212-52d1-8723-5bd9123a6cce">
+                    <File Id="Fb979d4bd777b8b984b876d1f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C3a3366c05f392188be606a86" Guid="f1f397da-bb8e-5660-a8db-37b62e7f8bdb">
+                    <File Id="F3a3366c05f392188be606a86" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cfe01ea026cf0365f366235f6" Guid="f3f23fb0-c7ac-50dd-8847-6ecb0a3c9be4">
+                    <File Id="Ffe01ea026cf0365f366235f6" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cb828b568d3fc71fe6d5427f9" Guid="89a9398a-49ef-5987-a1ae-2ffe21e5b6ec">
+                    <File Id="Fb828b568d3fc71fe6d5427f9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cbfff0793cfab3ec638a0695d" Guid="920e0c6d-85e9-5769-8c08-85292a8215f4">
+                    <File Id="Fbfff0793cfab3ec638a0695d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.gz" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C3125866e7d769624f81fe80b" Guid="4d57ff08-ed76-5f99-8801-8c3d18180f89">
+                    <File Id="F3125866e7d769624f81fe80b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" KeyPath="yes" />
+                  </Component>
+                  <Component Id="Cc4174528ccfa24a731f1b96d" Guid="a6847f2a-c589-5f16-a430-0d9d0c63a3e4">
+                    <File Id="Fc4174528ccfa24a731f1b96d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.br" KeyPath="yes" />
+                  </Component>
+                  <Component Id="C63f87ca17959cb31fe9e012b" Guid="9ad08a4c-6d62-5afc-ad84-7c894d53e920">
+                    <File Id="F63f87ca17959cb31fe9e012b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.gz" KeyPath="yes" />
+                  </Component>
+                </Directory>
+              </Directory>
+            </Directory>
+          </Directory>
+          <Component Id="C2ecee8e43c99974f6e168234" Guid="a27d3df5-3dde-5e3a-9d87-72263bc770bb">
+            <File Id="F2ecee8e43c99974f6e168234" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\app.css" KeyPath="yes" />
+          </Component>
+          <Component Id="C229b4372282085574e84e968" Guid="7d005886-5180-59b8-b9d3-198baac06f01">
+            <File Id="F229b4372282085574e84e968" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\app.css.br" KeyPath="yes" />
+          </Component>
+          <Component Id="C38306c5eef4247101b2fdc35" Guid="6e8cafce-d929-5058-bb00-913a38b92c81">
+            <File Id="F38306c5eef4247101b2fdc35" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\app.css.gz" KeyPath="yes" />
+          </Component>
+          <Component Id="C99ef22eff2a1dd378d438325" Guid="e660311a-233a-5296-8395-d769320cb751">
+            <File Id="F99ef22eff2a1dd378d438325" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\appicon.ico" KeyPath="yes" />
+          </Component>
+          <Component Id="C2afb9428504a68077e1d4050" Guid="0e297060-aba8-5de2-a31f-f3e7d8d0e6c6">
+            <File Id="F2afb9428504a68077e1d4050" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\appicon.ico.br" KeyPath="yes" />
+          </Component>
+          <Component Id="C0b8328a481b825d84781664a" Guid="ba1c6ce1-b1bd-5962-b614-a28dfebfdb81">
+            <File Id="F0b8328a481b825d84781664a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\appicon.ico.gz" KeyPath="yes" />
+          </Component>
+          <Component Id="C0bace2f7c06b4e64cc600f4d" Guid="d175941e-35ff-5a0a-b786-e9c00b418a5e">
+            <File Id="F0bace2f7c06b4e64cc600f4d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\appicon.png" KeyPath="yes" />
+          </Component>
+          <Component Id="Ca39542227c50eaf84af11b2e" Guid="0034d17a-27c7-560f-ba98-56326254129a">
+            <File Id="Fa39542227c50eaf84af11b2e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\appicon.svg" KeyPath="yes" />
+          </Component>
+          <Component Id="Cb6a77608883954b6f1682e8d" Guid="9ce51879-57f6-5758-8c23-50fe416719bd">
+            <File Id="Fb6a77608883954b6f1682e8d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\appicon.svg.br" KeyPath="yes" />
+          </Component>
+          <Component Id="C0c371bec4a3b0d594be73074" Guid="e6404ca0-39d9-5968-a8ed-a6240ad57484">
+            <File Id="F0c371bec4a3b0d594be73074" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\appicon.svg.gz" KeyPath="yes" />
+          </Component>
+          <Component Id="Cc166b0bd0b14091a5ae2053b" Guid="5bbc43a1-2514-565a-a522-48fa7253ed0f">
+            <File Id="Fc166b0bd0b14091a5ae2053b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\Biblia.Web.Web.styles.css" KeyPath="yes" />
+          </Component>
+          <Component Id="C14b3ad8a88f551321ec0eeae" Guid="7111b3a3-0ded-53a0-81f4-f17a8c79ee69">
+            <File Id="F14b3ad8a88f551321ec0eeae" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\Biblia.Web.Web.styles.css.br" KeyPath="yes" />
+          </Component>
+          <Component Id="C07c26826e9caca1ad6a67169" Guid="fdd97186-c9a3-538a-8869-d0bde3143f2b">
+            <File Id="F07c26826e9caca1ad6a67169" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\Biblia.Web.Web.styles.css.gz" KeyPath="yes" />
+          </Component>
+          <Component Id="C0add4f439e2837dab53f8375" Guid="db844397-daac-51cf-9a0d-be470da563ea">
+            <File Id="F0add4f439e2837dab53f8375" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\wwwroot\favicon.png" KeyPath="yes" />
+          </Component>
+        </Directory>
+        <Directory Id="D47bd29075f8b8019f0beec6d" Name="Content">
+          <Directory Id="D4a0c5fbd31b57f14b6189632" Name="Bibles">
+            <Component Id="C9485692c1e22ddc99a1c9ce3" Guid="fb80b2f2-ae68-52f6-b26d-18938c910713">
+              <File Id="F9485692c1e22ddc99a1c9ce3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Content\Bibles\ACF.sqlite" KeyPath="yes" />
+            </Component>
+            <Component Id="C65b1ffdc3ab7e0e1d1c93765" Guid="ae813d6d-7e35-59a6-931d-7acd7de1bc03">
+              <File Id="F65b1ffdc3ab7e0e1d1c93765" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Content\Bibles\ARA.sqlite" KeyPath="yes" />
+            </Component>
+            <Component Id="Cb001c7945d01b42a7e657367" Guid="af04249f-96f6-5f94-94e9-8844e9a2b1fa">
+              <File Id="Fb001c7945d01b42a7e657367" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Content\Bibles\ARC.sqlite" KeyPath="yes" />
+            </Component>
+            <Component Id="Ce0f6815487fc95ce01e77998" Guid="63a11925-f99d-522b-a8b4-418f5f98e50a">
+              <File Id="Fe0f6815487fc95ce01e77998" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Content\Bibles\AS21.sqlite" KeyPath="yes" />
+            </Component>
+            <Component Id="Ca215c6a5b4dc04fb593783bf" Guid="084637d0-ba15-5f29-88be-dab68c3b9b00">
+              <File Id="Fa215c6a5b4dc04fb593783bf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Content\Bibles\bible-versions.manifest.json" KeyPath="yes" />
+            </Component>
+            <Component Id="Cc3fe5d1cc4a9d3f51c8e22e7" Guid="8f69e7ca-80d6-5d09-9848-cd2be8b844a1">
+              <File Id="Fc3fe5d1cc4a9d3f51c8e22e7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Content\Bibles\KJF.sqlite" KeyPath="yes" />
+            </Component>
+            <Component Id="C3b5ab989600bcf0952a83c1a" Guid="f7007069-df66-546d-999b-3c4a405e67ab">
+              <File Id="F3b5ab989600bcf0952a83c1a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Content\Bibles\NBV.sqlite" KeyPath="yes" />
+            </Component>
+            <Component Id="C2f69c3b010340b499e4a5d46" Guid="39f42ca5-1356-506b-9915-c49cc7f46686">
+              <File Id="F2f69c3b010340b499e4a5d46" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Content\Bibles\NVI.sqlite" KeyPath="yes" />
+            </Component>
+          </Directory>
+        </Directory>
+        <Component Id="Ceb47ebe69eec4ebcd3f9fdad" Guid="b0f74bc1-86f4-5a2f-a3cc-031337c06d93">
+          <File Id="Feb47ebe69eec4ebcd3f9fdad" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\appico.ico" KeyPath="yes" />
+        </Component>
+        <Component Id="C2e717f621aa02d499989ef68" Guid="2b55123b-8d47-579f-a546-b72f567e1710">
+          <File Id="F2e717f621aa02d499989ef68" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\appsettings.Development.json" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd3ceffcff98e755128623fcb" Guid="fbf1566f-fdc6-5788-9614-04f03efababe">
+          <File Id="Fd3ceffcff98e755128623fcb" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\appsettings.json" KeyPath="yes" />
+        </Component>
+        <Component Id="C57c8a98db089d235caad12a3" Guid="241646e6-534f-5a97-bd83-c4e1ed25384b">
+          <File Id="F57c8a98db089d235caad12a3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\aspnetcorev2_inprocess.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc922a78ef2e872cb2b7ef79f" Guid="54d5aad0-bb93-5ac2-90b2-b94b553c5e98">
+          <File Id="Fc922a78ef2e872cb2b7ef79f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Biblia.Web.Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7968210e6fae01a63b618db3" Guid="1ed8f6e0-bb75-5c6a-8193-c9873e3ba404">
+          <File Id="F7968210e6fae01a63b618db3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Biblia.Web.Core.pdb" KeyPath="yes" />
+        </Component>
+        <Component Id="C2094af06e5cf610fdc008c6a" Guid="cd051b24-2118-5593-83e9-926b176c4b8a">
+          <File Id="F2094af06e5cf610fdc008c6a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Biblia.Web.ServiceDefaults.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc9a45fb585b8f71774ff18cf" Guid="333b2942-1246-5146-8ab1-cfcf8a6deee9">
+          <File Id="Fc9a45fb585b8f71774ff18cf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Biblia.Web.ServiceDefaults.pdb" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd06ee9e32e37e941af8f9893" Guid="b6ba23be-7a5e-50e2-8ab8-01ec3515c370">
+          <File Id="Fd06ee9e32e37e941af8f9893" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Biblia.Web.Web.deps.json" KeyPath="yes" />
+        </Component>
+        <Component Id="Caf79c975d2d35a585b01e979" Guid="69b2ddd3-d30e-54f8-80cb-87c600abf95d">
+          <File Id="Faf79c975d2d35a585b01e979" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Biblia.Web.Web.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2885622bbfe2a6d84e6a7ad5" Guid="be7c2d00-6786-5c83-9371-116278d5c834">
+          <File Id="F2885622bbfe2a6d84e6a7ad5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Biblia.Web.Web.exe" KeyPath="yes">
+            <Shortcut Id="ShortcutDesktop" Directory="DesktopFolder" Name="Biblia.Web (x86)" Advertise="yes" WorkingDirectory="INSTALLFOLDER" Icon="AppIcon" IconIndex="0" />
+            <Shortcut Id="ShortcutMenu" Directory="AppMenuFolder" Name="Biblia.Web (x86)" Advertise="yes" WorkingDirectory="INSTALLFOLDER" Icon="AppIcon" IconIndex="0" />
+          </File>
+          <RemoveFolder Id="RemoveAppMenu" Directory="AppMenuFolder" On="uninstall" />
+        </Component>
+        <Component Id="Cdf6f887c9c4a14ec1025ac19" Guid="d779ef2a-7fea-5061-8cde-092c22f9a3f6">
+          <File Id="Fdf6f887c9c4a14ec1025ac19" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Biblia.Web.Web.runtimeconfig.json" KeyPath="yes" />
+        </Component>
+        <Component Id="C61909c219bd718bd704a727b" Guid="74066fab-b567-5878-ac2e-d58ba92938d9">
+          <File Id="F61909c219bd718bd704a727b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Biblia.Web.Web.staticwebassets.endpoints.json" KeyPath="yes" />
+        </Component>
+        <Component Id="C49e2267f20469c059ff7a493" Guid="bcb4cc1e-0173-59f4-836f-4d5c43394287">
+          <File Id="F49e2267f20469c059ff7a493" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\clretwrc.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd3ba62f8dea0f642867f67e7" Guid="604b3109-2aed-56b5-b0e0-6ed1f3df0ce2">
+          <File Id="Fd3ba62f8dea0f642867f67e7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\clrgc.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5434fa05cf1bc52ea83e6602" Guid="5a6c461d-5c93-59fd-9296-3e14d20be9d9">
+          <File Id="F5434fa05cf1bc52ea83e6602" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\clrjit.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C21167760da04f3b58ab4744b" Guid="f6cafbf6-ca38-57c6-8961-58986b82d83d">
+          <File Id="F21167760da04f3b58ab4744b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\coreclr.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cfc3d6c9793ee210f2d60dc0d" Guid="4d30d71a-a5de-56b7-a089-8478dc8710d9">
+          <File Id="Ffc3d6c9793ee210f2d60dc0d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\createdump.exe" KeyPath="yes" />
+        </Component>
+        <Component Id="Cbd8721bbf7ed4f460b435432" Guid="463c07a8-1fad-58d2-b828-c6610e14c6cd">
+          <File Id="Fbd8721bbf7ed4f460b435432" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\e_sqlite3.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C09b5cec08546ca163e824ff4" Guid="cf202a8a-b91e-5028-9b4a-d0ab0bb70101">
+          <File Id="F09b5cec08546ca163e824ff4" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\hostfxr.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca177d83f583a83ac39ba7ab5" Guid="7d1d48b2-7f6e-57a4-be39-4753451c3b27">
+          <File Id="Fa177d83f583a83ac39ba7ab5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\hostpolicy.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C752b73004facf24cd1143278" Guid="6825d7c7-5ef9-56bb-a32d-b8ec00c604ac">
+          <File Id="F752b73004facf24cd1143278" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\LEIA-ME.txt" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca6c7123417b17a19fe395192" Guid="eac6ea4d-133e-52c9-a615-5bd0dfa4f2cf">
+          <File Id="Fa6c7123417b17a19fe395192" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\libSkiaSharp.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca185efcdcee156e05acb115d" Guid="3f57f5f8-f73c-58b7-8054-6d628a69f0e4">
+          <File Id="Fa185efcdcee156e05acb115d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\libSkiaSharp.pdb" KeyPath="yes" />
+        </Component>
+        <Component Id="Ced1edd60580a1d9fe97fb0ba" Guid="b6ad4a19-3607-50b8-99b2-417168837581">
+          <File Id="Fed1edd60580a1d9fe97fb0ba" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Antiforgery.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4034dc8d5eb3b7b830df3536" Guid="4b8570e8-6ac3-5011-bdc0-f4706faa0e10">
+          <File Id="F4034dc8d5eb3b7b830df3536" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Authentication.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7e60ecb29c476d6ccc3cabbd" Guid="85fb31ac-0f43-5680-ae50-1489427e2378">
+          <File Id="F7e60ecb29c476d6ccc3cabbd" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Authentication.BearerToken.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3905313f3a9aa2cc3b7c0a31" Guid="b2ab8edb-c08a-5a38-8b4d-b79368ff7a2a">
+          <File Id="F3905313f3a9aa2cc3b7c0a31" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Authentication.Cookies.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cffdf8dff545b1ede0fe579e5" Guid="d2825221-36bc-5887-a3c8-1a36a1f92a1f">
+          <File Id="Fffdf8dff545b1ede0fe579e5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Authentication.Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C54bc36d1e7aa6c20a3733839" Guid="8d0b2d19-bf86-5f74-83da-4d811ad22dff">
+          <File Id="F54bc36d1e7aa6c20a3733839" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Authentication.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb4b25239f94023aaa3cc6832" Guid="62b3c355-3634-522a-a35b-0caf6f9c7ad1">
+          <File Id="Fb4b25239f94023aaa3cc6832" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Authentication.OAuth.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C267e21ba1e20b7d34317e66b" Guid="c0409417-d8ec-52b2-83da-56e0c7c27042">
+          <File Id="F267e21ba1e20b7d34317e66b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Authorization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3d72d2024dae5d1cfbc0fa85" Guid="ba0fbe66-80d3-5834-8112-92e31b448f74">
+          <File Id="F3d72d2024dae5d1cfbc0fa85" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Authorization.Policy.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ceabfd7cfa3778ecf9f906156" Guid="d4f6cab1-eaa6-592b-9e12-b517eae79f2c">
+          <File Id="Feabfd7cfa3778ecf9f906156" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Components.Authorization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1fc4ee7bccb0341d29f3884c" Guid="7644ec29-6463-5a14-ad6c-9a9e344d3df3">
+          <File Id="F1fc4ee7bccb0341d29f3884c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Components.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7b808e69aaffb3f9db013bea" Guid="fc2d4dec-f396-5a5a-8531-5f5f8e3d71b6">
+          <File Id="F7b808e69aaffb3f9db013bea" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Components.Endpoints.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4f5feaafa0e0e505fffffb6c" Guid="f2d9e472-8a1c-5643-9a5c-f3573526ce17">
+          <File Id="F4f5feaafa0e0e505fffffb6c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Components.Forms.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C51cca4514cb6a5b28aff5dd5" Guid="8d2350d3-28d6-55e7-b859-91f5aed7e84c">
+          <File Id="F51cca4514cb6a5b28aff5dd5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Components.Server.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb7616021201b2cab31749bf9" Guid="d2e3e555-35ea-5e14-90db-e29dea5f0063">
+          <File Id="Fb7616021201b2cab31749bf9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Components.Web.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C574f9304404b1ff3a2ead6cb" Guid="8c6b3598-dc25-5c00-9a0d-ad4baae09e23">
+          <File Id="F574f9304404b1ff3a2ead6cb" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Connections.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9138b51e9a7ed3a76af79735" Guid="9eb2ac65-2701-557d-b13a-dcb4799b567c">
+          <File Id="F9138b51e9a7ed3a76af79735" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.CookiePolicy.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C581c7297298207dfb3de5c66" Guid="72f35c40-c484-5e70-a379-9d361fbab9b9">
+          <File Id="F581c7297298207dfb3de5c66" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Cors.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C218ba13143f8b158d93efaa1" Guid="f4fc84cf-ad3e-5425-bb3e-0c8c778e4b61">
+          <File Id="F218ba13143f8b158d93efaa1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Cryptography.Internal.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc60c21c13c85c141c2e653f3" Guid="78dfec7a-6e1b-5cff-9d1d-4149458ae62c">
+          <File Id="Fc60c21c13c85c141c2e653f3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C77950ef111f27e8bbe108dac" Guid="a65e2a6a-380e-5873-a731-7364d255c35e">
+          <File Id="F77950ef111f27e8bbe108dac" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.DataProtection.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C190df86f5f0c10803725aed3" Guid="3d7c9a05-e0e6-5d12-931c-ca3347a056d5">
+          <File Id="F190df86f5f0c10803725aed3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.DataProtection.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ccc08d58fbb1cd2b40c87356a" Guid="bcfea2df-7e28-595a-9fcf-2a6c4ffdde75">
+          <File Id="Fcc08d58fbb1cd2b40c87356a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.DataProtection.Extensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca4b2b6e47308aa5edd95951e" Guid="5511d390-5e7b-5d30-a2e8-6bf0ab26edbc">
+          <File Id="Fa4b2b6e47308aa5edd95951e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Diagnostics.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C748eddc233adf8f94dc924b1" Guid="0366176a-8769-5474-b013-ac62717d00e1">
+          <File Id="F748eddc233adf8f94dc924b1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Diagnostics.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca044358255c34b8537f9aacc" Guid="acd91c2b-b3bd-5b63-a48e-5dfe4685ce12">
+          <File Id="Fa044358255c34b8537f9aacc" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Diagnostics.HealthChecks.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C746633fa8f525658cbd6cca9" Guid="271eb18b-7d21-5453-9899-bd7dd5588211">
+          <File Id="F746633fa8f525658cbd6cca9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb24a4b2ffe3528e8b54f58e3" Guid="546f50f7-d467-558a-a360-9406b17bacfb">
+          <File Id="Fb24a4b2ffe3528e8b54f58e3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.HostFiltering.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9fe9b37f21cea6d24ed12364" Guid="3be19e1c-a01c-565b-b21b-ef39ca935c30">
+          <File Id="F9fe9b37f21cea6d24ed12364" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Hosting.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C05f8306a2c7df3e45a23d901" Guid="fc0d5174-c58a-5302-8abe-ad230f74f522">
+          <File Id="F05f8306a2c7df3e45a23d901" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Hosting.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C155ab0a3281fdeaf75531d3a" Guid="014ce947-f729-5d7b-b642-74aa65d9ab3a">
+          <File Id="F155ab0a3281fdeaf75531d3a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C18e14342d9401771bf80b061" Guid="2c13c4bd-6141-5e4a-adee-30f5f2e800b2">
+          <File Id="F18e14342d9401771bf80b061" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Html.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C903ac8b5dc5ca94d44b1258c" Guid="c55305bc-863f-508e-9a35-8a3d637427d4">
+          <File Id="F903ac8b5dc5ca94d44b1258c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Http.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9c4603c23e1a1f6e550f49c4" Guid="a7fc1948-07cc-5b0c-aed2-846f27ceb8b5">
+          <File Id="F9c4603c23e1a1f6e550f49c4" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Http.Connections.Common.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C195db16325ee7cd146c5f42f" Guid="57b43a2b-b0ce-57a5-9eac-cd1c11ddc924">
+          <File Id="F195db16325ee7cd146c5f42f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Http.Connections.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C56a7e733406c6f2b757e35f8" Guid="5e266631-ecb8-5c6f-ac76-4fae1c671bb9">
+          <File Id="F56a7e733406c6f2b757e35f8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Http.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc97306095edc99764c269309" Guid="a9103783-3779-5fd2-a5a2-52ecbc2087c5">
+          <File Id="Fc97306095edc99764c269309" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Http.Extensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C308ca52d320ff208d9eaaff1" Guid="379d7f8d-7c6d-5ca9-9029-96143bb5dccf">
+          <File Id="F308ca52d320ff208d9eaaff1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Http.Features.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc427fc4d05bcf0a22df189b1" Guid="5680d195-f856-52fb-bd93-576bb4353cb2">
+          <File Id="Fc427fc4d05bcf0a22df189b1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Http.Results.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C63bdc6a037af3f78fd7165d5" Guid="7d4fe06b-c269-5a87-a80f-b8b0e99b1c51">
+          <File Id="F63bdc6a037af3f78fd7165d5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.HttpLogging.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca7f2d33b4f5f30146901bc27" Guid="859f259c-1f97-5c1c-a112-07a8dd4410e2">
+          <File Id="Fa7f2d33b4f5f30146901bc27" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.HttpOverrides.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb96ecbd796bc77e8f26752dc" Guid="62169aed-e538-5c9b-8c91-21af911058cc">
+          <File Id="Fb96ecbd796bc77e8f26752dc" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.HttpsPolicy.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd79dc018e3897f521b883e1a" Guid="22dfcaab-eca7-5da5-a85f-9408f42d01f4">
+          <File Id="Fd79dc018e3897f521b883e1a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Identity.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C31f49887fb5b6dc9fddcc374" Guid="bc646b33-5370-5b4a-95ab-09c25ccf8e40">
+          <File Id="F31f49887fb5b6dc9fddcc374" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Localization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C88b8a565e2ec55b38fe30e02" Guid="75de43fc-64cc-5401-ae6d-96117c3aab9f">
+          <File Id="F88b8a565e2ec55b38fe30e02" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Localization.Routing.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb42183bf369831aa7601c003" Guid="eca345a7-2bf5-58bd-b0d8-458ffe729b60">
+          <File Id="Fb42183bf369831aa7601c003" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Metadata.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8f93877c7a7497b1524fc541" Guid="86dfad1f-42d8-521c-a025-80b91540419a">
+          <File Id="F8f93877c7a7497b1524fc541" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce7296b9396adb93657d60e76" Guid="9d6e1c44-3875-5359-98b3-d1c1b0d4dfa6">
+          <File Id="Fe7296b9396adb93657d60e76" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.ApiExplorer.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C99ace564c49f84893b811379" Guid="4375bd14-c3e2-5010-8fac-0cdef79464e2">
+          <File Id="F99ace564c49f84893b811379" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd268f406a2be8577349636c2" Guid="f4a0cf9d-3e8c-584b-a4ba-1e07a33325c8">
+          <File Id="Fd268f406a2be8577349636c2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.Cors.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9458973fb50c09b9dcea8368" Guid="38e2ec04-e538-5d9e-b93b-9b0ff690090b">
+          <File Id="F9458973fb50c09b9dcea8368" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.DataAnnotations.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C84d6c9067a0dd5ecae562155" Guid="235da8d2-0cff-5eeb-adea-411794da50f6">
+          <File Id="F84d6c9067a0dd5ecae562155" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce17a0d02fef5cd015eafc877" Guid="a575d521-ff27-5662-9403-6100d1f1d24a">
+          <File Id="Fe17a0d02fef5cd015eafc877" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.Formatters.Json.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca9cf3115917f0302d6e4aa3e" Guid="50f74d75-0ba7-5938-be3a-516af9e1aba8">
+          <File Id="Fa9cf3115917f0302d6e4aa3e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.Formatters.Xml.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C14676bbe60f50b0cdfd44ba7" Guid="f1e7ccfe-f89e-57c8-9120-236f129c9d37">
+          <File Id="F14676bbe60f50b0cdfd44ba7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.Localization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cec480b8a5a7ebabaf2a2b3a9" Guid="aa191529-8d7d-5985-bc42-abe690f3e821">
+          <File Id="Fec480b8a5a7ebabaf2a2b3a9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.Razor.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cef31c0d33b6f4c27727b0d74" Guid="6c28445a-c502-5f14-9e60-bf39844ecb31">
+          <File Id="Fef31c0d33b6f4c27727b0d74" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.RazorPages.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb33e85c9bac5e9e615a7c395" Guid="82069810-bba0-520e-964a-2cbd7c2d4925">
+          <File Id="Fb33e85c9bac5e9e615a7c395" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.TagHelpers.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C65ad777700edcb2504dc9c9c" Guid="90a990a5-347d-5a70-830a-605e02257d70">
+          <File Id="F65ad777700edcb2504dc9c9c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Mvc.ViewFeatures.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C91c82467a8e3a39413fe6fbf" Guid="7a25c8a1-94f8-5318-a946-01dd1cc06c59">
+          <File Id="F91c82467a8e3a39413fe6fbf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.OutputCaching.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ceae658ec2c4f907425689106" Guid="5f0f551c-7434-5060-8a52-fc0d518299ac">
+          <File Id="Feae658ec2c4f907425689106" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.RateLimiting.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C006b39d2ce5197f845c4bbf3" Guid="3e37f62c-486e-5ad6-8453-79abb6b795ab">
+          <File Id="F006b39d2ce5197f845c4bbf3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Razor.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cabaa91c7544de2618be8f54f" Guid="05f965d7-dc8a-53c8-8546-ce05e311c3b8">
+          <File Id="Fabaa91c7544de2618be8f54f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Razor.Runtime.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C44bce8d96471a6d08548ec0b" Guid="f252f0b6-799f-5847-a867-41f721159c5d">
+          <File Id="F44bce8d96471a6d08548ec0b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.RequestDecompression.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb32ea0628bd14dc83743e295" Guid="a28b740b-4495-5ed2-bd78-0280168a4550">
+          <File Id="Fb32ea0628bd14dc83743e295" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cbbaf0abdf268a01c53a31f1e" Guid="e552c234-d84e-5555-94bd-67e5894c2e97">
+          <File Id="Fbbaf0abdf268a01c53a31f1e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.ResponseCaching.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd0af782384f1f5f33d53cb13" Guid="21eedf75-414f-58a7-a675-30ac18145fe0">
+          <File Id="Fd0af782384f1f5f33d53cb13" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.ResponseCompression.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce263c0e945618dc522b0172a" Guid="e092805b-5b8b-53a2-a506-316e457290d8">
+          <File Id="Fe263c0e945618dc522b0172a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Rewrite.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1fa48e660e3ba28adfbf366c" Guid="f44a5110-2c4a-579a-af40-f60e7152a22d">
+          <File Id="F1fa48e660e3ba28adfbf366c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Routing.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C076d1157bb2f4a3668a73db8" Guid="53ba9e70-cb98-599d-9ab4-ddd52d438cc1">
+          <File Id="F076d1157bb2f4a3668a73db8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Routing.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C09814f3cdb5f96c6c1d66a2c" Guid="48221516-7142-54ab-bcbf-53b170edd75f">
+          <File Id="F09814f3cdb5f96c6c1d66a2c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Server.HttpSys.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb478fcd2beb55b8904f445e9" Guid="cac51cb8-ff97-5d8a-ab4d-2ad93330dfdf">
+          <File Id="Fb478fcd2beb55b8904f445e9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Server.IIS.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8f3488415ca01ef56433ba73" Guid="c9c39fe9-9b88-5d47-848d-012ab7d358ad">
+          <File Id="F8f3488415ca01ef56433ba73" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Server.IISIntegration.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C659a83fa335b8c742916675d" Guid="3db3a048-2522-5f4d-8bc0-eb61b828177d">
+          <File Id="F659a83fa335b8c742916675d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Server.Kestrel.Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C264bfe869a5e37c1861018cf" Guid="02461f53-b9b8-5ba8-8924-9dbf619f4f23">
+          <File Id="F264bfe869a5e37c1861018cf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Server.Kestrel.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ccc16ca79f1ddee94ac98cf1f" Guid="5823898f-5692-51d2-a2f9-ed726069ac38">
+          <File Id="Fcc16ca79f1ddee94ac98cf1f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Server.Kestrel.Transport.NamedPipes.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7299c4021d8a92009d0cd71d" Guid="e3a67ec3-5f3a-5811-90c0-ca709d0b1972">
+          <File Id="F7299c4021d8a92009d0cd71d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2f6e67e898f323990b0e58de" Guid="27f0a80b-eebc-52dd-86e1-fe826ebd7903">
+          <File Id="F2f6e67e898f323990b0e58de" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9622b201e5b11eea56859e6b" Guid="fdeecba6-2e94-5650-bd48-2acf3645af6f">
+          <File Id="F9622b201e5b11eea56859e6b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.Session.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ccc8811c117250f39fb337c90" Guid="e1bf3694-c710-5f56-b720-3def4db60450">
+          <File Id="Fcc8811c117250f39fb337c90" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.SignalR.Common.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C65cc79295b7f26d193c24180" Guid="07ecb7e8-2b76-5949-b779-4b83774cdecc">
+          <File Id="F65cc79295b7f26d193c24180" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.SignalR.Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C26d24b06ccdbe82de76be5e8" Guid="83be0705-487d-5d17-b908-e6cc0637e611">
+          <File Id="F26d24b06ccdbe82de76be5e8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.SignalR.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C258ff79e9b5df5c407e4f8e3" Guid="6582afb7-2848-51ab-9ff5-dd001474cf25">
+          <File Id="F258ff79e9b5df5c407e4f8e3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.SignalR.Protocols.Json.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cfd8170d2392cd2b7ea2a2742" Guid="0ed3213b-aca1-5581-81d3-51dc4e9b9ae4">
+          <File Id="Ffd8170d2392cd2b7ea2a2742" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.StaticAssets.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cea22fc7ef91d13f6fe4e2d9b" Guid="a4bbabfc-e569-57cd-8c22-93a0ef6fc543">
+          <File Id="Fea22fc7ef91d13f6fe4e2d9b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.StaticFiles.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3b7cfe5f6d3031dbbbd67ab2" Guid="f56b1128-3c26-5084-9d56-0a170cb2eb4b">
+          <File Id="F3b7cfe5f6d3031dbbbd67ab2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.WebSockets.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd327da38f8fb42a64d4a67b5" Guid="398480c4-e518-590d-a257-6f28239bab1a">
+          <File Id="Fd327da38f8fb42a64d4a67b5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.AspNetCore.WebUtilities.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C27555128fe51002d69847396" Guid="49611639-b66a-5698-80ac-3b494a743017">
+          <File Id="F27555128fe51002d69847396" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.CSharp.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C33256abc85539978a4a2a8da" Guid="f51d02c8-d1dd-5829-9fe3-94a2d96503a5">
+          <File Id="F33256abc85539978a4a2a8da" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Data.Sqlite.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd2321cc99100a43ed459d997" Guid="f4f33e23-2259-5809-b29f-c7b111fc7362">
+          <File Id="Fd2321cc99100a43ed459d997" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.DiaSymReader.Native.x86.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cab0021a1b14d051b9ac304c7" Guid="6233df10-02d6-5346-a562-168070b26c68">
+          <File Id="Fab0021a1b14d051b9ac304c7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.AmbientMetadata.Application.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1d376cbb606c0f12c2c352cb" Guid="27b0020b-4433-55e2-8b7b-97e8d6c3b10a">
+          <File Id="F1d376cbb606c0f12c2c352cb" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Caching.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3a2abe199c18ebe8417a4c28" Guid="17bafe13-893e-5171-911f-d7e3abbd1445">
+          <File Id="F3a2abe199c18ebe8417a4c28" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Caching.Memory.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1ed74dc89a82d26f52268c2f" Guid="c83836b3-19f3-5fbe-90b1-e9284c90201b">
+          <File Id="F1ed74dc89a82d26f52268c2f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Compliance.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4bb6bd1a3d533717d9e13114" Guid="a853d3b6-3eed-5d15-bf00-dcd021961e12">
+          <File Id="F4bb6bd1a3d533717d9e13114" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8b0f92da22270fcf11fffa7c" Guid="047e8de9-e4ea-5027-9293-3c8d8454bdc1">
+          <File Id="F8b0f92da22270fcf11fffa7c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.Binder.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf96908ca429226c406efcd01" Guid="5a17838e-dec5-5bdd-bfde-3ce5e54183cd">
+          <File Id="Ff96908ca429226c406efcd01" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.CommandLine.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C71ef331f60d6d38d9b0352a3" Guid="fd5a9cc1-eb7c-5181-b62c-f4afdea5e5e6">
+          <File Id="F71ef331f60d6d38d9b0352a3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cbe8713bb1c7ee9ec603620ed" Guid="54d3f2fc-32b1-5e87-b4b5-e2c538669787">
+          <File Id="Fbe8713bb1c7ee9ec603620ed" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.EnvironmentVariables.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C898748cc90827c070bcc00d6" Guid="733e6458-6462-53f5-9340-2e334658b406">
+          <File Id="F898748cc90827c070bcc00d6" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.FileExtensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5065a4104b7cc505d3186e30" Guid="0e91ed3e-d367-53fc-847b-3b4b560e40fb">
+          <File Id="F5065a4104b7cc505d3186e30" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.Ini.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb2d67b6807df27635e32bfe1" Guid="584989b6-0d79-5f8f-8c82-f08550c222c9">
+          <File Id="Fb2d67b6807df27635e32bfe1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.Json.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf1551049ac13f606eb96e993" Guid="0b9a2564-bfbb-5f94-9b34-d928641d19b1">
+          <File Id="Ff1551049ac13f606eb96e993" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.KeyPerFile.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C6a931da447e043ece2b34395" Guid="61a2242b-92cd-54bf-bb1a-6f321acfc8da">
+          <File Id="F6a931da447e043ece2b34395" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.UserSecrets.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4c9c22479ec5ffe32e21a04e" Guid="27e675c0-5722-511a-bdd3-96db64152cb6">
+          <File Id="F4c9c22479ec5ffe32e21a04e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Configuration.Xml.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5a0a47897f9385a273afbd10" Guid="2ee79979-02f8-5e07-992f-2dbe8d5f80a7">
+          <File Id="F5a0a47897f9385a273afbd10" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.DependencyInjection.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C50301e7f04ce8b444dbbb841" Guid="c337dd0e-4ff0-5767-8cdd-68622f343313">
+          <File Id="F50301e7f04ce8b444dbbb841" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.DependencyInjection.AutoActivation.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca92ac2081cff1dfd29ea4757" Guid="3202b658-ef9e-58c8-97f9-de319df53a1e">
+          <File Id="Fa92ac2081cff1dfd29ea4757" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.DependencyInjection.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cdf02cc9cd39d534a57d16e3e" Guid="00133c10-697b-50ed-8566-16d6a4924e1a">
+          <File Id="Fdf02cc9cd39d534a57d16e3e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Diagnostics.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf351fcd5d5adee7ced1016a2" Guid="67fb985a-bb24-5a2c-bbc6-9519ce3d08d1">
+          <File Id="Ff351fcd5d5adee7ced1016a2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Diagnostics.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3caa2e10493f0becd76d16bf" Guid="ecbd0a46-c70b-5c25-a2e6-dd3ff86f7965">
+          <File Id="F3caa2e10493f0becd76d16bf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Diagnostics.ExceptionSummarization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C67f00e158cf79f1cc9823d66" Guid="81a9b1dc-eb01-5d9e-9df0-bc21e32372ef">
+          <File Id="F67f00e158cf79f1cc9823d66" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C22e4941599a692126109d9c0" Guid="bc5ae40f-dacf-5184-9dc7-0e523e71f831">
+          <File Id="F22e4941599a692126109d9c0" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Diagnostics.HealthChecks.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd382f9f9e4acde276f7b35fc" Guid="cabef41a-e731-5086-974c-4f255f93a250">
+          <File Id="Fd382f9f9e4acde276f7b35fc" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Features.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C947c981f5e166c47797e2477" Guid="bdfe982e-990e-5720-9bf9-7df1e014589c">
+          <File Id="F947c981f5e166c47797e2477" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.FileProviders.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C62eb876c7ea0ff8a455bdcce" Guid="fcf677e9-bd12-5b8f-9323-e811e440580e">
+          <File Id="F62eb876c7ea0ff8a455bdcce" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.FileProviders.Composite.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca5a04e64deb6f21b21c4291e" Guid="f04b30ef-52c5-5551-a40d-742ac7e2a690">
+          <File Id="Fa5a04e64deb6f21b21c4291e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.FileProviders.Embedded.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1e673d790917bc4f375181ce" Guid="a7af1388-42f2-5d14-a4a9-24518a451c73">
+          <File Id="F1e673d790917bc4f375181ce" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.FileProviders.Physical.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cdb976c780ce936608c4aeb8d" Guid="68b608c7-4526-5d83-bd7a-10507261d561">
+          <File Id="Fdb976c780ce936608c4aeb8d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.FileSystemGlobbing.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C57f0e68891963c282cee301d" Guid="33c7cb39-a7ed-510f-be54-16a0de2e9638">
+          <File Id="F57f0e68891963c282cee301d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Hosting.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C081701ba11ed783f5cf58280" Guid="72bfdbfb-203e-5fea-bd0c-cb42ec1f79e9">
+          <File Id="F081701ba11ed783f5cf58280" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Hosting.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3b9097cd8f14bd7d585910a5" Guid="cc8aa86f-85d8-50d1-85bd-f7d3c58fd3a1">
+          <File Id="F3b9097cd8f14bd7d585910a5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Http.Diagnostics.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C35eb2b786c49f7236c123c33" Guid="b1d2032f-6a6b-57de-8a8d-dc1822fd868b">
+          <File Id="F35eb2b786c49f7236c123c33" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Http.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C72b9b857065293ba7aa5ccb7" Guid="a9a84b0d-44ad-57c2-9e6c-082153d834e0">
+          <File Id="F72b9b857065293ba7aa5ccb7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Http.Resilience.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf79e90e83570316ab6ce45b5" Guid="d2790fec-3b8f-5341-a14a-32b3c767de07">
+          <File Id="Ff79e90e83570316ab6ce45b5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Identity.Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C0ac99e77f3f1a0101d65e0ef" Guid="76639356-e5db-5611-a1b1-39c145743931">
+          <File Id="F0ac99e77f3f1a0101d65e0ef" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Identity.Stores.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C46be653595b2dccd5c4cad96" Guid="9b9227fd-dbad-577a-a9b9-26bdf551a265">
+          <File Id="F46be653595b2dccd5c4cad96" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Localization.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb05390438df10cdca05922e7" Guid="f7da4cba-0e4c-5f7d-b97d-22a034451a09">
+          <File Id="Fb05390438df10cdca05922e7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Localization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3b406b2e36a26a33e5a06f1d" Guid="eb854cb5-dca3-5062-a723-a83ab2097f40">
+          <File Id="F3b406b2e36a26a33e5a06f1d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Logging.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5fcf3a758966d884e66b8c07" Guid="abe0425f-5b28-57fa-9a18-0244a780fbd5">
+          <File Id="F5fcf3a758966d884e66b8c07" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Logging.Configuration.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cfd7acfef3076a2122794569d" Guid="f9697190-3a39-5fdc-a134-61dd6e87c027">
+          <File Id="Ffd7acfef3076a2122794569d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Logging.Console.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C6a22afea242564170585179f" Guid="67ca1a1d-11b0-5515-a708-2f949ff7ac9b">
+          <File Id="F6a22afea242564170585179f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Logging.Debug.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3d6ebe2feea9bb0d76d6c4cd" Guid="1ed59552-f814-5539-8c22-334cb9797694">
+          <File Id="F3d6ebe2feea9bb0d76d6c4cd" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Logging.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf642dcb222936fdbfc196ec9" Guid="64e8f8c3-7f32-5553-9165-5bc9d64576cb">
+          <File Id="Ff642dcb222936fdbfc196ec9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Logging.EventLog.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7f1bbebeda654bf272dab9e6" Guid="8750e2b4-6551-57f8-9551-ef7ae254092e">
+          <File Id="F7f1bbebeda654bf272dab9e6" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Logging.EventSource.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C64785cf1227dae50592a3709" Guid="04f61cd0-b717-5491-b823-75ce2660f948">
+          <File Id="F64785cf1227dae50592a3709" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Logging.TraceSource.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C75b531cd091841ac237a2d5e" Guid="4f0b3c9d-218f-5a9b-baef-fa5d997743ae">
+          <File Id="F75b531cd091841ac237a2d5e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.ObjectPool.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C0bb0f4c8072a0dc5a5909bff" Guid="0cc5c06b-fdf4-5915-b190-ccbaabd71406">
+          <File Id="F0bb0f4c8072a0dc5a5909bff" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Options.ConfigurationExtensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C27bbdd130e5b0a9ef95ab26a" Guid="c0254b4a-71d4-5163-a578-413ef17ef4f1">
+          <File Id="F27bbdd130e5b0a9ef95ab26a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Options.DataAnnotations.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cec4690909a5982fdd1c1359d" Guid="4f67be39-5dcd-53c4-b440-724c53f14464">
+          <File Id="Fec4690909a5982fdd1c1359d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Options.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8171a4fa76afaa5abadf0c6b" Guid="5b075f9e-c395-5d1e-a70e-221f28dd7a24">
+          <File Id="F8171a4fa76afaa5abadf0c6b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Primitives.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf50c7fc63f61690ece9320cd" Guid="f90ca7bd-f936-5b7b-bc6b-97fa78c8d1dc">
+          <File Id="Ff50c7fc63f61690ece9320cd" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Resilience.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C41fe03dcd2dac7d986a92e04" Guid="aa5cf11c-662d-5922-8457-44edfeac7c86">
+          <File Id="F41fe03dcd2dac7d986a92e04" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.ServiceDiscovery.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb984ce18bdfbcfa397dbcdb2" Guid="bfde6b2e-b04d-5a41-8189-3013d816143a">
+          <File Id="Fb984ce18bdfbcfa397dbcdb2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.ServiceDiscovery.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf11e10950092f437db4505ce" Guid="3b05a9d5-30eb-57d0-ac93-ffde8375b4fd">
+          <File Id="Ff11e10950092f437db4505ce" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Telemetry.Abstractions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C62714b67230535abe97b2895" Guid="f7b1963a-dc8c-57f0-883f-33d6cc4c383b">
+          <File Id="F62714b67230535abe97b2895" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Telemetry.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C484cffcba005425ae4f747c2" Guid="5f289690-0451-57f5-ae94-065f3ee38461">
+          <File Id="F484cffcba005425ae4f747c2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.Validation.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C891f0ed0b32b131b438d3837" Guid="b7a2d5d6-6cd0-500f-9046-acb63d69a52b">
+          <File Id="F891f0ed0b32b131b438d3837" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Extensions.WebEncoders.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce57ba408df2a7663e632964e" Guid="02f0cb72-7057-58a8-9a01-98138ea9d008">
+          <File Id="Fe57ba408df2a7663e632964e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.JSInterop.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C568f0cbb508c49e1fbfeec65" Guid="3ba3aa25-dd1c-594d-9a87-823ab34a2346">
+          <File Id="F568f0cbb508c49e1fbfeec65" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Net.Http.Headers.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce479bc079fc8c21ec8b55419" Guid="63a53b21-641f-5721-8ad0-1dcefdef6012">
+          <File Id="Fe479bc079fc8c21ec8b55419" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.VisualBasic.Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C187de234d339217a1fed87cf" Guid="53f0ccd1-e249-5670-91ff-bc4bc04a327c">
+          <File Id="F187de234d339217a1fed87cf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.VisualBasic.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cbc4dfabc8aa0b6a167c5e53a" Guid="52b16d9b-b036-5efb-a476-499fe83d3d60">
+          <File Id="Fbc4dfabc8aa0b6a167c5e53a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Win32.Primitives.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2353e68bca991cee0a9534c6" Guid="eb2115cd-7d97-50de-bb95-20f10d471ced">
+          <File Id="F2353e68bca991cee0a9534c6" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Microsoft.Win32.Registry.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2857cc7db0751d9c9d3c01a2" Guid="90ac785e-96bc-5313-aaf1-b0fea504554a">
+          <File Id="F2857cc7db0751d9c9d3c01a2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\MigraDoc.DocumentObjectModel.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3178ad455de6a08e1bee7c72" Guid="129d9ce6-9990-5035-afc5-83e0130670df">
+          <File Id="F3178ad455de6a08e1bee7c72" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\MigraDoc.Rendering.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7ca19093a1293942887b8e80" Guid="91180986-4f70-527a-9f78-338e6f385b61">
+          <File Id="F7ca19093a1293942887b8e80" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\MigraDoc.RtfRendering.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8c66df24863bb9736c4250c9" Guid="1fcdd7c9-2dc9-5a52-9772-b6f324dfbffa">
+          <File Id="F8c66df24863bb9736c4250c9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\mscordaccore.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C58bbfd417302e527710e7cd2" Guid="9f5ab649-a741-5cc1-8fd3-b48f134fadf8">
+          <File Id="F58bbfd417302e527710e7cd2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\mscordaccore_x86_x86_10.0.1126.37416.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cbc5f2af83838747aa55c1b8e" Guid="eca5c1ac-f7d4-5392-8c07-1b1693cdfb59">
+          <File Id="Fbc5f2af83838747aa55c1b8e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\mscordbi.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C137265d3f5fce293dd2856f8" Guid="04c5b3a4-2e96-5b4b-b888-4a74bc1c84e4">
+          <File Id="F137265d3f5fce293dd2856f8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\mscorlib.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C40c15684035b909a22ed6d61" Guid="f1f6ded6-722f-5b63-a1f4-5048c34a5206">
+          <File Id="F40c15684035b909a22ed6d61" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\mscorrc.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C0bd7b8e834d81aee2e99d5cc" Guid="a2aa58ee-cc5b-56cb-b192-cd8b909a87bd">
+          <File Id="F0bd7b8e834d81aee2e99d5cc" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\msquic.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca98b9c025b3ea75b6b3e88f9" Guid="94a16852-db5e-54ff-882d-bac187323cdd">
+          <File Id="Fa98b9c025b3ea75b6b3e88f9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\netstandard.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C66cc0f5157b80c94dc06642d" Guid="9d3de702-bc02-5d6c-b9dc-ad42bf81e27f">
+          <File Id="F66cc0f5157b80c94dc06642d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\OpenTelemetry.Api.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8b0191e5f66186dba406d1c7" Guid="f535a78a-fbaf-5523-acaa-6f263f862794">
+          <File Id="F8b0191e5f66186dba406d1c7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\OpenTelemetry.Api.ProviderBuilderExtensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc7149b61861b897a988a6058" Guid="912e8eaa-cb37-5c97-ac0c-8a2ecacfbcf1">
+          <File Id="Fc7149b61861b897a988a6058" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\OpenTelemetry.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C92c1ed800b872db97c9dbe86" Guid="cb690ed5-c93f-5df9-919a-057e12f5fd62">
+          <File Id="F92c1ed800b872db97c9dbe86" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\OpenTelemetry.Exporter.OpenTelemetryProtocol.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C90aa5d71647b4997fb32399b" Guid="5437ea09-fa34-5e32-bae8-715b7b6a2af3">
+          <File Id="F90aa5d71647b4997fb32399b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\OpenTelemetry.Extensions.Hosting.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C466ca10dd1f53016fbcedbc6" Guid="ea9e655f-6a39-581a-a034-5fb6f0c568dc">
+          <File Id="F466ca10dd1f53016fbcedbc6" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\OpenTelemetry.Instrumentation.AspNetCore.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cff2467b843ec9e384202698d" Guid="914175e4-e813-5954-9897-809df6e6ce0f">
+          <File Id="Fff2467b843ec9e384202698d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\OpenTelemetry.Instrumentation.Http.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C13a8893755ab1c92927677d8" Guid="86f4218e-dac0-5571-9b84-4a02187e23bf">
+          <File Id="F13a8893755ab1c92927677d8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\OpenTelemetry.Instrumentation.Runtime.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ced1357707cd3a1e9107bb158" Guid="ac158e95-aa7e-506b-b44d-bf0341764394">
+          <File Id="Fed1357707cd3a1e9107bb158" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\PdfSharp.BarCodes.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cce27edcda79b7337ce505cf9" Guid="54209875-8f56-538f-9c26-c47cb9c29e31">
+          <File Id="Fce27edcda79b7337ce505cf9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\PdfSharp.Charting.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5b85f68de0cd42a1ad9f033e" Guid="4bf52ac1-b5e2-527e-98ba-227be17df204">
+          <File Id="F5b85f68de0cd42a1ad9f033e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\PdfSharp.Cryptography.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C63540a9d6e66f99646082527" Guid="7c49f3d7-7f9f-528a-8ca9-38fde98a73a3">
+          <File Id="F63540a9d6e66f99646082527" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\PdfSharp.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cff48cd075a34dc41f48e33c7" Guid="51170870-cb62-5197-9e94-05e7189d8927">
+          <File Id="Fff48cd075a34dc41f48e33c7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\PdfSharp.Quality.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb369f041f77ff3573f3cafb8" Guid="0efea369-3524-5f19-93cf-887b4eee7e93">
+          <File Id="Fb369f041f77ff3573f3cafb8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\PdfSharp.Shared.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2e8f86a7274bbc2b8d1409ee" Guid="c5fc5323-83c6-5d9f-bedf-65f2d8a9e218">
+          <File Id="F2e8f86a7274bbc2b8d1409ee" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\PdfSharp.Snippets.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8d5c2d7303cea3c07fc9ea05" Guid="7a1a28d8-1927-513c-8980-59d8c3c4172e">
+          <File Id="F8d5c2d7303cea3c07fc9ea05" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\PdfSharp.System.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc07a187dec096f8bb0f8531a" Guid="aa0e335f-c102-5737-a9bf-6fce9c991816">
+          <File Id="Fc07a187dec096f8bb0f8531a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\PdfSharp.WPFonts.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C75a5be05dd61f160b85a6ef7" Guid="9112bce6-169a-5fae-81cc-6afd1eac125c">
+          <File Id="F75a5be05dd61f160b85a6ef7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Polly.Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cfffa1063271a35f9c361ef68" Guid="07c3600e-a488-592c-a756-f2be74702866">
+          <File Id="Ffffa1063271a35f9c361ef68" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Polly.Extensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C43bac554eedc2f8db2e9f69f" Guid="bec3d5b4-5e10-5abf-899c-d8bcdc114c29">
+          <File Id="F43bac554eedc2f8db2e9f69f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\Polly.RateLimiting.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C210421cf54bf26697e98cf8c" Guid="e0476b00-3034-54e2-a977-e75b1fad9a0f">
+          <File Id="F210421cf54bf26697e98cf8c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\SkiaSharp.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd6f8457c5d506ede03caa479" Guid="8bd287a6-a4ea-5ff5-8653-0cc29f6a10b9">
+          <File Id="Fd6f8457c5d506ede03caa479" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\SQLitePCLRaw.batteries_v2.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C56bab8c5ef8e1b27e6ad2f70" Guid="0fd10764-776f-506b-a8d9-5e8353ed936c">
+          <File Id="F56bab8c5ef8e1b27e6ad2f70" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\SQLitePCLRaw.core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cbdfa2f79a8d42b6b8422962f" Guid="85b6037d-c888-5c7e-9733-8fa2a8c4226a">
+          <File Id="Fbdfa2f79a8d42b6b8422962f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\SQLitePCLRaw.provider.e_sqlite3.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb02f3d94d503bb3564f7a434" Guid="139308cc-ccc1-52a5-9326-63f7cd1c032e">
+          <File Id="Fb02f3d94d503bb3564f7a434" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.AppContext.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9f6277c79a365171f9c3fde8" Guid="3557ebdb-ed1d-5234-a8fe-fad1b1cb091a">
+          <File Id="F9f6277c79a365171f9c3fde8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Buffers.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1c7750ff84a42cb4290c5060" Guid="f827b80f-87d4-568d-813d-a2c00ae666f9">
+          <File Id="F1c7750ff84a42cb4290c5060" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Collections.Concurrent.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4db77f36cf01c9b0efa91b7e" Guid="96992a9f-251c-5393-9c71-ff85b3951515">
+          <File Id="F4db77f36cf01c9b0efa91b7e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Collections.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cfcf15524aeadd6bbe9f6bbfb" Guid="b70b82f4-d21f-5655-be7f-a81fdc0d29c6">
+          <File Id="Ffcf15524aeadd6bbe9f6bbfb" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Collections.Immutable.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cbd7952c21dd4ce80a2733213" Guid="f80ff319-0b27-5866-b764-2f6157b9247c">
+          <File Id="Fbd7952c21dd4ce80a2733213" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Collections.NonGeneric.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc3477efcc885fea43addb3ad" Guid="c1fca0c6-4e5d-55d2-bcc2-bfad086f3167">
+          <File Id="Fc3477efcc885fea43addb3ad" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Collections.Specialized.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C47ef5eeecbba5c15008edf82" Guid="1ca6a3cb-3331-577e-86e4-6abb6512b58c">
+          <File Id="F47ef5eeecbba5c15008edf82" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ComponentModel.Annotations.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C60a73e5e6ce4f40fa84f8447" Guid="a64ea949-3523-516c-bf1f-4a9ac02571e8">
+          <File Id="F60a73e5e6ce4f40fa84f8447" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ComponentModel.DataAnnotations.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2b229f72ef121cd022900f29" Guid="21a1d515-5f0d-5f92-afc1-07368b8cc1ca">
+          <File Id="F2b229f72ef121cd022900f29" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ComponentModel.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cfd10d1349061260bf6d61380" Guid="174fde73-ae4d-5df9-ad5e-877a30915dbe">
+          <File Id="Ffd10d1349061260bf6d61380" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ComponentModel.EventBasedAsync.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd585bc374d16bc05512942f1" Guid="28f8fd43-d423-5a1c-87d3-f5e5b3ece979">
+          <File Id="Fd585bc374d16bc05512942f1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ComponentModel.Primitives.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C915da2f13b60e1e875f10fd4" Guid="83d3dfce-89f3-5280-942a-b4c96496b01b">
+          <File Id="F915da2f13b60e1e875f10fd4" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ComponentModel.TypeConverter.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc8c426243acb1a0698160467" Guid="a8caf203-3385-5957-b1f3-3f2db4675f76">
+          <File Id="Fc8c426243acb1a0698160467" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Configuration.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4cb32f5aa2fb6011467d476e" Guid="6ba15752-f6c7-5259-beab-bbd3b8c9b133">
+          <File Id="F4cb32f5aa2fb6011467d476e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Console.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C263026640d716e7ae004ba6d" Guid="4c1e88dd-e650-52d2-adc0-bfcfbfc3f77d">
+          <File Id="F263026640d716e7ae004ba6d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C061634ce166ca2197b7aaa21" Guid="176029c9-b901-561c-8e25-37321b407702">
+          <File Id="F061634ce166ca2197b7aaa21" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Data.Common.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C268a6ec6ccf48d915f5dd8ff" Guid="c2fad45c-12ce-52e9-91e0-e80c2b0921b7">
+          <File Id="F268a6ec6ccf48d915f5dd8ff" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Data.DataSetExtensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5da7deb43f742991075c8111" Guid="eb5526de-aebe-5b12-8875-5f5cfb2613ea">
+          <File Id="F5da7deb43f742991075c8111" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Data.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf3dbbecfdef645d58b5fe0c2" Guid="b19c2b84-444b-5cf3-825d-1506767cdaba">
+          <File Id="Ff3dbbecfdef645d58b5fe0c2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.Contracts.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2ee5e382592d74d4ca3ce8fa" Guid="622bc593-81fd-552a-8819-3652588cef73">
+          <File Id="F2ee5e382592d74d4ca3ce8fa" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.Debug.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2da9076bc738830edd187486" Guid="cf64a2e2-efcf-5a10-8135-8aa821f9d348">
+          <File Id="F2da9076bc738830edd187486" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.DiagnosticSource.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3de9c12bc4377f6b8ef881cf" Guid="3e252fa1-7ab8-5a54-b26b-4eafdfd6ee59">
+          <File Id="F3de9c12bc4377f6b8ef881cf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.EventLog.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C60b30e3f68f2d02b62cd603d" Guid="f80fa4a6-c2d7-564f-b2d9-143aa7e77787">
+          <File Id="F60b30e3f68f2d02b62cd603d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.EventLog.Messages.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C20db08ddde21a48e341c9d77" Guid="cda2f93b-0c86-513b-90a2-2a5dc80efb3c">
+          <File Id="F20db08ddde21a48e341c9d77" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.FileVersionInfo.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca8c26c0a1af9b27fc5f9f81f" Guid="215857ad-82ac-5d58-af8a-ea30959fe452">
+          <File Id="Fa8c26c0a1af9b27fc5f9f81f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.Process.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C75e430e2b136d8c38a28c527" Guid="5beb4a0e-f3f7-5c63-a12b-b805a69b8100">
+          <File Id="F75e430e2b136d8c38a28c527" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.StackTrace.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2bdd178253b461d4bdf8b0a0" Guid="a8d36370-181e-50da-acfe-8c64c1d0ed63">
+          <File Id="F2bdd178253b461d4bdf8b0a0" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.TextWriterTraceListener.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C492f5e09b249b29ed6c7b9aa" Guid="84a5c0a3-0ba2-517d-b7a3-5d9aaa01e359">
+          <File Id="F492f5e09b249b29ed6c7b9aa" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.Tools.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C53fb49f2ed988ec5d5f6c515" Guid="ee1714d7-1b79-50ec-a5ff-baeba7f2f572">
+          <File Id="F53fb49f2ed988ec5d5f6c515" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.TraceSource.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cab37bc9dd5309706f2411a74" Guid="5f6d9eaa-38d5-5940-9782-b56da96de86a">
+          <File Id="Fab37bc9dd5309706f2411a74" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Diagnostics.Tracing.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C6233293e12a949bcb21f78a4" Guid="80db3fb7-9660-518b-8197-8015c16b9257">
+          <File Id="F6233293e12a949bcb21f78a4" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7659bbb29d0543a3683ddd66" Guid="5508de4e-219a-51bd-9e5a-5b9f2bc0fee8">
+          <File Id="F7659bbb29d0543a3683ddd66" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Drawing.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf57a9a391dd61e1cb25cc0dc" Guid="542b1167-198e-50a6-8296-804461ec2475">
+          <File Id="Ff57a9a391dd61e1cb25cc0dc" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Drawing.Primitives.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C87e6cda150ef7ac41f8c2c4b" Guid="6d4a1807-4113-51eb-ac78-efa5cd5ec67d">
+          <File Id="F87e6cda150ef7ac41f8c2c4b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Dynamic.Runtime.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce8562947d039a146247b2ee9" Guid="b755c3fe-d8a1-5ea8-bedd-6d1780b7e6d7">
+          <File Id="Fe8562947d039a146247b2ee9" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Formats.Asn1.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9e23214fd80625a162b49e80" Guid="3f608b04-ca14-5e6d-b1aa-3f9658336880">
+          <File Id="F9e23214fd80625a162b49e80" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Formats.Cbor.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9a4c171e383d33020b2541e0" Guid="3b046cd3-9dee-529f-8d6c-c1cac2eba308">
+          <File Id="F9a4c171e383d33020b2541e0" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Formats.Tar.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3d16373316536e8b1db2e4db" Guid="ee374f1f-4b48-5b60-8937-dcda73fe7578">
+          <File Id="F3d16373316536e8b1db2e4db" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Globalization.Calendars.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4ec0b34648569249fde6cf83" Guid="c841be2f-e67a-5b1e-94d4-9c820c6a8937">
+          <File Id="F4ec0b34648569249fde6cf83" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Globalization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C235b09624b6f65a1cf7e79d7" Guid="73c34777-265f-553f-a0a5-7932455dc21b">
+          <File Id="F235b09624b6f65a1cf7e79d7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Globalization.Extensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3fa844d718841058d14d5f9b" Guid="bf80fd9e-de98-510f-87ab-295411d0029a">
+          <File Id="F3fa844d718841058d14d5f9b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.Compression.Brotli.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cbfce40334ad7c25439608a5b" Guid="ad0318b9-f917-54a2-ba51-299da993d9a5">
+          <File Id="Fbfce40334ad7c25439608a5b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.Compression.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C378ec86f3943aca936294b9c" Guid="5cc5ee4d-2147-510f-ad9e-254b66899eb9">
+          <File Id="F378ec86f3943aca936294b9c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.Compression.FileSystem.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7ea38e8844c69012ab428353" Guid="91a89188-303f-52d8-aa29-2bfe18ffe6cf">
+          <File Id="F7ea38e8844c69012ab428353" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.Compression.Native.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cea08eaeb9f0a4ed12081b7a0" Guid="316ded3c-2f55-52b7-beed-0eff69d9d4d1">
+          <File Id="Fea08eaeb9f0a4ed12081b7a0" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.Compression.ZipFile.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C32deedc44bb5882b7a52a3cf" Guid="e0069851-df61-5c24-a75e-daf9b7a68eb3">
+          <File Id="F32deedc44bb5882b7a52a3cf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C936f028c392216d868c003a7" Guid="b4aa0c2f-e66b-5d18-8015-7dbb2b6314f2">
+          <File Id="F936f028c392216d868c003a7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.FileSystem.AccessControl.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C08a338aa44d3adfe748d5c50" Guid="b0101a25-901f-514f-bdf6-2c344ca75c0e">
+          <File Id="F08a338aa44d3adfe748d5c50" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.FileSystem.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb020e0effb08920ed93cd1df" Guid="74e487ff-3cc5-598d-b94c-d593dd4c87f4">
+          <File Id="Fb020e0effb08920ed93cd1df" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.FileSystem.DriveInfo.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2e8ce6948cdaac7821a3f866" Guid="ebdc87da-9db4-52b8-b5ca-3b07b23a545e">
+          <File Id="F2e8ce6948cdaac7821a3f866" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.FileSystem.Primitives.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb8df83ebf67e0b8547c4ab4c" Guid="454e2231-ef71-5e54-860a-98cc6077ac43">
+          <File Id="Fb8df83ebf67e0b8547c4ab4c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.FileSystem.Watcher.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C742f6478d939e4df692a1231" Guid="ac407d73-4548-504e-9791-395237f272f7">
+          <File Id="F742f6478d939e4df692a1231" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.IsolatedStorage.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5f3e262b6877eda066457e24" Guid="c52102cd-a633-54f5-b9a8-b91492dcdcf0">
+          <File Id="F5f3e262b6877eda066457e24" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.MemoryMappedFiles.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1608cb077f6aeef30bd2d091" Guid="f7e497f1-f4a7-5601-a1fd-b3ded493c8fe">
+          <File Id="F1608cb077f6aeef30bd2d091" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.Pipelines.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9ef9b7de92b735dcf05a9c11" Guid="4aba128d-9282-5e5b-8b2c-165d0534938e">
+          <File Id="F9ef9b7de92b735dcf05a9c11" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.Pipes.AccessControl.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc22fef806ba47f6137be0b94" Guid="96dd94cd-d8bc-5d09-a768-4044f49d8426">
+          <File Id="Fc22fef806ba47f6137be0b94" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.Pipes.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7701a8d32e34bc6dce147fe8" Guid="5fd1afc4-8b12-5b1b-a845-0bde3e273e80">
+          <File Id="F7701a8d32e34bc6dce147fe8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.IO.UnmanagedMemoryStream.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9f5c99c4c0437ddc224a4daa" Guid="04c9905e-fb6d-5d0c-a71f-d900caea37fb">
+          <File Id="F9f5c99c4c0437ddc224a4daa" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Linq.AsyncEnumerable.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C46fab460b8e71914c3ddfc9c" Guid="dd64da49-73e3-509c-953c-5a07ea0a4722">
+          <File Id="F46fab460b8e71914c3ddfc9c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Linq.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C826a628b3eaf671a106e27e0" Guid="3f0272fa-214d-5858-a7d4-26e1e782db40">
+          <File Id="F826a628b3eaf671a106e27e0" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Linq.Expressions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf46f8d42e01ff3165873cea0" Guid="f2017f2a-e943-5426-b7c7-0f572d399991">
+          <File Id="Ff46f8d42e01ff3165873cea0" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Linq.Parallel.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C034b1532730a824dcc49cf02" Guid="29ea1dfe-1376-5686-8a06-3bfa857dca90">
+          <File Id="F034b1532730a824dcc49cf02" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Linq.Queryable.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C777f3785b9e04b61ee8995af" Guid="bf22622e-d710-50b0-ad8f-0ac87f8f36aa">
+          <File Id="F777f3785b9e04b61ee8995af" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Memory.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C353a1f2bd5fd3cfcca0248f2" Guid="f4e3d1b2-1146-5592-8936-b24ceea60083">
+          <File Id="F353a1f2bd5fd3cfcca0248f2" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf54746558c893280eb4f4313" Guid="3a1b4d2e-3e1d-50b8-888a-0f9a9aa265ea">
+          <File Id="Ff54746558c893280eb4f4313" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.Http.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C0d6020323eb475d72b3b04eb" Guid="a64ad456-653f-5dc2-a098-95c47938804c">
+          <File Id="F0d6020323eb475d72b3b04eb" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.Http.Json.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb399768039b2a904e9d4192c" Guid="3313c893-61d0-551b-bb7c-2af526bdb819">
+          <File Id="Fb399768039b2a904e9d4192c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.HttpListener.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ccd9f7d40dec26ca0da16c577" Guid="6d1a983a-8082-5d8b-bafd-f6a8771d927e">
+          <File Id="Fcd9f7d40dec26ca0da16c577" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.Mail.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc34ba8bd9dcd19fd51819bfc" Guid="dc74f926-1b88-502b-9aef-6b0411ce712e">
+          <File Id="Fc34ba8bd9dcd19fd51819bfc" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.NameResolution.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C34e0e0f91a8b843bf24c1648" Guid="c8d3b328-b25b-5b32-ac33-67cf821c7658">
+          <File Id="F34e0e0f91a8b843bf24c1648" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.NetworkInformation.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cde862f5901b23a1c592f77dd" Guid="1b9e0fd5-6d6b-52c2-a054-d619273cad25">
+          <File Id="Fde862f5901b23a1c592f77dd" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.Ping.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd225dedb651e92b6febb3864" Guid="fc3f5440-7efd-5927-b4ad-ceb8cf36fa9b">
+          <File Id="Fd225dedb651e92b6febb3864" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.Primitives.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3b83e9ad9ec45d1508e25efd" Guid="f9337711-2ee1-5f6c-9860-b3ba783da9a6">
+          <File Id="F3b83e9ad9ec45d1508e25efd" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.Quic.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8619deae3c84fd07d524e8c5" Guid="db361499-398e-5d95-befd-d9a6b21ab211">
+          <File Id="F8619deae3c84fd07d524e8c5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.Requests.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7599359241c303fbb14f151f" Guid="98efe163-99db-5b6a-aede-4a5b5d6b172f">
+          <File Id="F7599359241c303fbb14f151f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.Security.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1631e03083fbd34dd6d941a7" Guid="dc1e891b-5be0-57f9-9cb1-2f833762f996">
+          <File Id="F1631e03083fbd34dd6d941a7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.ServerSentEvents.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce899c23d687aa8c9a97106e7" Guid="e025fcbd-ea0b-5c1f-9812-b4c56f951811">
+          <File Id="Fe899c23d687aa8c9a97106e7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.ServicePoint.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C00b891b0992a9fcbbe7001fc" Guid="00546374-e9e6-5998-9497-2610dfe1831a">
+          <File Id="F00b891b0992a9fcbbe7001fc" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.Sockets.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C62dafbdc5db4e6f4b9cfcf5d" Guid="546e21ee-e32e-562a-abc9-644449530986">
+          <File Id="F62dafbdc5db4e6f4b9cfcf5d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.WebClient.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C6e121b5392b96140f13824de" Guid="4b40638f-5d93-5631-bfce-7f041a9e04db">
+          <File Id="F6e121b5392b96140f13824de" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.WebHeaderCollection.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C58d827bea77f20aaf0e10d9e" Guid="1780e1c3-c6e7-5795-8f65-11756fc56762">
+          <File Id="F58d827bea77f20aaf0e10d9e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.WebProxy.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C6582959c1f3084b7b93ad29c" Guid="23e35766-f19a-517c-a27a-2d0acc056677">
+          <File Id="F6582959c1f3084b7b93ad29c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.WebSockets.Client.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb8e37c2393ef075b4b908981" Guid="cf52df1d-85fc-5596-92e9-b3a2a3fd25c5">
+          <File Id="Fb8e37c2393ef075b4b908981" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Net.WebSockets.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce3728ec7b186f3e2446bc63d" Guid="d988f0cb-a3d6-5b5a-92f4-3be16f962b9d">
+          <File Id="Fe3728ec7b186f3e2446bc63d" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Numerics.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C93fb3a32595dc92288157c2f" Guid="bab30087-6147-50f8-84a9-3e1090deacb8">
+          <File Id="F93fb3a32595dc92288157c2f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Numerics.Vectors.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C110d5c4c87e67c376cc77d15" Guid="eaea2de5-6a70-5751-83c5-281cbc306009">
+          <File Id="F110d5c4c87e67c376cc77d15" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ObjectModel.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd5ffd8db42bc94db7b16db4e" Guid="4394a61a-d3aa-5a10-932e-c5a32aca8382">
+          <File Id="Fd5ffd8db42bc94db7b16db4e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Private.CoreLib.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3bdd069d0269c4a6c8c89179" Guid="14d9870e-bc13-5264-80a1-363caddeb8fc">
+          <File Id="F3bdd069d0269c4a6c8c89179" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Private.DataContractSerialization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce2d27cdd342324bdc71b733b" Guid="2f0249e0-c832-51b7-9beb-1d9f1d5854d9">
+          <File Id="Fe2d27cdd342324bdc71b733b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Private.Uri.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3f0cd01c0062c7a89f091b62" Guid="804861f9-69d5-5433-b404-342b5fe4068f">
+          <File Id="F3f0cd01c0062c7a89f091b62" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Private.Xml.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C234c0711918fef65bcdcc92c" Guid="e10533d9-f171-5468-8852-0830daddd452">
+          <File Id="F234c0711918fef65bcdcc92c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Private.Xml.Linq.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cda8d1ada70b55950901fb630" Guid="e577f089-91de-5cdb-aad0-48c14ce209be">
+          <File Id="Fda8d1ada70b55950901fb630" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Reflection.DispatchProxy.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9e43433628817cb8b580ce59" Guid="314e8c17-f863-5d00-9604-0d0ff24c61f4">
+          <File Id="F9e43433628817cb8b580ce59" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Reflection.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4bfa9dacb0e0c803548494f3" Guid="1eed0e8e-081a-52cd-a9e0-6b080c934ef8">
+          <File Id="F4bfa9dacb0e0c803548494f3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Reflection.Emit.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3b049f1a354bf522c1f3e0c7" Guid="31a7822c-d39a-5f46-8f7b-955ba24c39fa">
+          <File Id="F3b049f1a354bf522c1f3e0c7" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Reflection.Emit.ILGeneration.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9fb0016401f91d192218370b" Guid="8fe29715-916e-5ec9-b328-9082c85cfb5e">
+          <File Id="F9fb0016401f91d192218370b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Reflection.Emit.Lightweight.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cbe1895666fcbc771ff79300f" Guid="ccee8360-2b6c-596e-b763-c80a45459522">
+          <File Id="Fbe1895666fcbc771ff79300f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Reflection.Extensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C45d7f331ebcd0d7e9c1c9e31" Guid="f5b986ec-8aa9-59c5-95de-7f9bb62cf5d8">
+          <File Id="F45d7f331ebcd0d7e9c1c9e31" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Reflection.Metadata.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5fc2e9c7f514d43aa46246cf" Guid="51245535-96a7-5e9f-9378-569b19ef8e0c">
+          <File Id="F5fc2e9c7f514d43aa46246cf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Reflection.Primitives.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc6366ce287f19af2daad1509" Guid="5beb24f2-1039-5eae-b56a-413d712d424d">
+          <File Id="Fc6366ce287f19af2daad1509" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Reflection.TypeExtensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cdb73f0861a5ac62d50297edd" Guid="4e1accc5-e3a9-57c6-b5d4-e8a61b9f5cb9">
+          <File Id="Fdb73f0861a5ac62d50297edd" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Resources.Reader.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca9881976dee52b3136d98aaf" Guid="e8f3f187-c6f2-5902-9745-ef6fecf0a4ae">
+          <File Id="Fa9881976dee52b3136d98aaf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Resources.ResourceManager.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cae6a67868ff667183eceb2a6" Guid="a490ff0b-755d-5274-87b4-81f9065b17c6">
+          <File Id="Fae6a67868ff667183eceb2a6" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Resources.Writer.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ce2838bca8c49687f2f7ceb68" Guid="109d53be-1fd4-5cbe-be73-4443af5f737b">
+          <File Id="Fe2838bca8c49687f2f7ceb68" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.CompilerServices.Unsafe.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C79a11997bdf572a77f281936" Guid="e80b12fa-732e-5201-86a3-f8296b11aacd">
+          <File Id="F79a11997bdf572a77f281936" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.CompilerServices.VisualC.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2841bdccf7f3f4311f25ea59" Guid="3fbfd27c-c173-50b6-889c-c9b6e2018328">
+          <File Id="F2841bdccf7f3f4311f25ea59" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca6913a1e4a35732a0a00ff5e" Guid="c4c7b1db-4e1f-543e-8f5b-98c331bd9580">
+          <File Id="Fa6913a1e4a35732a0a00ff5e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Extensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5d45e337802de6358a6c994f" Guid="c25df334-2ea3-5735-80cc-1885cf722277">
+          <File Id="F5d45e337802de6358a6c994f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Handles.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb1fcfd2e083524c54d70f41f" Guid="9c2c89a5-75f9-5f54-a9ab-6f7c93ac3b40">
+          <File Id="Fb1fcfd2e083524c54d70f41f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.InteropServices.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8eceb64e266ab5613c60003e" Guid="7249bb9a-7a7c-5b3a-bb88-2cb95f17ddd4">
+          <File Id="F8eceb64e266ab5613c60003e" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.InteropServices.JavaScript.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cda092a56320e948be1824708" Guid="cbade552-438b-57e9-88fb-ffa679caf0f6">
+          <File Id="Fda092a56320e948be1824708" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.InteropServices.RuntimeInformation.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cab5cbf6aede7689cf4aa7b81" Guid="60ca7dc6-8647-5c81-a3cf-a471fddabefd">
+          <File Id="Fab5cbf6aede7689cf4aa7b81" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Intrinsics.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4ac2f3d229f7388bb8d53917" Guid="68de0ca5-6755-5efd-bcdd-d858d5176274">
+          <File Id="F4ac2f3d229f7388bb8d53917" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Loader.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9d16cce941da9f665413a43a" Guid="dfe9af1d-7105-54a0-9bc1-493eacc366d7">
+          <File Id="F9d16cce941da9f665413a43a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Numerics.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C830953e3847e05eeda1bad65" Guid="04f030e9-af07-5f54-aaa5-07ae95ce10e8">
+          <File Id="F830953e3847e05eeda1bad65" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Serialization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb248c4b713f48b0bec5bcf69" Guid="6e724d24-9385-5a05-b5c8-33ea12cded4b">
+          <File Id="Fb248c4b713f48b0bec5bcf69" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Serialization.Formatters.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd40d77b3d4322bb6264d05a5" Guid="bca45435-11ca-590f-b2fc-265280739e38">
+          <File Id="Fd40d77b3d4322bb6264d05a5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Serialization.Json.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C5f25c7d2fec65cdd764a9666" Guid="b23cedb8-55c1-5a77-b39a-603ef5e88016">
+          <File Id="F5f25c7d2fec65cdd764a9666" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Serialization.Primitives.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb79fb89b49394a693d83cdea" Guid="14217f5d-001a-583d-b77b-5ff13b79ab7c">
+          <File Id="Fb79fb89b49394a693d83cdea" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Runtime.Serialization.Xml.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C81aa6bd5d4da8fc84bdf878a" Guid="8a43562f-d5a8-5752-a789-256b65e08884">
+          <File Id="F81aa6bd5d4da8fc84bdf878a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.AccessControl.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cacc5469555814bce31c42808" Guid="71b756de-0338-5e4e-a0a5-7ddc0af3c5d6">
+          <File Id="Facc5469555814bce31c42808" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Claims.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cdcd159eaddc9ab5cf3b608b3" Guid="c5263663-eaf8-5bd3-a6c9-7016fafe4dc4">
+          <File Id="Fdcd159eaddc9ab5cf3b608b3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.Algorithms.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C69685c84f96c645dfaa36159" Guid="c85dadce-27a1-541d-93c6-1736b4d74f64">
+          <File Id="F69685c84f96c645dfaa36159" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.Cng.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cd79316b4fec82239654e94db" Guid="73ee6344-76da-598b-9e17-cc6346decf7b">
+          <File Id="Fd79316b4fec82239654e94db" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.Csp.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9ad58849b214741ad3d4e019" Guid="e1bd66cb-52ed-5065-a7ea-7509e3ad3787">
+          <File Id="F9ad58849b214741ad3d4e019" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C961d6c15d2c3b644839ffb93" Guid="8a7bb326-79da-59d3-a437-42552197679e">
+          <File Id="F961d6c15d2c3b644839ffb93" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.Encoding.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4335ed908842cebdb7aeb7e0" Guid="0bb4e7cb-5d80-512d-bb3b-6a814329672e">
+          <File Id="F4335ed908842cebdb7aeb7e0" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.OpenSsl.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cda03ea7282762bba035b3d41" Guid="b88f2e2c-6bdb-50c4-aaf0-a0a07a8712a4">
+          <File Id="Fda03ea7282762bba035b3d41" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.Pkcs.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C3b62311f785493d1e942b753" Guid="9f6de87b-e6c9-5573-811e-8634092270bd">
+          <File Id="F3b62311f785493d1e942b753" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.Primitives.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C282c7b501332fdc4ff0a6778" Guid="29c2f5b2-f976-5054-a63f-bb9d415a957b">
+          <File Id="F282c7b501332fdc4ff0a6778" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.X509Certificates.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C82213c2eb974ac9fb6378976" Guid="3b1c173d-c41b-5247-aa6d-0553a7180fe2">
+          <File Id="F82213c2eb974ac9fb6378976" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Cryptography.Xml.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C4c66d29a2943f5c364771f7f" Guid="1710adc9-7495-56eb-a612-f8e505537ce6">
+          <File Id="F4c66d29a2943f5c364771f7f" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C456a64637cd26536226834d0" Guid="68297622-12a0-50c2-8948-30c11260ba63">
+          <File Id="F456a64637cd26536226834d0" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Principal.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2c8b045d6b80e8f197b6e1c5" Guid="d225332a-1a97-553d-9af4-cbf8e5bdb3f4">
+          <File Id="F2c8b045d6b80e8f197b6e1c5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.Principal.Windows.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cb8edce13063659cbb5555f26" Guid="e8df564a-494b-53b4-af22-62169c622d87">
+          <File Id="Fb8edce13063659cbb5555f26" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Security.SecureString.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ca826f90e349623a0033ef1aa" Guid="5430590d-5ba4-5da5-addb-2abd25b447f5">
+          <File Id="Fa826f90e349623a0033ef1aa" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ServiceModel.Web.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C6fd0689dd807c4ccc0545efd" Guid="a9b00e19-e621-5563-939b-92cac5972a66">
+          <File Id="F6fd0689dd807c4ccc0545efd" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ServiceProcess.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C718103b9f63fdbdff8a481ba" Guid="992914f2-10fd-5f8e-94f9-7951777e64f3">
+          <File Id="F718103b9f63fdbdff8a481ba" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Text.Encoding.CodePages.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C225c94f7f0e2e78c1f728303" Guid="3bd4c6e1-a89a-5ebd-8c4e-31714f6b5c26">
+          <File Id="F225c94f7f0e2e78c1f728303" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Text.Encoding.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C598919f34c82c14c7a459f30" Guid="7b9fb386-0680-5edd-b94f-cb804da5d76a">
+          <File Id="F598919f34c82c14c7a459f30" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Text.Encoding.Extensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc6e1320651f6ae26cee1317a" Guid="57ca8cd4-9e93-58ba-9ce2-151591c19506">
+          <File Id="Fc6e1320651f6ae26cee1317a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Text.Encodings.Web.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C9d580202769d8d8ae5d2a503" Guid="30101bf4-93d8-5f38-83ef-ab853d76d3ab">
+          <File Id="F9d580202769d8d8ae5d2a503" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Text.Json.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1db269521edcffbf68a8d329" Guid="4709c1f0-8c55-58ad-bbfc-83fbba8e67ac">
+          <File Id="F1db269521edcffbf68a8d329" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Text.RegularExpressions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8425e53aa7e0ca481abf0dd1" Guid="2aba8d6d-f01c-5d2f-b40a-4f9f48b15c98">
+          <File Id="F8425e53aa7e0ca481abf0dd1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.AccessControl.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C300b9d34786a408900436a66" Guid="d0e6b433-d8e9-5331-b789-ea30b4802e3a">
+          <File Id="F300b9d34786a408900436a66" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.Channels.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2e00fd67756c9c9cb6fac927" Guid="bed4f301-9c92-5815-83b0-8f58b3c337ef">
+          <File Id="F2e00fd67756c9c9cb6fac927" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C03068c1ee8b432c503393aee" Guid="3e0f80c7-8c21-571f-95d9-c5d08d1de40c">
+          <File Id="F03068c1ee8b432c503393aee" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.Overlapped.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C6caa1d8d9c9cb5a4e9f1b271" Guid="7eb38349-6d09-58fb-a670-6a33cc61b410">
+          <File Id="F6caa1d8d9c9cb5a4e9f1b271" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.RateLimiting.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8584370571b10155bfd7cdb1" Guid="1af3223a-d84f-53ac-964e-360a5c8d9a52">
+          <File Id="F8584370571b10155bfd7cdb1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.Tasks.Dataflow.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2ba78ffa6c094efb4e8556c8" Guid="692e72bc-2da1-5831-a92f-c3d59a04db93">
+          <File Id="F2ba78ffa6c094efb4e8556c8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.Tasks.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2722433c33ff58fbe77f97b5" Guid="55636e50-acdb-5f1d-abae-64b116b79fa7">
+          <File Id="F2722433c33ff58fbe77f97b5" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.Tasks.Extensions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ccce8594242a77103b285d920" Guid="e20196e4-50c1-5deb-af73-071ec153c672">
+          <File Id="Fcce8594242a77103b285d920" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.Tasks.Parallel.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C34a383a925ac44e6527b71ca" Guid="f06b7b59-25e8-532d-8880-16dc6535f17e">
+          <File Id="F34a383a925ac44e6527b71ca" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.Thread.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7cb6ad8f5bd095f1e5f4cdc8" Guid="f074c780-0f45-58da-8889-6a3dd43736c0">
+          <File Id="F7cb6ad8f5bd095f1e5f4cdc8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.ThreadPool.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C065d9181251c8c6e07e54031" Guid="0d733228-4a19-5af4-9a19-9a702eee49de">
+          <File Id="F065d9181251c8c6e07e54031" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Threading.Timer.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C6e6a039b1f2fda99bef9ff97" Guid="0789b157-88fa-51a1-84d6-35c246de35a6">
+          <File Id="F6e6a039b1f2fda99bef9ff97" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Transactions.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C8edc9a9f237fcd039a723e16" Guid="0bcc8bb8-3094-518f-a39c-dac3d193c2c2">
+          <File Id="F8edc9a9f237fcd039a723e16" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Transactions.Local.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C064ac5b625a19a83071177b8" Guid="9f43e577-a3b4-5c71-b1fd-1e9a38ba70f8">
+          <File Id="F064ac5b625a19a83071177b8" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.ValueTuple.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cac35a2df890b4281603f0a9b" Guid="7a158d47-f29a-5170-b4cc-d1575774ae01">
+          <File Id="Fac35a2df890b4281603f0a9b" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Web.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C318b4a32217d9dacd4b62ef1" Guid="08a4bb94-dfd6-55b7-99c6-ece8d9f798d3">
+          <File Id="F318b4a32217d9dacd4b62ef1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Web.HttpUtility.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C1f0cdf4cec17502e0b3a45ab" Guid="4fe907af-bcf1-55b3-8c76-52b090ff7f12">
+          <File Id="F1f0cdf4cec17502e0b3a45ab" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Windows.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cf1c3e47c864ea68411a26483" Guid="3051fa33-c511-5d9e-9da7-bac5f5a89486">
+          <File Id="Ff1c3e47c864ea68411a26483" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Xml.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C6f0e0d750c196a83454a662a" Guid="e51c1df5-0f12-5c67-badc-26a64bf60fb4">
+          <File Id="F6f0e0d750c196a83454a662a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Xml.Linq.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C17504da79a29633c0ed51b4c" Guid="bb8a4a86-7ab7-57ef-ad4a-8a4bb6f433b5">
+          <File Id="F17504da79a29633c0ed51b4c" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Xml.ReaderWriter.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Cc6198a74d2e35a4b8067ddbf" Guid="66c8121f-0c55-5b9b-aa77-5821bb7e6d86">
+          <File Id="Fc6198a74d2e35a4b8067ddbf" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Xml.Serialization.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C519bd371300cda2dfc2e0d63" Guid="dc677e45-98ab-5792-aaae-5727ca0840d6">
+          <File Id="F519bd371300cda2dfc2e0d63" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Xml.XDocument.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C97d2cf3ac1a84c02b0fad226" Guid="a09d9d17-b83a-561e-9b49-fcf0eef9990a">
+          <File Id="F97d2cf3ac1a84c02b0fad226" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Xml.XmlDocument.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C0d9a00a9ee0809ed1f76c62a" Guid="b4c2a2cd-737a-56f9-81fc-aec83e4d659f">
+          <File Id="F0d9a00a9ee0809ed1f76c62a" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Xml.XmlSerializer.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Ccc2e50b1bdfedce29a846c62" Guid="1fbbdbdf-b810-59f1-9b32-ef7449282e29">
+          <File Id="Fcc2e50b1bdfedce29a846c62" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Xml.XPath.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C2c6e07ed10d0087264915fe1" Guid="3082bea0-54ca-5466-bff9-38693d464cb8">
+          <File Id="F2c6e07ed10d0087264915fe1" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\System.Xml.XPath.XDocument.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C7ae1d6dac722c00a6980a137" Guid="4019d873-fb22-57b2-a474-78859925f0e2">
+          <File Id="F7ae1d6dac722c00a6980a137" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\web.config" KeyPath="yes" />
+        </Component>
+        <Component Id="C848e3833d746260a6c71d5b3" Guid="13479203-822a-5fce-9768-3513463e5597">
+          <File Id="F848e3833d746260a6c71d5b3" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\WindowsBase.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="C008b58bf6b5f7de4d627d7bd" Guid="8e34f69d-48dd-55de-bef8-e377af04d964">
+          <File Id="F008b58bf6b5f7de4d627d7bd" Source="D:\Projetos\Biblia.Web\output\distribuicao\win-x86\manifesto-distribuicao.json" KeyPath="yes" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
+    <Feature Id="Application" Title="Biblia.Web" Level="1">
+      <ComponentRef Id="Ceb47ebe69eec4ebcd3f9fdad" />
+      <ComponentRef Id="C2e717f621aa02d499989ef68" />
+      <ComponentRef Id="Cd3ceffcff98e755128623fcb" />
+      <ComponentRef Id="C57c8a98db089d235caad12a3" />
+      <ComponentRef Id="Cc922a78ef2e872cb2b7ef79f" />
+      <ComponentRef Id="C7968210e6fae01a63b618db3" />
+      <ComponentRef Id="C2094af06e5cf610fdc008c6a" />
+      <ComponentRef Id="Cc9a45fb585b8f71774ff18cf" />
+      <ComponentRef Id="Cd06ee9e32e37e941af8f9893" />
+      <ComponentRef Id="Caf79c975d2d35a585b01e979" />
+      <ComponentRef Id="C2885622bbfe2a6d84e6a7ad5" />
+      <ComponentRef Id="Cdf6f887c9c4a14ec1025ac19" />
+      <ComponentRef Id="C61909c219bd718bd704a727b" />
+      <ComponentRef Id="C49e2267f20469c059ff7a493" />
+      <ComponentRef Id="Cd3ba62f8dea0f642867f67e7" />
+      <ComponentRef Id="C5434fa05cf1bc52ea83e6602" />
+      <ComponentRef Id="C9485692c1e22ddc99a1c9ce3" />
+      <ComponentRef Id="C65b1ffdc3ab7e0e1d1c93765" />
+      <ComponentRef Id="Cb001c7945d01b42a7e657367" />
+      <ComponentRef Id="Ce0f6815487fc95ce01e77998" />
+      <ComponentRef Id="Ca215c6a5b4dc04fb593783bf" />
+      <ComponentRef Id="Cc3fe5d1cc4a9d3f51c8e22e7" />
+      <ComponentRef Id="C3b5ab989600bcf0952a83c1a" />
+      <ComponentRef Id="C2f69c3b010340b499e4a5d46" />
+      <ComponentRef Id="C21167760da04f3b58ab4744b" />
+      <ComponentRef Id="Cfc3d6c9793ee210f2d60dc0d" />
+      <ComponentRef Id="Cbd8721bbf7ed4f460b435432" />
+      <ComponentRef Id="C09b5cec08546ca163e824ff4" />
+      <ComponentRef Id="Ca177d83f583a83ac39ba7ab5" />
+      <ComponentRef Id="C752b73004facf24cd1143278" />
+      <ComponentRef Id="Ca6c7123417b17a19fe395192" />
+      <ComponentRef Id="Ca185efcdcee156e05acb115d" />
+      <ComponentRef Id="Ced1edd60580a1d9fe97fb0ba" />
+      <ComponentRef Id="C4034dc8d5eb3b7b830df3536" />
+      <ComponentRef Id="C7e60ecb29c476d6ccc3cabbd" />
+      <ComponentRef Id="C3905313f3a9aa2cc3b7c0a31" />
+      <ComponentRef Id="Cffdf8dff545b1ede0fe579e5" />
+      <ComponentRef Id="C54bc36d1e7aa6c20a3733839" />
+      <ComponentRef Id="Cb4b25239f94023aaa3cc6832" />
+      <ComponentRef Id="C267e21ba1e20b7d34317e66b" />
+      <ComponentRef Id="C3d72d2024dae5d1cfbc0fa85" />
+      <ComponentRef Id="Ceabfd7cfa3778ecf9f906156" />
+      <ComponentRef Id="C1fc4ee7bccb0341d29f3884c" />
+      <ComponentRef Id="C7b808e69aaffb3f9db013bea" />
+      <ComponentRef Id="C4f5feaafa0e0e505fffffb6c" />
+      <ComponentRef Id="C51cca4514cb6a5b28aff5dd5" />
+      <ComponentRef Id="Cb7616021201b2cab31749bf9" />
+      <ComponentRef Id="C574f9304404b1ff3a2ead6cb" />
+      <ComponentRef Id="C9138b51e9a7ed3a76af79735" />
+      <ComponentRef Id="C581c7297298207dfb3de5c66" />
+      <ComponentRef Id="C218ba13143f8b158d93efaa1" />
+      <ComponentRef Id="Cc60c21c13c85c141c2e653f3" />
+      <ComponentRef Id="C77950ef111f27e8bbe108dac" />
+      <ComponentRef Id="C190df86f5f0c10803725aed3" />
+      <ComponentRef Id="Ccc08d58fbb1cd2b40c87356a" />
+      <ComponentRef Id="Ca4b2b6e47308aa5edd95951e" />
+      <ComponentRef Id="C748eddc233adf8f94dc924b1" />
+      <ComponentRef Id="Ca044358255c34b8537f9aacc" />
+      <ComponentRef Id="C746633fa8f525658cbd6cca9" />
+      <ComponentRef Id="Cb24a4b2ffe3528e8b54f58e3" />
+      <ComponentRef Id="C9fe9b37f21cea6d24ed12364" />
+      <ComponentRef Id="C05f8306a2c7df3e45a23d901" />
+      <ComponentRef Id="C155ab0a3281fdeaf75531d3a" />
+      <ComponentRef Id="C18e14342d9401771bf80b061" />
+      <ComponentRef Id="C903ac8b5dc5ca94d44b1258c" />
+      <ComponentRef Id="C9c4603c23e1a1f6e550f49c4" />
+      <ComponentRef Id="C195db16325ee7cd146c5f42f" />
+      <ComponentRef Id="C56a7e733406c6f2b757e35f8" />
+      <ComponentRef Id="Cc97306095edc99764c269309" />
+      <ComponentRef Id="C308ca52d320ff208d9eaaff1" />
+      <ComponentRef Id="Cc427fc4d05bcf0a22df189b1" />
+      <ComponentRef Id="C63bdc6a037af3f78fd7165d5" />
+      <ComponentRef Id="Ca7f2d33b4f5f30146901bc27" />
+      <ComponentRef Id="Cb96ecbd796bc77e8f26752dc" />
+      <ComponentRef Id="Cd79dc018e3897f521b883e1a" />
+      <ComponentRef Id="C31f49887fb5b6dc9fddcc374" />
+      <ComponentRef Id="C88b8a565e2ec55b38fe30e02" />
+      <ComponentRef Id="Cb42183bf369831aa7601c003" />
+      <ComponentRef Id="C8f93877c7a7497b1524fc541" />
+      <ComponentRef Id="Ce7296b9396adb93657d60e76" />
+      <ComponentRef Id="C99ace564c49f84893b811379" />
+      <ComponentRef Id="Cd268f406a2be8577349636c2" />
+      <ComponentRef Id="C9458973fb50c09b9dcea8368" />
+      <ComponentRef Id="C84d6c9067a0dd5ecae562155" />
+      <ComponentRef Id="Ce17a0d02fef5cd015eafc877" />
+      <ComponentRef Id="Ca9cf3115917f0302d6e4aa3e" />
+      <ComponentRef Id="C14676bbe60f50b0cdfd44ba7" />
+      <ComponentRef Id="Cec480b8a5a7ebabaf2a2b3a9" />
+      <ComponentRef Id="Cef31c0d33b6f4c27727b0d74" />
+      <ComponentRef Id="Cb33e85c9bac5e9e615a7c395" />
+      <ComponentRef Id="C65ad777700edcb2504dc9c9c" />
+      <ComponentRef Id="C91c82467a8e3a39413fe6fbf" />
+      <ComponentRef Id="Ceae658ec2c4f907425689106" />
+      <ComponentRef Id="C006b39d2ce5197f845c4bbf3" />
+      <ComponentRef Id="Cabaa91c7544de2618be8f54f" />
+      <ComponentRef Id="C44bce8d96471a6d08548ec0b" />
+      <ComponentRef Id="Cb32ea0628bd14dc83743e295" />
+      <ComponentRef Id="Cbbaf0abdf268a01c53a31f1e" />
+      <ComponentRef Id="Cd0af782384f1f5f33d53cb13" />
+      <ComponentRef Id="Ce263c0e945618dc522b0172a" />
+      <ComponentRef Id="C1fa48e660e3ba28adfbf366c" />
+      <ComponentRef Id="C076d1157bb2f4a3668a73db8" />
+      <ComponentRef Id="C09814f3cdb5f96c6c1d66a2c" />
+      <ComponentRef Id="Cb478fcd2beb55b8904f445e9" />
+      <ComponentRef Id="C8f3488415ca01ef56433ba73" />
+      <ComponentRef Id="C659a83fa335b8c742916675d" />
+      <ComponentRef Id="C264bfe869a5e37c1861018cf" />
+      <ComponentRef Id="Ccc16ca79f1ddee94ac98cf1f" />
+      <ComponentRef Id="C7299c4021d8a92009d0cd71d" />
+      <ComponentRef Id="C2f6e67e898f323990b0e58de" />
+      <ComponentRef Id="C9622b201e5b11eea56859e6b" />
+      <ComponentRef Id="Ccc8811c117250f39fb337c90" />
+      <ComponentRef Id="C65cc79295b7f26d193c24180" />
+      <ComponentRef Id="C26d24b06ccdbe82de76be5e8" />
+      <ComponentRef Id="C258ff79e9b5df5c407e4f8e3" />
+      <ComponentRef Id="Cfd8170d2392cd2b7ea2a2742" />
+      <ComponentRef Id="Cea22fc7ef91d13f6fe4e2d9b" />
+      <ComponentRef Id="C3b7cfe5f6d3031dbbbd67ab2" />
+      <ComponentRef Id="Cd327da38f8fb42a64d4a67b5" />
+      <ComponentRef Id="C27555128fe51002d69847396" />
+      <ComponentRef Id="C33256abc85539978a4a2a8da" />
+      <ComponentRef Id="Cd2321cc99100a43ed459d997" />
+      <ComponentRef Id="Cab0021a1b14d051b9ac304c7" />
+      <ComponentRef Id="C1d376cbb606c0f12c2c352cb" />
+      <ComponentRef Id="C3a2abe199c18ebe8417a4c28" />
+      <ComponentRef Id="C1ed74dc89a82d26f52268c2f" />
+      <ComponentRef Id="C4bb6bd1a3d533717d9e13114" />
+      <ComponentRef Id="C8b0f92da22270fcf11fffa7c" />
+      <ComponentRef Id="Cf96908ca429226c406efcd01" />
+      <ComponentRef Id="C71ef331f60d6d38d9b0352a3" />
+      <ComponentRef Id="Cbe8713bb1c7ee9ec603620ed" />
+      <ComponentRef Id="C898748cc90827c070bcc00d6" />
+      <ComponentRef Id="C5065a4104b7cc505d3186e30" />
+      <ComponentRef Id="Cb2d67b6807df27635e32bfe1" />
+      <ComponentRef Id="Cf1551049ac13f606eb96e993" />
+      <ComponentRef Id="C6a931da447e043ece2b34395" />
+      <ComponentRef Id="C4c9c22479ec5ffe32e21a04e" />
+      <ComponentRef Id="C5a0a47897f9385a273afbd10" />
+      <ComponentRef Id="C50301e7f04ce8b444dbbb841" />
+      <ComponentRef Id="Ca92ac2081cff1dfd29ea4757" />
+      <ComponentRef Id="Cdf02cc9cd39d534a57d16e3e" />
+      <ComponentRef Id="Cf351fcd5d5adee7ced1016a2" />
+      <ComponentRef Id="C3caa2e10493f0becd76d16bf" />
+      <ComponentRef Id="C67f00e158cf79f1cc9823d66" />
+      <ComponentRef Id="C22e4941599a692126109d9c0" />
+      <ComponentRef Id="Cd382f9f9e4acde276f7b35fc" />
+      <ComponentRef Id="C947c981f5e166c47797e2477" />
+      <ComponentRef Id="C62eb876c7ea0ff8a455bdcce" />
+      <ComponentRef Id="Ca5a04e64deb6f21b21c4291e" />
+      <ComponentRef Id="C1e673d790917bc4f375181ce" />
+      <ComponentRef Id="Cdb976c780ce936608c4aeb8d" />
+      <ComponentRef Id="C57f0e68891963c282cee301d" />
+      <ComponentRef Id="C081701ba11ed783f5cf58280" />
+      <ComponentRef Id="C3b9097cd8f14bd7d585910a5" />
+      <ComponentRef Id="C35eb2b786c49f7236c123c33" />
+      <ComponentRef Id="C72b9b857065293ba7aa5ccb7" />
+      <ComponentRef Id="Cf79e90e83570316ab6ce45b5" />
+      <ComponentRef Id="C0ac99e77f3f1a0101d65e0ef" />
+      <ComponentRef Id="C46be653595b2dccd5c4cad96" />
+      <ComponentRef Id="Cb05390438df10cdca05922e7" />
+      <ComponentRef Id="C3b406b2e36a26a33e5a06f1d" />
+      <ComponentRef Id="C5fcf3a758966d884e66b8c07" />
+      <ComponentRef Id="Cfd7acfef3076a2122794569d" />
+      <ComponentRef Id="C6a22afea242564170585179f" />
+      <ComponentRef Id="C3d6ebe2feea9bb0d76d6c4cd" />
+      <ComponentRef Id="Cf642dcb222936fdbfc196ec9" />
+      <ComponentRef Id="C7f1bbebeda654bf272dab9e6" />
+      <ComponentRef Id="C64785cf1227dae50592a3709" />
+      <ComponentRef Id="C75b531cd091841ac237a2d5e" />
+      <ComponentRef Id="C0bb0f4c8072a0dc5a5909bff" />
+      <ComponentRef Id="C27bbdd130e5b0a9ef95ab26a" />
+      <ComponentRef Id="Cec4690909a5982fdd1c1359d" />
+      <ComponentRef Id="C8171a4fa76afaa5abadf0c6b" />
+      <ComponentRef Id="Cf50c7fc63f61690ece9320cd" />
+      <ComponentRef Id="C41fe03dcd2dac7d986a92e04" />
+      <ComponentRef Id="Cb984ce18bdfbcfa397dbcdb2" />
+      <ComponentRef Id="Cf11e10950092f437db4505ce" />
+      <ComponentRef Id="C62714b67230535abe97b2895" />
+      <ComponentRef Id="C484cffcba005425ae4f747c2" />
+      <ComponentRef Id="C891f0ed0b32b131b438d3837" />
+      <ComponentRef Id="Ce57ba408df2a7663e632964e" />
+      <ComponentRef Id="C568f0cbb508c49e1fbfeec65" />
+      <ComponentRef Id="Ce479bc079fc8c21ec8b55419" />
+      <ComponentRef Id="C187de234d339217a1fed87cf" />
+      <ComponentRef Id="Cbc4dfabc8aa0b6a167c5e53a" />
+      <ComponentRef Id="C2353e68bca991cee0a9534c6" />
+      <ComponentRef Id="C2857cc7db0751d9c9d3c01a2" />
+      <ComponentRef Id="C3178ad455de6a08e1bee7c72" />
+      <ComponentRef Id="C7ca19093a1293942887b8e80" />
+      <ComponentRef Id="C8c66df24863bb9736c4250c9" />
+      <ComponentRef Id="C58bbfd417302e527710e7cd2" />
+      <ComponentRef Id="Cbc5f2af83838747aa55c1b8e" />
+      <ComponentRef Id="C137265d3f5fce293dd2856f8" />
+      <ComponentRef Id="C40c15684035b909a22ed6d61" />
+      <ComponentRef Id="C0bd7b8e834d81aee2e99d5cc" />
+      <ComponentRef Id="Ca98b9c025b3ea75b6b3e88f9" />
+      <ComponentRef Id="C66cc0f5157b80c94dc06642d" />
+      <ComponentRef Id="C8b0191e5f66186dba406d1c7" />
+      <ComponentRef Id="Cc7149b61861b897a988a6058" />
+      <ComponentRef Id="C92c1ed800b872db97c9dbe86" />
+      <ComponentRef Id="C90aa5d71647b4997fb32399b" />
+      <ComponentRef Id="C466ca10dd1f53016fbcedbc6" />
+      <ComponentRef Id="Cff2467b843ec9e384202698d" />
+      <ComponentRef Id="C13a8893755ab1c92927677d8" />
+      <ComponentRef Id="Ced1357707cd3a1e9107bb158" />
+      <ComponentRef Id="Cce27edcda79b7337ce505cf9" />
+      <ComponentRef Id="C5b85f68de0cd42a1ad9f033e" />
+      <ComponentRef Id="C63540a9d6e66f99646082527" />
+      <ComponentRef Id="Cff48cd075a34dc41f48e33c7" />
+      <ComponentRef Id="Cb369f041f77ff3573f3cafb8" />
+      <ComponentRef Id="C2e8f86a7274bbc2b8d1409ee" />
+      <ComponentRef Id="C8d5c2d7303cea3c07fc9ea05" />
+      <ComponentRef Id="Cc07a187dec096f8bb0f8531a" />
+      <ComponentRef Id="C75a5be05dd61f160b85a6ef7" />
+      <ComponentRef Id="Cfffa1063271a35f9c361ef68" />
+      <ComponentRef Id="C43bac554eedc2f8db2e9f69f" />
+      <ComponentRef Id="C210421cf54bf26697e98cf8c" />
+      <ComponentRef Id="Cd6f8457c5d506ede03caa479" />
+      <ComponentRef Id="C56bab8c5ef8e1b27e6ad2f70" />
+      <ComponentRef Id="Cbdfa2f79a8d42b6b8422962f" />
+      <ComponentRef Id="Cb02f3d94d503bb3564f7a434" />
+      <ComponentRef Id="C9f6277c79a365171f9c3fde8" />
+      <ComponentRef Id="C1c7750ff84a42cb4290c5060" />
+      <ComponentRef Id="C4db77f36cf01c9b0efa91b7e" />
+      <ComponentRef Id="Cfcf15524aeadd6bbe9f6bbfb" />
+      <ComponentRef Id="Cbd7952c21dd4ce80a2733213" />
+      <ComponentRef Id="Cc3477efcc885fea43addb3ad" />
+      <ComponentRef Id="C47ef5eeecbba5c15008edf82" />
+      <ComponentRef Id="C60a73e5e6ce4f40fa84f8447" />
+      <ComponentRef Id="C2b229f72ef121cd022900f29" />
+      <ComponentRef Id="Cfd10d1349061260bf6d61380" />
+      <ComponentRef Id="Cd585bc374d16bc05512942f1" />
+      <ComponentRef Id="C915da2f13b60e1e875f10fd4" />
+      <ComponentRef Id="Cc8c426243acb1a0698160467" />
+      <ComponentRef Id="C4cb32f5aa2fb6011467d476e" />
+      <ComponentRef Id="C263026640d716e7ae004ba6d" />
+      <ComponentRef Id="C061634ce166ca2197b7aaa21" />
+      <ComponentRef Id="C268a6ec6ccf48d915f5dd8ff" />
+      <ComponentRef Id="C5da7deb43f742991075c8111" />
+      <ComponentRef Id="Cf3dbbecfdef645d58b5fe0c2" />
+      <ComponentRef Id="C2ee5e382592d74d4ca3ce8fa" />
+      <ComponentRef Id="C2da9076bc738830edd187486" />
+      <ComponentRef Id="C3de9c12bc4377f6b8ef881cf" />
+      <ComponentRef Id="C60b30e3f68f2d02b62cd603d" />
+      <ComponentRef Id="C20db08ddde21a48e341c9d77" />
+      <ComponentRef Id="Ca8c26c0a1af9b27fc5f9f81f" />
+      <ComponentRef Id="C75e430e2b136d8c38a28c527" />
+      <ComponentRef Id="C2bdd178253b461d4bdf8b0a0" />
+      <ComponentRef Id="C492f5e09b249b29ed6c7b9aa" />
+      <ComponentRef Id="C53fb49f2ed988ec5d5f6c515" />
+      <ComponentRef Id="Cab37bc9dd5309706f2411a74" />
+      <ComponentRef Id="C6233293e12a949bcb21f78a4" />
+      <ComponentRef Id="C7659bbb29d0543a3683ddd66" />
+      <ComponentRef Id="Cf57a9a391dd61e1cb25cc0dc" />
+      <ComponentRef Id="C87e6cda150ef7ac41f8c2c4b" />
+      <ComponentRef Id="Ce8562947d039a146247b2ee9" />
+      <ComponentRef Id="C9e23214fd80625a162b49e80" />
+      <ComponentRef Id="C9a4c171e383d33020b2541e0" />
+      <ComponentRef Id="C3d16373316536e8b1db2e4db" />
+      <ComponentRef Id="C4ec0b34648569249fde6cf83" />
+      <ComponentRef Id="C235b09624b6f65a1cf7e79d7" />
+      <ComponentRef Id="C3fa844d718841058d14d5f9b" />
+      <ComponentRef Id="Cbfce40334ad7c25439608a5b" />
+      <ComponentRef Id="C378ec86f3943aca936294b9c" />
+      <ComponentRef Id="C7ea38e8844c69012ab428353" />
+      <ComponentRef Id="Cea08eaeb9f0a4ed12081b7a0" />
+      <ComponentRef Id="C32deedc44bb5882b7a52a3cf" />
+      <ComponentRef Id="C936f028c392216d868c003a7" />
+      <ComponentRef Id="C08a338aa44d3adfe748d5c50" />
+      <ComponentRef Id="Cb020e0effb08920ed93cd1df" />
+      <ComponentRef Id="C2e8ce6948cdaac7821a3f866" />
+      <ComponentRef Id="Cb8df83ebf67e0b8547c4ab4c" />
+      <ComponentRef Id="C742f6478d939e4df692a1231" />
+      <ComponentRef Id="C5f3e262b6877eda066457e24" />
+      <ComponentRef Id="C1608cb077f6aeef30bd2d091" />
+      <ComponentRef Id="C9ef9b7de92b735dcf05a9c11" />
+      <ComponentRef Id="Cc22fef806ba47f6137be0b94" />
+      <ComponentRef Id="C7701a8d32e34bc6dce147fe8" />
+      <ComponentRef Id="C9f5c99c4c0437ddc224a4daa" />
+      <ComponentRef Id="C46fab460b8e71914c3ddfc9c" />
+      <ComponentRef Id="C826a628b3eaf671a106e27e0" />
+      <ComponentRef Id="Cf46f8d42e01ff3165873cea0" />
+      <ComponentRef Id="C034b1532730a824dcc49cf02" />
+      <ComponentRef Id="C777f3785b9e04b61ee8995af" />
+      <ComponentRef Id="C353a1f2bd5fd3cfcca0248f2" />
+      <ComponentRef Id="Cf54746558c893280eb4f4313" />
+      <ComponentRef Id="C0d6020323eb475d72b3b04eb" />
+      <ComponentRef Id="Cb399768039b2a904e9d4192c" />
+      <ComponentRef Id="Ccd9f7d40dec26ca0da16c577" />
+      <ComponentRef Id="Cc34ba8bd9dcd19fd51819bfc" />
+      <ComponentRef Id="C34e0e0f91a8b843bf24c1648" />
+      <ComponentRef Id="Cde862f5901b23a1c592f77dd" />
+      <ComponentRef Id="Cd225dedb651e92b6febb3864" />
+      <ComponentRef Id="C3b83e9ad9ec45d1508e25efd" />
+      <ComponentRef Id="C8619deae3c84fd07d524e8c5" />
+      <ComponentRef Id="C7599359241c303fbb14f151f" />
+      <ComponentRef Id="C1631e03083fbd34dd6d941a7" />
+      <ComponentRef Id="Ce899c23d687aa8c9a97106e7" />
+      <ComponentRef Id="C00b891b0992a9fcbbe7001fc" />
+      <ComponentRef Id="C62dafbdc5db4e6f4b9cfcf5d" />
+      <ComponentRef Id="C6e121b5392b96140f13824de" />
+      <ComponentRef Id="C58d827bea77f20aaf0e10d9e" />
+      <ComponentRef Id="C6582959c1f3084b7b93ad29c" />
+      <ComponentRef Id="Cb8e37c2393ef075b4b908981" />
+      <ComponentRef Id="Ce3728ec7b186f3e2446bc63d" />
+      <ComponentRef Id="C93fb3a32595dc92288157c2f" />
+      <ComponentRef Id="C110d5c4c87e67c376cc77d15" />
+      <ComponentRef Id="Cd5ffd8db42bc94db7b16db4e" />
+      <ComponentRef Id="C3bdd069d0269c4a6c8c89179" />
+      <ComponentRef Id="Ce2d27cdd342324bdc71b733b" />
+      <ComponentRef Id="C3f0cd01c0062c7a89f091b62" />
+      <ComponentRef Id="C234c0711918fef65bcdcc92c" />
+      <ComponentRef Id="Cda8d1ada70b55950901fb630" />
+      <ComponentRef Id="C9e43433628817cb8b580ce59" />
+      <ComponentRef Id="C4bfa9dacb0e0c803548494f3" />
+      <ComponentRef Id="C3b049f1a354bf522c1f3e0c7" />
+      <ComponentRef Id="C9fb0016401f91d192218370b" />
+      <ComponentRef Id="Cbe1895666fcbc771ff79300f" />
+      <ComponentRef Id="C45d7f331ebcd0d7e9c1c9e31" />
+      <ComponentRef Id="C5fc2e9c7f514d43aa46246cf" />
+      <ComponentRef Id="Cc6366ce287f19af2daad1509" />
+      <ComponentRef Id="Cdb73f0861a5ac62d50297edd" />
+      <ComponentRef Id="Ca9881976dee52b3136d98aaf" />
+      <ComponentRef Id="Cae6a67868ff667183eceb2a6" />
+      <ComponentRef Id="Ce2838bca8c49687f2f7ceb68" />
+      <ComponentRef Id="C79a11997bdf572a77f281936" />
+      <ComponentRef Id="C2841bdccf7f3f4311f25ea59" />
+      <ComponentRef Id="Ca6913a1e4a35732a0a00ff5e" />
+      <ComponentRef Id="C5d45e337802de6358a6c994f" />
+      <ComponentRef Id="Cb1fcfd2e083524c54d70f41f" />
+      <ComponentRef Id="C8eceb64e266ab5613c60003e" />
+      <ComponentRef Id="Cda092a56320e948be1824708" />
+      <ComponentRef Id="Cab5cbf6aede7689cf4aa7b81" />
+      <ComponentRef Id="C4ac2f3d229f7388bb8d53917" />
+      <ComponentRef Id="C9d16cce941da9f665413a43a" />
+      <ComponentRef Id="C830953e3847e05eeda1bad65" />
+      <ComponentRef Id="Cb248c4b713f48b0bec5bcf69" />
+      <ComponentRef Id="Cd40d77b3d4322bb6264d05a5" />
+      <ComponentRef Id="C5f25c7d2fec65cdd764a9666" />
+      <ComponentRef Id="Cb79fb89b49394a693d83cdea" />
+      <ComponentRef Id="C81aa6bd5d4da8fc84bdf878a" />
+      <ComponentRef Id="Cacc5469555814bce31c42808" />
+      <ComponentRef Id="Cdcd159eaddc9ab5cf3b608b3" />
+      <ComponentRef Id="C69685c84f96c645dfaa36159" />
+      <ComponentRef Id="Cd79316b4fec82239654e94db" />
+      <ComponentRef Id="C9ad58849b214741ad3d4e019" />
+      <ComponentRef Id="C961d6c15d2c3b644839ffb93" />
+      <ComponentRef Id="C4335ed908842cebdb7aeb7e0" />
+      <ComponentRef Id="Cda03ea7282762bba035b3d41" />
+      <ComponentRef Id="C3b62311f785493d1e942b753" />
+      <ComponentRef Id="C282c7b501332fdc4ff0a6778" />
+      <ComponentRef Id="C82213c2eb974ac9fb6378976" />
+      <ComponentRef Id="C4c66d29a2943f5c364771f7f" />
+      <ComponentRef Id="C456a64637cd26536226834d0" />
+      <ComponentRef Id="C2c8b045d6b80e8f197b6e1c5" />
+      <ComponentRef Id="Cb8edce13063659cbb5555f26" />
+      <ComponentRef Id="Ca826f90e349623a0033ef1aa" />
+      <ComponentRef Id="C6fd0689dd807c4ccc0545efd" />
+      <ComponentRef Id="C718103b9f63fdbdff8a481ba" />
+      <ComponentRef Id="C225c94f7f0e2e78c1f728303" />
+      <ComponentRef Id="C598919f34c82c14c7a459f30" />
+      <ComponentRef Id="Cc6e1320651f6ae26cee1317a" />
+      <ComponentRef Id="C9d580202769d8d8ae5d2a503" />
+      <ComponentRef Id="C1db269521edcffbf68a8d329" />
+      <ComponentRef Id="C8425e53aa7e0ca481abf0dd1" />
+      <ComponentRef Id="C300b9d34786a408900436a66" />
+      <ComponentRef Id="C2e00fd67756c9c9cb6fac927" />
+      <ComponentRef Id="C03068c1ee8b432c503393aee" />
+      <ComponentRef Id="C6caa1d8d9c9cb5a4e9f1b271" />
+      <ComponentRef Id="C8584370571b10155bfd7cdb1" />
+      <ComponentRef Id="C2ba78ffa6c094efb4e8556c8" />
+      <ComponentRef Id="C2722433c33ff58fbe77f97b5" />
+      <ComponentRef Id="Ccce8594242a77103b285d920" />
+      <ComponentRef Id="C34a383a925ac44e6527b71ca" />
+      <ComponentRef Id="C7cb6ad8f5bd095f1e5f4cdc8" />
+      <ComponentRef Id="C065d9181251c8c6e07e54031" />
+      <ComponentRef Id="C6e6a039b1f2fda99bef9ff97" />
+      <ComponentRef Id="C8edc9a9f237fcd039a723e16" />
+      <ComponentRef Id="C064ac5b625a19a83071177b8" />
+      <ComponentRef Id="Cac35a2df890b4281603f0a9b" />
+      <ComponentRef Id="C318b4a32217d9dacd4b62ef1" />
+      <ComponentRef Id="C1f0cdf4cec17502e0b3a45ab" />
+      <ComponentRef Id="Cf1c3e47c864ea68411a26483" />
+      <ComponentRef Id="C6f0e0d750c196a83454a662a" />
+      <ComponentRef Id="C17504da79a29633c0ed51b4c" />
+      <ComponentRef Id="Cc6198a74d2e35a4b8067ddbf" />
+      <ComponentRef Id="C519bd371300cda2dfc2e0d63" />
+      <ComponentRef Id="C97d2cf3ac1a84c02b0fad226" />
+      <ComponentRef Id="C0d9a00a9ee0809ed1f76c62a" />
+      <ComponentRef Id="Ccc2e50b1bdfedce29a846c62" />
+      <ComponentRef Id="C2c6e07ed10d0087264915fe1" />
+      <ComponentRef Id="C7ae1d6dac722c00a6980a137" />
+      <ComponentRef Id="C848e3833d746260a6c71d5b3" />
+      <ComponentRef Id="C3bfd75ed45329d968a7ea787" />
+      <ComponentRef Id="C01c90f6137893e502c28817f" />
+      <ComponentRef Id="C33edb3e7e9403297b796bb76" />
+      <ComponentRef Id="C47d2f091ab20dd60b3e6de77" />
+      <ComponentRef Id="C35e1c56052c4f21e08326587" />
+      <ComponentRef Id="C03384cc72a2dc0f70896986b" />
+      <ComponentRef Id="C2ecee8e43c99974f6e168234" />
+      <ComponentRef Id="C229b4372282085574e84e968" />
+      <ComponentRef Id="C38306c5eef4247101b2fdc35" />
+      <ComponentRef Id="C99ef22eff2a1dd378d438325" />
+      <ComponentRef Id="C2afb9428504a68077e1d4050" />
+      <ComponentRef Id="C0b8328a481b825d84781664a" />
+      <ComponentRef Id="C0bace2f7c06b4e64cc600f4d" />
+      <ComponentRef Id="Ca39542227c50eaf84af11b2e" />
+      <ComponentRef Id="Cb6a77608883954b6f1682e8d" />
+      <ComponentRef Id="C0c371bec4a3b0d594be73074" />
+      <ComponentRef Id="Cc166b0bd0b14091a5ae2053b" />
+      <ComponentRef Id="C14b3ad8a88f551321ec0eeae" />
+      <ComponentRef Id="C07c26826e9caca1ad6a67169" />
+      <ComponentRef Id="C13c1aef6748394d6454c7b56" />
+      <ComponentRef Id="C0b0965d16d1fe575223c4e3b" />
+      <ComponentRef Id="C05de5adcb1889d1c816fa40a" />
+      <ComponentRef Id="C0add4f439e2837dab53f8375" />
+      <ComponentRef Id="Ca5f3999d3b41ffed18efd98d" />
+      <ComponentRef Id="Ce65c5cd63dcb1a818294218d" />
+      <ComponentRef Id="C3332c67a9a54d5b063cfbd7c" />
+      <ComponentRef Id="Ccd38e3ca3cdaf0d3d502f3d7" />
+      <ComponentRef Id="C08526cfd4bc061cb6a9c6b3f" />
+      <ComponentRef Id="Ce81561933da8ff72a8dce88d" />
+      <ComponentRef Id="C43fe7d078a98f2ef54305503" />
+      <ComponentRef Id="C2d66fbbd619a55d51de2ae66" />
+      <ComponentRef Id="C30f7933ef5c5b9d2cc142fe3" />
+      <ComponentRef Id="C7d9248e172fede6ec52ea93f" />
+      <ComponentRef Id="C8875f2439fa006b4bffdbe75" />
+      <ComponentRef Id="C58a447a20300d6bffba6e549" />
+      <ComponentRef Id="C4b7290ba03e62274a0d5f45f" />
+      <ComponentRef Id="C0cd2cd88369417e6fe26c293" />
+      <ComponentRef Id="Cd391b440baeb3fdf202d1e4e" />
+      <ComponentRef Id="C216257adb8fd5f8c62c9d83b" />
+      <ComponentRef Id="C2a711dd71e5a4e7ac1cf6f3e" />
+      <ComponentRef Id="Ce7c05dff2fc7ed8cb55853b2" />
+      <ComponentRef Id="C28c3caac290190cfec919f63" />
+      <ComponentRef Id="Cc345561d3f7d946808afebda" />
+      <ComponentRef Id="C0e8fd43b53e16fb4164ef6cf" />
+      <ComponentRef Id="Ce5e9fe8052c1a92e5314a901" />
+      <ComponentRef Id="Cf3e343a5cda311c8563a784c" />
+      <ComponentRef Id="Ce4ef3019dad947de0dc5ffc9" />
+      <ComponentRef Id="Cfb3049d83436ff3e21f1e07d" />
+      <ComponentRef Id="Caf8eb2203602b88f8130cc0f" />
+      <ComponentRef Id="C52ab13e75318396470099f24" />
+      <ComponentRef Id="C1ed2988760d7fcc950312c09" />
+      <ComponentRef Id="C2ca315dfcb6ff0c830001d1c" />
+      <ComponentRef Id="Ce20d30723c943c040c56655b" />
+      <ComponentRef Id="Cb3ee74b4a5d835357e80e865" />
+      <ComponentRef Id="C000e87e32e5d85ecc872a05c" />
+      <ComponentRef Id="Cdef0dc87d41b6d1d5c9ca3a1" />
+      <ComponentRef Id="C75b891bf0eeb9719b0d64f3e" />
+      <ComponentRef Id="Ca90f76591e8ccfbee847f75d" />
+      <ComponentRef Id="Cb535c641057eb469500bca66" />
+      <ComponentRef Id="Ce9cd425341f4905cbce2e2b1" />
+      <ComponentRef Id="C286021082590750b6552792e" />
+      <ComponentRef Id="C131b84689246cc0746b79455" />
+      <ComponentRef Id="C07ed1037696aebb56606a059" />
+      <ComponentRef Id="Cd998a81b81867dcc1f10b713" />
+      <ComponentRef Id="Cf4bfa7117dbb7b41fd748fb8" />
+      <ComponentRef Id="C029379dda79082031d96a7c5" />
+      <ComponentRef Id="C107c022dc18d68ccf9e61057" />
+      <ComponentRef Id="C0460d98fce3c3e1cdf43a1d4" />
+      <ComponentRef Id="C416ac565b41f8debd3363ed1" />
+      <ComponentRef Id="C7d588a9ec287f5a21d14adc2" />
+      <ComponentRef Id="Cfe2c7b90f8212d889f81cbb1" />
+      <ComponentRef Id="Cfc714d09a1a7f41c870d1f0a" />
+      <ComponentRef Id="C30c12a353da901cf0ccd6dd6" />
+      <ComponentRef Id="C6231ef293ef9b2cb7efc514b" />
+      <ComponentRef Id="Ccd2434c99280e0936f93e0ae" />
+      <ComponentRef Id="C6af91a4cf88c447b2f065527" />
+      <ComponentRef Id="Ce21af76e6babb0c8856f160d" />
+      <ComponentRef Id="Cdb94945682845d2b347e9a55" />
+      <ComponentRef Id="C8f4c530b83f5705631225994" />
+      <ComponentRef Id="C74699f71bc3435e500fde93c" />
+      <ComponentRef Id="C8de6446cf04f42f85af64e2c" />
+      <ComponentRef Id="Cd6e248b0bded2f4a29468faf" />
+      <ComponentRef Id="C0ee65d175aad8e5b92c505d6" />
+      <ComponentRef Id="C99529030e3f7a6f1360aff81" />
+      <ComponentRef Id="C0535827f2d75539047c846a5" />
+      <ComponentRef Id="C5490960ac3ff319f4861f5bb" />
+      <ComponentRef Id="C15097f67179e274998bca2e7" />
+      <ComponentRef Id="Cd5035ec4b740b8dbf1cb20ca" />
+      <ComponentRef Id="C97c358bbe829029ae001b10e" />
+      <ComponentRef Id="Caf2887a093f699b5216f63b2" />
+      <ComponentRef Id="C0f734056a02dd5eb33a48a7d" />
+      <ComponentRef Id="Ceab888ed741e624eb839d63b" />
+      <ComponentRef Id="C34c22b7d9c8f67be807ed384" />
+      <ComponentRef Id="Cb343e42c96faad8cdbfe43e7" />
+      <ComponentRef Id="C5d4edcb4877463a63712c72b" />
+      <ComponentRef Id="Cd7f76deaaa4c50e46af1414f" />
+      <ComponentRef Id="C674c49e956f6fcc1fe1780e9" />
+      <ComponentRef Id="C338831900dbb7b66fac930af" />
+      <ComponentRef Id="Ca7b60d0ba6b295ca81e9d3d1" />
+      <ComponentRef Id="C013f932aeecd2be4374ed145" />
+      <ComponentRef Id="C3c4cfea4a52fbe15b548d671" />
+      <ComponentRef Id="C00a344b1abe2198e39b2f693" />
+      <ComponentRef Id="Cd1f8aaf58863f3e6255e8a89" />
+      <ComponentRef Id="C797ec26d68c357310f6dd511" />
+      <ComponentRef Id="C976424a3da46e1376232d25c" />
+      <ComponentRef Id="C6e00ca5b74dee67b1b8bdcca" />
+      <ComponentRef Id="C7b1e3ea923bf1e9b1d960961" />
+      <ComponentRef Id="C3c9d3f8a377c4993eef7d128" />
+      <ComponentRef Id="C523171aca922d123234f5a13" />
+      <ComponentRef Id="Ca44ce68a880e6fd2e149a67c" />
+      <ComponentRef Id="C101cf2c4b59e279353ef68be" />
+      <ComponentRef Id="C0bc17f67bce8649e3044feb0" />
+      <ComponentRef Id="C9ca6d8a7268691aa09481941" />
+      <ComponentRef Id="Ca32dd62f7f544bc814506a2b" />
+      <ComponentRef Id="Ce29d9b30a33c6bfdce24ba5c" />
+      <ComponentRef Id="C5d63b55c030eb504d5f2fb65" />
+      <ComponentRef Id="C5ed89fbc77ead1bb2a684458" />
+      <ComponentRef Id="Cb8d40ca500110a13862ab644" />
+      <ComponentRef Id="Cb9acf51749377896eadb020f" />
+      <ComponentRef Id="Cbf39141758b77d8b496bf821" />
+      <ComponentRef Id="Cb91ae4dcff7a6dbd8dc8c654" />
+      <ComponentRef Id="C6d3d63c0e72285a8c68c52c3" />
+      <ComponentRef Id="Cd1feb79c1a33e65d669cd1e7" />
+      <ComponentRef Id="C03e2522c6eb348eedce9f464" />
+      <ComponentRef Id="C285d8884c64a5afcd4d1a0ba" />
+      <ComponentRef Id="C0114669c49a1f29b734d5a15" />
+      <ComponentRef Id="C7164b3d5df5eed520b60c1d8" />
+      <ComponentRef Id="Cd307a8f0df7c2033429385c8" />
+      <ComponentRef Id="C7c460ee60f108036b5554384" />
+      <ComponentRef Id="C5d533d539a7c9d9c812a3c99" />
+      <ComponentRef Id="C5bcfc899d798de4018285cc9" />
+      <ComponentRef Id="C04a5daa15b7a0f563d2a4ebb" />
+      <ComponentRef Id="C2eee32f235ebd327011a16de" />
+      <ComponentRef Id="C126baa4ed27c83a0f1d5c68f" />
+      <ComponentRef Id="C6187ce3ae0a2d35617c60409" />
+      <ComponentRef Id="Cedc1add8071ac61ece064002" />
+      <ComponentRef Id="C22df9fa8de2f68098c9937ff" />
+      <ComponentRef Id="Cbdd20181b6fa13048fb25923" />
+      <ComponentRef Id="Cabd156ded0ea60ede750af39" />
+      <ComponentRef Id="C008624c0069c7c211e937a03" />
+      <ComponentRef Id="C6a72628464e41aad320b9ae2" />
+      <ComponentRef Id="C55814320692079d103a339f2" />
+      <ComponentRef Id="C19d6a78365095d83fefda05a" />
+      <ComponentRef Id="Cdb16f6ff1f5dad243ee0a666" />
+      <ComponentRef Id="C15858ca700033350bda2e666" />
+      <ComponentRef Id="C6ead80a4269fbb90e67373bf" />
+      <ComponentRef Id="Cce7b90bfec5971cdfdab9ae7" />
+      <ComponentRef Id="Cb979d4bd777b8b984b876d1f" />
+      <ComponentRef Id="C3a3366c05f392188be606a86" />
+      <ComponentRef Id="Cfe01ea026cf0365f366235f6" />
+      <ComponentRef Id="Cb828b568d3fc71fe6d5427f9" />
+      <ComponentRef Id="Cbfff0793cfab3ec638a0695d" />
+      <ComponentRef Id="C3125866e7d769624f81fe80b" />
+      <ComponentRef Id="Cc4174528ccfa24a731f1b96d" />
+      <ComponentRef Id="C63f87ca17959cb31fe9e012b" />
+      <ComponentRef Id="C008b58bf6b5f7de4d627d7bd" />
+    </Feature>
+    <StandardDirectory Id="DesktopFolder" />
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="AppMenuFolder" Name="Biblia.Web (x86)" />
+    </StandardDirectory>
+  </Package>
+</Wix>

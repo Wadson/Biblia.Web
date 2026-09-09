@@ -1,0 +1,9 @@
+
+Algorithm : SHA256
+Hash      : E1157CDA1802123C294668C5796A9398E762AC4E5955637E82DD9BB1E5DA2110
+Path      : D:\Publicacao\Biblia.Web\Biblia.Web.Core.dll
+
+Algorithm : SHA256
+Hash      : E1157CDA1802123C294668C5796A9398E762AC4E5955637E82DD9BB1E5DA2110
+Path      : D:\Projetos\Biblia.Web\tools\IntegratedQa\bin\Release\net10.0\Biblia.Web.Core.dll
+

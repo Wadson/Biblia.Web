@@ -161,6 +161,32 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
         Assert.Contains("3 Temas • 30 Referências", Text(pdf));
     }
 
+    [Fact]
+    public async Task BlockPrefixesAreUniqueIndentedAndIndependentAcrossConcurrentReports()
+    {
+        var longText=string.Join("\n",Enumerable.Range(1,95).Select(i=>$"LinhaQA{i:D3} fé e esperança."));
+        ThemeReportContentItem Block(string text,TextMarkerStyle marker)=>new(null,new(text,new("#172033","#EAF2FF",12,marker,true,true)));
+        ThemeReportContentItem[] mixed=[Block("PrimeiroQA\nSegundaQA",TextMarkerStyle.Numbered),new(Reference(1),null),Block("PontoQA",TextMarkerStyle.Bullet),Block(longText,TextMarkerStyle.OrdinalNumbered),Block("FimQA",TextMarkerStyle.Numbered)];
+        var report=Report(new ThemeVerseReportSection(Theme(1),[Reference(1)],mixed,ThemeOrderingMode.Manual));
+        var paths=await Task.WhenAll(Generate(report),Generate(report));
+        foreach(var path in paths){
+            using var pdf=PdfDocument.Open(path);var text=Compact(Text(pdf));
+            Assert.Contains("1.PrimeiroQA",text);Assert.Contains("2ºLinhaQA001",text);Assert.Contains("3.FimQA",text);
+            Assert.Single(Regex.Matches(text,"2º"));Assert.DoesNotContain("2.SegundaQA",text);
+            Assert.True(pdf.NumberOfPages>=3);Assert.True(pdf.TryGetBookmarks(out _));
+            for(var i=1;i<=95;i++)Assert.Single(Regex.Matches(text,$"LinhaQA{i:D3}"));
+            foreach(var page in pdf.GetPages()){
+                Assert.Contains($"Página {page.Number} de {pdf.NumberOfPages}",page.Text);
+                Assert.All(page.Letters,l=>{Assert.InRange(l.BoundingBox.Left,39,557);Assert.InRange(l.BoundingBox.Bottom,12,803);});
+                var words=page.GetWords().Where(w=>w.Text.StartsWith("LinhaQA")).ToArray();
+                if(words.Length>1)Assert.All(words,w=>Assert.InRange(Math.Abs(w.BoundingBox.Left-words[0].BoundingBox.Left),0,.1));
+            }
+            Assert.Contains(pdf.GetPages().SelectMany(p=>p.Letters),l=>l.Value=="º");
+        }
+        var output=Environment.GetEnvironmentVariable("BIBLIATEMA_PDF_QA_DIR");
+        if(output is not null){Directory.CreateDirectory(output);File.Copy(paths[0],Path.Combine(output,"blocos-multiplas-paginas.pdf"),true);}
+    }
+
     public void Dispose() { if (Directory.Exists(root)) Directory.Delete(root, true); }
     private sealed class TestPaths(string root) : IAppPaths
     {

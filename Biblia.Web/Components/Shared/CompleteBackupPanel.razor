@@ -1,0 +1,22 @@
+@implements IAsyncDisposable
+@inject Biblia.Application.Interfaces.IBackupService Backup
+@inject Biblia.Application.Interfaces.IAppPaths Paths
+<section class="panel"><h2>Backup e restauração</h2>
+<p>O backup completo inclui temas, referências, observações, blocos, ordem e todas as versões instaladas. Até 128 versões, 256 MB por Bíblia e 8 GB descompactados.</p>
+<p class="muted">Ao restaurar um backup completo, o catálogo volta ao estado salvo. Arquivos anteriores e versões extras ficam preservados para recuperação, sem aparecer como versões instaladas. Backups antigos não contêm Bíblias: os arquivos locais são preservados e reconciliados por código.</p>
+@if(error is not null){<div class="notice error" role="alert">@error</div>}@if(note is not null){<div class="notice success" role="status">@note</div>}
+<button class="btn primary" disabled="@busy" @onclick="Create">Criar backup completo</button>
+@if(download is not null){<a class="btn success" href="@($"/download/backup-file?name={Uri.EscapeDataString(Path.GetFileName(download))}")">Baixar backup gerado</a>}
+<div class="form-grid"><label>Restaurar arquivo ZIP<InputFile OnChange="Choose" accept=".zip" disabled="@busy" /></label>
+@if(upload is not null){<ConfirmButton Label="Restaurar" Title="Restauração crítica" Message="Deseja restaurar este backup completo? Um backup de segurança será criado. Temas e catálogo voltarão ao estado salvo; arquivos anteriores serão preservados para recuperação." Summary="@filename" Danger="true" Disabled="@busy" OnConfirm="Restore" />}</div>
+@if(busy){<p role="status">@stage</p><button class="btn secondary" @onclick="()=>cts.Cancel()">Cancelar processamento</button>}
+</section>
+@code{
+ string? upload,filename,download,error,note;string stage="";bool busy;CancellationTokenSource cts=new();
+ async Task Run(string status,Func<Task> action){if(busy)return;busy=true;stage=status;error=note=null;cts.Dispose();cts=new();try{await action();}catch(Exception ex){error=ex is OperationCanceledException?"Operação cancelada; estado anterior preservado.":ex.Message;}finally{busy=false;}}
+ Task Create()=>Run("Criando e validando backup…",async()=>{var result=await Backup.CreateAsync(cts.Token);download=result.Path;note="Backup completo criado.";});
+ Task Choose(InputFileChangeEventArgs e)=>Run("Recebendo ZIP…",async()=>{var file=e.File;if(!Path.GetExtension(file.Name).Equals(".zip",StringComparison.OrdinalIgnoreCase)||file.Size>8L*1024*1024*1024)throw new InvalidDataException("Selecione um ZIP de até 8 GB.");Cleanup();filename=Path.GetFileName(file.Name);var temp=Path.Combine(Paths.CacheDirectory,"upload-"+Guid.NewGuid().ToString("N")+".zip");try{await using(var input=file.OpenReadStream(8L*1024*1024*1024,cts.Token))await using(var output=File.Create(temp))await input.CopyToAsync(output,cts.Token);upload=temp;var info=await Backup.ValidateAsync(upload,cts.Token);note=info.BackupFormatVersion==1?"Backup antigo válido: não contém arquivos de versões; arquivos locais serão preservados.":"Backup completo validado. Confirme para restaurar.";}catch{if(File.Exists(temp))File.Delete(temp);upload=null;throw;}});
+ Task Restore()=>Run("Restaurando e validando banco e versões…",async()=>{if(upload is null)return;var info=await Backup.ValidateAsync(upload,cts.Token);await Backup.RestoreAsync(upload,cts.Token);Cleanup();note=info.BackupFormatVersion==1?"Backup antigo restaurado. Ele não continha Bíblias; arquivos locais foram preservados.":"Backup completo restaurado e consultas bíblicas validadas.";});
+ void Cleanup(){if(upload is not null&&File.Exists(upload))File.Delete(upload);upload=null;}
+ public ValueTask DisposeAsync(){cts.Cancel();Cleanup();cts.Dispose();return ValueTask.CompletedTask;}
+}

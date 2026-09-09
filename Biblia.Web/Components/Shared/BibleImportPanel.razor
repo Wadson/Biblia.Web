@@ -1,0 +1,26 @@
+@implements IAsyncDisposable
+@inject Biblia.Application.Interfaces.IBibleVersionImportService Importer
+@inject Biblia.Application.Interfaces.IAppPaths Paths
+<section class="panel">
+ <label class="btn primary">Adicionar versão bíblica<InputFile OnChange="Choose" accept=".sqlite,.db" disabled="@busy" /></label>
+ @if(message is not null){<p role="status">@message</p>}
+ @if(error is not null){<div class="notice error" role="alert">@error</div>}
+ @if(path is not null){<p>Arquivo selecionado: @filename</p><div class="form-grid"><label>Código<input maxlength="20" @bind="code" /></label><label>Nome da versão<input maxlength="120" @bind="name" /></label></div><p class="muted">Informe o código e o nome reais da tradução. Arquivo limitado a 256 MB.</p><ConfirmButton Label="Importar versão" Title="Confirmar importação" Message="Deseja adicionar esta tradução? Nenhuma versão existente será sobrescrita." Summary="@($"{filename} · {code} · {name}")" Disabled="@busy" OnConfirm="Import" /><button class="btn secondary" disabled="@busy" @onclick="Cancel">Cancelar</button>}
+ @if(busy){<p role="status">@stage</p><button class="btn secondary" @onclick="()=>cancel.Cancel()">Cancelar processamento</button>}
+</section>
+@code{
+ [Parameter]public EventCallback<string> Imported{get;set;}
+ string? path,filename,message,error;string code="",name="",stage="";bool busy;CancellationTokenSource cancel=new();
+ async Task Choose(InputFileChangeEventArgs e)
+ {
+   if(busy)return;await Cancel();error=null;message=null;var file=e.File;
+   if(!new[]{".db",".sqlite"}.Contains(Path.GetExtension(file.Name),StringComparer.OrdinalIgnoreCase)||file.Size>256L*1024*1024){error="Selecione .sqlite ou .db de até 256 MB.";return;}
+   busy=true;stage="Recebendo arquivo…";cancel.Dispose();cancel=new();
+   var temp=Path.Combine(Paths.CacheDirectory,$"import-{Guid.NewGuid():N}{Path.GetExtension(file.Name)}");
+   try{Directory.CreateDirectory(Paths.CacheDirectory);await using(var input=file.OpenReadStream(256L*1024*1024,cancel.Token))await using(var output=File.Create(temp))await input.CopyToAsync(output,cancel.Token);path=temp;filename=Path.GetFileName(file.Name);code="";name="";}
+   catch(Exception ex){if(File.Exists(temp))File.Delete(temp);error=ex is OperationCanceledException?"Operação cancelada.":ex.Message;}finally{busy=false;}
+ }
+ async Task Import(){if(busy||path is null)return;busy=true;stage="Validando e instalando a versão…";error=null;try{if(string.IsNullOrWhiteSpace(code)||string.IsNullOrWhiteSpace(name))throw new InvalidOperationException("Informe código e nome da versão.");var result=await Importer.ImportAsync(path,code,name,cancel.Token);if(!result.Succeeded)throw new InvalidOperationException(result.Message);message=result.Message;await Imported.InvokeAsync(result.Version!.Code);await Cancel();}catch(Exception ex){error=ex is OperationCanceledException?"Importação cancelada.":ex.Message;}finally{busy=false;}}
+ Task Cancel(){if(path is not null&&File.Exists(path))File.Delete(path);path=null;return Task.CompletedTask;}
+ public async ValueTask DisposeAsync(){cancel.Cancel();await Cancel();cancel.Dispose();}
+}

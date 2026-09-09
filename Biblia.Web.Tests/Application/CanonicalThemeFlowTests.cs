@@ -118,7 +118,7 @@ public sealed class CanonicalThemeFlowTests
         var directory = new DirectoryInfo(AppContext.BaseDirectory);
         while (directory is not null)
         {
-            var path = Path.Combine(directory.FullName, "Biblia.Web.Web", "Content", "Bibles");
+            var path = Path.Combine(directory.FullName, "Biblia.Web", "Content", "Bibles");
             if (Directory.Exists(path)) return path;
             directory = directory.Parent;
         }

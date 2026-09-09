@@ -1,0 +1,11 @@
+@using Biblia.Domain.Entities
+<div class="theme-text-preview" style="@Style" aria-label="@Label">
+    @if(Prefix.Length>0){<span class="block-marker">@Prefix</span>}
+    <div class="block-body">@Block.Content</div>
+</div>
+@code {
+    [Parameter, EditorRequired] public ThemeTextBlock Block { get; set; } = default!;
+    [Parameter] public string Prefix { get; set; } = "";
+    [Parameter] public string? Label { get; set; }
+    string Style => FormattableString.Invariant($"color:{Block.Style.TextColorHex};background:{Block.Style.BackgroundColorHex};font-size:{Block.Style.FontSize}pt;font-weight:{(Block.Style.IsBold?600:400)};font-style:{(Block.Style.IsItalic?"italic":"normal")}");
+}

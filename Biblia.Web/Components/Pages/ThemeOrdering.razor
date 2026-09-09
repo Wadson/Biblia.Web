@@ -1,0 +1,22 @@
+@page "/temas/ordenacao"
+@rendermode InteractiveServer
+@inject Biblia.Application.Interfaces.IThemeService Themes
+@inject Biblia.Application.Interfaces.IThemeContentService Content
+<PageTitle>Ordenação dos temas e versículos</PageTitle>
+<PageHeader Title="Ordenação dos temas e versículos" Eyebrow="CONFIGURAÇÕES" />
+<p>Quando ativada, os versículos seguem a ordem de Gênesis a Apocalipse. Quando desativada, versículos e blocos de texto seguem a ordem definida manualmente na tela de vinculação.</p>
+<p class="muted">Ao voltar ao automático, os blocos mantêm suas posições na lista e somente os espaços dos versículos são reordenados. Novos itens são acrescentados ao final; no automático, a ordem bíblica dos versículos é reaplicada.</p>
+<a class="btn secondary" href="@(RequestedThemeId is >0?$"/temas/vincular-versiculos?themeId={RequestedThemeId}":"/temas/vincular-versiculos")">Voltar à vinculação</a>
+@if(error is not null){<div class="notice error" role="alert">@error</div>}
+<label class="field">Pesquisar tema<input @bind="query" @bind:event="oninput" /></label>
+<div class="table-wrap"><table><thead><tr><th>Tema</th><th>Ordenação</th><th>Ação</th></tr></thead><tbody>
+@foreach(var t in themes.Where(x=>x.Name.Contains(query,StringComparison.CurrentCultureIgnoreCase))){<tr><td>@t.Name</td><td>@(modes.GetValueOrDefault(t.Id)==ThemeOrderingMode.Manual?"Manual":"Automática pela Bíblia")</td><td>
+@if(modes.GetValueOrDefault(t.Id)==ThemeOrderingMode.Manual){<ConfirmButton Label="Ativar automática" Title="Restaurar ordem bíblica" Message="Ao ativar a ordenação automática, os versículos voltarão à ordem dos livros, capítulos e versículos da Bíblia. Deseja continuar?" Disabled="@busy" OnConfirm="()=>Change(t.Id,ThemeOrderingMode.Canonical)" />}
+else{<button class="btn secondary" disabled="@busy" @onclick="()=>Change(t.Id,ThemeOrderingMode.Manual)">Usar ordenação manual</button>}</td></tr>}
+</tbody></table></div>
+@code{
+ [SupplyParameterFromQuery(Name="themeId")]public long? RequestedThemeId{get;set;}
+ IReadOnlyList<Theme> themes=[];Dictionary<long,ThemeOrderingMode> modes=[];string query="";string? error;bool busy;
+ protected override async Task OnInitializedAsync(){themes=await Themes.SearchAsync(null);foreach(var t in themes)modes[t.Id]=(await Content.GetAsync(t.Id)).Mode;}
+ async Task Change(long id,ThemeOrderingMode mode){if(busy)return;busy=true;try{error=null;await Content.SetModeAsync(id,mode,true);modes[id]=mode;}catch(Exception ex){error=ex.Message;}finally{busy=false;}}
+}

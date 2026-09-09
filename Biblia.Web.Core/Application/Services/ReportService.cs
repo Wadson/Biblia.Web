@@ -11,7 +11,8 @@ public sealed class ReportService(
     IThemeRepository themes,
     IBibleVersionCatalogRepository versions,
     IBibleRepository bible,
-    IClock clock) : IReportService
+    IClock clock,
+    IThemeContentService? content = null) : IReportService
 {
     public async Task<ReportsOverview> GetOverviewAsync(CancellationToken ct = default)
     {
@@ -61,7 +62,16 @@ public sealed class ReportService(
                     string.Join(" ", passage.Verses.Select(x => $"{x.Verse} {x.Text}")), link.Observation,
                     saved.BookReferenceId, saved.Chapter, saved.VerseStart, saved.VerseEnd, version.Code));
             }
-            sections.Add(new(theme, items.OrderBy(x => BibleCanonicalOrder.Key(x)).ToArray()));
+            var ordered = items.OrderBy(x => BibleCanonicalOrder.Key(x)).ToArray();
+            if (content is null) sections.Add(new(theme, ordered));
+            else
+            {
+                var sequence = await content.GetAsync(theme.Id, ct);
+                var byId = items.ToDictionary(x => x.SavedReferenceId);
+                var mixed = sequence.Items.Select(x => x.ReferenceId is long id
+                    ? new ThemeReportContentItem(byId[id], null) : new ThemeReportContentItem(null,x.TextBlock)).ToArray();
+                sections.Add(new(theme,mixed.Where(x=>x.Reference is not null).Select(x=>x.Reference!).ToArray(),mixed,sequence.Mode));
+            }
         }
         return new("Temas e versículos", clock.UtcNow,
             sections.Count, sections.Sum(x => x.References.Count), sections);

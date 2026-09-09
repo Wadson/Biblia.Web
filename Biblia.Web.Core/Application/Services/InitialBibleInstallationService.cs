@@ -18,6 +18,7 @@ public sealed class InitialBibleInstallationService(
 {
     public async Task InstallAsync(CancellationToken cancellationToken = default)
     {
+        using var lease=await Biblia.Infrastructure.Files.FileOperationLease.AcquireAsync(paths.AppDataDirectory,cancellationToken);
         await versionManager.InitializeCatalogAsync(cancellationToken);
         var manifest=await manifestProvider.GetManifestAsync(cancellationToken);
         var directory=Path.Combine(paths.AppDataDirectory,"Bibles");
@@ -26,6 +27,9 @@ public sealed class InitialBibleInstallationService(
         foreach(var item in manifest.Versions)
         {
             cancellationToken.ThrowIfCancellationRequested();
+            var registered=await catalog.GetByCodeAsync(item.Code,cancellationToken);
+            if(registered is {IsInstalled:true,InstalledPath:not null}&&File.Exists(registered.InstalledPath)
+               &&string.Equals(await ComputeHashAsync(registered.InstalledPath,cancellationToken),item.Sha256,StringComparison.OrdinalIgnoreCase))continue;
             var destination=Path.Combine(directory,item.DatabaseFileName);
             if(File.Exists(destination)&&string.Equals(await ComputeHashAsync(destination,cancellationToken),item.Sha256,StringComparison.OrdinalIgnoreCase))
             {
@@ -67,7 +71,9 @@ public sealed class InitialBibleInstallationService(
                     ValidationMessage = string.Join(" ", issues), UpdatedAt = clock.UtcNow }, cancellationToken);
         }
 
-        await versionManager.SetActiveVersionAsync(manifest.DefaultVersionCode,cancellationToken);
+        var active=await versionManager.GetActiveVersionAsync(cancellationToken);
+        if(active is not {IsInstalled:true,IsEnabled:true}||active.ValidationStatus==BibleVersionValidationStatus.Incompatible)
+            await versionManager.SetActiveVersionAsync(manifest.DefaultVersionCode,cancellationToken);
     }
 
     private async Task RegisterInstalledAsync(string code,string path,BibleVersionValidationStatus status,string? message,CancellationToken token)

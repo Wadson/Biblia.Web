@@ -1,0 +1,23 @@
+﻿BIBLIA.WEB - WINDOWS X86 - AUTOSSUFICIENTE
+
+INSTALAR: execute o MSI correspondente ao processador do computador. O instalador
+inclui .NET, ASP.NET Core, SQLite, PDF, fontes, imagens locais e sete Biblias.
+Abra Biblia.Web pelo menu Iniciar ou atalho da area de trabalho.
+
+SEM INSTALAR: extraia TODO o ZIP e execute Biblia.Web.Web.exe.
+Nao mova apenas o EXE. Os arquivos desta pasta fazem parte do aplicativo.
+Nao e necessario instalar .NET, Visual Studio, IIS ou SQL Server.
+O aplicativo abre no navegador padrao em um endereco local 127.0.0.1.
+Requer Windows 10/11 atualizado e navegador moderno. Windows 7/8/8.1 nao suportados.
+O suporte oficial depende da edicao/ciclo de vida do Windows e do .NET 10.
+x64: Intel/AMD 64 bits. x86: Windows 32 bits. arm64: Windows ARM64.
+
+Os estudos sao criados separadamente em %LOCALAPPDATA%\BibliaTema.
+Atualizar ou desinstalar o programa nao deve apagar essa pasta.
+Antes de atualizar, feche o aplicativo e crie um backup nas Configuracoes.
+Os pacotes nao incluem temas, bancos pessoais ou versoes importadas de usuarios.
+
+Leitura das Biblias incluidas, temas, backup e PDF funcionam offline.
+Pesquisa/download de fotografias externas precisa de internet.
+O navegador e o proprio Windows continuam sendo requisitos do sistema.
+O pacote nao possui assinatura digital comercial.

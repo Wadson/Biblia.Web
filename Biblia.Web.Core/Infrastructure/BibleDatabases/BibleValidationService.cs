@@ -75,7 +75,9 @@ public sealed class BibleValidationService(ILogger<BibleValidationService> logge
             if (invalid > 0) issues.Add($"Versículos inválidos: {invalid}.");
             if (orphans > 0) issues.Add($"Referências órfãs: {orphans}.");
 
-            var status = issues.Count == 0 ? BibleVersionValidationStatus.Compatible : BibleVersionValidationStatus.Incompatible;
+            var status = issues.Count == 0 ? BibleVersionValidationStatus.Compatible
+                : issues.Count==1&&issues[0]=="Metadata 'name' ausente." ? BibleVersionValidationStatus.CompatibleWithCaveat
+                : BibleVersionValidationStatus.Incompatible;
             return new(status, Path.GetFileNameWithoutExtension(databasePath).ToUpperInvariant(), name, schemaVersion, books, verses, duplicates, issues);
         }
         catch (Exception ex) when (ex is SqliteException or IOException or UnauthorizedAccessException)

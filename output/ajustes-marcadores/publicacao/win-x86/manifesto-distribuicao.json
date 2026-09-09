@@ -1,0 +1,2764 @@
+{
+  "architecture": "x86",
+  "selfContained": true,
+  "runtime": {
+    "tfm": "net10.0",
+    "includedFrameworks": [
+      {
+        "name": "Microsoft.NETCore.App",
+        "version": "10.0.11"
+      },
+      {
+        "name": "Microsoft.AspNetCore.App",
+        "version": "10.0.11"
+      }
+    ],
+    "configProperties": {
+      "System.GC.Server": true,
+      "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
+      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false
+    }
+  },
+  "files": [
+    {
+      "path": "appico.ico",
+      "size": 100856,
+      "sha256": "3ce17b00716ffcdcfdf3e0e71df62bf50367ab3afc0dbcdfa0178565800b5e22"
+    },
+    {
+      "path": "appsettings.Development.json",
+      "size": 127,
+      "sha256": "73f95f9e0ceb205fc1c4dc50c07697fcfa29d7087868c2aef1d504cb38c771ec"
+    },
+    {
+      "path": "appsettings.json",
+      "size": 260,
+      "sha256": "7dd7cc5de8e051f6d33d7d1a3b9f46a9bf54b2963baa3cb1f9c24de49bc42afc"
+    },
+    {
+      "path": "aspnetcorev2_inprocess.dll",
+      "size": 332072,
+      "sha256": "9c341fe6cc77ca3b3a4f70d1b076742bc05fbc736b0bab54526c1bb9fb8bab2c"
+    },
+    {
+      "path": "Biblia.Web.Core.dll",
+      "size": 702976,
+      "sha256": "d9b71d6b3ea1895738992cc53cd1890f4ea0ffe6c73e701a40283d9820afa621"
+    },
+    {
+      "path": "Biblia.Web.Core.pdb",
+      "size": 93476,
+      "sha256": "c8051ff41e17fc5c236e90631ffe9166414e91ecc7a592e83b7dad3e994fdd32"
+    },
+    {
+      "path": "Biblia.Web.deps.json",
+      "size": 76771,
+      "sha256": "663e1a25122bb1018e22c4e28082a30eb781c52844ff9276095504541d7b4d6d"
+    },
+    {
+      "path": "Biblia.Web.dll",
+      "size": 303616,
+      "sha256": "5be4e680bc87931724974407b8e1261589f8667db368ed0384085425abe73713"
+    },
+    {
+      "path": "Biblia.Web.exe",
+      "size": 232960,
+      "sha256": "31284ec17d2730298b6c297e593d670f253fcacb1e72b8e93545ece081539342"
+    },
+    {
+      "path": "Biblia.Web.runtimeconfig.json",
+      "size": 501,
+      "sha256": "0b97981085832cbe36c8dc65ba64c912cc813f225ff5d86883bf220dc9c93be7"
+    },
+    {
+      "path": "Biblia.Web.ServiceDefaults.dll",
+      "size": 16896,
+      "sha256": "6ec36dbc41e2ce49bd2f4fe288f560f3f39f29692f1da06a737490e806753fbb"
+    },
+    {
+      "path": "Biblia.Web.ServiceDefaults.pdb",
+      "size": 23080,
+      "sha256": "929822f6ab7edba2548d9a160124fa68a767d2e0e07b67122bfbc39b2d2245b4"
+    },
+    {
+      "path": "Biblia.Web.staticwebassets.endpoints.json",
+      "size": 379537,
+      "sha256": "d9cd1549a20a1671c9ba63091e764ad9f745d084931fef5d0b5bc424ab85db81"
+    },
+    {
+      "path": "clretwrc.dll",
+      "size": 317776,
+      "sha256": "f68707a9c77fba53e0c5b64855c9cf0f228fec49a1d63e73ff1563747ae8e889"
+    },
+    {
+      "path": "clrgc.dll",
+      "size": 442152,
+      "sha256": "8bc9ef7b34a1b1ac5b47761cd637341dc7754c6d771c4e3b4d2b9f357c45b7dc"
+    },
+    {
+      "path": "clrjit.dll",
+      "size": 1711952,
+      "sha256": "e3c12b8d7bb3b996ef0b1b551a08a2f027e41a0a947587d02f13e3a3b6f2e382"
+    },
+    {
+      "path": "Content/Bibles/ACF.sqlite",
+      "size": 4517888,
+      "sha256": "b9af738eea2f01785e47d612371dbb590d3641106af768ee1a5961f62a6fed44"
+    },
+    {
+      "path": "Content/Bibles/ARA.sqlite",
+      "size": 4476928,
+      "sha256": "eede75c2a2beeb7e1a91bcd8df9325422cffcc1b3cc63e0bd65f49c5cc020964"
+    },
+    {
+      "path": "Content/Bibles/ARC.sqlite",
+      "size": 4513792,
+      "sha256": "7427c8da6eb1b99d7b500bbeef73088ed84314146fcd9d4d0b92bb401dcfc212"
+    },
+    {
+      "path": "Content/Bibles/AS21.sqlite",
+      "size": 4427776,
+      "sha256": "44c268f39802750ae495c9fca09e2f03c471b6769410f62193cb22d94d202eaf"
+    },
+    {
+      "path": "Content/Bibles/bible-versions.manifest.json",
+      "size": 2212,
+      "sha256": "0f93a271f9aa9ae968debed866345dc63e39b7b00b1a443a1c8bb369d6696771"
+    },
+    {
+      "path": "Content/Bibles/KJF.sqlite",
+      "size": 4681728,
+      "sha256": "dbeda15d6a17a97aeb52a21c557f89c40190faf32a2cdf96e36bfd45d1fd2da5"
+    },
+    {
+      "path": "Content/Bibles/NBV.sqlite",
+      "size": 5054464,
+      "sha256": "734f0d3f460a5cff644b6ede9e3eab23d011fb75a1ad64180a2c86176bdfdbca"
+    },
+    {
+      "path": "Content/Bibles/NVI.sqlite",
+      "size": 4534272,
+      "sha256": "7f65865f3660ea5c7bec30f8a7bb40d8d3d27a979755472cb2f00e16d0aa1198"
+    },
+    {
+      "path": "coreclr.dll",
+      "size": 3789096,
+      "sha256": "37ab08886951fe71ac0829eec5a5dae820155c55f1aac65489e8823a93e573d0"
+    },
+    {
+      "path": "createdump.exe",
+      "size": 59264,
+      "sha256": "151daa1f67541511025e67d89a5dc69d404a6c41e7c154f1bbf675e24963bc46"
+    },
+    {
+      "path": "e_sqlite3.dll",
+      "size": 1502720,
+      "sha256": "5ea34b0e209d5115b19ff56bc456ec9f9fa8b05ee373387b1f620d30c11bf1b2"
+    },
+    {
+      "path": "hostfxr.dll",
+      "size": 312104,
+      "sha256": "8cc954455c974401501223b1111ef4180ae59511bab69d734ec3261350bd4d22"
+    },
+    {
+      "path": "hostpolicy.dll",
+      "size": 315216,
+      "sha256": "6d4d71a3104921a18b02317602b7fbe82fca85eddb00e1ae11a54b71103f4db5"
+    },
+    {
+      "path": "LEIA-ME.txt",
+      "size": 1337,
+      "sha256": "0d3228f6d4e994aa2ca11baf47b8ace8b3a6f512209aa1be1006fbb8acced4d4"
+    },
+    {
+      "path": "libSkiaSharp.dll",
+      "size": 10653024,
+      "sha256": "72394b8a4d2e5f8f47804c9babbd952ff3d4892de35065b04ff0782c3c272d62"
+    },
+    {
+      "path": "libSkiaSharp.pdb",
+      "size": 91340800,
+      "sha256": "094f3ee0bd1a6718bc6019bdcdc7cb2d59a0136c73de51c3530243763892292e"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Antiforgery.dll",
+      "size": 108328,
+      "sha256": "88fd7ec0f617e3c9f26ec3ec269f2650918f525f00d62ae22fb80ce9f407b4e0"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Authentication.Abstractions.dll",
+      "size": 63272,
+      "sha256": "2d63ce46236289746873eaec6d95b74acb7fddb5f5a5e7642479cbebb9563a4b"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Authentication.BearerToken.dll",
+      "size": 71504,
+      "sha256": "9045f35b4e615f4f2ddc8e9422f29facd42604e16a0c66ab4c93dd7d1e5a26ed"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Authentication.Cookies.dll",
+      "size": 108368,
+      "sha256": "4f8f7ef93321bc42ccc640bc9449577d7de7bbd32545709f7d602101cea6ca56"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Authentication.Core.dll",
+      "size": 112424,
+      "sha256": "ea641042aa0fccfc204d235b5e8566d9063f9343f3d7f4fa3802c62653e75c64"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Authentication.dll",
+      "size": 141136,
+      "sha256": "fbcb46e632baf3469cb398829a0fbb022723105970e01bb6f3b3403f2a8828d9"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Authentication.OAuth.dll",
+      "size": 96080,
+      "sha256": "a7be935670ca4a2ee86934af68d22dc930eb31439d490e4e47f41035f708b482"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Authorization.dll",
+      "size": 112424,
+      "sha256": "82345fea4339cce2cb10b6a9b20bff9749d21301b6b33da766aa5fbe455c7de6"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Authorization.Policy.dll",
+      "size": 75600,
+      "sha256": "6403c9ac1594357977d5fd3f106fae0f39c9f4c20852ecbe193149593f7198a2"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Components.Authorization.dll",
+      "size": 59176,
+      "sha256": "c12ffbf8b3f8db6957d2fe39e03a50b2351141fa1c65c80ea2fdbaf51acf1f19"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Components.dll",
+      "size": 894800,
+      "sha256": "8efbbaaf3f645dc36bd23be1c738fbcb1230c6ae976d9476d5ceafe33380a1b5"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Components.Endpoints.dll",
+      "size": 657192,
+      "sha256": "e3a3857f74f605a141c4df95bce94d758761b2d6281ae5f94c99d06db93f5ce0"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Components.Forms.dll",
+      "size": 91984,
+      "sha256": "ffadbe75da5a8b425adeb3ca50b8d720d9dce62e476fa7b938babd417b193809"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Components.Server.dll",
+      "size": 874280,
+      "sha256": "620e914393091bb218c3fe2057c57e5d37bd9ad23043349a8d5a881b32c960bd"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Components.Web.dll",
+      "size": 399144,
+      "sha256": "e25c7709727857f9a9a3a2230be189c7126067c19b53d0fe20dad153a49e6ddf"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Connections.Abstractions.dll",
+      "size": 67408,
+      "sha256": "87786a809827663720ecd45194d7635cc276e23b27f3716ceeaf620caa482071"
+    },
+    {
+      "path": "Microsoft.AspNetCore.CookiePolicy.dll",
+      "size": 55080,
+      "sha256": "bc3d2e306677d8e30eb648c6b647895bf409e4a78efbf699adaa96e406b6b9a0"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Cors.dll",
+      "size": 87888,
+      "sha256": "5fe46b65d3c03246fa2183c3a508384a28931b35a42a3d9984d7045d93e37fda"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Cryptography.Internal.dll",
+      "size": 91944,
+      "sha256": "cc02b8bced8230c3c7f499fc1aacaa5803c3304ad3e00d17d7220ecf5402102d"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+      "size": 42792,
+      "sha256": "ec4e9c83e1de8d65d3218e13c30e56b0696d3ba2863521a822be4f337ac1223b"
+    },
+    {
+      "path": "Microsoft.AspNetCore.DataProtection.Abstractions.dll",
+      "size": 46928,
+      "sha256": "5bead4d0a2baab279c42564bab0f4f6826c6b5efbc142a7af77dfcbcf160916e"
+    },
+    {
+      "path": "Microsoft.AspNetCore.DataProtection.dll",
+      "size": 431912,
+      "sha256": "82381424d6645665fb079f2151c4cadd392799d00e65dec7c6b5281e158851ad"
+    },
+    {
+      "path": "Microsoft.AspNetCore.DataProtection.Extensions.dll",
+      "size": 46888,
+      "sha256": "ea8ba63a123cb1cf70a958261f48f9e873dac8a0beafcd69a745ff2d5517e070"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Diagnostics.Abstractions.dll",
+      "size": 34600,
+      "sha256": "580eaab95dddb7e02d574b9653f816a33a60566b1a64f9ab254db7c7fa240525"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Diagnostics.dll",
+      "size": 444200,
+      "sha256": "37e525c5c0faa14feb787b5f1c04dad5b6f4bb0f128baee7174d21b7e195d84f"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Diagnostics.HealthChecks.dll",
+      "size": 50984,
+      "sha256": "605436b444e38b1a32eb095a36e88bd5c4135d6d584433775ac12d989c5fb254"
+    },
+    {
+      "path": "Microsoft.AspNetCore.dll",
+      "size": 104232,
+      "sha256": "4a75fc4ec227607357a677448d451c771ab377e25615fae2efb69d59350c8d87"
+    },
+    {
+      "path": "Microsoft.AspNetCore.HostFiltering.dll",
+      "size": 51024,
+      "sha256": "ebd5ae38acb09b75c529473563f9069140bff5555192d410f27077757a4cdacf"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Hosting.Abstractions.dll",
+      "size": 42792,
+      "sha256": "acabee103c57d0b238d7c17e6403267bf9b4c40a6af6367092ae2c4032841266"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Hosting.dll",
+      "size": 448336,
+      "sha256": "0c7146423ac964b0c33f3bf3981e1f6beced4887c661ee992cf31653eee3653c"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Hosting.Server.Abstractions.dll",
+      "size": 30544,
+      "sha256": "d7ee7c0f29b9088d34bbebc1fd2c5c26f06252b71abf623951894ce358621bf0"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Html.Abstractions.dll",
+      "size": 38736,
+      "sha256": "ac56023588f0b27651675d51c21c9a8966cc178b9091cffd4f98e6ea72c2eb82"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Http.Abstractions.dll",
+      "size": 304936,
+      "sha256": "be7e63f123310876fee5aa497db1237e44c2d9545e6d892d3137fcba70f321e3"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Http.Connections.Common.dll",
+      "size": 51024,
+      "sha256": "2a6c3cfd1cc414e02f3a2aa413245e5340eccfd59233fb3cd92294439b7d41f3"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Http.Connections.dll",
+      "size": 300880,
+      "sha256": "1007699bd9a0eb7e26a0f58f21106f3b860af046c822ecf98d53b72157827301"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Http.dll",
+      "size": 280360,
+      "sha256": "0245ac9bb081bd489981a5604bc0df2ef01448d74fe587d0e97dc8cbd3153dcb"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Http.Extensions.dll",
+      "size": 694056,
+      "sha256": "f0ff8f8c4cda774c6ff077836a73da8f8c3916012be1766c34b3b2f872f8a6ad"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Http.Features.dll",
+      "size": 67368,
+      "sha256": "5c2d91d31d7b94b80f743f779dae6f1d6e3d229d852c37a21bcbda98518103a7"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Http.Results.dll",
+      "size": 263976,
+      "sha256": "6bb14368bb21b68e20f6e860a618dc342df0e661064cb5b876e923edbb7ea23f"
+    },
+    {
+      "path": "Microsoft.AspNetCore.HttpLogging.dll",
+      "size": 190248,
+      "sha256": "80acbc57db2d71681c1cbd0af7141d39f499d0313ee08ceb086505176ce5db87"
+    },
+    {
+      "path": "Microsoft.AspNetCore.HttpOverrides.dll",
+      "size": 83752,
+      "sha256": "d70110028a156ea76db698143c03a4c7142aba3905b1971b80938a344dc0952d"
+    },
+    {
+      "path": "Microsoft.AspNetCore.HttpsPolicy.dll",
+      "size": 46888,
+      "sha256": "637cc544068587cab5cb8b34b073ce0f4786e322104b4cac0f004c62717171f6"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Identity.dll",
+      "size": 939816,
+      "sha256": "64d2180e8c573fa60493c985c58eb7f42c9050872f0cf7b517d7b04f900f27ff"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Localization.dll",
+      "size": 63272,
+      "sha256": "a5f51278d4c688625f9ef8392f1eef6a4c553d2a163b78d1cc23d374db620612"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Localization.Routing.dll",
+      "size": 30544,
+      "sha256": "e2545cfaa9de9b592640bad8bf2c803d1454f433ecc361b04fea5c6eb385de6e"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Metadata.dll",
+      "size": 16168,
+      "sha256": "8a7d38e2731a004991fba2a202058950b818ff5f07f27b2d1e4fceb736283921"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.Abstractions.dll",
+      "size": 255784,
+      "sha256": "924fb6613380d7366b5b89a59fac626ca24582c8c510a4f2ccbdf8b0559b2d39"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.ApiExplorer.dll",
+      "size": 128808,
+      "sha256": "9954de42ffbd2711a060dabb7e2d545129d1eb6c669dc45c6912c7b10aae515e"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.Core.dll",
+      "size": 1799976,
+      "sha256": "de178c8fe4cd4815ebd10479e5ed3130c6ce9cc2185b6cf6ea25ee525fac106c"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.Cors.dll",
+      "size": 50984,
+      "sha256": "67c537572ffd4956e3885b832d43abda296c7a39f32730f85abfd0e981cdbe6a"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.DataAnnotations.dll",
+      "size": 96040,
+      "sha256": "81570c5957842bad5ac3fb6efc4ab016d6e7feb9ce003f208209d3819a12deb5"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.dll",
+      "size": 42792,
+      "sha256": "d9bb3ed65fd6471e44178006aff05aade97da441306456f8b63b4749b3b2c1b0"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.Formatters.Json.dll",
+      "size": 15656,
+      "sha256": "40c87733969705536df7d31339d2c055ce5c54ef283f6da8e5b064afd6aec872"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.Formatters.Xml.dll",
+      "size": 104232,
+      "sha256": "c00791be0b32625920df2ce11b1e8a3225a522b1cfbfc31704706e4a33cc7d6d"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.Localization.dll",
+      "size": 46888,
+      "sha256": "ab1c8e9955b78501e955911b96961810e96659cb988146b564f5857b56d55263"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.Razor.dll",
+      "size": 223016,
+      "sha256": "4b8dc3c579734d1ec29f4580952d58b241b09969024ed2dd9ab261ed265a426c"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.RazorPages.dll",
+      "size": 415528,
+      "sha256": "5ffe5289feba40f8778c9a76034695c51792a1d434e1f350601179fd30a7c9cb"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.TagHelpers.dll",
+      "size": 272208,
+      "sha256": "56348197e514974afcf2234990fce843f105a4a11386c43f93b1150caafd733e"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Mvc.ViewFeatures.dll",
+      "size": 673576,
+      "sha256": "6608fdbb7fbd0c31bf0a092c37c35c61ccb510f643ada08e682457956f69dd8c"
+    },
+    {
+      "path": "Microsoft.AspNetCore.OutputCaching.dll",
+      "size": 239400,
+      "sha256": "35e5b27375dd35f4a4b37956d2972feffb7c788793e24bafa63c8aee6fca541b"
+    },
+    {
+      "path": "Microsoft.AspNetCore.RateLimiting.dll",
+      "size": 96040,
+      "sha256": "a01a509adacae103601faa5a7ad030251c7f3dcd867bd48b81738efe31f0adba"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Razor.dll",
+      "size": 63272,
+      "sha256": "1179e4d5e2b3940f8fa6b3ba7f63bd7c6d38305aedc28eb6981c038ff00d29bd"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Razor.Runtime.dll",
+      "size": 71464,
+      "sha256": "f1f45f4cd932b79ae75b1a713c43e18dbac47ef79e8567e2d55b070cb7edf217"
+    },
+    {
+      "path": "Microsoft.AspNetCore.RequestDecompression.dll",
+      "size": 51024,
+      "sha256": "9cd2e41f7ab0fa429658adc2b98c25e3867b63b25a7a8b3da09c11b12ea3f1dc"
+    },
+    {
+      "path": "Microsoft.AspNetCore.ResponseCaching.Abstractions.dll",
+      "size": 16168,
+      "sha256": "362714504b1b0e7a0ae103741c81fc8775dc18039e22502e10efe2a4342ae3e7"
+    },
+    {
+      "path": "Microsoft.AspNetCore.ResponseCaching.dll",
+      "size": 145232,
+      "sha256": "9fbb9075ea84193ec2c70490f2213850a50621d63d96cd1f22c2768cbae8c5a9"
+    },
+    {
+      "path": "Microsoft.AspNetCore.ResponseCompression.dll",
+      "size": 79656,
+      "sha256": "c4e56fb795d204095e6b4de013dde267fa9c631b97292c799557b9e168a262c3"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Rewrite.dll",
+      "size": 202536,
+      "sha256": "c87f24506581e1a13b92661a3a489f7a064ff21907848c4a2829050608f52ac0"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Routing.Abstractions.dll",
+      "size": 55080,
+      "sha256": "36b8202a6dbb2413faafd49d024c651b879750fcca13299cbc19b963ad3c810b"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Routing.dll",
+      "size": 808784,
+      "sha256": "1e7e9a21e1c6cab9aa6030e6e1d9d6b24af05cf72108fa674372a6306dec5591"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Server.HttpSys.dll",
+      "size": 784208,
+      "sha256": "5575e2bb8f2f4b732f90cc9ab333138c76b3db263a93952b48214d4d8bb3a094"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Server.IIS.dll",
+      "size": 636712,
+      "sha256": "9b0d5288c11cc792f9900c203775a7346780c56c11cbb9a6fd24ac9bdfb8dd7b"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Server.IISIntegration.dll",
+      "size": 50984,
+      "sha256": "dda51db6598b90188c65115a65dc56a402a6f42fba795b378d0401960f1aebf7"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Server.Kestrel.Core.dll",
+      "size": 2230056,
+      "sha256": "188652a999f6df2922e643c665d1e836d9cf939511e2847e5978822e656f9cf7"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Server.Kestrel.dll",
+      "size": 34600,
+      "sha256": "c0edc241c09b40a9baacec3d56b798f341132a8f41c01f2abd56a009ef3b704d"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Server.Kestrel.Transport.NamedPipes.dll",
+      "size": 149288,
+      "sha256": "0630adf3c34612754b37af45c60d643850e24d086cdf9c52ed31222a2c7b21c3"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.dll",
+      "size": 231208,
+      "sha256": "a8d717bbe77b8e3aaee526366080758d466f344efd262d939b83b52aa833cca9"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll",
+      "size": 128848,
+      "sha256": "04b54e20de329570a81e7a1b06cb163384d7f874a188c69f38b0614c2cdaeb33"
+    },
+    {
+      "path": "Microsoft.AspNetCore.Session.dll",
+      "size": 87848,
+      "sha256": "11e2aefce8e184dd1f4e6193648c5c7d0dad49ac8121e307c71554252607f6d4"
+    },
+    {
+      "path": "Microsoft.AspNetCore.SignalR.Common.dll",
+      "size": 79656,
+      "sha256": "dd87f5a83e047b4d27fd9e15f26f946fed0bde0a164da0040dac9c4531e2ec2a"
+    },
+    {
+      "path": "Microsoft.AspNetCore.SignalR.Core.dll",
+      "size": 493352,
+      "sha256": "639fa86492ad1a4a4534e9f4583cdbcd83aadeb7580f973940e569bb7af03073"
+    },
+    {
+      "path": "Microsoft.AspNetCore.SignalR.dll",
+      "size": 38696,
+      "sha256": "46f009b9a2dfac9c1f85e3ebe61045d7e2cfc37d192f9c0bb77ac35bee3bc1b6"
+    },
+    {
+      "path": "Microsoft.AspNetCore.SignalR.Protocols.Json.dll",
+      "size": 79696,
+      "sha256": "a2e6ae8c6be3d5dcbba2619fbd50b33bf2bc55ff9bb9063b62f671d4b4b91b4d"
+    },
+    {
+      "path": "Microsoft.AspNetCore.StaticAssets.dll",
+      "size": 177960,
+      "sha256": "f0bb1350c7489a928f53c93d855e378ff8436c74c5d0a016dd18b3401121ca21"
+    },
+    {
+      "path": "Microsoft.AspNetCore.StaticFiles.dll",
+      "size": 153424,
+      "sha256": "7b930bfa363b22956eb4145ebf0464e56f675de26b2b012c6bf0a356c4452f77"
+    },
+    {
+      "path": "Microsoft.AspNetCore.WebSockets.dll",
+      "size": 75600,
+      "sha256": "fb2da50023f21531c70fa96e70a919e99efec6dbb87917611025160aaafdc19c"
+    },
+    {
+      "path": "Microsoft.AspNetCore.WebUtilities.dll",
+      "size": 239440,
+      "sha256": "4720a690d8c328acd39f4f4b80dd446b2c52b1c26069fdb4737895cd918ce628"
+    },
+    {
+      "path": "Microsoft.CSharp.dll",
+      "size": 927568,
+      "sha256": "4a721ec7cb4e969c58522328234386a3d449c12a1a4aa7272e0b9f6799ee667d"
+    },
+    {
+      "path": "Microsoft.Data.Sqlite.dll",
+      "size": 177464,
+      "sha256": "1078d41c6c0f2cee48a8b706e3a54ce145705993f19f703d2b3bdf2abcc59088"
+    },
+    {
+      "path": "Microsoft.DiaSymReader.Native.x86.dll",
+      "size": 2146344,
+      "sha256": "6564545beab3cb9cd35cfb0cb77d4ec8ba3297d384e98f2fa24c536184e7830f"
+    },
+    {
+      "path": "Microsoft.Extensions.AmbientMetadata.Application.dll",
+      "size": 34616,
+      "sha256": "f03d3a2f596c0df575ba044169f8e630e25bfd72b7186847a348ec1035d4a1a3"
+    },
+    {
+      "path": "Microsoft.Extensions.Caching.Abstractions.dll",
+      "size": 67368,
+      "sha256": "b515286e6aa3cfba03c89b6acca77dc99c89585f65e887b0aae050b5d85fca25"
+    },
+    {
+      "path": "Microsoft.Extensions.Caching.Memory.dll",
+      "size": 96080,
+      "sha256": "7be40101ee3a7e99a3f2538c7baa4f193344ccac8cb5eb4092da978829b13908"
+    },
+    {
+      "path": "Microsoft.Extensions.Compliance.Abstractions.dll",
+      "size": 43872,
+      "sha256": "2495676051ebaef2950a33855cd1089346f2d44294c5186fbb19a652dbba0868"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.Abstractions.dll",
+      "size": 46888,
+      "sha256": "a39a02c832134c0eb881ba28dcbddff6eba49cc96cbec0607e0c0a7faf9859d0"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.Binder.dll",
+      "size": 79656,
+      "sha256": "36476e59eb51575cfa7228d00fd9d2cd0621df44f5792bf5fee5cc1bb4c432ff"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.CommandLine.dll",
+      "size": 42792,
+      "sha256": "7e2cfeb2b8c3b46920bd3c0d815dfd99d9a7ae2a382ead7901fa17bd54bb7f41"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.dll",
+      "size": 87888,
+      "sha256": "9ece834360c7b0ee4259d0e97e8ac135d7f4f079bd650e618155e2894ee30927"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
+      "size": 38696,
+      "sha256": "19ea0dfb2423f886a496bbe9df13f8243bd9b7d451185f7e897a5b9e433cf123"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.FileExtensions.dll",
+      "size": 46888,
+      "sha256": "78d71649aaa58ef2dba9ded98d296c2dcde5e519219a2d50823e28ea37fa9f29"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.Ini.dll",
+      "size": 42832,
+      "sha256": "f8468333514363f3e22f39b10cc9a00c67f583e6c87d7aa514b63edd7e8c6c2f"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.Json.dll",
+      "size": 46888,
+      "sha256": "6a322bc2db69c4918324431a38b6b5fa49ba5507c30c2007f11dbe5dc606c3df"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.KeyPerFile.dll",
+      "size": 38696,
+      "sha256": "665b099f87694aea294f4c51d5e453be7ba0ffa38066bb187f6513169e9289d9"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.UserSecrets.dll",
+      "size": 46888,
+      "sha256": "78e4981c78991bf74f069652598858a247f9e57e82b4ae25d3eca3e4cc6eb8e8"
+    },
+    {
+      "path": "Microsoft.Extensions.Configuration.Xml.dll",
+      "size": 63272,
+      "sha256": "cb141829a5836c7e68b9008b4508b5561b224c3b28a4ff047a8f7ef7f3f3f27f"
+    },
+    {
+      "path": "Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+      "size": 132944,
+      "sha256": "6cd01daee1a30a39f2425170ad24673d78fba32d838680193cbf38d135af6295"
+    },
+    {
+      "path": "Microsoft.Extensions.DependencyInjection.AutoActivation.dll",
+      "size": 33592,
+      "sha256": "e5919c71bdaa23fa4a6a14df00cd7ecc30b391bf933672ee67322b13f3f07974"
+    },
+    {
+      "path": "Microsoft.Extensions.DependencyInjection.dll",
+      "size": 206672,
+      "sha256": "d5a55087792b4b66fb9e8cffab34688eaa9d965ea1df07fcdf1c2e3496f461e4"
+    },
+    {
+      "path": "Microsoft.Extensions.Diagnostics.Abstractions.dll",
+      "size": 46928,
+      "sha256": "a784d4d81a1f13f3ee1f137e9319ad3b4facb2cf87d5e3da5244d3f8389b44d9"
+    },
+    {
+      "path": "Microsoft.Extensions.Diagnostics.dll",
+      "size": 67408,
+      "sha256": "2398372118341a119e515f7621c88aefbc29c184f621a5505ac1589bedba836e"
+    },
+    {
+      "path": "Microsoft.Extensions.Diagnostics.ExceptionSummarization.dll",
+      "size": 30048,
+      "sha256": "9db6f28ec596c909cbadeae161c169a14b42b4d668f5a1a19d22a9ebb8b72b36"
+    },
+    {
+      "path": "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
+      "size": 42792,
+      "sha256": "cf516010ebeacb535007690df49c4b204de357045eaddd6bea655cbb1c281f80"
+    },
+    {
+      "path": "Microsoft.Extensions.Diagnostics.HealthChecks.dll",
+      "size": 100136,
+      "sha256": "e2cc983984e0de815ff1e9c576dc4a32fd5593c1466157af3c50d27f8cb9b2fc"
+    },
+    {
+      "path": "Microsoft.Extensions.Features.dll",
+      "size": 46888,
+      "sha256": "9737ebf827efcf69a3da917de651b22bbfc3269f577dbd6b5932e0a95c8d1513"
+    },
+    {
+      "path": "Microsoft.Extensions.FileProviders.Abstractions.dll",
+      "size": 38696,
+      "sha256": "011990bcd30b9527795300bef28c769e81ab18e6026708671fd641bf8bf5c983"
+    },
+    {
+      "path": "Microsoft.Extensions.FileProviders.Composite.dll",
+      "size": 34600,
+      "sha256": "d130d4b420bf926c5f4af19b219a5fdbb6742fac56470c23ac7a59b6c9be8d64"
+    },
+    {
+      "path": "Microsoft.Extensions.FileProviders.Embedded.dll",
+      "size": 63312,
+      "sha256": "52bec5e0f4e4660ee433e658d79610f1a44f30add20499810e068cf73933e7e6"
+    },
+    {
+      "path": "Microsoft.Extensions.FileProviders.Physical.dll",
+      "size": 87848,
+      "sha256": "df7db3d0c8db627fe90b4d9174c9419f579d192e454d866bc0a11ce96eb2addf"
+    },
+    {
+      "path": "Microsoft.Extensions.FileSystemGlobbing.dll",
+      "size": 96040,
+      "sha256": "f5fc7cbd56e6dbcc70f5a98dc8dd23170eecc65477ef91a9c45cdb03e6a02bc9"
+    },
+    {
+      "path": "Microsoft.Extensions.Hosting.Abstractions.dll",
+      "size": 75600,
+      "sha256": "379632f828d405b30f9d390a8aeef7e46186d727f2ff87ec27031caa0498de05"
+    },
+    {
+      "path": "Microsoft.Extensions.Hosting.dll",
+      "size": 141096,
+      "sha256": "3ab412c532040c12241960e0ee180f28420781af364fa825e18ebd336b2aa3e8"
+    },
+    {
+      "path": "Microsoft.Extensions.Http.Diagnostics.dll",
+      "size": 119136,
+      "sha256": "4af86396939e27b2462bde0ed673a5887a7d38f5d2fda43766842cb717fd0921"
+    },
+    {
+      "path": "Microsoft.Extensions.Http.dll",
+      "size": 186152,
+      "sha256": "f5babbe8e635693000796d7a233a70cf22a35d538f98630c571eb19ff206bd01"
+    },
+    {
+      "path": "Microsoft.Extensions.Http.Resilience.dll",
+      "size": 135992,
+      "sha256": "8bbff7e8027f11e90321cc3f9bfb2dd9c3352fe8acab24f1a154fbf971b4a8d7"
+    },
+    {
+      "path": "Microsoft.Extensions.Identity.Core.dll",
+      "size": 509736,
+      "sha256": "65932921ea3afb26f66b633e348b18165b4e0b3128efebc5b1c3ea6d4cfe91a1"
+    },
+    {
+      "path": "Microsoft.Extensions.Identity.Stores.dll",
+      "size": 87848,
+      "sha256": "40909cea19068e2a1c6d2e60bc4c80da2145bed70b8d399d927463d1b8fd178a"
+    },
+    {
+      "path": "Microsoft.Extensions.Localization.Abstractions.dll",
+      "size": 34600,
+      "sha256": "463e58d9c53d93cff69e6cb0ae1072adc65727c315f07eda9cfa5b9f87f13dda"
+    },
+    {
+      "path": "Microsoft.Extensions.Localization.dll",
+      "size": 55080,
+      "sha256": "ff1ac550dfa2a24734662ebf66d82928c471e9c4df37e41c5d9e5921cbed2f48"
+    },
+    {
+      "path": "Microsoft.Extensions.Logging.Abstractions.dll",
+      "size": 141136,
+      "sha256": "acce99b7a003fe65847500e8a6d6b209a4b142947e90ff9dd30935ec79ee4a1f"
+    },
+    {
+      "path": "Microsoft.Extensions.Logging.Configuration.dll",
+      "size": 46888,
+      "sha256": "aa28b8bc9f82688c107e1a763bec8fc77b1725e719ad305153f51f0b07bcad20"
+    },
+    {
+      "path": "Microsoft.Extensions.Logging.Console.dll",
+      "size": 153424,
+      "sha256": "52b75676c447ba93ab5a36b0c95d7e2fe958e2a640cd23ea1c78949b3bdd22fb"
+    },
+    {
+      "path": "Microsoft.Extensions.Logging.Debug.dll",
+      "size": 34640,
+      "sha256": "629ec9d043fe60ba98b5ef5964e9c243a332afadffb5817e8396405bc9422bef"
+    },
+    {
+      "path": "Microsoft.Extensions.Logging.dll",
+      "size": 96040,
+      "sha256": "fd480c5d3ee98bc413a94a5f752340e837b9e05c7860807d03bf504980ad5d87"
+    },
+    {
+      "path": "Microsoft.Extensions.Logging.EventLog.dll",
+      "size": 46888,
+      "sha256": "b6b1477115b162af96625ab5ecf350cae665726a767a64170cd957349858f633"
+    },
+    {
+      "path": "Microsoft.Extensions.Logging.EventSource.dll",
+      "size": 59216,
+      "sha256": "10dc589632ea32fbef7d2e86bc0254c98387445b45af996d0d39eeffe79370b3"
+    },
+    {
+      "path": "Microsoft.Extensions.Logging.TraceSource.dll",
+      "size": 38736,
+      "sha256": "82b816d9ee537f1db34814a970aeb7edb983adbfd3ee1470f7290430f7309907"
+    },
+    {
+      "path": "Microsoft.Extensions.ObjectPool.dll",
+      "size": 38696,
+      "sha256": "0f8190219ce7488af0ac51c4bc7d6f0369775938f43c533ffe1481edd82d939c"
+    },
+    {
+      "path": "Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+      "size": 38696,
+      "sha256": "f82bf7fe316787fe8c0334835c6ef624fb7c0ce5044419e35767366a336d4a2d"
+    },
+    {
+      "path": "Microsoft.Extensions.Options.DataAnnotations.dll",
+      "size": 38736,
+      "sha256": "616e560e58fd4dcda1be1220540739073fa7ae1b52cf53b6d010a959712c7617"
+    },
+    {
+      "path": "Microsoft.Extensions.Options.dll",
+      "size": 128848,
+      "sha256": "4ce13782c507821759551d01056b945d88254e726f046c1aa2c88e66c65a3522"
+    },
+    {
+      "path": "Microsoft.Extensions.Primitives.dll",
+      "size": 79696,
+      "sha256": "e8099fe60950b71a1cd9ecea527b8758ffff8c84c224ccc7957ba81c2750f91b"
+    },
+    {
+      "path": "Microsoft.Extensions.Resilience.dll",
+      "size": 33080,
+      "sha256": "322c48ae62ffa0d19563680bd62254feadf83091f8219e6b44775156aab41df7"
+    },
+    {
+      "path": "Microsoft.Extensions.ServiceDiscovery.Abstractions.dll",
+      "size": 28984,
+      "sha256": "5df222be45ebdd99b19c0fbcac5df194aa532ed0559a19debed6a1fedc0619a9"
+    },
+    {
+      "path": "Microsoft.Extensions.ServiceDiscovery.dll",
+      "size": 77112,
+      "sha256": "b8caebbfcac5f2af7167768972da255dbc96a712c2b7d2dd3c520d47443a5563"
+    },
+    {
+      "path": "Microsoft.Extensions.Telemetry.Abstractions.dll",
+      "size": 58680,
+      "sha256": "de0fb446c17d2e5df5542e3576155b3d11d95b3e04969b055776668a9f64c25f"
+    },
+    {
+      "path": "Microsoft.Extensions.Telemetry.dll",
+      "size": 150840,
+      "sha256": "d7733ba35e0553119288ded106f93dfde45dcbf3eb14ed32c372fd4ccaaff5df"
+    },
+    {
+      "path": "Microsoft.Extensions.Validation.dll",
+      "size": 79656,
+      "sha256": "cc8ee53722ef92401aa597cfcd097f0cfefd06a6e94073997ab855b7976605e6"
+    },
+    {
+      "path": "Microsoft.Extensions.WebEncoders.dll",
+      "size": 38696,
+      "sha256": "c934efc3db94fb1c651cb6641d7434c7eeaefc79811b2a054cbcb5b448c0ebd8"
+    },
+    {
+      "path": "Microsoft.JSInterop.dll",
+      "size": 157480,
+      "sha256": "19450ea62dde020165cdd6e8c5c5aaf0f7d89a489945b3576ba1a0ea3ab05dc9"
+    },
+    {
+      "path": "Microsoft.Net.Http.Headers.dll",
+      "size": 206632,
+      "sha256": "040806bb2f1ab01687d6e21119fcda4fa140352c50dd595b27e9ba7e2d1855d0"
+    },
+    {
+      "path": "Microsoft.VisualBasic.Core.dll",
+      "size": 1156904,
+      "sha256": "c5900c03cba009914bf75e53e32468b06f94ed8e13cd125401aef2461e4c7b4d"
+    },
+    {
+      "path": "Microsoft.VisualBasic.dll",
+      "size": 17232,
+      "sha256": "7cdf5aa358f8b5a8d68e7632cb6fba3f23d4e1b69522e1e5cdc8a8dd87f27812"
+    },
+    {
+      "path": "Microsoft.Win32.Primitives.dll",
+      "size": 15696,
+      "sha256": "6eaee3ad3ca78460f79cca40e0da96d335517ffad9954bbd85581ee47e1fd808"
+    },
+    {
+      "path": "Microsoft.Win32.Registry.dll",
+      "size": 108368,
+      "sha256": "51449b5c63490561948c8db9fdca1c0a0a2a223fc56527192162e6cac0d116b7"
+    },
+    {
+      "path": "MigraDoc.DocumentObjectModel.dll",
+      "size": 334848,
+      "sha256": "aadc27f13d06e4a30815e4ce5720a7296038851a7bfc3d1b8a4363af609d1d3e"
+    },
+    {
+      "path": "MigraDoc.Rendering.dll",
+      "size": 135680,
+      "sha256": "718e550a83d11b267152c76ae76c273d99bc351a9e3dcc4a325f0c09d4b6b29d"
+    },
+    {
+      "path": "MigraDoc.RtfRendering.dll",
+      "size": 70656,
+      "sha256": "e4b6446828b5bee6238e77ce7433df1182132e018c9488f2d05874ee56174f7e"
+    },
+    {
+      "path": "mscordaccore.dll",
+      "size": 1209184,
+      "sha256": "32e489185b7b585b4a278f393dc87070c79921ed6a99924ddd3a5baf4f652a9d"
+    },
+    {
+      "path": "mscordaccore_x86_x86_10.0.1126.37416.dll",
+      "size": 1209184,
+      "sha256": "32e489185b7b585b4a278f393dc87070c79921ed6a99924ddd3a5baf4f652a9d"
+    },
+    {
+      "path": "mscordbi.dll",
+      "size": 1188232,
+      "sha256": "1c7247e8bd9118165fbbfb02c473f0a908dd5ebc97c1c048ca83d8d4ec4aa4c4"
+    },
+    {
+      "path": "mscorlib.dll",
+      "size": 59728,
+      "sha256": "2724d37963e0f2fc7c2b206f0387a0492b8bca22720dd7373b057136cd48903c"
+    },
+    {
+      "path": "mscorrc.dll",
+      "size": 133928,
+      "sha256": "12db14a035961c1779a0f9ffae13dadd5e29b4cde29d6b736bc1bd41aa0c0dae"
+    },
+    {
+      "path": "msquic.dll",
+      "size": 629088,
+      "sha256": "fa638172e05b88eaa205a36bfcb64bfe559784ffed1ae3950820cee42898fdb1"
+    },
+    {
+      "path": "netstandard.dll",
+      "size": 100648,
+      "sha256": "810fb4af6789e303a6265c9a9ee9cc26d3d76c2718009b9da99c2e90da2ff121"
+    },
+    {
+      "path": "OpenTelemetry.Api.dll",
+      "size": 69632,
+      "sha256": "ca5ddb7a51bcbb1ab8bcc6484603c70a4077142a8745d521c4bd2363f9e7c217"
+    },
+    {
+      "path": "OpenTelemetry.Api.ProviderBuilderExtensions.dll",
+      "size": 23552,
+      "sha256": "5c5727de149a0232825774a8ee75b60581ce19ce8b944d422bd545e2e3d7f915"
+    },
+    {
+      "path": "OpenTelemetry.dll",
+      "size": 252928,
+      "sha256": "edc9799efd614cb083193d90eafcd99abf70496738c3065933093cf99d162cae"
+    },
+    {
+      "path": "OpenTelemetry.Exporter.OpenTelemetryProtocol.dll",
+      "size": 158208,
+      "sha256": "20bf20b94e2e92a73d20d97b81d9cd3b26ef0967ff29f80d84b421c4317ac77e"
+    },
+    {
+      "path": "OpenTelemetry.Extensions.Hosting.dll",
+      "size": 10752,
+      "sha256": "a627ebf2a7d14e0f0b3c2568e6ee37773397de25c90ee89d4560422c42d8b945"
+    },
+    {
+      "path": "OpenTelemetry.Instrumentation.AspNetCore.dll",
+      "size": 65536,
+      "sha256": "247771e79186a704722510e03aefb2f09c10286ff3fc658dcd4bb81ba347f6c3"
+    },
+    {
+      "path": "OpenTelemetry.Instrumentation.Http.dll",
+      "size": 60928,
+      "sha256": "154c41bc484085a74a0b1886478ffb4aeaf850686d173d0c93a11ad0283aea2e"
+    },
+    {
+      "path": "OpenTelemetry.Instrumentation.Runtime.dll",
+      "size": 26112,
+      "sha256": "08b62837d801db4afe0ac77d27fe66fff99493cbb6b9c49a5876627c2aabd7a8"
+    },
+    {
+      "path": "PdfSharp.BarCodes.dll",
+      "size": 35840,
+      "sha256": "bafc4175afaef8629c6122cab01e90c8f8cdf72e2b957d328c42229d12d02fdd"
+    },
+    {
+      "path": "PdfSharp.Charting.dll",
+      "size": 88064,
+      "sha256": "fce1973d6474160e736112b215410244310f47983853fd5afd776086a7392469"
+    },
+    {
+      "path": "PdfSharp.Cryptography.dll",
+      "size": 15360,
+      "sha256": "25fc17414785592ca4cdc5efd93f2a9c245812a97cb66b986a63112f61552944"
+    },
+    {
+      "path": "PdfSharp.dll",
+      "size": 794624,
+      "sha256": "1a77754d9b06c077f339eb33c0cdef28927ae8ee46ecca84e7874b15dabc85a1"
+    },
+    {
+      "path": "PdfSharp.Quality.dll",
+      "size": 40448,
+      "sha256": "3f88ec2601d13607ec81a8f7cbc14bd710ff10e2730626ffece48c86098df0d1"
+    },
+    {
+      "path": "PdfSharp.Shared.dll",
+      "size": 23040,
+      "sha256": "4b21196cf18cb3b971ec02d1f66f2da0d98d77aa5ed5767754f5de2cf36cb737"
+    },
+    {
+      "path": "PdfSharp.Snippets.dll",
+      "size": 154624,
+      "sha256": "b8191aac4339b25dd54be0bc61206b873c69a4d0150ea9f16fdcecfc0f1907a4"
+    },
+    {
+      "path": "PdfSharp.System.dll",
+      "size": 8192,
+      "sha256": "5e8dc5ed655d223be9f9b5b3dfecadb607b00e695c34c60aac4e037af9e557e6"
+    },
+    {
+      "path": "PdfSharp.WPFonts.dll",
+      "size": 421376,
+      "sha256": "35a3ae0d7ee749e77a6db7c938ac2c41684d50a792b069e3a3723e9fdd6aafd3"
+    },
+    {
+      "path": "Polly.Core.dll",
+      "size": 242736,
+      "sha256": "37762ea6fcf05154685b0a616461705c837c2f07d98e4037dc3a0e4b4c186ea5"
+    },
+    {
+      "path": "Polly.Extensions.dll",
+      "size": 57120,
+      "sha256": "8adac7a20cd056b9a8623efb6e6f9b99a82e18d3c7b7f6c788f7fc4b20ce5f18"
+    },
+    {
+      "path": "Polly.RateLimiting.dll",
+      "size": 28208,
+      "sha256": "afe3042cd4062438857d42880623845f32575375f460fd1ac07f705ea0211804"
+    },
+    {
+      "path": "SkiaSharp.dll",
+      "size": 525112,
+      "sha256": "a58f9c10234fdbb70ccde2c4e1c9b8fb41859e40059642087927571269427371"
+    },
+    {
+      "path": "SQLitePCLRaw.batteries_v2.dll",
+      "size": 5632,
+      "sha256": "7709df124c5517feeed99c6ceecbd0cb179230d09732f5d6cb39b446dfb2e347"
+    },
+    {
+      "path": "SQLitePCLRaw.core.dll",
+      "size": 51200,
+      "sha256": "626b7902809d6d4a7508d92c84cecfa447761f3e992e708fff97f0738e530615"
+    },
+    {
+      "path": "SQLitePCLRaw.provider.e_sqlite3.dll",
+      "size": 36864,
+      "sha256": "f92be7dc1207bc9d2082c9f7cbe4a6bd22b4c4953c65ade83fcfeaa14b07be83"
+    },
+    {
+      "path": "System.AppContext.dll",
+      "size": 15184,
+      "sha256": "31842d8b16b18b74ff10998959e3d8c7f95ddc116972c34d951830eabbf5bba1"
+    },
+    {
+      "path": "System.Buffers.dll",
+      "size": 15144,
+      "sha256": "cbd2c13fa7b2aa5ed19a4a0a5cc8cd580a817e51c6b8b6ee2261218552de64be"
+    },
+    {
+      "path": "System.Collections.Concurrent.dll",
+      "size": 194384,
+      "sha256": "827aa3af345a9d6175391f81e4962081cda76127157e92279b10adfab93af2f3"
+    },
+    {
+      "path": "System.Collections.dll",
+      "size": 280400,
+      "sha256": "1845f2f88085e41c771a2b319a0b471105816ec963bba021fbc2dcea3e66687e"
+    },
+    {
+      "path": "System.Collections.Immutable.dll",
+      "size": 874280,
+      "sha256": "29ae2684d32eef3b4bb3e965a5ca8b932c9fb16f4533b2bb5e4baaa71290efff"
+    },
+    {
+      "path": "System.Collections.NonGeneric.dll",
+      "size": 96080,
+      "sha256": "9b79f1dd4b9781b1aa8ba1f992ee224325de934def00782e9f46adea4aeca951"
+    },
+    {
+      "path": "System.Collections.Specialized.dll",
+      "size": 91944,
+      "sha256": "6b598297dd54f14130ca3a1f0375844148ff9355bcda61091d8423cdb9093045"
+    },
+    {
+      "path": "System.ComponentModel.Annotations.dll",
+      "size": 190248,
+      "sha256": "c26be5f562a34fc242c1eb0fdbf0bed9358339a77a0c213926135f2ee75bb3ad"
+    },
+    {
+      "path": "System.ComponentModel.DataAnnotations.dll",
+      "size": 16680,
+      "sha256": "0521d8ed05108e32f1370380e60c2c23b978c93529c8f357e8f67d455c5582f9"
+    },
+    {
+      "path": "System.ComponentModel.dll",
+      "size": 30504,
+      "sha256": "f6a3123fd3613b744e0f94ba67d526dd9845053b2cecfe3a87ab42ca47fd5e35"
+    },
+    {
+      "path": "System.ComponentModel.EventBasedAsync.dll",
+      "size": 46888,
+      "sha256": "cda7f9997df9cc6fee5b8f5de4c8345ae9211db17fb0674788c62bf3442250d6"
+    },
+    {
+      "path": "System.ComponentModel.Primitives.dll",
+      "size": 75560,
+      "sha256": "d4966f0727d40643637fdb018ecb046f8f510169c224a75fa00906c578155be7"
+    },
+    {
+      "path": "System.ComponentModel.TypeConverter.dll",
+      "size": 710480,
+      "sha256": "35ebd8259e6ca9cd5222ec57d62498e8d353552e17cf1dfc870f43c6e7b12984"
+    },
+    {
+      "path": "System.Configuration.dll",
+      "size": 19240,
+      "sha256": "15287a269623b69b67035b645cd40d670aef3b1dad8024ddc0c9578ab08d6113"
+    },
+    {
+      "path": "System.Console.dll",
+      "size": 157480,
+      "sha256": "0d5174d5d74afa0bc0257e11ee8c1a8c82f4dea869c2fd43ba1ccf8605b7a020"
+    },
+    {
+      "path": "System.Core.dll",
+      "size": 23336,
+      "sha256": "e8f9e1a2983450d6d284c061d1cbd705a3f8360f15e5e6b0fa1fb96170b98c36"
+    },
+    {
+      "path": "System.Data.Common.dll",
+      "size": 2660136,
+      "sha256": "4b0587599fdf01549af2a8511acf540e111e9ddfd00a217f525e651fe537c267"
+    },
+    {
+      "path": "System.Data.DataSetExtensions.dll",
+      "size": 15656,
+      "sha256": "79e372ec7f9b8fdc751816394fa337b56701cfd164a0828b4196048fee5a16af"
+    },
+    {
+      "path": "System.Data.dll",
+      "size": 25384,
+      "sha256": "453ec808a29e6b1b84e2cbe308e334c5336e753187cd753845e97b05181bcd0a"
+    },
+    {
+      "path": "System.Diagnostics.Contracts.dll",
+      "size": 16168,
+      "sha256": "9e05e2bcf00ef7fadb8bfe5e1952b475aa7287111e9d03edd9fcda258712ac51"
+    },
+    {
+      "path": "System.Diagnostics.Debug.dll",
+      "size": 15656,
+      "sha256": "bba9ba55bfbc8dd13a0f3922664410c668d34f2da23b7ab9c79f745e23d9dc8b"
+    },
+    {
+      "path": "System.Diagnostics.DiagnosticSource.dll",
+      "size": 476968,
+      "sha256": "a994b70d54350494d9b073f7ddb97f2c27013f140d38c9e8a0dd206061621b4d"
+    },
+    {
+      "path": "System.Diagnostics.EventLog.dll",
+      "size": 345896,
+      "sha256": "fcd8c6da0d022d3c866fdb80deefc3893712924533d6f4af019eead70490c32e"
+    },
+    {
+      "path": "System.Diagnostics.EventLog.Messages.dll",
+      "size": 800552,
+      "sha256": "60b4591c118a856708e8554374ae61428d4b9a7cb6688bc27e9baf42a6e7d2eb"
+    },
+    {
+      "path": "System.Diagnostics.FileVersionInfo.dll",
+      "size": 42792,
+      "sha256": "5e21bf5fef634b9a731bc749526d41642d9bd98af039b960a7d59b8ce347a0ff"
+    },
+    {
+      "path": "System.Diagnostics.Process.dll",
+      "size": 304936,
+      "sha256": "1706527879279da57f660b7e0f2cf4a1a78fe5be5ca8152912d47269c0af571c"
+    },
+    {
+      "path": "System.Diagnostics.StackTrace.dll",
+      "size": 46888,
+      "sha256": "f93c3c0498bc1c29ba12c04a1a90184781150042c9c852e10f5940f7bad116fc"
+    },
+    {
+      "path": "System.Diagnostics.TextWriterTraceListener.dll",
+      "size": 63272,
+      "sha256": "088da041f296d9d73ab416fde027bfce568ba775a1cd7035595fba659d0c80a3"
+    },
+    {
+      "path": "System.Diagnostics.Tools.dll",
+      "size": 15144,
+      "sha256": "6509e7837c7f772c5ed23b0f0494ac52dc870fff32a56a7987e145e25d1594b2"
+    },
+    {
+      "path": "System.Diagnostics.TraceSource.dll",
+      "size": 132944,
+      "sha256": "fa911a6a75ece504ac6477c7dc8d1d1b9688ea5557f1bd7259c78ba3db35c9d5"
+    },
+    {
+      "path": "System.Diagnostics.Tracing.dll",
+      "size": 16168,
+      "sha256": "12822a9862da5310437fd466691da42713f0fde5fbd2219b55e9ba3a91fb89ca"
+    },
+    {
+      "path": "System.dll",
+      "size": 50512,
+      "sha256": "2974c06f6c87a80e3c2a4fa97021087f8b1d03e1d801ff667a8e288d520eebb6"
+    },
+    {
+      "path": "System.Drawing.dll",
+      "size": 20264,
+      "sha256": "721f136441e1630aeb5b5dd1f16b3c276d6aacf4ff4e23884fc2f00cc4647ac0"
+    },
+    {
+      "path": "System.Drawing.Primitives.dll",
+      "size": 128848,
+      "sha256": "4a12b84008596137f1bddc7bcc7d3a72aed9062be65ecaff253b55fac193308b"
+    },
+    {
+      "path": "System.Dynamic.Runtime.dll",
+      "size": 16168,
+      "sha256": "ada9879b553fbedeb13529cd7e259dafacffc485f4db86c01cfe029a8dc26783"
+    },
+    {
+      "path": "System.Formats.Asn1.dll",
+      "size": 218960,
+      "sha256": "28bba8e0e020a81009753eedba89d436b590079cd6972ad1ac63c624d42bbe14"
+    },
+    {
+      "path": "System.Formats.Cbor.dll",
+      "size": 165712,
+      "sha256": "407b1c5b8766c61cb64f5adfe4350cad87e4ec1577aaea3b58c8c472c90ae717"
+    },
+    {
+      "path": "System.Formats.Tar.dll",
+      "size": 259880,
+      "sha256": "78225aca5628004eee47f2cad2f230e35b4f3ae506867431310c070b5e9d820a"
+    },
+    {
+      "path": "System.Globalization.Calendars.dll",
+      "size": 15696,
+      "sha256": "3377f4513ec6d1014af193e488484f69bf062d3e32c7e49b473713ca79559125"
+    },
+    {
+      "path": "System.Globalization.dll",
+      "size": 15656,
+      "sha256": "ae58ce2308ff10ecd847220f1eb372b9c68108139271716db00838b9ce783cb7"
+    },
+    {
+      "path": "System.Globalization.Extensions.dll",
+      "size": 15144,
+      "sha256": "c51c65072adc8964f9b8b5f7612e9dfb0f79b90fe473b5063f5faa4d41efa854"
+    },
+    {
+      "path": "System.IO.Compression.Brotli.dll",
+      "size": 75600,
+      "sha256": "0acbca917d1b2356b12d5c2c067c6c4202cc88cb923c2cf5cac1e38cfe7bc1ef"
+    },
+    {
+      "path": "System.IO.Compression.dll",
+      "size": 403240,
+      "sha256": "97c652e8d0454e6e0fd7a5df9441e31512e8e43aec36da13cd95207e40e402bd"
+    },
+    {
+      "path": "System.IO.Compression.FileSystem.dll",
+      "size": 15144,
+      "sha256": "f0236fe891749243414a38b94035c90883808838926b9c97db1bba92cf8b8dbb"
+    },
+    {
+      "path": "System.IO.Compression.Native.dll",
+      "size": 846632,
+      "sha256": "bb94d01b6b357852facfa5e8c7741ab3eee76735243d2c3aa9f09eed4be2dcbf"
+    },
+    {
+      "path": "System.IO.Compression.ZipFile.dll",
+      "size": 91944,
+      "sha256": "41580f8f373d2c9b3224e68f2e9277f20f2b6f1dd56a1b9d9c1cdec929f2bfa3"
+    },
+    {
+      "path": "System.IO.dll",
+      "size": 15696,
+      "sha256": "a93ff37db8ae654a9d31bfcfe29135fede03e14c6b91baf544525d3a3bfdd5d6"
+    },
+    {
+      "path": "System.IO.FileSystem.AccessControl.dll",
+      "size": 96040,
+      "sha256": "4b8ac3e85a68dc3eb8a1bd81af4bcb0a5fc7d8927e49d1e7a0bfe6e983b4dfb8"
+    },
+    {
+      "path": "System.IO.FileSystem.dll",
+      "size": 15656,
+      "sha256": "d991db5e772d3734a55d9e628ed5cb149698277b86d91df5fd7ae3dbcaba94ca"
+    },
+    {
+      "path": "System.IO.FileSystem.DriveInfo.dll",
+      "size": 50984,
+      "sha256": "bb5b65070ae4a52c38600859be6b438a78ba9c664eaca9875f95b4963c5ecaf2"
+    },
+    {
+      "path": "System.IO.FileSystem.Primitives.dll",
+      "size": 15184,
+      "sha256": "1c9740d7cdd498dd783dc66de42bd32571553840719d7455fb5c9ea8ecc18ee5"
+    },
+    {
+      "path": "System.IO.FileSystem.Watcher.dll",
+      "size": 79656,
+      "sha256": "6b231a06bb0389fc5684ca1a645cc35b700acd2cccdc909afd7509ce99eb7f54"
+    },
+    {
+      "path": "System.IO.IsolatedStorage.dll",
+      "size": 83752,
+      "sha256": "85d322b18f5af1886526f45b8d1c7dd7bb96abb4edbf014fef6ad4f4c37cc635"
+    },
+    {
+      "path": "System.IO.MemoryMappedFiles.dll",
+      "size": 75560,
+      "sha256": "1202e25ab58430baca514ed6da319b48f376e7aba11baab0631eacbe4f1e1dd0"
+    },
+    {
+      "path": "System.IO.Pipelines.dll",
+      "size": 182056,
+      "sha256": "57613e51824a03e379603c63dfecb329e0787babc648fd4b662f6d5a199c5d34"
+    },
+    {
+      "path": "System.IO.Pipes.AccessControl.dll",
+      "size": 15696,
+      "sha256": "f16c9e9bbc54a399b5ccabb0dbee129e8ec20a540857fd38d236c54c2a3e2441"
+    },
+    {
+      "path": "System.IO.Pipes.dll",
+      "size": 157520,
+      "sha256": "65f17077bd6c8647f2d1ffda4b790e2703bfe395efc2da7a13aee439c6de0e59"
+    },
+    {
+      "path": "System.IO.UnmanagedMemoryStream.dll",
+      "size": 15656,
+      "sha256": "dc013a7e321bc54cec24a3aa8a3f84d7bd56b91e828caa945e28aa626e3ca9ce"
+    },
+    {
+      "path": "System.Linq.AsyncEnumerable.dll",
+      "size": 1242920,
+      "sha256": "b301c05249fc252f91f105c66197d7f79190f4d89b500f247b8da77b7c224b87"
+    },
+    {
+      "path": "System.Linq.dll",
+      "size": 644944,
+      "sha256": "663c110dea75b962eb81f362f32a8851dd63b66543fc361086bae8d6858a488b"
+    },
+    {
+      "path": "System.Linq.Expressions.dll",
+      "size": 3368744,
+      "sha256": "02f6a9ddefdf3e107a5bd72aea221e34243b5510ab85851779f3a9bd7de9e2c6"
+    },
+    {
+      "path": "System.Linq.Parallel.dll",
+      "size": 730920,
+      "sha256": "4b8119e66b5556c9cb108985844dcfd88651e198f48a6204283e59e8425ab3b1"
+    },
+    {
+      "path": "System.Linq.Queryable.dll",
+      "size": 177960,
+      "sha256": "9bcf62e629ad461c9d7b74007d58df008b11c6a9b6654ada6d1ef79779f8dafc"
+    },
+    {
+      "path": "System.Memory.dll",
+      "size": 157480,
+      "sha256": "30658be9215ec9a31d521b7827aa100770184bdf6cf0c2c0ba77f411e204d7c4"
+    },
+    {
+      "path": "System.Net.dll",
+      "size": 17192,
+      "sha256": "3a7c5f66a36c285b230af38173b475cfd8f9070a4960aaa099f5328916de1bbf"
+    },
+    {
+      "path": "System.Net.Http.dll",
+      "size": 1652560,
+      "sha256": "3cc6a4d08130da1b8e2d90c678270baffdc4bd5ba1939526ba6b5a4d855b77b3"
+    },
+    {
+      "path": "System.Net.Http.Json.dll",
+      "size": 116520,
+      "sha256": "30f8940edfca66ee77c4a7a0148849b4879b041f612bf222d4d551d5ac781e80"
+    },
+    {
+      "path": "System.Net.HttpListener.dll",
+      "size": 505640,
+      "sha256": "acfe5a86755020bee2749747d746f242bfd5d6fc7e0977a672cedfaf336d8bc9"
+    },
+    {
+      "path": "System.Net.Mail.dll",
+      "size": 452392,
+      "sha256": "ea2242fc6591e23230427b48b99b0173290b41b96de15a85a906e42e712b7507"
+    },
+    {
+      "path": "System.Net.NameResolution.dll",
+      "size": 112424,
+      "sha256": "16464a5acd389560fb5f03e2447e81bd546a351032c59b65838fbb3e693150f3"
+    },
+    {
+      "path": "System.Net.NetworkInformation.dll",
+      "size": 145192,
+      "sha256": "5ec3a202ca6f1bc1b0402f56fc3a0eb928cde2412179b2f75b3a6e35413c002d"
+    },
+    {
+      "path": "System.Net.Ping.dll",
+      "size": 87848,
+      "sha256": "1917db4218db18e9f26548992895bea631615db422645da86971d0702771c9cd"
+    },
+    {
+      "path": "System.Net.Primitives.dll",
+      "size": 202536,
+      "sha256": "c30de298ab62e4c7f5393882296f0f883e18344a517650df87b008a216f03f75"
+    },
+    {
+      "path": "System.Net.Quic.dll",
+      "size": 337704,
+      "sha256": "d48a07fbceb23938d8bc3a87aa6724bdfde77a74c3d482197e70a024563a0e53"
+    },
+    {
+      "path": "System.Net.Requests.dll",
+      "size": 354128,
+      "sha256": "02c59b84641a90c4e3f4634d5c4ff3fe1ace4d4e065d8901c0e29814399e4b93"
+    },
+    {
+      "path": "System.Net.Security.dll",
+      "size": 632616,
+      "sha256": "cbdd6a3b4a51b88f47941a48580b0269b1eb94d52b4d7ab9cd273083a85f952d"
+    },
+    {
+      "path": "System.Net.ServerSentEvents.dll",
+      "size": 79696,
+      "sha256": "5c7c03d869f76b357a5f8effb28805aca4b6e4f1520dfc1b360e00b8ac0a23ae"
+    },
+    {
+      "path": "System.Net.ServicePoint.dll",
+      "size": 15144,
+      "sha256": "76cf1560cfaf8293a192d6320ec0fe426c0c39bd3dede32b3a021f2e1aa59fe0"
+    },
+    {
+      "path": "System.Net.Sockets.dll",
+      "size": 493392,
+      "sha256": "9b30ba163cddd3c9226188d909ff222178617d113ae3d52ccf14500016e1b017"
+    },
+    {
+      "path": "System.Net.WebClient.dll",
+      "size": 157520,
+      "sha256": "7713a5062c9ff010633ef244eb54a6308b15d5a12466d1cb41076d4d63bb000e"
+    },
+    {
+      "path": "System.Net.WebHeaderCollection.dll",
+      "size": 59176,
+      "sha256": "d1a5f2f769eb4112c422d4788f97dda884ab413ce9e09086259bdb57e3decd3d"
+    },
+    {
+      "path": "System.Net.WebProxy.dll",
+      "size": 42792,
+      "sha256": "ea0d34cb4752862d7c9958f2f4362a61f6a88e3a24429b3ec4474b849a5961d6"
+    },
+    {
+      "path": "System.Net.WebSockets.Client.dll",
+      "size": 91984,
+      "sha256": "7e80b71ce10a8776c985acc82790a872a80f232bb3e707fa9f49bd43fc3d38cf"
+    },
+    {
+      "path": "System.Net.WebSockets.dll",
+      "size": 231208,
+      "sha256": "5d2f6d370cf612432cc2feb5c32d3397ed8bc7d95f09a44a64bc209266e9c22c"
+    },
+    {
+      "path": "System.Numerics.dll",
+      "size": 15144,
+      "sha256": "47c192991c005df82a5dde6d7019aa21df214046f5eaf2980dafaea2583627bc"
+    },
+    {
+      "path": "System.Numerics.Vectors.dll",
+      "size": 15656,
+      "sha256": "41f026922ef31a9f5be57e3bd9f868e63b6366839de13b60814dd511b4820fb0"
+    },
+    {
+      "path": "System.ObjectModel.dll",
+      "size": 71464,
+      "sha256": "3fab92a729251d80f9d4ccc58f707b420a3c84df657a08855ea0ee66b387b3f1"
+    },
+    {
+      "path": "System.Private.CoreLib.dll",
+      "size": 15542096,
+      "sha256": "e3dc8bef562ef68c0ba300ae12826a7be1bc59f278bd78e77286c45e6620d715"
+    },
+    {
+      "path": "System.Private.DataContractSerialization.dll",
+      "size": 1939240,
+      "sha256": "9be7c9679449d795f5929ef318b85c8a477a46e8fc1c6ba063179722609a0570"
+    },
+    {
+      "path": "System.Private.Uri.dll",
+      "size": 243496,
+      "sha256": "ab336ad819893bedf0f07d22a6fcf1e2577a6c14548e4c00ba9d686870398802"
+    },
+    {
+      "path": "System.Private.Xml.dll",
+      "size": 7391056,
+      "sha256": "45bf4899c7ac130968b1161914a933510ca6c447c954d0f666a6c1bdb5dfc3b5"
+    },
+    {
+      "path": "System.Private.Xml.Linq.dll",
+      "size": 366416,
+      "sha256": "0cd435db2f1e0a8338905aad7aacff5bc0c4a88f87ef365f97e87e7691ff88c1"
+    },
+    {
+      "path": "System.Reflection.DispatchProxy.dll",
+      "size": 71464,
+      "sha256": "3e89fd0f608b10cd2a4c6e912b71bc7f0a0bb1a3b1eddf0953626d65f00161b7"
+    },
+    {
+      "path": "System.Reflection.dll",
+      "size": 16168,
+      "sha256": "2e3ab9e0c3117734a2d71c718970e867cd21af424b27dd92e44e6522b72ff90e"
+    },
+    {
+      "path": "System.Reflection.Emit.dll",
+      "size": 292648,
+      "sha256": "d05fc6eb21c08dc215e477aa089847db330c2d4213af797518ba409d84a10d3d"
+    },
+    {
+      "path": "System.Reflection.Emit.ILGeneration.dll",
+      "size": 15696,
+      "sha256": "9c3f5485dadb96c9d770d5959a9b73e6b7b24d576eb6d3dc28a59e3877f03aa3"
+    },
+    {
+      "path": "System.Reflection.Emit.Lightweight.dll",
+      "size": 15656,
+      "sha256": "679f13639443a6bc3ce195dd65801cd11187022a9784d869b692dc5d17004157"
+    },
+    {
+      "path": "System.Reflection.Extensions.dll",
+      "size": 15144,
+      "sha256": "3eea0a32f9a6e5c82e2de6032a53d32e615a30ff93db2b91c75db0b2b7d6ee7d"
+    },
+    {
+      "path": "System.Reflection.Metadata.dll",
+      "size": 1103656,
+      "sha256": "ad91d1a156eafc5fb765933184acbd5451ecf47df6301a4a78fa99967a1150c5"
+    },
+    {
+      "path": "System.Reflection.Primitives.dll",
+      "size": 15696,
+      "sha256": "1e8fca689b852219238c19bcdfcd476a670c59a40694968102336b0cde07ecda"
+    },
+    {
+      "path": "System.Reflection.TypeExtensions.dll",
+      "size": 42792,
+      "sha256": "ea6e6b49731c2e00d18367dbe9b8d97fa61643d5b4681b71a7eecf904f9ab3b3"
+    },
+    {
+      "path": "System.Resources.Reader.dll",
+      "size": 15184,
+      "sha256": "e397fbc60d4bd4ce98f4265ad926d1f4a5f61c9531e56668ae525ad2a4962940"
+    },
+    {
+      "path": "System.Resources.ResourceManager.dll",
+      "size": 15656,
+      "sha256": "72c58b239e55a201e2155dd5c2bfc2bae9edf4da4b4af1c6217b4837f7a6ba8f"
+    },
+    {
+      "path": "System.Resources.Writer.dll",
+      "size": 50984,
+      "sha256": "a8baa0e679b33f400598e634780b645d76b812bfc2fda3d312375c49f6203202"
+    },
+    {
+      "path": "System.Runtime.CompilerServices.Unsafe.dll",
+      "size": 15144,
+      "sha256": "0064ee175bd528a959c8462c423f20b4a7e0e6a0df4f07579b9f10fb4ea40849"
+    },
+    {
+      "path": "System.Runtime.CompilerServices.VisualC.dll",
+      "size": 30544,
+      "sha256": "e351f919a36543f14a4d52d311f7f6aeb789b52d97f5248e7e2e50d6da3fd79c"
+    },
+    {
+      "path": "System.Runtime.dll",
+      "size": 44840,
+      "sha256": "2e56e376f1c7ee859186b02127be7446b7c43edc06c15e0641a3cede3a387cbe"
+    },
+    {
+      "path": "System.Runtime.Extensions.dll",
+      "size": 17744,
+      "sha256": "c3197ab59550bef5ba5c27a00712fc3a06d6413020c3f855d0ddf02ea25b652d"
+    },
+    {
+      "path": "System.Runtime.Handles.dll",
+      "size": 15696,
+      "sha256": "65b804981cbfac8862e36e68e75ecddb6e739b06664adaafaccc42c59e3eedd0"
+    },
+    {
+      "path": "System.Runtime.InteropServices.dll",
+      "size": 108328,
+      "sha256": "535db61793e3c3ea1e20951f1472fac07bcd8c61bacc6d0250884e11abd30248"
+    },
+    {
+      "path": "System.Runtime.InteropServices.JavaScript.dll",
+      "size": 51024,
+      "sha256": "78fc86ae96aa6630be707eb50003d084502da35f109b18fd7e5acee39f8cb429"
+    },
+    {
+      "path": "System.Runtime.InteropServices.RuntimeInformation.dll",
+      "size": 15656,
+      "sha256": "90412fad6014968a01228a148393fe9dccc31a893ad74b0a9d0187708042f590"
+    },
+    {
+      "path": "System.Runtime.Intrinsics.dll",
+      "size": 17192,
+      "sha256": "0a638323b67ecf6277cf2b2b151a43b325320dc88fb992a953a7f956015cdd9e"
+    },
+    {
+      "path": "System.Runtime.Loader.dll",
+      "size": 15656,
+      "sha256": "f5565b7f2bcf5bc3e887fa9ff097f6d6a2ed20183a647fbad2089bc595881534"
+    },
+    {
+      "path": "System.Runtime.Numerics.dll",
+      "size": 350032,
+      "sha256": "0c4b99f2cf7d3ac069470c5b1e6a0a20b078af57610a33132b4768e50c5f12f3"
+    },
+    {
+      "path": "System.Runtime.Serialization.dll",
+      "size": 17232,
+      "sha256": "bdc54a2aa855848d6de63a5598b16e5a86f32ddd915675331258f4f87fb83b92"
+    },
+    {
+      "path": "System.Runtime.Serialization.Formatters.dll",
+      "size": 120656,
+      "sha256": "8f3aef3ba4b29447603c9feb2853cbf6034a821127093ba2343f4c6c3650f6a9"
+    },
+    {
+      "path": "System.Runtime.Serialization.Json.dll",
+      "size": 15696,
+      "sha256": "3387a44dc2451727367ec4b23029f5306c0f17b54bfbf939fdea6fdb1b54ad27"
+    },
+    {
+      "path": "System.Runtime.Serialization.Primitives.dll",
+      "size": 38696,
+      "sha256": "e3a2413c9a8d010a4e57cef17f5d772e5caa960d5eb490df441fc9ec648072e3"
+    },
+    {
+      "path": "System.Runtime.Serialization.Xml.dll",
+      "size": 16680,
+      "sha256": "95ade72176a785eecaf1eeeb5d7f9d2b24e6614da85aa41573f17d2c1a498f5c"
+    },
+    {
+      "path": "System.Security.AccessControl.dll",
+      "size": 210728,
+      "sha256": "7e9543332301d2cd229007e264e14c1aaa6595deffb5021e440176808bc2b23f"
+    },
+    {
+      "path": "System.Security.Claims.dll",
+      "size": 96040,
+      "sha256": "1ac0c40af7b9e11fae2e4951d40c4b1d487db60c4296b039e91c003cc9ba4c2d"
+    },
+    {
+      "path": "System.Security.Cryptography.Algorithms.dll",
+      "size": 17192,
+      "sha256": "d74e72cd9098fe3d92fe10eee7379c39a2df6f75c1087c81cbf9355aa6699d00"
+    },
+    {
+      "path": "System.Security.Cryptography.Cng.dll",
+      "size": 16168,
+      "sha256": "afedac561ba412a94620b1aac260cc818cfef970e24bf2679ec8260caa8101bf"
+    },
+    {
+      "path": "System.Security.Cryptography.Csp.dll",
+      "size": 16208,
+      "sha256": "5e84e9df58840f87c23337d9785f762a6fe346428c4ba19f4c3419642a16c2eb"
+    },
+    {
+      "path": "System.Security.Cryptography.dll",
+      "size": 2357032,
+      "sha256": "09ca5e07d5c8ea047d9c853b0a8eca0ffb1c5a266eaf4820587d84c0ae96f6fe"
+    },
+    {
+      "path": "System.Security.Cryptography.Encoding.dll",
+      "size": 15656,
+      "sha256": "86d3bb20057f8148a10be454cf910a65e7b44d15cea6a02f1dde4b095c09a69d"
+    },
+    {
+      "path": "System.Security.Cryptography.OpenSsl.dll",
+      "size": 15656,
+      "sha256": "6989e1d705fb01cd449c38f150056a8152d28f24d044010eb61d67af272753e9"
+    },
+    {
+      "path": "System.Security.Cryptography.Pkcs.dll",
+      "size": 722728,
+      "sha256": "3e71987b28345a6611c69636bc9925a7b49653c16726c7950afc32bdcd55ed95"
+    },
+    {
+      "path": "System.Security.Cryptography.Primitives.dll",
+      "size": 15696,
+      "sha256": "527f903689e5f9161203d48187fc242c4963933fa9b71f2b39985151eee764d8"
+    },
+    {
+      "path": "System.Security.Cryptography.X509Certificates.dll",
+      "size": 16680,
+      "sha256": "533acdda4344fc0347404b588bc2b419feb57f4a07ee6cae45c3911b8762cc5a"
+    },
+    {
+      "path": "System.Security.Cryptography.Xml.dll",
+      "size": 431952,
+      "sha256": "972d16d6a9aab9d8f1de4e22ec42022bab88e71cf177c05d12906b71cfac0370"
+    },
+    {
+      "path": "System.Security.dll",
+      "size": 18216,
+      "sha256": "274629d5be647164bb84330aeb3f8e1fedb392fa884b58b55f41cf385049b3f3"
+    },
+    {
+      "path": "System.Security.Principal.dll",
+      "size": 15184,
+      "sha256": "72a6e7e698a049761e1f180c5132d1b0862369ea72f010bab805b83acc666722"
+    },
+    {
+      "path": "System.Security.Principal.Windows.dll",
+      "size": 165672,
+      "sha256": "676cb10a84fec091112b5a5a83f343b77244f64b918f7668fba549c407a2cfb3"
+    },
+    {
+      "path": "System.Security.SecureString.dll",
+      "size": 15656,
+      "sha256": "7c232556b282ad22acaac2a47fc8957a9d3ed3abf3bb1cbd9990e7a72b7667bc"
+    },
+    {
+      "path": "System.ServiceModel.Web.dll",
+      "size": 16680,
+      "sha256": "665f817cbad4404d8cca095c3b30fac06e2bf6694939746455cc3ea74954aa6f"
+    },
+    {
+      "path": "System.ServiceProcess.dll",
+      "size": 15656,
+      "sha256": "7d32b706e1ed1041a2e180825aadbed1fc50ccd72063f1ab43e0b4c0bf763e77"
+    },
+    {
+      "path": "System.Text.Encoding.CodePages.dll",
+      "size": 857936,
+      "sha256": "61b50f376211f4368b407bf0cf76d1ae4b9e4b05ee621075f00dbe250ec6fc34"
+    },
+    {
+      "path": "System.Text.Encoding.dll",
+      "size": 15656,
+      "sha256": "a0f6c04de9a90ecb85d4f770c5ff505aa4433ffb21b9f22d5b450b6a52dcc2ef"
+    },
+    {
+      "path": "System.Text.Encoding.Extensions.dll",
+      "size": 15696,
+      "sha256": "1d561071ddce59c047ad2df0c3358fa8057f2ded1f1df3ee8128fadbe12a5b6d"
+    },
+    {
+      "path": "System.Text.Encodings.Web.dll",
+      "size": 120616,
+      "sha256": "e65465b8f3c23c91fb268bfe861fb45ca20e5166ccaff7fed3d8fb8c9fc2e822"
+    },
+    {
+      "path": "System.Text.Json.dll",
+      "size": 1787688,
+      "sha256": "e3bc749abf71e21fac76c3eb21defc8fb312c57f4118bc9ef863f338ec1a2c4d"
+    },
+    {
+      "path": "System.Text.RegularExpressions.dll",
+      "size": 984872,
+      "sha256": "53ff60a0a3e4d09facdea3894f097541ac4ff4059073254f50ebb3a4d46d8023"
+    },
+    {
+      "path": "System.Threading.AccessControl.dll",
+      "size": 71504,
+      "sha256": "27f6b09331d139adcab1a0aeee2c6266e6478cb4d72618845b4874a510d0bc02"
+    },
+    {
+      "path": "System.Threading.Channels.dll",
+      "size": 149288,
+      "sha256": "a2735a3fb51f1817da7848bc9fb85586acdcf742ab8016c6280cb95408339318"
+    },
+    {
+      "path": "System.Threading.dll",
+      "size": 79696,
+      "sha256": "03e32ab47503c1d4307dc09d18422f1b24ae7c7c7e6c19386ceec2d33c9d840b"
+    },
+    {
+      "path": "System.Threading.Overlapped.dll",
+      "size": 15696,
+      "sha256": "bcac75916972ca49d2005e66ad9073f6905f18f51eeb40f1e4050894f5b21205"
+    },
+    {
+      "path": "System.Threading.RateLimiting.dll",
+      "size": 157480,
+      "sha256": "51793018101b065c03b0517a771fb4c338ea4c1eb4308976fd6869e90d0d6aed"
+    },
+    {
+      "path": "System.Threading.Tasks.Dataflow.dll",
+      "size": 444200,
+      "sha256": "fa80388c53798c3d201e86184cff6d745f0bb9593c71cabddc92b58bb0059911"
+    },
+    {
+      "path": "System.Threading.Tasks.dll",
+      "size": 16680,
+      "sha256": "b315ffe1ec9afb48815a9080d8bd11c38f5ec1ff8c7b5bc401fa8fd958a89ac0"
+    },
+    {
+      "path": "System.Threading.Tasks.Extensions.dll",
+      "size": 15696,
+      "sha256": "1c44ecb0566aa2f3cc5d7cad4e967c8ca0990447f9b6ea4a03b26d82c3418e64"
+    },
+    {
+      "path": "System.Threading.Tasks.Parallel.dll",
+      "size": 120656,
+      "sha256": "528aed2344d225a966602011bf4ad143911b7d6ee355794a8fdba56dc1c310bf"
+    },
+    {
+      "path": "System.Threading.Thread.dll",
+      "size": 15656,
+      "sha256": "47c195c5b13096589c72bbaf902eea30b4c9660af5d54a41c6e1d4a79b95e347"
+    },
+    {
+      "path": "System.Threading.ThreadPool.dll",
+      "size": 15656,
+      "sha256": "752478578ca1612c15fa5753366cea20637c446b9e987f62b1b4da24f4d17bb2"
+    },
+    {
+      "path": "System.Threading.Timer.dll",
+      "size": 15144,
+      "sha256": "48e7c4d1a2b268ee3dc993ce3bb48ec3dfc006caae7edbb4ae7da32bae1850a3"
+    },
+    {
+      "path": "System.Transactions.dll",
+      "size": 16720,
+      "sha256": "8e65a80928ec2615587a1351ab3abafa433d8f502b1cd49b6388789aac800300"
+    },
+    {
+      "path": "System.Transactions.Local.dll",
+      "size": 608080,
+      "sha256": "1522d508c8cd5f5daf2019c3a6eea0d9211d34ff488bd3508c82bdeaf73df662"
+    },
+    {
+      "path": "System.ValueTuple.dll",
+      "size": 15656,
+      "sha256": "2d89ee89cc20283c35ebd345b4c74396a17e6f1b14c2ec80136f780701c0392e"
+    },
+    {
+      "path": "System.Web.dll",
+      "size": 15144,
+      "sha256": "52f4185ef923a1957495a3e6b18f5024a9f0da6d9fd95d7b51b34d7fdb17e059"
+    },
+    {
+      "path": "System.Web.HttpUtility.dll",
+      "size": 63272,
+      "sha256": "9f9cfc26fd9b70853823581915a212c6528d3abe18df6d4a698221de38e95676"
+    },
+    {
+      "path": "System.Windows.dll",
+      "size": 15656,
+      "sha256": "e9e0e1010890bee8a7bb0275da551e5fab9e68cd0a5886f2eba2901d51dc1278"
+    },
+    {
+      "path": "System.Xml.dll",
+      "size": 23336,
+      "sha256": "59d31960382ea0733a0adebd3759127366084001bc99c7f89748fdec3484dfdd"
+    },
+    {
+      "path": "System.Xml.Linq.dll",
+      "size": 15696,
+      "sha256": "83de350e995f9667d94a5ff77936665ba3705e12c9c02d826a279b3eb6a911ce"
+    },
+    {
+      "path": "System.Xml.ReaderWriter.dll",
+      "size": 21840,
+      "sha256": "c3dbb3798a7dea65ac8aa30b53a8038889f5faffba65fc877a1406394a652c8d"
+    },
+    {
+      "path": "System.Xml.Serialization.dll",
+      "size": 16208,
+      "sha256": "a41d31dea485535381f79dcb7b09f5c94c833c9718d3feebfc3ff73baf9b035f"
+    },
+    {
+      "path": "System.Xml.XDocument.dll",
+      "size": 15656,
+      "sha256": "44f0f58356e072ba5646325227c90d362dab98ddd9b461bc5b22b100d103fc8e"
+    },
+    {
+      "path": "System.Xml.XmlDocument.dll",
+      "size": 15656,
+      "sha256": "b3b774e2a2e7c6afe7593f2486a718cd8aedad8466313a89315a38d49be54f87"
+    },
+    {
+      "path": "System.Xml.XmlSerializer.dll",
+      "size": 17704,
+      "sha256": "878db934073e1127f2d3989fa64e88168c32c1f8294adf731d4dacc9e11aa925"
+    },
+    {
+      "path": "System.Xml.XPath.dll",
+      "size": 15656,
+      "sha256": "a21f020b7a2477d18679488cd22d08e921f909ac5c0c3e4902ff4b1d3e3eddca"
+    },
+    {
+      "path": "System.Xml.XPath.XDocument.dll",
+      "size": 30504,
+      "sha256": "124fb8d9cb9c12f5a3915c1749ed9515fb0c95d58274777814dfd615dcbfc4f3"
+    },
+    {
+      "path": "web.config",
+      "size": 477,
+      "sha256": "f8495b0f60fb3cd091299eea60ba79b1434d1f5bd14d829173deedc1310fd639"
+    },
+    {
+      "path": "WindowsBase.dll",
+      "size": 16168,
+      "sha256": "37d36d95cf27e82feb546c79eda560f4314367a7595f8e94e0eab47e4d9bb85a"
+    },
+    {
+      "path": "wwwroot/_framework/blazor.server.js",
+      "size": 165205,
+      "sha256": "6c3413c3b004b80602a5644ada316095e3bd6bb3f1070beec5df7337adfea2ca"
+    },
+    {
+      "path": "wwwroot/_framework/blazor.server.js.br",
+      "size": 38556,
+      "sha256": "886c76c962ef708bca26b64cbb484756d322cd327aa71475457946b8e9e603eb"
+    },
+    {
+      "path": "wwwroot/_framework/blazor.server.js.gz",
+      "size": 44645,
+      "sha256": "9f12a1d94ea8cc10250024553dfc716e6cb08a03b0688eaf8d749b296f3e440f"
+    },
+    {
+      "path": "wwwroot/_framework/blazor.web.js",
+      "size": 200645,
+      "sha256": "88ba6b992b9e261e7e4b97bb4cc4a90c2227efaa640e314cfcc36e35eca436e5"
+    },
+    {
+      "path": "wwwroot/_framework/blazor.web.js.br",
+      "size": 47560,
+      "sha256": "b52a81695341206cca8bb7a2df0604a5f50c70da5ecbfdaddb4fd5cfdf975bfe"
+    },
+    {
+      "path": "wwwroot/_framework/blazor.web.js.gz",
+      "size": 55644,
+      "sha256": "65675b8a55b847333f5cc08bd0a599a7445bcec471938f061e43e1db26b75ccd"
+    },
+    {
+      "path": "wwwroot/app.css",
+      "size": 12425,
+      "sha256": "9f9191613a496d0ff5b343611eb44a6543072fb8c01995e8c4e5d390fa66b044"
+    },
+    {
+      "path": "wwwroot/app.css.br",
+      "size": 3009,
+      "sha256": "75abcc700860ef1e70a44345f92b82f5c0895aab783d363769c661703c5457b6"
+    },
+    {
+      "path": "wwwroot/app.css.gz",
+      "size": 3480,
+      "sha256": "5687dc7619a59c66808f9046f41a33ad16c031e393713ec020eb975e43a17f99"
+    },
+    {
+      "path": "wwwroot/appicon.ico",
+      "size": 105602,
+      "sha256": "f4f19b914e943e40671ef6e1f4eba4f51660e6a6a516ef124866a87f10a6ae17"
+    },
+    {
+      "path": "wwwroot/appicon.ico.br",
+      "size": 105607,
+      "sha256": "1f55b61073a2696e130f6f3230e958947f276524a0112681e1b7b2c881eb7e25"
+    },
+    {
+      "path": "wwwroot/appicon.ico.gz",
+      "size": 105655,
+      "sha256": "75f77c4500d47e380f11af115c91f4db25127f2c6fb4af3dc98db67542a84e54"
+    },
+    {
+      "path": "wwwroot/appicon.png",
+      "size": 1408138,
+      "sha256": "379a2220587f955317a01b2ad21853fb4d5ded59d1f3798a20f0a0e986da12e9"
+    },
+    {
+      "path": "wwwroot/appicon.svg",
+      "size": 1889120,
+      "sha256": "89c099e05916ecac945bce7fd245f47db2d0d2872579a51b725f1830db1d501c"
+    },
+    {
+      "path": "wwwroot/appicon.svg.br",
+      "size": 1416980,
+      "sha256": "ff2af07fd2b7514fda8c9a69fb3d1584255ddd9ae58149ac94520d48c7c6e11e"
+    },
+    {
+      "path": "wwwroot/appicon.svg.gz",
+      "size": 1421814,
+      "sha256": "87b21b69f780d00cddbe97f19d7ae8b4899fa30faa936342723bee2a6102dbeb"
+    },
+    {
+      "path": "wwwroot/Biblia.Web.styles.css",
+      "size": 6926,
+      "sha256": "58484d612771372404239812a044e95a26c87d7713b13326cc8da19da75a69b5"
+    },
+    {
+      "path": "wwwroot/Biblia.Web.styles.css.br",
+      "size": 1785,
+      "sha256": "854069474607dcab7e5d51e33d89d1a35540a1b0fec19b7e767a07096334466e"
+    },
+    {
+      "path": "wwwroot/Biblia.Web.styles.css.gz",
+      "size": 2130,
+      "sha256": "e65b96d333986b71222898c78bde750b8e8efa7b49bd4bd3a8027ee62304b3da"
+    },
+    {
+      "path": "wwwroot/Components/Layout/NavMenu.razor.js",
+      "size": 266,
+      "sha256": "580b52b206d45ccb6a8b5fdd626e05c8517589fd09a059282c9ed99295685c56"
+    },
+    {
+      "path": "wwwroot/Components/Layout/NavMenu.razor.js.br",
+      "size": 133,
+      "sha256": "da432ceae7c65650eec0cf448f49e1b7b269b2d842bac498909acf01f2ef1b3c"
+    },
+    {
+      "path": "wwwroot/Components/Layout/NavMenu.razor.js.gz",
+      "size": 183,
+      "sha256": "161986504811d5387074ca454600740d3602caff87be08b287edbc9a24d6078a"
+    },
+    {
+      "path": "wwwroot/favicon.png",
+      "size": 1148,
+      "sha256": "e265ac0f2dda1e5dfa65b1adf330722bb3ef7789115283604d8cd19f098f1f08"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "size": 74413,
+      "sha256": "7f873c615d6aaebe914a255858c413ed1e56d8e913fa25e61391faf7fb91bc64"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.br",
+      "size": 3482,
+      "sha256": "54ef5957d22b7be69ce0391e4300f01189dc8a1e30fb694f92a74bb96a763641"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.gz",
+      "size": 6754,
+      "sha256": "b5dfd69c4aec24728fdcb4fc073eb39c274006e0969cfe75dc56124291d12bd0"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "size": 203221,
+      "sha256": "c404fe9f6e4513986f3a38f67c6e1874ec2bd5b97822500904d83a3db84b4f61"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map.br",
+      "size": 23303,
+      "sha256": "164d1e70b6c2c22e2610696e92c79f2fe54a954b1cbebba4aeab58aed83b46e7"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map.gz",
+      "size": 32794,
+      "sha256": "00b3dfeaab1932ef948bc97c8cf2491773214dcababb0ad085159e5892f88b15"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "size": 51800,
+      "sha256": "84ddadb4c1bf2b7c10945acddd26d0d58178b48247084e2860ff9089b4f7bce6"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.br",
+      "size": 2779,
+      "sha256": "447ba3d0c5eeb4d59f4f0feb2a8c3394aece697b50a5fa0ce7216664ad3e0d3e"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.gz",
+      "size": 5973,
+      "sha256": "da9b00798b10c0853ee218e169aeda8ae108f1e33456a5c6e262cc2362c1e648"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "size": 115986,
+      "sha256": "9202fec7056633c20eb35e659e81edf5d691d8b44c8811bf7188143dc290398e"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map.br",
+      "size": 8713,
+      "sha256": "c29d079ab25634ec8d265002d86a887b414e26f6ca2cb5932e321bdfd156e8ec"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map.gz",
+      "size": 13822,
+      "sha256": "513a64db0e907f0f91519b54b14b960d5ad05d311d83321688b1dbee00dc6597"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "size": 74486,
+      "sha256": "335e5f1d329f30ae9c4daaece5cdbc3cd84dea10f4a9e51bdc73f339da0fc027"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.br",
+      "size": 3568,
+      "sha256": "9a80d8fc446eb2f3692d1786983729468506a13e939f60a42639dd441c9ca3fe"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.gz",
+      "size": 6755,
+      "sha256": "25bde18213d7f0722f2c8350d8b4432c7df79857eacb36e4fa74ec6e21ed2abe"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "size": 203225,
+      "sha256": "fec890500f325fcdf48fe70be1a98a1d8df206d9f79fccf7120f95675e5ff749"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map.br",
+      "size": 23413,
+      "sha256": "eedb290b33c5c3831a3e5745d96c917eb91f1cb87e72890e1e492d5ef1b485b7"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map.gz",
+      "size": 32793,
+      "sha256": "7167d182881d7ce0abe7801efe5c58e75e453f84c9c94c1ce007bab9e8c13c8d"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "size": 51875,
+      "sha256": "fab186deeeb748c9072fcd066b8d8b01ac0f523ee2f2f691d8ab9e9ea96d6b61"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.br",
+      "size": 2798,
+      "sha256": "f86a04bfb5f7d00bbbd314454afa839d64431afade8cfc73a7ea61f6372139f3"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.gz",
+      "size": 5976,
+      "sha256": "1a3920d219a103d0206b47f6652f19a89fc6112e24c48bed5937da6ebd5b7366"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "size": 116063,
+      "sha256": "ec674e970ed4ff083269e52d166c4fcf9fcca6176f5523ed54e3a54e7f5cdf74"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map.br",
+      "size": 8783,
+      "sha256": "da0aef0edad84da64ba6e74d8689893128e6675a6fd93177f9aa417bdd299780"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map.gz",
+      "size": 13829,
+      "sha256": "c990d5e6c5df90e8a11fd8a7a9787a0f4666945a77fde459ad7b8f9a66865e10"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "size": 12661,
+      "sha256": "ae3bacc424732a3ced09c7e039576e01cddedd9ecabe29891a890949e0033661"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.br",
+      "size": 2890,
+      "sha256": "9db0a10a7c9b41eefbc6b2c8452f5f099506a0e870eb02daf507bdaf4883b353"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.gz",
+      "size": 3407,
+      "sha256": "1fd20f5c1cd4b49186ecf25d8cd4f3d560fb61c1580a2fb6d9b1e41cf47e09d6"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "size": 129371,
+      "sha256": "45727f4198817c75e83ed5d1d84802f9b168da97b71ad6d93bbdb646d88b1b34"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map.br",
+      "size": 21337,
+      "sha256": "6ee85183bf386e733cd5da68ab2cb6f348fa9b3f2c12f43557d1573b4533d414"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map.gz",
+      "size": 25822,
+      "sha256": "bae3d1044f8a27bae1402fee97f9b7dd84bb471a103c663765cb93cfafa8a137"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "size": 10131,
+      "sha256": "cbbd9b4f94ca98599fbf0ddb344ccf44d65affce7de71b6c79921c0545743dd3"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.br",
+      "size": 2763,
+      "sha256": "3d74d2be47cd8340250057bac294bd29b6064f9352fd03d5e0381689d86116c7"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.gz",
+      "size": 3217,
+      "sha256": "c3c3ccdccb3e4c425543f3c622c44bfe49f487cdcf9b97a4f129bbff39200987"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "size": 51369,
+      "sha256": "d1ea954fada4a912c987da13a8b7881f852742c92a56389bf219767d7c65e258"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map.br",
+      "size": 10812,
+      "sha256": "a89750e1ee54c962853fcf6e13d53c013af68566fe32bcfdebd32905de275bf6"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map.gz",
+      "size": 12586,
+      "sha256": "f3cc9fc02075249af0e43cd3c2db6e0d4351835302fd0514a2f3904e7cb11870"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "size": 12651,
+      "sha256": "8112881d590182708f52cfe1999b17ca767d649a6fb04efb89db658c392b5862"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.br",
+      "size": 2878,
+      "sha256": "0d3dd042f7b37a40f1a689c0fe68cde57349c8108b85f9fed47b1328f208596b"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.gz",
+      "size": 3397,
+      "sha256": "b9e7ab6712dd48a204b16275df0cc17d37117dddee1927ce4308547ccd6345e7"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "size": 129386,
+      "sha256": "3a8415c21ec0ae9edb5682b66624f1d92fff2ab9cfad23f33d9f770aa08c85ef"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map.br",
+      "size": 21346,
+      "sha256": "92dd5977941ac5f6495120dd180564104f50eb8f4a97eea1844e5ba75f3d2ef2"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map.gz",
+      "size": 25833,
+      "sha256": "b25d89e0fc9a3d2be3a91fc79dadb3016929d51a221624ac3417f6f14c667a00"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "size": 10203,
+      "sha256": "5246a378f6cccc68fccbbdc89a47777565a72c9af4bf60ab0422ccad532578ff"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.br",
+      "size": 2805,
+      "sha256": "e05826f178956625f72e1dee6a113555bc70f8d1bb6f3d144de4b45bc1555ecd"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.gz",
+      "size": 3250,
+      "sha256": "017f548d20daaa89619b34dafca50358c8cb1765e5613e88e8966e506ae6d67c"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "size": 63943,
+      "sha256": "f75d33c3eacc75c8342ece3c013a7ae6f127f2b7791ef3f138a9b6c77fc20482"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map.br",
+      "size": 10928,
+      "sha256": "b38a31e61ec6e3f6e670c0bb8cbc4214ce918681b1c26d70ae25d65029b809e7"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map.gz",
+      "size": 15095,
+      "sha256": "338149287a72c382095799f36df574570befeb403cc248e7aaecfa20ad36f690"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "size": 113224,
+      "sha256": "b88cce4788082e836308636bc88b169e41063b7052c116bf30b8ebef7b43a1d1"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.br",
+      "size": 7866,
+      "sha256": "674eb195eb7801b69ffa15d293d5d471293cde7cef6a19bf5eb7f179f970c605"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.gz",
+      "size": 12081,
+      "sha256": "54628fb724ab89b7b0faa66b4dccbe7e99d38bb4378314aff8759043fe2b428b"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "size": 267535,
+      "sha256": "35f8eb73852bf45bf6a0112cc10588c819cd0cff7dabe2e12fecfde79dced1c6"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map.br",
+      "size": 31322,
+      "sha256": "8a72011bb15a3eebd925d7b4efcaee53b97ba4d3c0d48990a1dcf945179ca02c"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map.gz",
+      "size": 44124,
+      "sha256": "1bebe388478fea4493e5c225d1d320929a98547b46cd6d85a041213e6f2e5c54"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "size": 85357,
+      "sha256": "6415db605f0e66b17518338b30bbd6ff344fb71d517de303623e43d966fff63a"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.br",
+      "size": 7041,
+      "sha256": "2735b66cf5ee2f1cfb3dc8a7d81e97210e47bf9766c855035bcfe1e5f82c6fa3"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.gz",
+      "size": 11067,
+      "sha256": "731a2a16d103926e0a0980eb99682713bce4897c1229496afeb72d33bea8b838"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "size": 180381,
+      "sha256": "ac70e68a9e09673b9a18e71243541242b21b1b411bdd98daf7086a485d736085"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map.br",
+      "size": 17335,
+      "sha256": "437acd94509fb8a6f7196c76953fc6abea49e70f6870410fe3c16b5d8e8467e7"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map.gz",
+      "size": 24352,
+      "sha256": "4d02b58246394f065ed0f70453da0f08f1d629c351ece5ea80ed007816026f75"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "size": 113083,
+      "sha256": "33015c920f186d8d96aef78d4275e47d42e4a6b62114eabeb75047f7603b1ac2"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.br",
+      "size": 7920,
+      "sha256": "60035c84a2e4b441fa120f54cd71f8d85a1110e28863e78e72d279afe3a374c6"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.gz",
+      "size": 12033,
+      "sha256": "acb9d58c8dd3a0581169d802faa9d0aa48c16de1b3c9493f5b533e311bab7e23"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "size": 267476,
+      "sha256": "a74055ab955efdda2104875f6eb66ca1036ed36252b0a875834c1bca242251a5"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map.br",
+      "size": 31263,
+      "sha256": "24246b1c7c0e11ee568cfa2a405e296827ffe543599e8b3b598ebcbbc8ff01f3"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map.gz",
+      "size": 44097,
+      "sha256": "7b848a49e501600310624f5a4fa36a684af7bd47e44ea641f0bd0a202ec43da9"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "size": 85286,
+      "sha256": "ecc6043141601c47350a3adf00afd3955df43cec60a315e4d9bfaf02cff5e375"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.br",
+      "size": 6946,
+      "sha256": "744401635957ffe82f49857f7f006583169463e11da061271d3be275213209d7"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.gz",
+      "size": 11050,
+      "sha256": "162f03310a50d291d593cb833f35e6cfbbf553d1251a6fc9fe54d4979e16307c"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "size": 180217,
+      "sha256": "a3c5cadf699c63f15f70e4350f61c9bd5b99d184d74944590cb5c22b47e741e0"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map.br",
+      "size": 17298,
+      "sha256": "c5155edf4ac6984a2ae4a1d1de6848b297288ca2e7d3887a0c7a3b3dbbe1cb31"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map.gz",
+      "size": 24308,
+      "sha256": "70713dfceaf2cf1debbc3cfaae0ea4c1500674e1655ce0a606053f486e5f2630"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "size": 293102,
+      "sha256": "0b39840abb5757c05293ffbc486f91c3b16bfb7842b766d2d9b1244b8603dcf4"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.css.br",
+      "size": 24681,
+      "sha256": "763247e954fa434ab6ee37ffd782302243e9155d785659f2e1cd4e9e0ce30bd9"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.css.gz",
+      "size": 33525,
+      "sha256": "1c92690751176f619c5491a5ce9d538a36316dd70752407863c22e902d20b3db"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "size": 679755,
+      "sha256": "2b3355477a7b51919b6bde1d9c2b6573a8d78cae6ead23e267f78d9ca4e60e4c"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.css.map.br",
+      "size": 83964,
+      "sha256": "943ef2731d0299d559c165a0c4c1dd1a481785ad6b603ee168fd527a5b9aaa00"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.css.map.gz",
+      "size": 115016,
+      "sha256": "f0c46ab9b5cc7991f2986dd8f94aa7b3fa0e34d55cbd4a3130f05844d66688db"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "size": 232808,
+      "sha256": "b0a21045f42b8884ae43d97fe386f5cc77d09e21972611a89d5b41d8b952b88b"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.br",
+      "size": 22780,
+      "sha256": "530ae98b9c7b33cae8cc2359f397fbceffe60dfb79bca39ef2069ed136b1adb1"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.gz",
+      "size": 30974,
+      "sha256": "df2cfb466b86b338e32807a8a0d00f1671b28449e5d8a33afb49856e07c9efa4"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "size": 589892,
+      "sha256": "f12338536350a422c64d02d6e43ff1dea493c3156ad823fe19761cdd5d56c05b"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map.br",
+      "size": 68917,
+      "sha256": "b56941715af71dc2ed4b8c6c71b88754031cd6294ad4bcd6dfdc42d7f94c5d8f"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map.gz",
+      "size": 91823,
+      "sha256": "f422362866a49251564768a1f617811f228d7e7506b002ed95601220945cdb90"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "size": 292288,
+      "sha256": "feb71e354308d1194526e811ce3b9af35e5b817c1ac042411813e1e15c77af7f"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.br",
+      "size": 24466,
+      "sha256": "e8d393ac3b3ecfb56015956f407977a8c147c559f99beac0cc65c90c39bb55d9"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.gz",
+      "size": 33382,
+      "sha256": "38fb86fae56f22cd2b5e460da3a8f92c8320191c86e4cb80a569906325b4324f"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "size": 679615,
+      "sha256": "ddb61652289560c65fbf6c2ae499d722c1e540a8122acfd57118af823819d61a"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map.br",
+      "size": 83985,
+      "sha256": "7315dd122789a3a88e098b0a3ffe4e66fc3bb486c73e81f08405b99be8e20b78"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map.gz",
+      "size": 114959,
+      "sha256": "bb51e9cf7b31b0ea6bfa5b41b3229bb9ed4ccfc54bf5cf20a324a5200c0f0a1f"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "size": 232916,
+      "sha256": "ac8d70d860f164f0abefb6e9648190f2652f315b44afe801b5a865e5120f2690"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.br",
+      "size": 22818,
+      "sha256": "4c40563f01ed60e9925c5ca85b3704ed97283ea61ed3259e4ecdc4686fd87e48"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.gz",
+      "size": 30998,
+      "sha256": "ac16680ecec8d2352f4607ecb1c59c3c49dcba83ad60a16fb437a750e11f6a0f"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "size": 589087,
+      "sha256": "ad3cd79677a971bfef80502207e53b3834007ce9492df337818e8853b78800d9"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map.br",
+      "size": 69153,
+      "sha256": "9c7b18c4a08907eec192950de09a546a97bff60b96e2af1cc8111490dceda5dc"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map.gz",
+      "size": 91715,
+      "sha256": "8fae2b17144b8591e650fb04fe08c83ebb943547d7b358af8e6d5e4bd1cc7a8a"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "size": 214133,
+      "sha256": "412d9bba2944f1ee9c9e47b62d525bff565b0dcc7a7eccfb1e5a7d2c7202e764"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.br",
+      "size": 36401,
+      "sha256": "26d1d824a86e83e0ba1b66ca7aedace5a6fafa45d89b42767ca58d95d98bda78"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.gz",
+      "size": 44684,
+      "sha256": "ec536d880352420de04c57a59a8bc4fe1afad8c2f3245c077010f8670bfb469e"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "size": 444579,
+      "sha256": "ab251d3ae598c21eff1d9141bbec4ed45d5f265dd6ef10eddd68f0d13bca6873"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map.br",
+      "size": 75402,
+      "sha256": "a84005b093989231b0d1f75aa7e5f2278f2fd7fcbfd7a605ce7a6108d1bc22a9"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map.gz",
+      "size": 92061,
+      "sha256": "4bb64f6d8837b23c959d1eb600ba34a6086d8f885249ad085a2e33e5d3d3a02d"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "size": 80727,
+      "sha256": "eb37e4d8bf11df00a045b673a64122ed4602d9b73a7d81888057cd7aac8e5a74"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.br",
+      "size": 21219,
+      "sha256": "c22d855aa76e6748a7715d328ff6ff6148d97ea38ef26d6e39500defae208088"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.gz",
+      "size": 23992,
+      "sha256": "ae34c9f54b7c87a38ba0d62c360afb7bf4c8ae2b64f372b96ee7239eed013e53"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "size": 332090,
+      "sha256": "9613d7d4206c9e25ef4a8cdf7151581b8541703c3a2a50d131d402cbfd6ecf96"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map.br",
+      "size": 72673,
+      "sha256": "28136e216008d033bceb84fb864464f89c63a027d206c822fe3844534fe8dc7b"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map.gz",
+      "size": 86964,
+      "sha256": "4cdbfd560aaa17b615ee771ac2c88f2a7ba2b1113b84b454afb5f67bbfae1286"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "size": 140276,
+      "sha256": "f4282770ffd474ebd427af3f173c13e33e8eb25c3f2901d86b04a2457ddf1c63"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.br",
+      "size": 23839,
+      "sha256": "e6c01faf697aa96495125e30095ab46eefcc8abaa27f1349b09aefbd659b64aa"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.gz",
+      "size": 29045,
+      "sha256": "778594c6fcc024381e4b9b6ad0d7ba79cbf48d6f83db2a9a069efab53d6353bf"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "size": 305438,
+      "sha256": "1e6510dc68e2b369e53dbf1d9144ff8fa190c8da717d814bd466215b6ad86da2"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map.br",
+      "size": 52846,
+      "sha256": "c413634032b93857dce2a8d33e106d271f6c1051429e30fa03d381d04b69577d"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map.gz",
+      "size": 64134,
+      "sha256": "c80adc36404677443080fe2a9359a9ba1419bf45cae1cf7260e05fada34faba2"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "size": 73941,
+      "sha256": "4448d27a279529dd349c02b077a76fecc321b952af29cb4f98b23888346cfdc7"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.br",
+      "size": 16233,
+      "sha256": "a88023ec595729cd3af1796dcd18e2abbbf183354628e04c6c5a80a7aa5f186b"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.gz",
+      "size": 18643,
+      "sha256": "6ca87531f68102576f5b135120477b6421733a14f248c680628b2d63f2bb5db0"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "size": 222455,
+      "sha256": "e27acdfd65712707ba962e2665b590d209f388eb8d78c877f3b4590622f0ebe4"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map.br",
+      "size": 47722,
+      "sha256": "86f6f8abdbca01283eb7b9df4d6e4076da95bf9f860bdd1f12e9c23f8d580bae"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map.gz",
+      "size": 56674,
+      "sha256": "e59304af441bf6d9af8e8b9aa5da64484563e9b224700f4ed6ce15fa05c624a0"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "size": 149895,
+      "sha256": "b8e722585a8630cde68fa3e2552c3f44c053cfc8056cc71d56a05b03db765c18"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.js.br",
+      "size": 24331,
+      "sha256": "e00f96952716df5be441baa564e7cbd2c1b7e39905f80adc7a576693dd04e4d1"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.js.gz",
+      "size": 29818,
+      "sha256": "5e25f21ef6b8e5b533e4d3fa0c5471f5295f62e868999723a2a6f0ae1853e9b8"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "size": 306606,
+      "sha256": "89f8e42b4de163ea9a8bee0880fc67034d2f05fba5b4b774c3065e71135246c3"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.js.map.br",
+      "size": 53035,
+      "sha256": "04ce64c1c7716b521da20174168cbe41cc3814d2c65b0a66900d4cb4a395b659"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.js.map.gz",
+      "size": 64437,
+      "sha256": "61eee0c77c5d088839a84e22e2374888b945b3662972ca9bbb7659a7e437346c"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "size": 60641,
+      "sha256": "6824c8ab0f68a745d01989cd7b5eb8f55edf9e2840083e3c38fdccf013f6c553"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.br",
+      "size": 14832,
+      "sha256": "60e209429b44e18118454e95f3e61b484ceef8140e442e63168c0ba1e73d7373"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.gz",
+      "size": 16642,
+      "sha256": "700602a3643c22d87fcea655345b88fdc4683281a59a577db750eec941882cf9"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "size": 220561,
+      "sha256": "bc44af844d8278125a0e63804a3bd15594ff610e470bfc585173346fcdf88318"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map.br",
+      "size": 47020,
+      "sha256": "811acced074914acb8fd0f6f9a01249750fb1493e3e00a74c1dd0e796062a35f"
+    },
+    {
+      "path": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map.gz",
+      "size": 55850,
+      "sha256": "aeb7f200a04d817b526cc6ab0728a5915725ce05de785394250b2d79a2a5addc"
+    }
+  ]
+}

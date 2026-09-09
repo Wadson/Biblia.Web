@@ -1,0 +1,9 @@
+# Inventário anterior às alterações
+
+Tela `/temas/vincular-versiculos`: tema, versão ativa/habilitada/compatível, livro e capítulo; lista do capítulo; busca em toda a versão com Enter e paginação de 30; seleção preservada entre páginas de busca; observação de até 2.000 caracteres por seleção; contador e confirmação antes de salvar; aviso quando falta tema; prevenção visual de duplicados incluindo faixas; lote de 1 a 100 validado pelo serviço; lista canônica; edição de observação com confirmação; desvinculação com preservação da referência; mensagens e atualização parcial. A API aceita faixas e substituição da versão preferida, embora esses dois controles não estejam expostos separadamente nesta tela. Versão do vínculo é persistida separadamente da preferência da referência. A lista atual exibe a versão selecionada como prévia, enquanto o relatório usa a versão gravada.
+
+Versões: `/versoes`, lista de catálogo, definir ativa e habilitar/desabilitar, confirmações; importação/remoção existem no serviço mas não na tela. Não havia ação de validar na tela. Configurações e PDF: fontes, sumário com links/bookmarks, margens alternadas, cabeçalhos de continuação, observações e rodapés. Estilos globais e componentes existentes serão preservados.
+
+Caracterização comportamental existente executada antes da alteração: `CanonicalThemeFlowTests`, `LinkedVersionReportTests`, `ThemeVerseLinkServiceTests` (quando presente), testes de buscas, relatório e PDF. Cobrem ordem de clique, reload, observações, desvinculação, preservação de preferências/versões, duplicados, faixas e PDF. O código anterior está preservado em `codigo-antes.zip`; o snapshot consistente da base real está em `banco-antes.db`.
+
+Os testes e a validação manual dos novos recursos usarão diretórios isolados, sem criar temas de QA ou importar versões na base pessoal.

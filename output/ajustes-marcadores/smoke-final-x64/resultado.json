@@ -1,0 +1,75 @@
+{
+  "modules": [
+    {
+      "ModuleName": "hostfxr.dll",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\ajustes-marcadores\\publicacao\\win-x64\\hostfxr.dll"
+    },
+    {
+      "ModuleName": "hostpolicy.dll",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\ajustes-marcadores\\publicacao\\win-x64\\hostpolicy.dll"
+    },
+    {
+      "ModuleName": "coreclr.dll",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\ajustes-marcadores\\publicacao\\win-x64\\coreclr.dll"
+    },
+    {
+      "ModuleName": "e_sqlite3.DLL",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\ajustes-marcadores\\publicacao\\win-x64\\e_sqlite3.DLL"
+    }
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "bytes": 13554,
+      "status": 200
+    },
+    {
+      "route": "/versoes",
+      "bytes": 15198,
+      "status": 200
+    },
+    {
+      "route": "/biblia",
+      "bytes": 22885,
+      "status": 200
+    },
+    {
+      "route": "/temas",
+      "bytes": 12462,
+      "status": 200
+    },
+    {
+      "route": "/temas/vincular-versiculos",
+      "bytes": 16677,
+      "status": 200
+    },
+    {
+      "route": "/relatorios",
+      "bytes": 12385,
+      "status": 200
+    },
+    {
+      "route": "/configuracoes",
+      "bytes": 14958,
+      "status": 200
+    },
+    {
+      "route": "/app.css",
+      "bytes": 12367,
+      "status": 200
+    }
+  ],
+  "runtime": [
+    {
+      "name": "Microsoft.NETCore.App",
+      "version": "10.0.11"
+    },
+    {
+      "name": "Microsoft.AspNetCore.App",
+      "version": "10.0.11"
+    }
+  ],
+  "bibles": 7,
+  "result": "PASS",
+  "publish": "D:\\Projetos\\Biblia.Web\\output\\ajustes-marcadores\\publicacao\\win-x64"
+}

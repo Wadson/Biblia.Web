@@ -4,5 +4,5 @@
   <Project Path="Biblia.Web.Core/Biblia.Web.Core.csproj" />
   <Project Path="Biblia.Web.ServiceDefaults/Biblia.Web.ServiceDefaults.csproj" />
   <Project Path="Biblia.Web.Tests/Biblia.Web.Tests.csproj" />
-  <Project Path="Biblia.Web.Web/Biblia.Web.Web.csproj" />
+  <Project Path="Biblia.Web/Biblia.Web.csproj" />
 </Solution>

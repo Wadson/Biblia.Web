@@ -13,7 +13,8 @@ public sealed class ThemeVerseLinkService(
     IBibleVersionCatalogRepository versions,
     IBibleRepository bible,
     ISavedReferenceRepository references,
-    ILogger<ThemeVerseLinkService> logger) : IThemeVerseLinkService
+    ILogger<ThemeVerseLinkService> logger,
+    IThemeContentService? content=null) : IThemeVerseLinkService
 {
     public async Task<LinkVersesToThemeResult> LinkAsync(long themeId, string versionCode, IReadOnlyCollection<VerseSelection> selections, bool replaceExistingPreferredVersion, CancellationToken cancellationToken = default)
     {
@@ -40,6 +41,7 @@ public sealed class ThemeVerseLinkService(
         }
 
         var result = await references.LinkBatchToThemeAsync(themeId, version.Id, normalized, replaceExistingPreferredVersion, cancellationToken);
+        if(content is not null)await content.GetAsync(themeId,cancellationToken);
         logger.LogInformation("Lote vinculado ao tema {ThemeId}: {Selected} selecionados, {Created} criados, {Reused} reutilizados, {Links} vínculos e {Existing} existentes", themeId, result.Selected, result.ReferencesCreated, result.ReferencesReused, result.LinksCreated, result.AlreadyLinked);
         return result;
     }
@@ -49,6 +51,7 @@ public sealed class ThemeVerseLinkService(
         if (await themes.GetAsync(themeId, cancellationToken) is null) throw new KeyNotFoundException("Tema não encontrado.");
         if (await references.GetAsync(referenceId, cancellationToken) is null) throw new KeyNotFoundException("Referência não encontrada.");
         await references.RemoveThemeAsync(referenceId, themeId, cancellationToken);
+        if(content is not null)await content.GetAsync(themeId,cancellationToken);
         logger.LogInformation("Referência {ReferenceId} desvinculada do tema {ThemeId}; referência preservada", referenceId, themeId);
     }
 

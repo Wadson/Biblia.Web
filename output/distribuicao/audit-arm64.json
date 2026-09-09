@@ -1,0 +1,287 @@
+{
+  "architecture": "arm64",
+  "filesVerified": 549,
+  "native": [
+    {
+      "file": "aspnetcorev2_inprocess.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "USER32.dll",
+        "ADVAPI32.dll",
+        "OLEAUT32.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-filesystem-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "SHELL32.dll",
+        "VERSION.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "Biblia.Web.Web.exe",
+      "machine": "0xaa64",
+      "imports": [
+        "SHELL32.dll",
+        "ADVAPI32.dll",
+        "KERNEL32.dll",
+        "USER32.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "clretwrc.dll",
+      "machine": "0xaa64",
+      "imports": []
+    },
+    {
+      "file": "clrgc.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "ADVAPI32.dll"
+      ]
+    },
+    {
+      "file": "clrgcexp.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "ADVAPI32.dll"
+      ]
+    },
+    {
+      "file": "clrjit.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "coreclr.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "ADVAPI32.dll",
+        "ole32.dll",
+        "OLEAUT32.dll",
+        "USER32.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-environment-l1-1-0.dll",
+        "api-ms-win-crt-utility-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "createdump.exe",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "dbghelp.dll",
+        "WS2_32.dll",
+        "ntdll.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "e_sqlite3.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll"
+      ]
+    },
+    {
+      "file": "hostfxr.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "ADVAPI32.dll",
+        "KERNEL32.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "hostpolicy.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "ADVAPI32.dll",
+        "KERNEL32.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-filesystem-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "libSkiaSharp.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "ole32.dll",
+        "USER32.dll",
+        "FONTSUB.dll",
+        "KERNEL32.dll"
+      ]
+    },
+    {
+      "file": "Microsoft.DiaSymReader.Native.arm64.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "ole32.dll",
+        "ADVAPI32.dll"
+      ]
+    },
+    {
+      "file": "mscordaccore.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "ole32.dll",
+        "OLEAUT32.dll",
+        "USER32.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-environment-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "mscordaccore_arm64_arm64_10.0.1126.37416.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "ole32.dll",
+        "OLEAUT32.dll",
+        "USER32.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-environment-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "mscordbi.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "ADVAPI32.dll",
+        "ole32.dll",
+        "OLEAUT32.dll",
+        "USER32.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "mscorrc.dll",
+      "machine": "0xaa64",
+      "imports": []
+    },
+    {
+      "file": "msquic.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "WINMM.dll",
+        "Secur32.dll",
+        "KERNEL32.dll",
+        "ADVAPI32.dll",
+        "IPHLPAPI.DLL",
+        "bcrypt.dll",
+        "CRYPT32.dll",
+        "SspiCli.dll",
+        "WS2_32.dll",
+        "ntdll.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll"
+      ]
+    },
+    {
+      "file": "System.IO.Compression.Native.dll",
+      "machine": "0xaa64",
+      "imports": [
+        "KERNEL32.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll"
+      ]
+    }
+  ],
+  "runtimeOptions": {
+    "tfm": "net10.0",
+    "includedFrameworks": [
+      {
+        "name": "Microsoft.NETCore.App",
+        "version": "10.0.11"
+      },
+      {
+        "name": "Microsoft.AspNetCore.App",
+        "version": "10.0.11"
+      }
+    ],
+    "configProperties": {
+      "System.GC.Server": true,
+      "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
+      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false
+    }
+  },
+  "personalDatabasePresent": false
+}

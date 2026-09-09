@@ -1,0 +1,6 @@
+Unhandled exception. System.UnauthorizedAccessException: Access to the path is denied.
+   at System.IO.FileSystem.MoveFile(String sourceFullPath, String destFullPath, Boolean overwrite)
+   at Biblia.Application.Services.InitialBibleInstallationService.InstallAsync(CancellationToken cancellationToken) in D:\Projetos\Biblia.Web\Biblia.Web.Core\Application\Services\InitialBibleInstallationService.cs:line 52
+   at Biblia.Application.Services.AppInitializationService.InitializeAsync(CancellationToken cancellationToken) in D:\Projetos\Biblia.Web\Biblia.Web.Core\Application\Services\AppInitializationService.cs:line 18
+   at Program.<Main>$(String[] args)
+   at Program.<Main>(String[] args)

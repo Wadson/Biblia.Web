@@ -1,0 +1,77 @@
+@using Biblia.Domain.Entities
+@using Biblia.Domain.Rules
+@inject Biblia.Application.Interfaces.IThemeContentService ContentService
+<div class="toolbar">
+    <button class="btn primary" disabled="@(ThemeId==0||busy)" @onclick="OpenNewBlockAsync">Adicionar bloco de texto</button>
+    <a class="btn secondary" href="@($"/temas/ordenacao?themeId={ThemeId}")">Configurar ordenação</a>
+    @if(ThemeId>0&&sequence.Mode==ThemeOrderingMode.Canonical){<button class="btn secondary" disabled="@busy" @onclick="()=>ChangeMode(ThemeOrderingMode.Manual)">Usar ordenação manual</button>}
+    @if(ThemeId>0&&sequence.Mode==ThemeOrderingMode.Manual){<ConfirmButton Label="Usar ordem bíblica automática" Title="Restaurar ordem bíblica" Message="Ao ativar a ordenação automática, os versículos voltarão à ordem dos livros, capítulos e versículos da Bíblia. Deseja continuar? Os blocos manterão suas posições." Disabled="@busy" OnConfirm="()=>ChangeMode(ThemeOrderingMode.Canonical)" />}
+</div>
+@if(error is not null){<div class="notice error" role="alert">@error</div>}
+@if(notice is not null){<p class="notice success" role="status">@notice</p>}
+@if(busy){<p role="status">Salvando conteúdo…</p>}
+@if(ThemeId>0){<p class="muted">@(sequence.Mode==ThemeOrderingMode.Manual?"Ordem manual: use as setas. Alterações são salvas imediatamente.":"Ordem bíblica automática. Ative o modo manual para mover itens. Os blocos mantêm seus espaços na lista; os versículos são ordenados entre eles.")</p>}
+@if(editing){
+<section class="panel block-editor" aria-label="Editor de bloco de texto">
+ <h3>@(editingId is null?"Adicionar bloco de texto":"Editar bloco de texto")</h3>
+ <label class="field">Texto multilinha<textarea @ref="textInput" rows="6" maxlength="10000" @bind="text" @bind:event="oninput" placeholder="Escreva a introdução, explicação ou aplicação deste tema."></textarea></label>
+ <p class="muted character-count">@text.Length / 10.000 caracteres</p>
+ <div class="block-format-grid">
+ <label>Cor do texto<input type="color" @bind="foreground" /></label><label>Cor de fundo<input type="color" @bind="background" /></label>
+ <label>Tamanho (pt)<input type="number" min="7" max="24" step="0.5" @bind="size" /></label>
+ <label>Marcador<select @bind="marker"><option value="@TextMarkerStyle.None">Sem marcador</option><option value="@TextMarkerStyle.Bullet">Ponto</option><option value="@TextMarkerStyle.Numbered">Numeração</option><option value="@TextMarkerStyle.Dash">Traço</option><option value="@TextMarkerStyle.OrdinalNumbered">Numeração ordinal</option></select></label>
+ <div class="block-emphasis"><label class="check-pair" for="@(editorId+"-bold")"><input id="@(editorId+"-bold")" type="checkbox" @bind="bold" /> Negrito</label><label class="check-pair" for="@(editorId+"-italic")"><input id="@(editorId+"-italic")" type="checkbox" @bind="italic" /> Itálico</label></div>
+ </div><p class="muted">Numeração e numeração ordinal seguem a ordem dos blocos no tema e são atualizadas automaticamente ao mover os itens. Contraste mínimo: 4,5:1. O novo bloco entra no final da sequência; use a ordenação manual e as setas para colocá-lo entre os versículos.</p>
+ @if(PreviewError() is { } validation){<p class="validation-message" role="status">@validation</p>}
+ @if(PreviewBlock() is { } preview){<ThemeTextPreview Block="preview" Prefix="@PreviewPrefix(preview)" Label="Prévia do bloco" />}
+ <div class="toolbar block-editor-actions"><button class="btn primary" disabled="@busy" @onclick="SaveBlock">Salvar bloco</button> <button class="btn secondary" disabled="@busy" @onclick="()=>editing=false">Cancelar</button></div>
+</section>}
+<div class="linked-list" aria-label="Sequência do tema">
+@{var markedItems=ThemeBlockMarkers.Apply(sequence.Items,x=>x.TextBlock);}
+@for(var index=0;index<markedItems.Count;index++){
+ var marked=markedItems[index];var item=marked.Item;var first=index==0;var last=index==sequence.Items.Count-1;
+ <article class="card" @key="item.Id">
+ <div class="toolbar"><span class="badge">@(item.ReferenceId is null?"Bloco de texto":"Versículo")</span>
+ @if(sequence.Mode==ThemeOrderingMode.Manual){<button class="btn secondary" aria-label="Mover item para cima" title="Mover item para cima" disabled="@(first||busy)" @onclick="()=>Move(item.Id,-1)"><AppIcon Name="up" Size="sm" /></button><button class="btn secondary" aria-label="Mover item para baixo" title="Mover item para baixo" disabled="@(last||busy)" @onclick="()=>Move(item.Id,1)"><AppIcon Name="down" Size="sm" /></button>}</div>
+ @if(item.TextBlock is { } block){
+ <ThemeTextPreview Block="block" Prefix="@marked.Prefix" />
+ <button class="btn secondary" disabled="@busy" @onclick="()=>Edit(item)">Editar bloco</button>
+ <ConfirmButton Label="Excluir bloco" Title="Excluir bloco de texto" Message="Deseja excluir este bloco? Os demais itens serão preservados." Danger="true" Disabled="@busy" OnConfirm="()=>Delete(item.Id)" />
+ }else if(Linked.FirstOrDefault(x=>x.ReferenceId==item.ReferenceId) is { } verse){
+ <div class="comparison-card-header"><div><strong>@verse.FormattedReference</strong><span class="badge">@verse.VersionCode</span></div><ConfirmButton Label="Desvincular" Title="Confirmar desvinculação" Message="A referência guardada será preservada." Summary="@verse.FormattedReference" Danger="true" CssClass="btn danger" Disabled="@busy" OnConfirm="()=>Unlink(verse)" /></div>
+ <p>@verse.Text</p><label class="field">Observação<textarea maxlength="2000" rows="2" value="@Drafts.GetValueOrDefault(verse.ReferenceId,verse.Observation??string.Empty)" @oninput="e=>Drafts[verse.ReferenceId]=e.Value?.ToString()??string.Empty"></textarea></label>
+ <ConfirmButton Label="Salvar observação" Title="Confirmar alteração" Message="Deseja salvar a observação deste vínculo?" Summary="@verse.FormattedReference" CssClass="btn secondary" Disabled="@busy" OnConfirm="()=>SaveObservation.InvokeAsync(verse)" />
+ }
+ </article>
+}
+</div>
+@code{
+ [Parameter] public long ThemeId{get;set;}
+ [Parameter] public IReadOnlyList<ThemeVerseLinkDisplay> Linked{get;set;}=[];
+ [Parameter] public Dictionary<long,string> Drafts{get;set;}=[];
+ [Parameter] public EventCallback<ThemeVerseLinkDisplay> SaveObservation{get;set;}
+ [Parameter] public EventCallback<ThemeVerseLinkDisplay> RemoveLink{get;set;}
+ readonly string editorId="block-"+Guid.NewGuid().ToString("N");
+ ThemeContentSequence sequence=new(ThemeOrderingMode.Canonical,[]);bool busy,editing,focusEditor;long? editingId;string text="",foreground="#172033",background="#EAF2FF";double size=11;bool bold,italic;TextMarkerStyle marker;string? error,notice;long previousTheme;ElementReference textInput;
+ protected override async Task OnAfterRenderAsync(bool firstRender){if(focusEditor&&editing){focusEditor=false;await textInput.FocusAsync();}}
+ public Task OpenNewBlockAsync(){if(ThemeId==0||busy)return Task.CompletedTask;NewBlock();StateHasChanged();return Task.CompletedTask;}
+ protected override async Task OnParametersSetAsync(){if(previousTheme!=ThemeId){editing=false;previousTheme=ThemeId;}await Reload();}
+ async Task Reload(){try{sequence=ThemeId==0?new(ThemeOrderingMode.Canonical,[]):await ContentService.GetAsync(ThemeId);}catch(Exception ex){error=ex.Message;}}
+ void NewBlock(){editingId=null;text="";foreground="#172033";background="#EAF2FF";size=11;bold=italic=false;marker=TextMarkerStyle.None;error=notice=null;editing=focusEditor=true;}
+ void Edit(ThemeContentItem item){var b=item.TextBlock!;editingId=item.Id;text=b.Content;foreground=b.Style.TextColorHex;background=b.Style.BackgroundColorHex;size=b.Style.FontSize;marker=b.Style.MarkerStyle;bold=b.Style.IsBold;italic=b.Style.IsItalic;error=notice=null;editing=focusEditor=true;}
+ ThemeTextBlock? PreviewBlock(){try{return new ThemeTextBlock(text,new(foreground,background,size,marker,bold,italic)).Validate();}catch(ArgumentException){return null;}}
+ Task ChangeMode(ThemeOrderingMode mode)=>Run(async()=>{await ContentService.SetModeAsync(ThemeId,mode,true);notice=mode==ThemeOrderingMode.Manual?"Ordenação manual ativada. Use as setas para intercalar blocos e versículos.":"Ordem bíblica aplicada. As posições dos blocos foram preservadas.";});
+ async Task Run(Func<Task> action){if(busy)return;busy=true;error=null;try{await action();await Reload();}catch(Exception ex){error=ex.Message;}finally{busy=false;}}
+ Task SaveBlock()=>Run(async()=>{await ContentService.SaveBlockAsync(ThemeId,editingId,new(text,new(foreground,background,size,marker,bold,italic)));editing=false;notice="Bloco de texto salvo. Ele faz parte da sequência do tema e será incluído no PDF.";});
+ Task Delete(long id)=>Run(()=>ContentService.DeleteBlockAsync(ThemeId,id));
+ Task Move(long id,int direction)=>Run(()=>ContentService.MoveAsync(ThemeId,id,direction));
+ Task Unlink(ThemeVerseLinkDisplay verse)=>Run(()=>RemoveLink.InvokeAsync(verse));
+ string? PreviewError(){try{new ThemeTextBlock(text,new(foreground,background,size,marker,bold,italic)).Validate();return null;}catch(ArgumentException ex){return ex.Message;}}
+ string PreviewPrefix(ThemeTextBlock block){
+    var items=sequence.Items.ToList();
+    var index=items.FindIndex(x=>x.Id==editingId);
+    if(index>=0)items[index]=items[index] with{TextBlock=block};
+    else {index=items.Count;items.Add(new(0,ThemeId,index,null,block));}
+    return ThemeBlockMarkers.Apply(items,x=>x.TextBlock)[index].Prefix;
+ }
+}

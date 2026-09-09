@@ -1,0 +1,28 @@
+info: Biblia.Infrastructure.AppDatabase.AppDatabase[0]
+      Banco do aplicativo inicializado no schema 5.
+info: Biblia.Application.Services.InitialBibleInstallationService[0]
+      Vers∆o b°blica ACF instalada.
+info: Biblia.Application.Services.InitialBibleInstallationService[0]
+      Vers∆o b°blica ARA instalada.
+info: Biblia.Application.Services.InitialBibleInstallationService[0]
+      Vers∆o b°blica ARC instalada.
+info: Biblia.Application.Services.InitialBibleInstallationService[0]
+      Vers∆o b°blica AS21 instalada.
+info: Biblia.Application.Services.InitialBibleInstallationService[0]
+      Vers∆o b°blica KJF instalada.
+info: Biblia.Application.Services.InitialBibleInstallationService[0]
+      Vers∆o b°blica NBV instalada.
+info: Biblia.Application.Services.InitialBibleInstallationService[0]
+      Vers∆o b°blica NVI instalada.
+info: Biblia.Application.Services.AppInitializationService[0]
+      Inicializaá∆o do aplicativo conclu°da.
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://127.0.0.1:52610
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\Projetos\Biblia.Web\tmp\integrated-publish
+info: Biblia.Application.Services.BibleVersionImportService[0]
+      Vers∆o b°blica importada: UI1.

@@ -1,0 +1,164 @@
+[
+  {
+    "Item": {
+      "Reference": null,
+      "TextBlock": {
+        "Content": "Introdu\u00E7\u00E3o sem marcador\nF\u00E9, esperan\u00E7a e amor.",
+        "Style": {
+          "TextColorHex": "#172033",
+          "BackgroundColorHex": "#EAF2FF",
+          "FontSize": 11,
+          "MarkerStyle": 0,
+          "IsBold": false,
+          "IsItalic": false
+        }
+      }
+    },
+    "Number": null,
+    "Prefix": ""
+  },
+  {
+    "Item": {
+      "Reference": {
+        "SavedReferenceId": 2,
+        "FormattedReference": "G\u00EAnesis 1:1",
+        "PassageText": "1 NO princ\u00EDpio criou Deus os c\u00E9us e a terra.",
+        "Observation": "Primeira refer\u00EAncia",
+        "BookReferenceId": 1,
+        "Chapter": 1,
+        "VerseStart": 1,
+        "VerseEnd": 1,
+        "VersionCode": "QA"
+      },
+      "TextBlock": null
+    },
+    "Number": null,
+    "Prefix": ""
+  },
+  {
+    "Item": {
+      "Reference": null,
+      "TextBlock": {
+        "Content": "Primeiro ensino\nSegunda linha do mesmo bloco.\n\nOutro par\u00E1grafo alinhado.",
+        "Style": {
+          "TextColorHex": "#172033",
+          "BackgroundColorHex": "#FFF4CC",
+          "FontSize": 14,
+          "MarkerStyle": 2,
+          "IsBold": true,
+          "IsItalic": false
+        }
+      }
+    },
+    "Number": 1,
+    "Prefix": "1."
+  },
+  {
+    "Item": {
+      "Reference": {
+        "SavedReferenceId": 1,
+        "FormattedReference": "Apocalipse 1:1",
+        "PassageText": "1 REVELA\u00C7\u00C3O de Jesus Cristo, a qual Deus lhe deu, para mostrar aos seus servos as coisas que brevemente devem acontecer; e pelo seu anjo as enviou, e as notificou a Jo\u00E3o seu servo;",
+        "Observation": "Observa\u00E7\u00E3o preservada",
+        "BookReferenceId": 66,
+        "Chapter": 1,
+        "VerseStart": 1,
+        "VerseEnd": 1,
+        "VersionCode": "QA"
+      },
+      "TextBlock": null
+    },
+    "Number": null,
+    "Prefix": ""
+  },
+  {
+    "Item": {
+      "Reference": null,
+      "TextBlock": {
+        "Content": "Aplica\u00E7\u00E3o complementar\nUm ponto para o bloco inteiro.",
+        "Style": {
+          "TextColorHex": "#172033",
+          "BackgroundColorHex": "#EAF2FF",
+          "FontSize": 11,
+          "MarkerStyle": 1,
+          "IsBold": false,
+          "IsItalic": false
+        }
+      }
+    },
+    "Number": null,
+    "Prefix": "\u2022"
+  },
+  {
+    "Item": {
+      "Reference": null,
+      "TextBlock": {
+        "Content": "Segundo ensino\nA numera\u00E7\u00E3o ordinal compartilha a sequ\u00EAncia.",
+        "Style": {
+          "TextColorHex": "#FFFFFF",
+          "BackgroundColorHex": "#174F7D",
+          "FontSize": 13,
+          "MarkerStyle": 4,
+          "IsBold": false,
+          "IsItalic": true
+        }
+      }
+    },
+    "Number": 2,
+    "Prefix": "2\u00BA"
+  },
+  {
+    "Item": {
+      "Reference": null,
+      "TextBlock": {
+        "Content": "Observa\u00E7\u00E3o com tra\u00E7o\nSegunda linha sem repetir o tra\u00E7o.",
+        "Style": {
+          "TextColorHex": "#172033",
+          "BackgroundColorHex": "#EAF2FF",
+          "FontSize": 11,
+          "MarkerStyle": 3,
+          "IsBold": false,
+          "IsItalic": false
+        }
+      }
+    },
+    "Number": null,
+    "Prefix": "\u2013"
+  },
+  {
+    "Item": {
+      "Reference": null,
+      "TextBlock": {
+        "Content": "Conclus\u00E3o\nPratique o amor ao pr\u00F3ximo.",
+        "Style": {
+          "TextColorHex": "#172033",
+          "BackgroundColorHex": "#EAF2FF",
+          "FontSize": 11,
+          "MarkerStyle": 2,
+          "IsBold": false,
+          "IsItalic": false
+        }
+      }
+    },
+    "Number": 3,
+    "Prefix": "3."
+  },
+  {
+    "Item": {
+      "Reference": null,
+      "TextBlock": {
+        "Content": "Par\u00E1grafo longo 01: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 02: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 03: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 04: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 05: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 06: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 07: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 08: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 09: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 10: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 11: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 12: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 13: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 14: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 15: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 16: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 17: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 18: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 19: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 20: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 21: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 22: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 23: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 24: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 25: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 26: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 27: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 28: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 29: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 30: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 31: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 32: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 33: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 34: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 35: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 36: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 37: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 38: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 39: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 40: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 41: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 42: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 43: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 44: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 45: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 46: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 47: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 48: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 49: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 50: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 51: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 52: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 53: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 54: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 55: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 56: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 57: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 58: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 59: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.\nPar\u00E1grafo longo 60: a\u00E7\u00E3o, b\u00EAn\u00E7\u00E3o e perseveran\u00E7a.",
+        "Style": {
+          "TextColorHex": "#172033",
+          "BackgroundColorHex": "#EAF2FF",
+          "FontSize": 11,
+          "MarkerStyle": 4,
+          "IsBold": false,
+          "IsItalic": false
+        }
+      }
+    },
+    "Number": 4,
+    "Prefix": "4\u00BA"
+  }
+]

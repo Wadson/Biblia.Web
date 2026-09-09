@@ -113,7 +113,10 @@ public sealed class LinkedVersionReportTests
             {
                 cmd.CommandText = """
                     ALTER TABLE ReferenceTheme DROP COLUMN BibleVersionId;
-                    DELETE FROM SchemaMigration WHERE Version=4;
+                    DROP TRIGGER ThemeContent_LinkInserted;
+                    DROP TABLE ThemeContent;
+                    ALTER TABLE Theme DROP COLUMN OrderingMode;
+                    DELETE FROM SchemaMigration WHERE Version>=4;
                     INSERT INTO BibleVersionCatalog(Id,Code,DisplayName,Language,DatabaseFileName,SchemaVersion) VALUES(1,'NVI','NVI','pt-BR','NVI.sqlite',2);
                     INSERT INTO Theme(Id,Name,CreatedAt,UpdatedAt) VALUES(1,'Legado','2026-09-06','2026-09-06');
                     INSERT INTO SavedReference(Id,BookReferenceId,Chapter,VerseStart,VerseEnd,PreferredBibleVersionId,CreatedAt,UpdatedAt) VALUES

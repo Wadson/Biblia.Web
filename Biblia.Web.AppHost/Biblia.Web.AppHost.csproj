@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Biblia.Web.ApiService\Biblia.Web.ApiService.csproj" />
-    <ProjectReference Include="..\Biblia.Web.Web\Biblia.Web.Web.csproj" />
+    <ProjectReference Include="..\Biblia.Web\Biblia.Web.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using Biblia.Application.Interfaces;
 using Biblia.Application.Services;
 using Biblia.Domain.Entities;
+using Biblia.Domain.Rules;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
@@ -103,15 +104,19 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
             var section = report.Sections[index];
             startingThemeBookmark = CreateThemeBookmarkName(section, index);
             ct.ThrowIfCancellationRequested();
-            var firstHeight = section.References.Count == 0 ? 32 : CardHeight(section.References[0]);
+            var mixed = section.Content ?? section.References.Select(x=>new ThemeReportContentItem(x,null)).ToArray();
+            var firstReference = mixed.FirstOrDefault()?.Reference;
+            var firstHeight = firstReference is null ? 65 : CardHeight(firstReference);
             var freshCapacity = Bottom - TopMargin - ThemeHeight(section);
-            ThemeHeader(section, false, firstHeight <= freshCapacity ? firstHeight : MinimumCardHeight(section.References[0]));
-            if (section.References.Count == 0)
+            ThemeHeader(section, false, firstHeight <= freshCapacity ? firstHeight : MinimumCardHeight(firstReference!));
+            if (mixed.Count == 0)
             {
                 Text("Nenhum versículo vinculado a este tema.", body, Muted, Margin + Padding, y);
                 y += 32;
             }
-            foreach (var item in section.References) Card(section, item);
+            foreach (var marked in ThemeBlockMarkers.Apply(mixed, x => x.TextBlock))
+                if(marked.Item.Reference is not null) Card(section,marked.Item.Reference);
+                else if(marked.Item.TextBlock is not null) TextBlock(section,marked.Item.TextBlock,marked.Prefix);
         }
         graphics.Dispose();
         graphics = null!;
@@ -262,6 +267,35 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
         y += 11;
     }
 
+    private void TextBlock(ThemeVerseReportSection section, ThemeTextBlock block, string prefix)
+    {
+        block=block.Validate();
+        var style=block.Style;
+        var font=new XFont("Open Sans",style.FontSize,(style.IsBold?XFontStyleEx.Bold:XFontStyleEx.Regular)|(style.IsItalic?XFontStyleEx.Italic:XFontStyleEx.Regular),new XPdfFontOptions(PdfFontEncoding.Unicode));
+        var spacing=style.FontSize*1.5;
+        var indent=prefix.Length==0?0:graphics.MeasureString(prefix+" ",font).Width+3;
+        var lines=block.Lines().SelectMany(line=>Wrap(line,font,Width-2*Padding-indent)).ToList();
+        var fullHeight=lines.Count*spacing+2*Padding;
+        if(y+fullHeight>Bottom && fullHeight<=Bottom-TopMargin-ThemeHeight(section))
+        {
+            NewPage();
+            ThemeHeader(section,true,fullHeight);
+        }
+        var offset=0;
+        while(offset<lines.Count)
+        {
+            ct.ThrowIfCancellationRequested();
+            var capacity=(int)Math.Floor((Bottom-y-2*Padding)/spacing);
+            if(capacity<1){NewPage();ThemeHeader(section,true,2*Padding+spacing);continue;}
+            var count=Math.Min(capacity,lines.Count-offset);
+            var height=count*spacing+2*Padding;
+            Box(Margin,y,Width,height,style.BackgroundColorHex,CardBorder);
+            if(offset==0 && prefix.Length>0) Text(prefix,font,style.TextColorHex,Margin+Padding,y+Padding);
+            DrawLines(lines.Skip(offset).Take(count),Margin+Padding+indent,y+Padding,style.TextColorHex,spacing);
+            y+=height+Gap;offset+=count;
+        }
+    }
+
     private void Card(ThemeVerseReportSection section, ThemeVerseReportReference item)
     {
         var title = Wrap(CardTitle(item), reference, Width - 2 * Padding);
@@ -407,7 +441,7 @@ internal sealed class EmbeddedFontResolver : IFontResolver
     private static readonly Lazy<byte[]> Regular = new(() => Load("OpenSans-Regular"));
     private static readonly Lazy<byte[]> Semibold = new(() => Load("OpenSans-Semibold"));
     public FontResolverInfo ResolveTypeface(string familyName, bool isBold, bool isItalic) =>
-        new(isBold ? "OpenSans-Semibold" : "OpenSans-Regular");
+        new(isBold ? "OpenSans-Semibold" : "OpenSans-Regular", false, isItalic);
     public byte[] GetFont(string faceName) => faceName == "OpenSans-Semibold" ? Semibold.Value : Regular.Value;
     private static byte[] Load(string name)
     {

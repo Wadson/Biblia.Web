@@ -99,7 +99,6 @@ D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Biblia.Web.AppHost.A
 D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Biblia.Web.AppHost.AssemblyInfo.cs
 D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Biblia.Web.AppHost.csproj.CoreCompileInputs.cache
 D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Aspire\references\Biblia_Web_ApiService.ProjectMetadata.g.cs
-D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Aspire\references\Biblia_Web_Web.ProjectMetadata.g.cs
 D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Aspire\references\_AppHost.ProjectMetadata.g.cs
 D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Biblia.W.72FD5A94.Up2Date
 D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Biblia.Web.AppHost.dll
@@ -108,3 +107,4 @@ D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Biblia.Web.AppHost.p
 D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Biblia.Web.AppHost.genruntimeconfig.cache
 D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\ref\Biblia.Web.AppHost.dll
 D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Biblia.Web.AppHost.sourcelink.json
+D:\Projetos\Biblia.Web\Biblia.Web.AppHost\obj\Debug\net10.0\Aspire\references\Biblia_Web.ProjectMetadata.g.cs

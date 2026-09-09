@@ -9,7 +9,8 @@ public sealed record ThemeVerseReport(
     int ReferenceCount,
     IReadOnlyList<ThemeVerseReportSection> Sections);
 
-public sealed record ThemeVerseReportSection(Theme Theme, IReadOnlyList<ThemeVerseReportReference> References);
+public sealed record ThemeVerseReportSection(Theme Theme, IReadOnlyList<ThemeVerseReportReference> References,
+    IReadOnlyList<ThemeReportContentItem>? Content = null, ThemeOrderingMode OrderingMode = ThemeOrderingMode.Canonical);
 
 public sealed record ThemeVerseReportReference(
     long SavedReferenceId,

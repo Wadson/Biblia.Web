@@ -74,7 +74,7 @@ public sealed class BackupServiceTests
     }
 
     [Fact]
-    public async Task Restore_InvalidDatabase_PreservesActiveDatabaseAndCreatesSafetyBackup()
+    public async Task Restore_InvalidDatabaseIsRejectedBeforeChangingActiveState()
     {
         await using var context=await Context.CreateAsync();
         await context.Themes.CreateAsync("Preservado","#173A63",null);
@@ -88,7 +88,8 @@ public sealed class BackupServiceTests
         await Assert.ThrowsAnyAsync<Exception>(()=>context.Service.RestoreAsync(invalid));
 
         Assert.Equal("Preservado",(await context.Themes.GetAllAsync()).Single().Name);
-        Assert.NotEmpty(Directory.GetFiles(Path.Combine(context.Root,"backups"),"bibliatema-*.zip"));
+        // Complete validation precedes the safety snapshot and any replacement.
+        Assert.False(Directory.Exists(Path.Combine(context.Root,"backups")));
     }
 
     private static async Task WriteAsync(ZipArchive archive,string name,string content)

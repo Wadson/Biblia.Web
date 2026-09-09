@@ -1,0 +1,75 @@
+{
+  "publish": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\win-x86",
+  "result": "PASS",
+  "routes": [
+    {
+      "status": 200,
+      "route": "/",
+      "bytes": 8015
+    },
+    {
+      "status": 200,
+      "route": "/versoes",
+      "bytes": 11150
+    },
+    {
+      "status": 200,
+      "route": "/biblia",
+      "bytes": 18390
+    },
+    {
+      "status": 200,
+      "route": "/temas",
+      "bytes": 8480
+    },
+    {
+      "status": 200,
+      "route": "/temas/vincular-versiculos",
+      "bytes": 12707
+    },
+    {
+      "status": 200,
+      "route": "/relatorios",
+      "bytes": 8368
+    },
+    {
+      "status": 200,
+      "route": "/configuracoes",
+      "bytes": 10924
+    },
+    {
+      "status": 200,
+      "route": "/app.css",
+      "bytes": 7760
+    }
+  ],
+  "modules": [
+    {
+      "ModuleName": "hostfxr.dll",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\win-x86\\hostfxr.dll"
+    },
+    {
+      "ModuleName": "hostpolicy.dll",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\win-x86\\hostpolicy.dll"
+    },
+    {
+      "ModuleName": "coreclr.dll",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\win-x86\\coreclr.dll"
+    },
+    {
+      "ModuleName": "e_sqlite3.DLL",
+      "FileName": "D:\\Projetos\\Biblia.Web\\output\\distribuicao\\win-x86\\e_sqlite3.DLL"
+    }
+  ],
+  "bibles": 7,
+  "runtime": [
+    {
+      "name": "Microsoft.NETCore.App",
+      "version": "10.0.11"
+    },
+    {
+      "name": "Microsoft.AspNetCore.App",
+      "version": "10.0.11"
+    }
+  ]
+}

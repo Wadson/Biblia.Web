@@ -1,0 +1,9 @@
+@page "/configuracoes"
+@rendermode InteractiveServer
+@inject Biblia.Application.Interfaces.IBackupService Backup
+@inject Biblia.Application.Interfaces.IAppPaths Paths
+<PageTitle>Configurações — BíbliaTema</PageTitle><PageHeader Title="Configurações" Eyebrow="SISTEMA" />
+<PdfTypographySettings />
+<p><a class="btn secondary" href="/temas/ordenacao">Ordenação dos temas e versículos</a></p>
+<CompleteBackupPanel />
+<section class="panel"><h2>Sobre</h2><p><strong>BíbliaTema Web</strong> · versão 1.0.0 · .NET 10</p><p class="muted">Aplicativo local, responsivo e com tema claro único.</p><p><strong>Diretório de dados:</strong> <span class="muted">Pasta local segura do usuário (não exposta na interface publicada).</span></p></section>

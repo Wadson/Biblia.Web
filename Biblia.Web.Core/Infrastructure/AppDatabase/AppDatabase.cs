@@ -6,7 +6,7 @@ namespace Biblia.Infrastructure.AppDatabase;
 
 public sealed class AppDatabase : IAppDatabase
 {
-    public const int CurrentSchemaVersion = 4;
+    public const int CurrentSchemaVersion = 5;
     private readonly ILogger<AppDatabase> _logger;
     private readonly SemaphoreSlim _initializationGate = new(1, 1);
     private bool _initialized;
@@ -43,53 +43,44 @@ public sealed class AppDatabase : IAppDatabase
 
     public async Task ReplaceAsync(string stagedDatabasePath, CancellationToken cancellationToken = default)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(stagedDatabasePath);
-        var staged = Path.GetFullPath(stagedDatabasePath);
-        if (!File.Exists(staged)) throw new FileNotFoundException("Banco preparado para restauração não encontrado.", staged);
-        if (!string.Equals(Path.GetDirectoryName(staged), Path.GetDirectoryName(DatabasePath), StringComparison.OrdinalIgnoreCase))
-            throw new ArgumentException("O banco preparado deve estar no mesmo diretório do banco ativo.", nameof(stagedDatabasePath));
+        var staged=Path.GetFullPath(stagedDatabasePath);
+        if(!File.Exists(staged)||staged.Equals(DatabasePath,StringComparison.OrdinalIgnoreCase))throw new ArgumentException("Banco preparado inválido.");
         await _initializationGate.WaitAsync(cancellationToken);
-        var rollback = DatabasePath + ".restore-rollback";
         try
         {
-            SqliteConnection.ClearAllPools();
-            DeleteSidecars(DatabasePath);
-            if (File.Exists(rollback)) File.Delete(rollback);
-            File.Replace(staged, DatabasePath, rollback, ignoreMetadataErrors: true);
-            DeleteSidecars(DatabasePath);
-            _initialized = false;
-            await InitializeCoreAsync(cancellationToken);
-            if (File.Exists(rollback)) File.Delete(rollback);
-            _logger.LogInformation("Banco do aplicativo restaurado e reinicializado com sucesso.");
-        }
-        catch
-        {
-            SqliteConnection.ClearAllPools();
-            DeleteSidecars(DatabasePath);
-            _initialized = false;
-            if (File.Exists(rollback))
+            using var exclusive=await ConnectionLease(true,cancellationToken);
+            await using var source=new SqliteConnection(new SqliteConnectionStringBuilder{DataSource=staged,Mode=SqliteOpenMode.ReadOnly,Pooling=false}.ToString());
+            await using var target=await OpenConnectionCoreAsync(cancellationToken,false);
+            await source.OpenAsync(cancellationToken);
+            await using(var check=source.CreateCommand())
             {
-                File.Copy(rollback, DatabasePath, overwrite: true);
-                await InitializeCoreAsync(CancellationToken.None);
+                check.CommandText="PRAGMA integrity_check;";
+                if(Convert.ToString(await check.ExecuteScalarAsync(cancellationToken))!="ok")throw new InvalidDataException("O banco preparado está corrompido.");
             }
-            throw;
+            // SQLite performs the replacement as a destination transaction, preserving WAL semantics.
+            // Never unlink a live WAL/SHM file or swap an inode behind pooled connections.
+            source.BackupDatabase(target);
+            _initialized=false;
         }
-        finally
-        {
-            if (File.Exists(rollback)) File.Delete(rollback);
-            _initializationGate.Release();
-        }
+        finally{_initializationGate.Release();}
+        await InitializeAsync(cancellationToken);
     }
 
-    private static void DeleteSidecars(string databasePath)
+    private async Task<IDisposable> ConnectionLease(bool exclusive,CancellationToken ct)
     {
-        foreach (var suffix in new[] { "-wal", "-shm" })
+        var path=DatabasePath+".connections.lock";
+        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+        while(true)
         {
-            var sidecar = databasePath + suffix;
-            if (File.Exists(sidecar)) File.Delete(sidecar);
+            ct.ThrowIfCancellationRequested();
+            try
+            {
+                if(!File.Exists(path)){using var create=new FileStream(path,FileMode.OpenOrCreate,FileAccess.ReadWrite,FileShare.ReadWrite);}
+                return new FileStream(path,FileMode.Open,exclusive?FileAccess.ReadWrite:FileAccess.Read,exclusive?FileShare.None:FileShare.Read);
+            }
+            catch(IOException){await Task.Delay(50,ct);}
         }
     }
-
     private async Task InitializeCoreAsync(CancellationToken cancellationToken)
     {
         Directory.CreateDirectory(Path.GetDirectoryName(DatabasePath)!);
@@ -104,6 +95,7 @@ public sealed class AppDatabase : IAppDatabase
         if (version < 2) await ApplyMigration2Async(connection, cancellationToken);
         if (version < 3) await ApplyMigration3Async(connection, cancellationToken);
         if (version < 4) await ApplyMigration4Async(connection, cancellationToken);
+        if (version < 5) await ApplyMigration5Async(connection, cancellationToken);
         _initialized = true;
         _logger.LogInformation("Banco do aplicativo inicializado no schema {SchemaVersion}.", CurrentSchemaVersion);
     }
@@ -123,16 +115,18 @@ public sealed class AppDatabase : IAppDatabase
         return connection;
     }
 
-    private async Task<SqliteConnection> OpenConnectionCoreAsync(CancellationToken cancellationToken)
+    private async Task<SqliteConnection> OpenConnectionCoreAsync(CancellationToken cancellationToken, bool tracked=true)
     {
         var builder = new SqliteConnectionStringBuilder
         {
             DataSource = DatabasePath,
             Mode = SqliteOpenMode.ReadWriteCreate,
-            Cache = SqliteCacheMode.Shared,
-            Pooling = true
+            Cache = SqliteCacheMode.Private,
+            Pooling = false
         };
+        var lease=tracked?await ConnectionLease(false,cancellationToken):null;
         var connection = new SqliteConnection(builder.ToString());
+        connection.StateChange += (_,e)=>{if(e.CurrentState==System.Data.ConnectionState.Closed)lease?.Dispose();};
         try
         {
             await connection.OpenAsync(cancellationToken);
@@ -143,6 +137,40 @@ public sealed class AppDatabase : IAppDatabase
             await connection.DisposeAsync();
             throw;
         }
+    }
+
+    private static async Task ApplyMigration5Async(SqliteConnection connection, CancellationToken ct)
+    {
+        await using var tx=connection.BeginTransaction();
+        await using var cmd=connection.CreateCommand(); cmd.Transaction=tx;
+        cmd.CommandText="""
+            ALTER TABLE Theme ADD COLUMN OrderingMode INTEGER NOT NULL DEFAULT 0 CHECK(OrderingMode IN(0,1));
+            CREATE TABLE ThemeContent(
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                ThemeId INTEGER NOT NULL REFERENCES Theme(Id) ON DELETE CASCADE,
+                ReferenceId INTEGER NULL,
+                SortOrder INTEGER NOT NULL CHECK(SortOrder>=0),
+                BlockJson TEXT NULL,
+                CreatedAt TEXT NOT NULL,
+                UpdatedAt TEXT NOT NULL,
+                FOREIGN KEY(ReferenceId,ThemeId) REFERENCES ReferenceTheme(ReferenceId,ThemeId) ON DELETE CASCADE,
+                CHECK((ReferenceId IS NOT NULL AND BlockJson IS NULL) OR (ReferenceId IS NULL AND BlockJson IS NOT NULL)),
+                UNIQUE(ThemeId,ReferenceId)
+            );
+            CREATE UNIQUE INDEX UX_ThemeContent_Position ON ThemeContent(ThemeId,SortOrder);
+            INSERT INTO ThemeContent(ThemeId,ReferenceId,SortOrder,CreatedAt,UpdatedAt)
+            SELECT rt.ThemeId,rt.ReferenceId,ROW_NUMBER() OVER(PARTITION BY rt.ThemeId ORDER BY r.BookReferenceId,r.Chapter,r.VerseStart,r.VerseEnd,r.Id)-1,
+              COALESCE(rt.CreatedAt,$now),COALESCE(rt.UpdatedAt,$now)
+            FROM ReferenceTheme rt JOIN SavedReference r ON r.Id=rt.ReferenceId;
+            CREATE TRIGGER ThemeContent_LinkInserted AFTER INSERT ON ReferenceTheme BEGIN
+              INSERT INTO ThemeContent(ThemeId,ReferenceId,SortOrder,CreatedAt,UpdatedAt)
+              VALUES(NEW.ThemeId,NEW.ReferenceId,COALESCE((SELECT MAX(SortOrder)+1 FROM ThemeContent WHERE ThemeId=NEW.ThemeId),0),
+                COALESCE(NEW.CreatedAt,strftime('%Y-%m-%dT%H:%M:%fZ','now')),COALESCE(NEW.UpdatedAt,strftime('%Y-%m-%dT%H:%M:%fZ','now')));
+            END;
+            INSERT INTO SchemaMigration(Version,AppliedAt) VALUES(5,$now);
+            """;
+        cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O"));
+        await cmd.ExecuteNonQueryAsync(ct); await tx.CommitAsync(ct);
     }
 
     private static Task EnsureMigrationTableAsync(SqliteConnection connection, CancellationToken cancellationToken) =>

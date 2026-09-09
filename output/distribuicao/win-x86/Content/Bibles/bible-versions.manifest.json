@@ -1,0 +1,13 @@
+{
+  "manifestVersion": 1,
+  "defaultVersionCode": "ACF",
+  "versions": [
+    { "code": "ACF", "displayName": "Almeida Corrigida e Fiel", "language": "pt-BR", "databaseFileName": "ACF.sqlite", "schemaVersion": 2, "sha256": "B9AF738EEA2F01785E47D612371DBB590D3641106AF768EE1A5961F62A6FED44", "auditStatus": "Compatible", "auditMessage": null },
+    { "code": "ARA", "displayName": "Almeida Revista e Atualizada", "language": "pt-BR", "databaseFileName": "ARA.sqlite", "schemaVersion": 2, "sha256": "EEDE75C2A2BEEB7E1A91BCD8DF9325422CFFCC1B3CC63E0BD65F49C5CC020964", "auditStatus": "CompatibleWithCaveat", "auditMessage": "Diferenças de versificação documentadas." },
+    { "code": "ARC", "displayName": "Almeida Revista e Corrigida", "language": "pt-BR", "databaseFileName": "ARC.sqlite", "schemaVersion": 2, "sha256": "7427C8DA6EB1B99D7B500BBEEF73088ED84314146FCD9D4D0B92BB401DCFC212", "auditStatus": "CompatibleWithCaveat", "auditMessage": "Diferenças de versificação documentadas." },
+    { "code": "AS21", "displayName": "Almeida Século 21", "language": "pt-BR", "databaseFileName": "AS21.sqlite", "schemaVersion": 2, "sha256": "44C268F39802750AE495C9FCA09E2F03C471B6769410F62193CB22D94D202EAF", "auditStatus": "CompatibleWithCaveat", "auditMessage": "Diferenças de versificação documentadas." },
+    { "code": "KJF", "displayName": "King James Fiel", "language": "pt-BR", "databaseFileName": "KJF.sqlite", "schemaVersion": 2, "sha256": "DBEDA15D6A17A97AEB52A21C557F89C40190FAF32A2CDF96E36BFD45D1FD2DA5", "auditStatus": "Compatible", "auditMessage": null },
+    { "code": "NBV", "displayName": "Nova Bíblia Viva", "language": "pt-BR", "databaseFileName": "NBV.sqlite", "schemaVersion": 2, "sha256": "734F0D3F460A5CFF644B6EDE9E3EAB23D011FB75A1AD64180A2C86176BDFDBCA", "auditStatus": "CompatibleWithCaveat", "auditMessage": "Diferenças de versificação documentadas." },
+    { "code": "NVI", "displayName": "Nova Versão Internacional", "language": "pt-BR", "databaseFileName": "NVI.sqlite", "schemaVersion": 2, "sha256": "7F65865F3660EA5C7BEC30F8A7BB40D8D3D27A979755472CB2F00E16D0AA1198", "auditStatus": "CompatibleWithCaveat", "auditMessage": "Diferenças de versificação documentadas." }
+  ]
+}

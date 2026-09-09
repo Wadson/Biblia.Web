@@ -17,7 +17,9 @@ public sealed class LocalAppPaths : IAppPaths
     public LocalAppPaths()
     {
         var root = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        AppDataDirectory = Path.Combine(root, "BibliaTema");
+        var isolated=Environment.GetEnvironmentVariable("BIBLIATEMA_DATA_DIR");
+        if(!string.IsNullOrWhiteSpace(isolated)&&!Path.IsPathFullyQualified(isolated))throw new ArgumentException("BIBLIATEMA_DATA_DIR deve ser absoluto.");
+        AppDataDirectory = string.IsNullOrWhiteSpace(isolated)?Path.Combine(root, "BibliaTema"):Path.GetFullPath(isolated);
         CacheDirectory = Path.Combine(AppDataDirectory, "Cache");
         Directory.CreateDirectory(AppDataDirectory);
         Directory.CreateDirectory(CacheDirectory);
@@ -69,6 +71,7 @@ public static class WebInfrastructureRegistration
         services.AddSingleton<AppDatabase.AppDatabase>();
         services.AddSingleton<IAppDatabase>(p => p.GetRequiredService<AppDatabase.AppDatabase>());
         services.AddSingleton<IThemeRepository, ThemeRepository>();
+        services.AddSingleton<IThemeContentService, ThemeContentService>();
         services.AddSingleton<ISavedReferenceRepository, SavedReferenceRepository>();
         services.AddSingleton<ISettingsRepository, SettingsRepository>();
         services.AddSingleton<IBibleVersionCatalogRepository, BibleVersionCatalogRepository>();
