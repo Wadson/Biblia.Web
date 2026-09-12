@@ -1,3 +1,19 @@
 @inherits LayoutComponentBase
-<div class="app-shell"><aside class="sidebar"><NavMenu /></aside><main class="main"><article class="content">@Body</article></main></div>
+<div class="app-shell @(sidebarCollapsed ? "sidebar-collapsed" : null)">
+    <aside class="sidebar">
+        <NavMenu IsCollapsed="sidebarCollapsed" OnToggle="ToggleSidebar" />
+    </aside>
+    <main class="main">
+        <article class="content">@Body</article>
+    </main>
+</div>
 <div id="blazor-error-ui" role="alert">Ocorreu um erro inesperado. <a href="" class="reload">Recarregar</a><button type="button" class="dismiss icon-button" aria-label="Fechar aviso de erro" title="Fechar aviso de erro"><AppIcon Name="close" /></button></div>
+
+@code {
+    private bool sidebarCollapsed;
+
+    private void ToggleSidebar()
+    {
+        sidebarCollapsed = !sidebarCollapsed;
+    }
+}

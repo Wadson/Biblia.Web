@@ -1,0 +1,11 @@
+127.0.0.1 - - [08/Sep/2026 08:16:29] "GET /dark.html HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 08:16:29] "GET /dark.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 08:16:29] "GET /bootstrap.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 08:16:29] code 404, message File not found
+127.0.0.1 - - [08/Sep/2026 08:16:29] "GET /appicon.png HTTP/1.1" 404 -
+127.0.0.1 - - [08/Sep/2026 08:16:30] code 404, message File not found
+127.0.0.1 - - [08/Sep/2026 08:16:30] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [08/Sep/2026 08:17:46] "GET /dark.html HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 08:17:46] "GET /bootstrap.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 08:17:46] "GET /dark.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 08:17:46] "GET /appicon.png HTTP/1.1" 200 -
