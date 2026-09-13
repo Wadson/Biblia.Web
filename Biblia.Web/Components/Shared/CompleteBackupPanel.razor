@@ -1,7 +1,7 @@
 @implements IAsyncDisposable
 @inject Biblia.Application.Interfaces.IBackupService Backup
 @inject Biblia.Application.Interfaces.IAppPaths Paths
-<section class="panel"><h2>Backup e restauração</h2>
+<section class="panel backup-settings"><h2>Backup e restauração</h2>
 <p>O backup completo inclui temas, referências, observações, blocos, ordem e todas as versões instaladas. Até 128 versões, 256 MB por Bíblia e 8 GB descompactados.</p>
 <p class="muted">Ao restaurar um backup completo, o catálogo volta ao estado salvo. Arquivos anteriores e versões extras ficam preservados para recuperação, sem aparecer como versões instaladas. Backups antigos não contêm Bíblias: os arquivos locais são preservados e reconciliados por código.</p>
 @if(error is not null){<div class="notice error" role="alert">@error</div>}@if(note is not null){<div class="notice success" role="status">@note</div>}

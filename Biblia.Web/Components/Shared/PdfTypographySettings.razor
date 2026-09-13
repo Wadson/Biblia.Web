@@ -3,7 +3,7 @@
 @inject Biblia.Application.Interfaces.ISettingsService Settings
 @inject ILogger<PdfTypographySettings> Logger
 
-<section class="panel">
+<section class="panel typography-settings">
     <h2>Personalização do relatório PDF</h2>
     <p>Escolha os tamanhos em pontos (pt), em incrementos de 0,5 pt.</p>
     @if (error is not null) { <div class="notice" role="alert">@error</div> }
@@ -31,10 +31,12 @@
                     <p style="font-size:@(Pt(Preview.PdfVerseTextFontSize))"><strong>15</strong> Porque eu vos dei o exemplo, para que, como eu vos fiz, façais vós também.</p>
                     <div class="pdf-preview-note" style="font-size:@(Pt(Preview.PdfObservationFontSize))"><strong>OBSERVAÇÃO:</strong><br />EXEMPLO: Aquilo que deve ser imitado.</div>
                 </div>
-                <button class="btn primary" type="submit">Salvar tamanhos</button>
+                <div class="settings-actions" aria-label="Ações de tamanhos do relatório">
+                    <button class="btn primary" type="submit">Salvar tamanhos</button>
+                    <ConfirmButton Label="Restaurar tamanhos padrão" Title="Restaurar tamanhos padrão" Message="Deseja restaurar somente os três tamanhos das fontes do relatório PDF?" OnConfirm="Restore" Disabled="@busy" />
+                </div>
             </fieldset>
         </form>
-                <ConfirmButton Label="Restaurar tamanhos padrão" Title="Restaurar tamanhos padrão" Message="Deseja restaurar somente os três tamanhos das fontes do relatório PDF?" OnConfirm="Restore" Disabled="@busy" />
     }
 </section>
 

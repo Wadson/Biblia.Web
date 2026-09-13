@@ -471,4 +471,4 @@ D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\appicon.ico
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\2baeu0w6l9-{0}-oin47tvt6c-oin47tvt6c.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\htlrqt0ndl-{0}-zqd017a9x1-zqd017a9x1.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\9s8t9tsnl9-{0}-zqd017a9x1-zqd017a9x1.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\3sm1rmrewi-{0}-aqtedtj10d-aqtedtj10d.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\3sm1rmrewi-{0}-uxe12x8j7b-uxe12x8j7b.gz
