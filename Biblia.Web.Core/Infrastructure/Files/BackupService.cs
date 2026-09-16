@@ -20,6 +20,7 @@ public sealed class BackupService(IAppDatabase database,IAppPaths paths,ILogger<
     public async Task<BackupInfo> CreateAsync(CancellationToken cancellationToken=default)
     {
         using var lease=await FileOperationLease.AcquireAsync(paths.AppDataDirectory,cancellationToken);
+        logger.LogInformation("Backup iniciado.");
         return await CreateCore(cancellationToken);
     }
     private async Task<BackupInfo> CreateCore(CancellationToken ct)
@@ -60,12 +61,12 @@ public sealed class BackupService(IAppDatabase database,IAppPaths paths,ILogger<
             }
             logger.LogInformation("Backup completo criado: {Path}, {Count} versões",path,bibles.Count);return new(path,now,schema,new FileInfo(path).Length,2);
         }
-        catch{if(File.Exists(path))File.Delete(path);throw;}
-        finally{Directory.Delete(stage,true);}
+        catch{TryDeleteFile(path);throw;}
+        finally{TryDeleteDirectory(stage);}
     }
     public async Task<BackupInfo> ValidateAsync(string backupPath,CancellationToken cancellationToken=default)
     {
-        var stage=Stage();try{var m=await ExtractValidate(backupPath,stage,cancellationToken);return new(backupPath,m.CreatedAt,m.SchemaVersion,new FileInfo(backupPath).Length,m.BackupFormatVersion);}finally{Directory.Delete(stage,true);}
+        var stage=Stage();try{var m=await ExtractValidate(backupPath,stage,cancellationToken);logger.LogInformation("Backup validado: formato {Format}, schema {Schema}.",m.BackupFormatVersion,m.SchemaVersion);return new(backupPath,m.CreatedAt,m.SchemaVersion,new FileInfo(backupPath).Length,m.BackupFormatVersion);}finally{TryDeleteDirectory(stage);}
     }
     public async Task RestoreAsync(string backupPath,CancellationToken cancellationToken=default)
     {
@@ -73,8 +74,11 @@ public sealed class BackupService(IAppDatabase database,IAppPaths paths,ILogger<
         var stage=Stage();string? generation=null,rollback=null;bool switched=false;
         try
         {
+            logger.LogInformation("Restauração iniciada.");
             var m=await ExtractValidate(backupPath,stage,cancellationToken);
+            logger.LogInformation("Backup validado para restauração: formato {Format}, schema {Schema}, versões {BibleCount}.",m.BackupFormatVersion,m.SchemaVersion,m.Bibles?.Count ?? 0);
             var safety=await CreateCore(cancellationToken);
+            logger.LogInformation("Backup de segurança criado em {SafetyBackup}.", safety.Path);
             rollback=Path.Combine(stage,"rollback.db");await Snapshot(database.DatabasePath,rollback,cancellationToken);
             var staged=Path.Combine(stage,"bibliatema.db");await new AppUserDatabase(staged,NullLogger<AppUserDatabase>.Instance).InitializeAsync(cancellationToken);
             if(m.BackupFormatVersion==2)
@@ -87,17 +91,23 @@ public sealed class BackupService(IAppDatabase database,IAppPaths paths,ILogger<
             }
             await Reconcile(staged,m,generation,rollback,cancellationToken);await ValidateDatabase(staged,cancellationToken);
             // Immutable version paths + atomic SQLite destination transaction publish one coherent state.
+            logger.LogInformation("Substituição do banco iniciada.");
             switched=true;await database.ReplaceAsync(staged,cancellationToken);
+            logger.LogInformation("Substituição do banco concluída; iniciando validação posterior.");
             await ValidateQueries(database.DatabasePath,cancellationToken);
             logger.LogInformation("Restauração confirmada; backup de segurança {Safety}; formato {Format}. Arquivos anteriores preservados para recuperação.",safety.Path,m.BackupFormatVersion);
         }
         catch(Exception ex)
         {
-            if(switched&&rollback is not null)await database.ReplaceAsync(rollback,CancellationToken.None);
-            if(generation is not null&&Directory.Exists(generation))Directory.Delete(generation,true);
+            if(switched&&rollback is not null)
+            {
+                try { logger.LogWarning("Rollback iniciado após falha na restauração."); await database.ReplaceAsync(rollback,CancellationToken.None); logger.LogInformation("Rollback concluído."); }
+                catch(Exception rollbackException) { logger.LogCritical(rollbackException,"O rollback da restauração falhou."); }
+            }
+            if(generation is not null)TryDeleteDirectory(generation);
             logger.LogError(ex,"Restauração falhou; estado anterior preservado.");throw;
         }
-        finally{Directory.Delete(stage,true);}
+        finally{TryDeleteDirectory(stage);}
     }
     private async Task<Manifest> ExtractValidate(string path,string stage,CancellationToken ct)
     {
@@ -208,6 +218,16 @@ public sealed class BackupService(IAppDatabase database,IAppPaths paths,ILogger<
     }
     private static void CheckActive(IReadOnlyList<BibleFile> files){if(files.Count>0&&(files.Count(x=>x.IsActive)!=1||files.Any(x=>x.IsActive&&!x.IsEnabled)))throw new InvalidDataException("Defina exatamente uma versão instalada e habilitada como ativa.");}
     private string Stage(){var dir=Path.Combine(paths.CacheDirectory,"backup-stage-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(dir);return dir;}
+    private void TryDeleteDirectory(string path)
+    {
+        try { if(Directory.Exists(path)) Directory.Delete(path,true); }
+        catch(Exception ex) { logger.LogWarning(ex,"Não foi possível limpar o diretório temporário de backup {Path}.",path); }
+    }
+    private void TryDeleteFile(string path)
+    {
+        try { if(File.Exists(path)) File.Delete(path); }
+        catch(Exception ex) { logger.LogWarning(ex,"Não foi possível limpar o arquivo temporário de backup {Path}.",path); }
+    }
     private static void SafeCode(string code){if(!Regex.IsMatch(code,"^[A-Za-z0-9][A-Za-z0-9_-]{1,19}$"))throw new InvalidDataException("Código de versão inseguro.");}
     private static async Task<SqliteConnection> Open(string path,bool readOnly,CancellationToken ct){var c=new SqliteConnection(new SqliteConnectionStringBuilder{DataSource=path,Mode=readOnly?SqliteOpenMode.ReadOnly:SqliteOpenMode.ReadWriteCreate,Pooling=false}.ToString());try{await c.OpenAsync(ct);return c;}catch{await c.DisposeAsync();throw;}}
     private static async Task Snapshot(string source,string target,CancellationToken ct){await using var a=await Open(source,true,ct);await using var b=await Open(target,false,ct);a.BackupDatabase(b);}

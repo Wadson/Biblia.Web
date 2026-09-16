@@ -1,4 +1,5 @@
 using Biblia.Application.Interfaces;
+using Biblia.Infrastructure.Files;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 
@@ -70,15 +71,30 @@ public sealed class AppDatabase : IAppDatabase
     {
         var path=DatabasePath+".connections.lock";
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+        using var timeoutSource=new CancellationTokenSource(FileOperationLease.DefaultTimeout);
+        using var waitSource=CancellationTokenSource.CreateLinkedTokenSource(ct,timeoutSource.Token);
         while(true)
         {
-            ct.ThrowIfCancellationRequested();
+            if (!ct.IsCancellationRequested && timeoutSource.IsCancellationRequested)
+            {
+                _logger.LogWarning("Tempo limite ao aguardar {LockType} do banco {DatabasePath}.", exclusive ? "acesso exclusivo" : "acesso compartilhado", DatabasePath);
+                throw new TimeoutException("O banco está ocupado por outra operação. Tente novamente em alguns instantes.");
+            }
+            waitSource.Token.ThrowIfCancellationRequested();
             try
             {
                 if(!File.Exists(path)){using var create=new FileStream(path,FileMode.OpenOrCreate,FileAccess.ReadWrite,FileShare.ReadWrite);}
                 return new FileStream(path,FileMode.Open,exclusive?FileAccess.ReadWrite:FileAccess.Read,exclusive?FileShare.None:FileShare.Read);
             }
-            catch(IOException){await Task.Delay(50,ct);}
+            catch(IOException)
+            {
+                try { await Task.Delay(50,waitSource.Token); }
+                catch (OperationCanceledException) when (!ct.IsCancellationRequested && timeoutSource.IsCancellationRequested)
+                {
+                    _logger.LogWarning("Tempo limite ao aguardar {LockType} do banco {DatabasePath}.", exclusive ? "acesso exclusivo" : "acesso compartilhado", DatabasePath);
+                    throw new TimeoutException("O banco está ocupado por outra operação. Tente novamente em alguns instantes.");
+                }
+            }
         }
     }
     private async Task InitializeCoreAsync(CancellationToken cancellationToken)
@@ -135,6 +151,7 @@ public sealed class AppDatabase : IAppDatabase
         catch
         {
             await connection.DisposeAsync();
+            lease?.Dispose();
             throw;
         }
     }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Biblia.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+140cf9e339cdd1687eb2f3c6660aba3b0d166fdc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b99755ec3e5d814c61461dbf1f1cd103499ac2c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Biblia.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Biblia.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

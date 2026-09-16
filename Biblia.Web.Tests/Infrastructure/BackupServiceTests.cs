@@ -92,6 +92,19 @@ public sealed class BackupServiceTests
         Assert.False(Directory.Exists(Path.Combine(context.Root,"backups")));
     }
 
+    [Fact]
+    public async Task FileOperationLease_WhenBusy_TimesOutWithoutChangingDatabase()
+    {
+        await using var context=await Context.CreateAsync();
+        await context.Themes.CreateAsync("Preservado","#173A63",null);
+        using var held=await FileOperationLease.AcquireAsync(context.Root,CancellationToken.None);
+
+        var exception=await Assert.ThrowsAsync<TimeoutException>(()=>FileOperationLease.AcquireAsync(context.Root,CancellationToken.None,TimeSpan.FromMilliseconds(100)));
+
+        Assert.Contains("outra manutenção",exception.Message);
+        Assert.Equal("Preservado",(await context.Themes.GetAllAsync()).Single().Name);
+    }
+
     private static async Task WriteAsync(ZipArchive archive,string name,string content)
     {
         await using var stream=archive.CreateEntry(name).Open();

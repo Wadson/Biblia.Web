@@ -6,6 +6,7 @@
         </div>
         <button type="button" class="sidebar-toggle" @onclick="OnToggle"
                 aria-label="@(IsCollapsed ? "Expandir menu lateral" : "Contrair menu lateral")"
+                aria-expanded="@(!IsCollapsed)"
                 title="@(IsCollapsed ? "Expandir menu lateral" : "Contrair menu lateral")">
             <AppIcon Name="menu" Size="lg" />
         </button>
