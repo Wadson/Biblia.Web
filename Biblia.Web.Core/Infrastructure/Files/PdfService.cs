@@ -216,23 +216,41 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
 
     private void MainHeader(ThemeVerseReport report)
     {
-        var labels = new[] { "GERADO EM", "RESUMO DO FILTRO" };
-        var values = new[] { report.GeneratedAt.ToLocalTime().ToString("dd/MM/yyyy 'às' HH:mm", Portuguese),
-            Count(report.Sections.Count, "Tema", "Temas") + " • " + Count(report.Sections.Sum(s => s.References.Count), "Referência", "Referências") };
+        var options=report.Header??new PdfHeaderOptions(null,null,null,Blue,"#FFFFFF","#C7DCFF","#FFFFFF","#C7DCFF",23,11,9,8,true,false,null,null,null,null);
+        var headerBackground=SafeHeaderColor(options.BackgroundColorHex,Blue);
+        var titleColor=SafeHeaderColor(options.TitleTextColorHex,"#FFFFFF");
+        var organizationColor=SafeHeaderColor(options.OrganizationTextColorHex,"#C7DCFF");
+        var subtitleColor=SafeHeaderColor(options.SubtitleTextColorHex,"#FFFFFF");
+        var detailColor=SafeHeaderColor(options.HeaderDetailTextColorHex,"#C7DCFF");
+        var labels = Array.Empty<string>();
+        var values = new[] { "GERADO EM: " + report.GeneratedAt.ToLocalTime().ToString("dd/MM/yyyy 'às' HH:mm", Portuguese),
+            "RESUMO DO FILTRO: " + Count(report.Sections.Count, "Tema", "Temas") + " • " + Count(report.Sections.Sum(s => s.References.Count), "Referência", "Referências") };
         var columnWidth = (Width - 36) / 2;
         var lines = values.Select(v => Wrap(v, bold, columnWidth - 12)).ToArray();
         var height = 111 + lines.Max(l => l.Count) * LineHeight;
-        Box(Margin, y, Width, height, Blue, Blue);
-        Text("BÍBLIATEMA", Font(11, true), "#C7DCFF", Margin + 18, y + 15);
-        Box(Margin + Width - 160, y + 14, 142, 18, "#4275DD", "#4275DD");
-        Text("RELATÓRIO TEMÁTICO", small, "#FFFFFF", Margin + Width - 152, y + 17);
+        Box(Margin, y, Width, height, headerBackground, headerBackground);
+        var logoOffset=0d;
+        if(options.Logo is {Length:>0})try
+        {
+            using var logoStream=new MemoryStream(options.Logo);
+            using var image=XImage.FromStream(logoStream);
+            var ratio=image.PixelHeight==0?1d:(double)image.PixelWidth/image.PixelHeight;
+            var requestedWidth=options.LogoWidth; var requestedHeight=options.LogoHeight;
+            var logoHeight=requestedHeight??34d; var logoWidth=requestedWidth??logoHeight*ratio;
+            if(requestedWidth is not null&&requestedHeight is null)logoHeight=logoWidth/ratio;
+            if(requestedHeight is not null&&requestedWidth is null)logoWidth=logoHeight*ratio;
+            graphics.DrawImage(image,Margin+18,y+10,logoWidth,logoHeight);logoOffset=logoWidth+9;
+        }catch{ /* Invalid branding must never block PDF generation. */ }
+        if(!string.IsNullOrWhiteSpace(options.OrganizationName))Text(options.OrganizationName, Font(options.OrganizationFontSize, true), organizationColor, Margin + 18+logoOffset, y + 15);
         graphics.DrawLine(new XPen(Color("#6288DF"), .5), Margin + 18, y + 40, Margin + Width - 18, y + 40);
-        Text("Temas e Versículos", Font(23, true), "#FFFFFF", Margin + 18, y + 48);
-        for (var i = 0; i < labels.Length; i++)
+        var style=(options.TitleBold?XFontStyleEx.Bold:XFontStyleEx.Regular)|(options.TitleItalic?XFontStyleEx.Italic:XFontStyleEx.Regular);
+        Text(report.Title, new XFont("Open Sans",options.TitleFontSize,style,new XPdfFontOptions(PdfFontEncoding.Unicode)), titleColor, Margin + 18, y + 48);
+        if(!string.IsNullOrWhiteSpace(options.Subtitle))Text(options.Subtitle,Font(options.SubtitleFontSize),subtitleColor,Margin+18,y+76);
+        if(!string.IsNullOrWhiteSpace(options.HeaderText))Text(options.HeaderText,Font(options.HeaderDetailFontSize),detailColor,Margin+18+logoOffset,y+28);
+        for (var i = 0; i < values.Length; i++)
         {
             var x = Margin + 18 + i * columnWidth;
-            Text(labels[i], Font(7.5), "#C7DCFF", x, y + 89);
-            DrawLines(lines[i], x, y + 103, "#FFFFFF");
+            DrawLines(lines[i], x, y + 98, "#FFFFFF");
         }
         y += height + 20;
     }
@@ -419,6 +437,7 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
         // Keep pale user colors visible against the light page without using them for text.
         return color.R * .299 + color.G * .587 + color.B * .114 > 210 ? Blue : hex;
     }
+    private static string SafeHeaderColor(string? hex,string fallback) => hex is not null && Regex.IsMatch(hex,"^#[0-9a-fA-F]{6}$") ? hex : fallback;
 
     private void Footer(int year)
     {

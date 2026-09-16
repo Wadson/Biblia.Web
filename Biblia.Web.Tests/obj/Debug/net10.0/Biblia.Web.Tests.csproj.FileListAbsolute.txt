@@ -219,7 +219,6 @@ D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Biblia.Web.runtimeconf
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\appsettings.Development.json
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\appsettings.json
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Content\Bibles\bible-versions.manifest.json
-D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\appico.ico
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Biblia.Web.staticwebassets.runtime.json
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Biblia.Web.staticwebassets.endpoints.json
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Content\Bibles\ACF.sqlite
@@ -256,3 +255,4 @@ D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Biblia.Web.dll
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Biblia.Web.ServiceDefaults.dll
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Biblia.Web.pdb
 D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Biblia.Web.ServiceDefaults.pdb
+D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\appicon.ico

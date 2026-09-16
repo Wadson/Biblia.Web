@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Biblia.Web.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+990710b1f3c81510831f598e57cffcb8694d7bce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+213e91742441a3b43541897158584b29ef7c3607")]
 [assembly: System.Reflection.AssemblyProductAttribute("Biblia.Web.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Biblia.Web.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

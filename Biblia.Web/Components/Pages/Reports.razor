@@ -3,22 +3,26 @@
 @inject Biblia.Application.Interfaces.IReportService ReportService
 @inject Biblia.Application.Interfaces.IPdfService Pdf
 @inject Biblia.Application.Interfaces.IThemeService Themes
+@inject Biblia.Application.Interfaces.IPublicationService Publications
 @inject ILogger<Reports> Logger
 <PageTitle>Relatórios — BíbliaTema</PageTitle><PageHeader Title="Relatório de temas e versículos" Eyebrow="SISTEMA" Subtitle="Exporte os vínculos temáticos em PDF A4." />
 @if(error is not null){<div class="notice error" role="alert">@error</div>}@if(note is not null){<div class="notice success" role="status">@note</div>}
 @if(stats is not null){<div class="stats"><div><b>@stats.Themes</b><span>Temas</span></div><div><b>@stats.References</b><span>Referências</span></div><div><b>@stats.ThemeVerseLinks</b><span>Vínculos</span></div></div>}
-<section class="panel"><h2>Filtros</h2><div class="form-grid"><label>Tema<select @bind="themeId"><option value="0">Todos os temas</option>@foreach(var t in themes){<option value="@t.Id">@t.Name</option>}</select></label><ConfirmButton Label="Gerar relatório" Title="Confirmar geração" Message="Deseja gerar o relatório PDF com os filtros informados?" Summary="@Summary" OnConfirm="Generate" /></div>
+<section class="panel"><h2>Filtros</h2><div class="form-grid"><label>Publicação / PDF *<select @bind="publicationId" @bind:after="PublicationChanged"><option value="0">Selecione</option>@foreach(var p in publications){<option value="@p.Id">@p.Name</option>}</select></label><label>Tema<select @bind="themeId"><option value="0">Todos os temas</option>@foreach(var t in themes){<option value="@t.Id">@t.Name</option>}</select></label><label>Título do PDF<input @bind="title" /></label><ConfirmButton Label="Gerar relatório" Title="Confirmar geração" Message="Deseja gerar o relatório PDF com os filtros informados?" Summary="@Summary" Disabled="@(publicationId==0)" OnConfirm="Generate" /></div>
 @if(pdfPath is not null){<p><a class="btn success" href="@($"/download/theme-report?path={Uri.EscapeDataString(pdfPath)}")">Baixar PDF gerado</a></p>}</section>
 @code {
     ReportsOverview? stats;
     IReadOnlyList<Theme> themes = [];
+    IReadOnlyList<Publication> publications=[];
     long themeId;
+    long publicationId; string? title;
     string? pdfPath, error, note;
-    string Summary => $"Tema: {(themeId == 0 ? "Todos" : themes.FirstOrDefault(x => x.Id == themeId)?.Name)}";
+    string Summary => $"Publicação: {publications.FirstOrDefault(x=>x.Id==publicationId)?.Name??"não selecionada"} | Tema: {(themeId == 0 ? "Todos" : themes.FirstOrDefault(x => x.Id == themeId)?.Name)}";
     protected override async Task OnInitializedAsync()
     {
         stats = await ReportService.GetOverviewAsync();
         themes = await Themes.SearchAsync(null);
+        publications=await Publications.GetAllAsync();
     }
     async Task Generate()
     {
@@ -27,7 +31,8 @@
             error = null;
             pdfPath = null;
             note = null;
-            var report = await ReportService.BuildThemesAsync(new(themeId == 0 ? null : themeId));
+            if(publicationId==0)throw new InvalidOperationException("Selecione a publicação para gerar o relatório.");
+            var report = await ReportService.BuildThemesAsync(new(themeId == 0 ? null : themeId,publicationId,title));
             pdfPath = await Pdf.CreateThemeVersePdfAsync(report);
             note = $"Relatório gerado com {report.ThemeCount} tema(s) e {report.ReferenceCount} referência(s).";
         }
@@ -37,4 +42,5 @@
             error = ex.Message;
         }
     }
+    Task PublicationChanged(){title=publications.FirstOrDefault(x=>x.Id==publicationId)?.Title;return Task.CompletedTask;}
 }

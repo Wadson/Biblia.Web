@@ -72,6 +72,7 @@ public static class WebInfrastructureRegistration
         services.AddSingleton<IAppDatabase>(p => p.GetRequiredService<AppDatabase.AppDatabase>());
         services.AddSingleton<IThemeRepository, ThemeRepository>();
         services.AddSingleton<IThemeContentService, ThemeContentService>();
+        services.AddSingleton<IPublicationService, PublicationService>();
         services.AddSingleton<ISavedReferenceRepository, SavedReferenceRepository>();
         services.AddSingleton<ISettingsRepository, SettingsRepository>();
         services.AddSingleton<IBibleVersionCatalogRepository, BibleVersionCatalogRepository>();

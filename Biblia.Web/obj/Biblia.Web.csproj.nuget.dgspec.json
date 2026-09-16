@@ -10,14 +10,14 @@
         "projectUniqueName": "D:\\Projetos\\Biblia.Web\\Biblia.Web.Core\\Biblia.Web.Core.csproj",
         "projectName": "Biblia.Web.Core",
         "projectPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.Core\\Biblia.Web.Core.csproj",
-        "packagesPath": "C:\\Users\\WRSoft\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\iConnect\\.nuget\\packages\\",
         "outputPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\WRSoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iConnect\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -81,20 +81,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[10.0.12, 10.0.12]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[10.0.12, 10.0.12]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[10.0.12, 10.0.12]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -376,11 +362,6 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
-        }
       }
     },
     "D:\\Projetos\\Biblia.Web\\Biblia.Web.ServiceDefaults\\Biblia.Web.ServiceDefaults.csproj": {
@@ -389,14 +370,14 @@
         "projectUniqueName": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ServiceDefaults\\Biblia.Web.ServiceDefaults.csproj",
         "projectName": "Biblia.Web.ServiceDefaults",
         "projectPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ServiceDefaults\\Biblia.Web.ServiceDefaults.csproj",
-        "packagesPath": "C:\\Users\\WRSoft\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\iConnect\\.nuget\\packages\\",
         "outputPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ServiceDefaults\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\WRSoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iConnect\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -472,20 +453,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[10.0.12, 10.0.12]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[10.0.12, 10.0.12]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[10.0.12, 10.0.12]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -910,11 +877,6 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
-        }
       }
     },
     "D:\\Projetos\\Biblia.Web\\Biblia.Web\\Biblia.Web.csproj": {
@@ -923,14 +885,14 @@
         "projectUniqueName": "D:\\Projetos\\Biblia.Web\\Biblia.Web\\Biblia.Web.csproj",
         "projectName": "Biblia.Web",
         "projectPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web\\Biblia.Web.csproj",
-        "packagesPath": "C:\\Users\\WRSoft\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\iConnect\\.nuget\\packages\\",
         "outputPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\WRSoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iConnect\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -991,20 +953,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[10.0.12, 10.0.12]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[10.0.12, 10.0.12]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[10.0.12, 10.0.12]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -1428,11 +1376,6 @@
             "System.Xml.XPath": "(,4.3.32767]",
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
-        }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
         }
       }
     }

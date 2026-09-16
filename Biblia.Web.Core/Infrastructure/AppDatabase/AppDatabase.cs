@@ -7,7 +7,7 @@ namespace Biblia.Infrastructure.AppDatabase;
 
 public sealed class AppDatabase : IAppDatabase
 {
-    public const int CurrentSchemaVersion = 5;
+    public const int CurrentSchemaVersion = 8;
     private readonly ILogger<AppDatabase> _logger;
     private readonly SemaphoreSlim _initializationGate = new(1, 1);
     private bool _initialized;
@@ -112,6 +112,9 @@ public sealed class AppDatabase : IAppDatabase
         if (version < 3) await ApplyMigration3Async(connection, cancellationToken);
         if (version < 4) await ApplyMigration4Async(connection, cancellationToken);
         if (version < 5) await ApplyMigration5Async(connection, cancellationToken);
+        if (version < 6) await ApplyMigration6Async(connection, cancellationToken);
+        if (version < 7) await ApplyMigration7Async(connection, cancellationToken);
+        if (version < 8) await ApplyMigration8Async(connection, cancellationToken);
         _initialized = true;
         _logger.LogInformation("Banco do aplicativo inicializado no schema {SchemaVersion}.", CurrentSchemaVersion);
     }
@@ -189,6 +192,43 @@ public sealed class AppDatabase : IAppDatabase
         cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O"));
         await cmd.ExecuteNonQueryAsync(ct); await tx.CommitAsync(ct);
     }
+    private static async Task ApplyMigration6Async(SqliteConnection connection,CancellationToken ct)
+    {
+        await using var tx=connection.BeginTransaction(); await using var cmd=connection.CreateCommand();cmd.Transaction=tx;
+        cmd.CommandText="""
+            CREATE TABLE IF NOT EXISTS Publication(Id INTEGER PRIMARY KEY AUTOINCREMENT,Name TEXT NOT NULL COLLATE NOCASE UNIQUE,Title TEXT NULL,Subtitle TEXT NULL,HeaderText TEXT NULL,HeaderBackgroundColorHex TEXT NULL CHECK(HeaderBackgroundColorHex IS NULL OR HeaderBackgroundColorHex GLOB '#[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]'),HeaderTextColorHex TEXT NULL CHECK(HeaderTextColorHex IS NULL OR HeaderTextColorHex GLOB '#[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]'),TitleFontSize REAL NULL CHECK(TitleFontSize IS NULL OR TitleFontSize BETWEEN 8 AND 72),TitleBold INTEGER NOT NULL DEFAULT 0,TitleItalic INTEGER NOT NULL DEFAULT 0,BrandingId INTEGER NULL,CreatedAt TEXT NOT NULL,UpdatedAt TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS OrganizationBranding(Id INTEGER PRIMARY KEY AUTOINCREMENT,Name TEXT NOT NULL,Logo BLOB NULL,LogoContentType TEXT NULL,CreatedAt TEXT NOT NULL,UpdatedAt TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS PublicationThemeReference(PublicationId INTEGER NOT NULL REFERENCES Publication(Id) ON DELETE CASCADE,ThemeId INTEGER NOT NULL,ReferenceId INTEGER NOT NULL,CreatedAt TEXT NOT NULL,UpdatedAt TEXT NOT NULL,PRIMARY KEY(PublicationId,ThemeId,ReferenceId),FOREIGN KEY(ReferenceId,ThemeId) REFERENCES ReferenceTheme(ReferenceId,ThemeId) ON DELETE CASCADE);
+            CREATE TABLE IF NOT EXISTS PublicationContent(Id INTEGER PRIMARY KEY AUTOINCREMENT,PublicationId INTEGER NOT NULL REFERENCES Publication(Id) ON DELETE CASCADE,ThemeId INTEGER NOT NULL REFERENCES Theme(Id) ON DELETE CASCADE,ReferenceId INTEGER NULL,SortOrder INTEGER NOT NULL CHECK(SortOrder>=0),BlockJson TEXT NULL,CreatedAt TEXT NOT NULL,UpdatedAt TEXT NOT NULL,FOREIGN KEY(PublicationId,ThemeId,ReferenceId) REFERENCES PublicationThemeReference(PublicationId,ThemeId,ReferenceId) ON DELETE CASCADE,CHECK((ReferenceId IS NOT NULL AND BlockJson IS NULL) OR (ReferenceId IS NULL AND BlockJson IS NOT NULL)),UNIQUE(PublicationId,ThemeId,ReferenceId),UNIQUE(PublicationId,ThemeId,SortOrder));
+            CREATE INDEX IF NOT EXISTS IX_PublicationThemeReference_Publication ON PublicationThemeReference(PublicationId,ThemeId);
+            INSERT INTO Publication(Name,CreatedAt,UpdatedAt) SELECT 'Temas e Versículos',$now,$now WHERE NOT EXISTS(SELECT 1 FROM Publication);
+            INSERT OR IGNORE INTO PublicationThemeReference(PublicationId,ThemeId,ReferenceId,CreatedAt,UpdatedAt) SELECT (SELECT Id FROM Publication ORDER BY Id LIMIT 1),ThemeId,ReferenceId,CreatedAt,UpdatedAt FROM ReferenceTheme;
+            INSERT OR IGNORE INTO PublicationContent(PublicationId,ThemeId,ReferenceId,SortOrder,CreatedAt,UpdatedAt) SELECT (SELECT Id FROM Publication ORDER BY Id LIMIT 1),ThemeId,ReferenceId,SortOrder,CreatedAt,UpdatedAt FROM ThemeContent WHERE ReferenceId IS NOT NULL;
+            INSERT OR IGNORE INTO PublicationContent(PublicationId,ThemeId,BlockJson,SortOrder,CreatedAt,UpdatedAt) SELECT (SELECT Id FROM Publication ORDER BY Id LIMIT 1),ThemeId,BlockJson,SortOrder,CreatedAt,UpdatedAt FROM ThemeContent WHERE BlockJson IS NOT NULL;
+            INSERT INTO SchemaMigration(Version,AppliedAt) VALUES(6,$now);
+            """;cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O"));await cmd.ExecuteNonQueryAsync(ct);await tx.CommitAsync(ct);
+    }
+    private static async Task ApplyMigration7Async(SqliteConnection connection,CancellationToken ct)
+    {await using var tx=connection.BeginTransaction();await using var cmd=connection.CreateCommand();cmd.Transaction=tx;cmd.CommandText="""
+      ALTER TABLE Publication ADD COLUMN OrganizationFontSize REAL NULL CHECK(OrganizationFontSize IS NULL OR OrganizationFontSize BETWEEN 7 AND 36);
+      ALTER TABLE Publication ADD COLUMN OrganizationTextColorHex TEXT NULL;
+      ALTER TABLE Publication ADD COLUMN SubtitleFontSize REAL NULL CHECK(SubtitleFontSize IS NULL OR SubtitleFontSize BETWEEN 7 AND 36);
+      ALTER TABLE Publication ADD COLUMN SubtitleTextColorHex TEXT NULL;
+      ALTER TABLE Publication ADD COLUMN HeaderDetailFontSize REAL NULL CHECK(HeaderDetailFontSize IS NULL OR HeaderDetailFontSize BETWEEN 7 AND 36);
+      ALTER TABLE Publication ADD COLUMN HeaderDetailTextColorHex TEXT NULL;
+      ALTER TABLE Publication ADD COLUMN LogoWidth REAL NULL CHECK(LogoWidth IS NULL OR LogoWidth BETWEEN 20 AND 160);
+      ALTER TABLE Publication ADD COLUMN LogoHeight REAL NULL CHECK(LogoHeight IS NULL OR LogoHeight BETWEEN 20 AND 100);
+      INSERT INTO SchemaMigration(Version,AppliedAt) VALUES(7,$now);
+      """;cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O"));await cmd.ExecuteNonQueryAsync(ct);await tx.CommitAsync(ct);}
+    private static async Task ApplyMigration8Async(SqliteConnection connection,CancellationToken ct)
+    {await using var tx=connection.BeginTransaction();await using var cmd=connection.CreateCommand();cmd.Transaction=tx;cmd.CommandText="""
+      ALTER TABLE Publication ADD COLUMN TitleTextColorHex TEXT NULL;
+      UPDATE Publication SET TitleTextColorHex=HeaderTextColorHex WHERE TitleTextColorHex IS NULL;
+      UPDATE Publication SET OrganizationTextColorHex=HeaderTextColorHex WHERE OrganizationTextColorHex IS NULL;
+      UPDATE Publication SET SubtitleTextColorHex=HeaderTextColorHex WHERE SubtitleTextColorHex IS NULL;
+      UPDATE Publication SET HeaderDetailTextColorHex=HeaderTextColorHex WHERE HeaderDetailTextColorHex IS NULL;
+      INSERT INTO SchemaMigration(Version,AppliedAt) VALUES(8,$now);
+      """;cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O"));await cmd.ExecuteNonQueryAsync(ct);await tx.CommitAsync(ct);}
 
     private static Task EnsureMigrationTableAsync(SqliteConnection connection, CancellationToken cancellationToken) =>
         ExecuteNonQueryAsync(connection, """
