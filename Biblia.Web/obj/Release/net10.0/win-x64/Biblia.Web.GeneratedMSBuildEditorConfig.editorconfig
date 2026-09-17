@@ -47,14 +47,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGF0dXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/ThemeOrdering.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUaGVtZU9yZGVyaW5nLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/ThemeVerseLinker.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUaGVtZVZlcnNlTGlua2VyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -81,10 +73,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Shared/PublicationHeaderControls.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcUHVibGljYXRpb25IZWFkZXJDb250cm9scy5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projetos/Biblia.Web/Biblia.Web/Components/Shared/ThemeContentEditor.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcVGhlbWVDb250ZW50RWRpdG9yLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Shared/ThemeTextPreview.razor]
@@ -131,9 +119,17 @@ build_metadata.AdditionalFiles.CssScope = b-xmulvwcbcv
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTYXZlZFJlZmVyZW5jZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-er14gu6wml
 
+[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/ThemeOrdering.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUaGVtZU9yZGVyaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-jpozix6txm
+
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/Themes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUaGVtZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-w4kwt623bl
+
+[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/ThemeVerseLinker.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUaGVtZVZlcnNlTGlua2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ps86aemdw6
 
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Shared/BibleImportPanel.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcQmlibGVJbXBvcnRQYW5lbC5yYXpvcg==
@@ -142,3 +138,7 @@ build_metadata.AdditionalFiles.CssScope = b-4dwphzoq92
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Shared/PdfTypographySettings.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcUGRmVHlwb2dyYXBoeVNldHRpbmdzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-lpvop5rumi
+
+[D:/Projetos/Biblia.Web/Biblia.Web/Components/Shared/ThemeContentEditor.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcVGhlbWVDb250ZW50RWRpdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-0t6wlis4bg

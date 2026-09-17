@@ -3,8 +3,8 @@
 @inject Biblia.Application.Interfaces.IThemeContentService ContentService
 <div class="toolbar">
     <button class="btn primary" disabled="@(ThemeId==0||busy)" @onclick="OpenNewBlockAsync">Adicionar bloco de texto</button>
-    <a class="btn secondary" href="@($"/temas/ordenacao?themeId={ThemeId}")">Configurar ordenação</a>
-    @if(ThemeId>0&&sequence.Mode==ThemeOrderingMode.Canonical){<button class="btn secondary" disabled="@busy" @onclick="()=>ChangeMode(ThemeOrderingMode.Manual)">Usar ordenação manual</button>}
+    <a class="btn theme-order-action" href="@($"/temas/ordenacao?themeId={ThemeId}")"><AppIcon Name="settings" /> Configurar ordenação</a>
+    @if(ThemeId>0&&sequence.Mode==ThemeOrderingMode.Canonical){<button class="btn theme-order-action" disabled="@busy" @onclick="()=>ChangeMode(ThemeOrderingMode.Manual)"><AppIcon Name="compare" /> Usar ordenação manual</button>}
     @if(ThemeId>0&&sequence.Mode==ThemeOrderingMode.Manual){<ConfirmButton Label="Usar ordem bíblica automática" Title="Restaurar ordem bíblica" Message="Ao ativar a ordenação automática, os versículos voltarão à ordem dos livros, capítulos e versículos da Bíblia. Deseja continuar? Os blocos manterão suas posições." Disabled="@busy" OnConfirm="()=>ChangeMode(ThemeOrderingMode.Canonical)" />}
 </div>
 @if(error is not null){<div class="notice error" role="alert">@error</div>}

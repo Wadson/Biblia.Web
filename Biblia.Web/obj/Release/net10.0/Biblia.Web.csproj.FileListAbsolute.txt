@@ -178,5 +178,8 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\scopedcss\Components\Share
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\scopedcss\Components\Pages\BibleReader.razor.rz.scp.css
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\scopedcss\Components\Pages\SavedReferences.razor.rz.scp.css
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\scopedcss\Components\Pages\Reports.razor.rz.scp.css
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\compressed\i3ph4seoj4-{0}-5o9ot9md8d-5o9ot9md8d.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\compressed\ncdu3ooug3-{0}-5o9ot9md8d-5o9ot9md8d.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\scopedcss\Components\Pages\ThemeVerseLinker.razor.rz.scp.css
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\scopedcss\Components\Shared\ThemeContentEditor.razor.rz.scp.css
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\scopedcss\Components\Pages\ThemeOrdering.razor.rz.scp.css
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\compressed\i3ph4seoj4-{0}-zhijitc677-zhijitc677.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\compressed\ncdu3ooug3-{0}-zhijitc677-zhijitc677.gz
