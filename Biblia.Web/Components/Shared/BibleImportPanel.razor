@@ -1,11 +1,12 @@
 @implements IAsyncDisposable
 @inject Biblia.Application.Interfaces.IBibleVersionImportService Importer
 @inject Biblia.Application.Interfaces.IAppPaths Paths
-<section class="panel">
- <label class="btn primary">Adicionar versão bíblica<InputFile OnChange="Choose" accept=".sqlite,.db" disabled="@busy" /></label>
+<section class="panel bible-version-upload">
+ <InputFile id="bible-version-file" class="version-file-input" OnChange="Choose" accept=".sqlite,.db" disabled="@busy" />
+ <div class="version-upload-choices"><button type="button" class="btn btn-action version-add-button" disabled="@(busy||path is null)" @onclick="Import"><AppIcon Name="add" Size="lg" /><span>@(busy?"Anexando...":"Anexar")<br />versão bíblica</span></button><label for="bible-version-file" class="version-file-picker"><AppIcon Name="file" Size="lg" /><span><strong>@(filename??"Escolher arquivo")</strong><small>@(filename is null?"Formatos aceitos: .sqlite, .db":"Arquivo selecionado")</small></span></label></div>
  @if(message is not null){<p role="status">@message</p>}
  @if(error is not null){<div class="notice error" role="alert">@error</div>}
- @if(path is not null){<p>Arquivo selecionado: @filename</p><div class="form-grid"><label>Código<input maxlength="20" @bind="code" /></label><label>Nome da versão<input maxlength="120" @bind="name" /></label></div><p class="muted">Informe o código e o nome reais da tradução. Arquivo limitado a 256 MB.</p><ConfirmButton Label="Importar versão" Title="Confirmar importação" Message="Deseja adicionar esta tradução? Nenhuma versão existente será sobrescrita." Summary="@($"{filename} · {code} · {name}")" Disabled="@busy" OnConfirm="Import" /><button class="btn secondary" disabled="@busy" @onclick="Cancel">Cancelar</button>}
+ @if(path is not null){<div class="form-grid version-import-details"><label>Código<input maxlength="20" @bind="code" /></label><label>Nome da versão<input maxlength="120" @bind="name" /></label></div><p class="muted">Informe o código e o nome reais da tradução. Arquivo limitado a 256 MB.</p><button class="btn secondary" disabled="@busy" @onclick="Cancel">Cancelar seleção</button>}
  @if(busy){<p role="status">@stage</p><button class="btn secondary" @onclick="()=>cancel.Cancel()">Cancelar processamento</button>}
 </section>
 @code{

@@ -64,10 +64,6 @@
             "SQLitePCLRaw.bundle_e_sqlite3": {
               "target": "Package",
               "version": "[3.0.2, )"
-            },
-            "SkiaSharp": {
-              "target": "Package",
-              "version": "[4.148.0, )"
             }
           },
           "imports": [

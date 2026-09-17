@@ -27,10 +27,6 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/BibleComparison.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCaWJsZUNvbXBhcmlzb24ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/BibleReader.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCaWJsZVJlYWRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -45,10 +41,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/Organization.razor]
@@ -135,9 +127,13 @@ build_metadata.AdditionalFiles.CssScope = b-jaqh74ndjs
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-krsbce0vb4
 
-[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/GlobalSearch.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHbG9iYWxTZWFyY2gucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-we15x8ukw6
+[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/BibleComparison.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCaWJsZUNvbXBhcmlzb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ls6slpczlk
+
+[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-8r6qbizv74
 
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/Publications.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQdWJsaWNhdGlvbnMucmF6b3I=

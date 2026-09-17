@@ -12,29 +12,29 @@
 @if (note is not null) { <div class="notice success">@note</div> }
 @if (error is not null) { <div class="notice error">@error</div> }
 
-<section class="panel">
-    <h2>@(editId is null ? "Nova referência" : "Editar referência")</h2>
-    <div class="form-grid">
+<section class="panel saved-reference-editor">
+    <header><p class="eyebrow">ESTUDO BÍBLICO</p><h2>@(editId is null ? "Nova referência" : "Editar referência")</h2><p class="muted">Adicione uma passagem bíblica e organize-a para seus estudos.</p></header>
+    <div class="form-grid saved-reference-range">
         <label>Livro<select @bind="book">@foreach (var item in books) { <option value="@item.BookReferenceId">@item.Name</option> }</select></label>
         <label>Capítulo<input type="number" min="1" @bind="chapter" /></label>
         <label>Verso inicial<input type="number" min="1" @bind="start" /></label>
         <label>Verso final<input type="number" min="1" @bind="end" /></label>
         <label>Versão<select @bind="versionId"><option value="0">Versão ativa</option>@foreach (var item in versions) { <option value="@item.Id">@item.Code — @item.DisplayName</option> }</select></label>
     </div>
-    <div class="form-grid">
-        <label>Comentário<textarea @bind="comment"></textarea></label>
-        <label>Temas<select multiple @onchange="ThemeChanged">@foreach (var item in themes) { <option value="@item.Id">@item.Name</option> }</select></label>
-        <ConfirmButton Label="Guardar" Title="Confirmar referência" Message="Deseja guardar esta referência?" Summary="@CurrentFormattedReference" OnConfirm="Save" />
+    <div class="form-grid saved-reference-details">
+        <label>Comentário<textarea rows="4" placeholder="Adicione uma observação sobre esta passagem..." @bind="comment"></textarea></label>
+        <fieldset><legend>Temas</legend><div class="theme-picker">@foreach (var item in themes) { <label><input type="checkbox" checked="@selected.Contains(item.Id)" @onchange="()=>ToggleTheme(item.Id)" /><span style="background:@item.ColorHex"></span>@item.Name</label> }</div></fieldset>
+        <div class="saved-reference-form-actions"><button type="button" class="btn secondary" @onclick="CancelEdit">Cancelar</button><ConfirmButton Label="@(editId is null?"Guardar referência":"Salvar alterações")" Title="Confirmar referência" Message="Deseja guardar esta referência?" Summary="@CurrentFormattedReference" CssClass="btn primary" OnConfirm="Save" /></div>
     </div>
 </section>
 
-<div class="toolbar"><label class="field">Pesquisar<input @bind="query" /></label><button class="btn secondary" @onclick="Load">Filtrar</button><a class="btn primary" href="/temas/vincular-versiculos">Vincular versículos a um tema</a></div>
-<div class="table-wrap"><table><thead><tr><th>Referência</th><th>Versão</th><th>Comentário</th><th>Temas</th><th>Ações</th></tr></thead><tbody>
+<section class="panel saved-reference-library"><header><p class="eyebrow">BIBLIOTECA</p><h2>Referências guardadas <span>@displays.Count</span></h2><p class="muted">Consulte, edite e organize suas passagens salvas.</p></header><div class="toolbar saved-reference-search"><label class="field">Pesquisar<input placeholder="Pesquisar referência, comentário ou tema..." @bind="query" /></label><button class="btn secondary" @onclick="Load">Filtrar</button><a class="btn primary" href="/temas/vincular-versiculos">Vincular versículos a um tema</a></div>
+@if(selectedReferenceIds.Count>0){<div class="saved-reference-selection-toolbar"><strong>@selectedReferenceIds.Count @(selectedReferenceIds.Count==1?"referência selecionada":"referências selecionadas")</strong><button type="button" class="btn secondary" @onclick="ClearSelection">Limpar seleção</button></div>}<div class="table-wrap reference-table"><table><thead><tr><th><input type="checkbox" aria-label="Selecionar todas as referências visíveis" checked="@AllVisibleSelected" @onchange="ToggleAllVisible" /></th><th>Referência</th><th>Versão</th><th>Comentário</th><th>Temas</th><th>Ações</th></tr></thead><tbody>
 @foreach (var item in displays)
 {
-    <tr><td><strong>@item.FormattedReference</strong></td><td>@(item.EffectiveVersionCode is null ? "Não disponível" : $"{item.EffectiveVersionCode} — {item.EffectiveVersionName}")</td><td>@item.Details.Reference.Comment</td><td>@string.Join(", ", item.Details.Themes.Select(x => x.Name))</td><td><button class="btn secondary" @onclick="() => Edit(item.Details)">Editar</button> <ConfirmButton Label="Excluir" Title="Exclusão!!" Message="Deseja realmente excluir esta referência?" Summary="@item.FormattedReference" Danger="true" CssClass="btn danger" OnConfirm="() => Delete(item.Details.Reference.Id)" /></td></tr>
+    <tr class="@(selectedReferenceIds.Contains(item.Details.Reference.Id)?"saved-reference-row-selected":null)"><td><input type="checkbox" aria-label="Selecionar @item.FormattedReference" checked="@selectedReferenceIds.Contains(item.Details.Reference.Id)" @onchange="()=>ToggleReference(item.Details.Reference.Id)" /></td><td><strong>@item.FormattedReference</strong></td><td>@(item.EffectiveVersionCode is null ? "Não disponível" : $"{item.EffectiveVersionCode} — {item.EffectiveVersionName}")</td><td>@(string.IsNullOrWhiteSpace(item.Details.Reference.Comment)?"—":item.Details.Reference.Comment)</td><td><div class="theme-chips">@foreach(var theme in item.Details.Themes){<span style="--theme-color:@theme.ColorHex">@theme.Name</span>}</div></td><td><div class="saved-reference-row-actions"><button class="btn btn-edit" @onclick="() => Edit(item.Details)">Editar</button><ConfirmButton Label="Excluir" ConfirmLabel="Excluir" Title="Confirmar exclusão" Message="@($"Excluir a referência {item.FormattedReference}?")" Summary="Esta ação não pode ser desfeita." Danger="true" CssClass="btn btn-delete" ConfirmCssClass="btn btn-delete" OnConfirm="() => Delete(item.Details.Reference.Id)" /></div></td></tr>
 }
-</tbody></table></div>
+</tbody></table></div></section>
 
 @code {
     private IReadOnlyList<SavedReferenceDetails> items = [];
@@ -43,6 +43,7 @@
     private IReadOnlyList<BibleVersionCatalogEntry> versions = [];
     private IReadOnlyList<BibleBook> books = [];
     private HashSet<long> selected = [];
+    private HashSet<long> selectedReferenceIds = [];
     private long? editId;
     private long versionId;
     private int book = 1, chapter = 1, start = 1, end = 1;
@@ -67,7 +68,12 @@
         displays = string.IsNullOrWhiteSpace(query) ? resolved : resolved.Where(x => x.FormattedReference.Contains(query, StringComparison.OrdinalIgnoreCase) || (x.Details.Reference.Comment?.Contains(query, StringComparison.OrdinalIgnoreCase) ?? false) || x.Details.Themes.Any(t => t.Name.Contains(query, StringComparison.OrdinalIgnoreCase))).ToArray();
     }
 
-    private void ThemeChanged(ChangeEventArgs args) => selected = args.Value is string[] values ? values.Select(long.Parse).ToHashSet() : [];
+    private void ToggleTheme(long id) { if(!selected.Add(id)) selected.Remove(id); }
+    private bool AllVisibleSelected => displays.Count>0 && displays.All(x=>selectedReferenceIds.Contains(x.Details.Reference.Id));
+    private void ToggleReference(long id) { if(!selectedReferenceIds.Add(id)) selectedReferenceIds.Remove(id); }
+    private void ToggleAllVisible() { if(AllVisibleSelected) foreach(var item in displays) selectedReferenceIds.Remove(item.Details.Reference.Id); else foreach(var item in displays) selectedReferenceIds.Add(item.Details.Reference.Id); }
+    private void ClearSelection()=>selectedReferenceIds.Clear();
+    private void CancelEdit(){editId=null;comment="";selected=[];versionId=0;chapter=start=end=1;error=null;}
     private void Edit(SavedReferenceDetails details) { var r = details.Reference; editId = r.Id; book = r.BookReferenceId; chapter = r.Chapter; start = r.VerseStart; end = r.VerseEnd; comment = r.Comment ?? ""; versionId = r.PreferredBibleVersionId ?? 0; selected = details.Themes.Select(x => x.Id).ToHashSet(); }
     private async Task Save()
     {
@@ -83,5 +89,5 @@
         }
         catch (Exception ex) { error = ex.Message; }
     }
-    private async Task Delete(long id) { await Service.DeleteAsync(id); note = "Referência excluída com sucesso."; await Load(); }
+    private async Task Delete(long id) { await Service.DeleteAsync(id); selectedReferenceIds.Remove(id); if(editId==id) CancelEdit(); note = "Referência excluída com sucesso."; await Load(); }
 }

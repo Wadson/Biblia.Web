@@ -500,71 +500,6 @@
           }
         }
       },
-      "SkiaSharp/4.148.0": {
-        "type": "package",
-        "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "4.148.0",
-          "SkiaSharp.NativeAssets.macOS": "4.148.0"
-        },
-        "compile": {
-          "ref/net10.0/SkiaSharp.dll": {}
-        },
-        "runtime": {
-          "lib/net10.0/SkiaSharp.dll": {
-            "related": ".pdb"
-          }
-        }
-      },
-      "SkiaSharp.NativeAssets.macOS/4.148.0": {
-        "type": "package",
-        "compile": {
-          "lib/net10.0/_._": {}
-        },
-        "runtime": {
-          "lib/net10.0/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/osx/native/libSkiaSharp.dylib": {
-            "assetType": "native",
-            "rid": "osx"
-          }
-        }
-      },
-      "SkiaSharp.NativeAssets.Win32/4.148.0": {
-        "type": "package",
-        "compile": {
-          "lib/net10.0/_._": {}
-        },
-        "runtime": {
-          "lib/net10.0/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win-arm64/native/libSkiaSharp.dll": {
-            "assetType": "native",
-            "rid": "win-arm64"
-          },
-          "runtimes/win-arm64/native/libSkiaSharp.pdb": {
-            "assetType": "native",
-            "rid": "win-arm64"
-          },
-          "runtimes/win-x64/native/libSkiaSharp.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
-          "runtimes/win-x64/native/libSkiaSharp.pdb": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
-          "runtimes/win-x86/native/libSkiaSharp.dll": {
-            "assetType": "native",
-            "rid": "win-x86"
-          },
-          "runtimes/win-x86/native/libSkiaSharp.pdb": {
-            "assetType": "native",
-            "rid": "win-x86"
-          }
-        }
-      },
       "SourceGear.sqlite3/3.50.4.2": {
         "type": "package",
         "compile": {
@@ -771,8 +706,615 @@
         "dependencies": {
           "Microsoft.Data.Sqlite": "10.0.10",
           "PDFsharp-MigraDoc": "6.2.4",
-          "SQLitePCLRaw.bundle_e_sqlite3": "3.0.2",
-          "SkiaSharp": "4.148.0"
+          "SQLitePCLRaw.bundle_e_sqlite3": "3.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Biblia.Web.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Biblia.Web.Core.dll": {}
+        }
+      },
+      "Biblia.Web.ServiceDefaults/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Microsoft.Extensions.Http.Resilience": "10.8.0",
+          "Microsoft.Extensions.ServiceDiscovery": "10.8.0",
+          "OpenTelemetry.Exporter.OpenTelemetryProtocol": "1.15.3",
+          "OpenTelemetry.Extensions.Hosting": "1.15.3",
+          "OpenTelemetry.Instrumentation.AspNetCore": "1.15.2",
+          "OpenTelemetry.Instrumentation.Http": "1.15.1",
+          "OpenTelemetry.Instrumentation.Runtime": "1.15.1"
+        },
+        "compile": {
+          "bin/placeholder/Biblia.Web.ServiceDefaults.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Biblia.Web.ServiceDefaults.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      }
+    },
+    "net10.0/win-x64": {
+      "Microsoft.AspNetCore.App.Internal.Assets/10.0.12": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.AspNetCore.App.Internal.Assets.props": {},
+          "buildTransitive/Microsoft.AspNetCore.App.Internal.Assets.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.App.Internal.Assets.targets": {}
+        }
+      },
+      "Microsoft.Data.Sqlite/10.0.10": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Data.Sqlite.Core": "10.0.10",
+          "SQLitePCLRaw.bundle_e_sqlite3": "2.1.11",
+          "SQLitePCLRaw.core": "2.1.11"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
+      "Microsoft.Data.Sqlite.Core/10.0.10": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.1.11"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Data.Sqlite.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Data.Sqlite.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.AmbientMetadata.Application/10.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Compliance.Abstractions/10.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.Compliance.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Compliance.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.AutoActivation/10.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.AutoActivation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.AutoActivation.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.ExceptionSummarization/10.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.Diagnostics.ExceptionSummarization.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Diagnostics.ExceptionSummarization.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Http.Diagnostics/10.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Telemetry": "10.8.0"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.Http.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Http.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Http.Resilience/10.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Http.Diagnostics": "10.8.0",
+          "Microsoft.Extensions.Resilience": "10.8.0"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.Http.Resilience.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Http.Resilience.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/Microsoft.Extensions.Http.Resilience.targets": {}
+        }
+      },
+      "Microsoft.Extensions.Resilience/10.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.ExceptionSummarization": "10.8.0",
+          "Microsoft.Extensions.Telemetry.Abstractions": "10.8.0",
+          "Polly.Extensions": "8.4.2",
+          "Polly.RateLimiting": "8.4.2"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.Resilience.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Resilience.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.ServiceDiscovery/10.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.ServiceDiscovery.Abstractions": "10.8.0"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.ServiceDiscovery.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.ServiceDiscovery.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.ServiceDiscovery.Abstractions/10.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.ServiceDiscovery.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.ServiceDiscovery.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Telemetry/10.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.AmbientMetadata.Application": "10.8.0",
+          "Microsoft.Extensions.DependencyInjection.AutoActivation": "10.8.0",
+          "Microsoft.Extensions.Telemetry.Abstractions": "10.8.0"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.Telemetry.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Telemetry.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Telemetry.Abstractions/10.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Compliance.Abstractions": "10.8.0"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.Telemetry.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Telemetry.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/Microsoft.Extensions.Telemetry.Abstractions.props": {},
+          "buildTransitive/net8.0/Microsoft.Extensions.Telemetry.Abstractions.targets": {}
+        }
+      },
+      "OpenTelemetry/1.15.3": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "1.15.3"
+        },
+        "compile": {
+          "lib/net10.0/OpenTelemetry.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        }
+      },
+      "OpenTelemetry.Api/1.15.3": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/OpenTelemetry.Api.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Api.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        }
+      },
+      "OpenTelemetry.Api.ProviderBuilderExtensions/1.15.3": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry.Api": "1.15.3"
+        },
+        "compile": {
+          "lib/net10.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        }
+      },
+      "OpenTelemetry.Exporter.OpenTelemetryProtocol/1.15.3": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry": "1.15.3"
+        },
+        "compile": {
+          "lib/net10.0/OpenTelemetry.Exporter.OpenTelemetryProtocol.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Exporter.OpenTelemetryProtocol.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        }
+      },
+      "OpenTelemetry.Extensions.Hosting/1.15.3": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry": "1.15.3"
+        },
+        "compile": {
+          "lib/net10.0/OpenTelemetry.Extensions.Hosting.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Extensions.Hosting.dll": {
+            "related": ".dll.sigstore.json;.xml"
+          }
+        }
+      },
+      "OpenTelemetry.Instrumentation.AspNetCore/1.15.2": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "[1.15.3, 2.0.0)"
+        },
+        "compile": {
+          "lib/net10.0/OpenTelemetry.Instrumentation.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Instrumentation.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "OpenTelemetry.Instrumentation.Http/1.15.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "[1.15.3, 2.0.0)"
+        },
+        "compile": {
+          "lib/net10.0/OpenTelemetry.Instrumentation.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Instrumentation.Http.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenTelemetry.Instrumentation.Runtime/1.15.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry.Api": "[1.15.3, 2.0.0)"
+        },
+        "compile": {
+          "lib/net10.0/OpenTelemetry.Instrumentation.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/OpenTelemetry.Instrumentation.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PDFsharp/6.2.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Cryptography.Pkcs": "8.0.1"
+        },
+        "compile": {
+          "lib/net10.0/PdfSharp.BarCodes.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Charting.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Cryptography.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Quality.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Shared.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Snippets.dll": {
+            "related": ".pdb"
+          },
+          "lib/net10.0/PdfSharp.System.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.WPFonts.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.dll": {
+            "related": ".BarCodes.pdb;.BarCodes.xml;.Charting.pdb;.Charting.xml;.Cryptography.pdb;.Cryptography.xml;.pdb;.Quality.pdb;.Quality.xml;.Shared.pdb;.Shared.xml;.Snippets.pdb;.System.pdb;.System.xml;.WPFonts.pdb;.WPFonts.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/PdfSharp.BarCodes.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Charting.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Cryptography.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Quality.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Shared.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Snippets.dll": {
+            "related": ".pdb"
+          },
+          "lib/net10.0/PdfSharp.System.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.WPFonts.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.dll": {
+            "related": ".BarCodes.pdb;.BarCodes.xml;.Charting.pdb;.Charting.xml;.Cryptography.pdb;.Cryptography.xml;.pdb;.Quality.pdb;.Quality.xml;.Shared.pdb;.Shared.xml;.Snippets.pdb;.System.pdb;.System.xml;.WPFonts.pdb;.WPFonts.xml;.xml"
+          }
+        }
+      },
+      "PDFsharp-MigraDoc/6.2.4": {
+        "type": "package",
+        "dependencies": {
+          "PDFsharp": "6.2.4",
+          "System.Security.Cryptography.Pkcs": "8.0.1"
+        },
+        "compile": {
+          "lib/net10.0/MigraDoc.DocumentObjectModel.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/MigraDoc.Rendering.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/MigraDoc.RtfRendering.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/MigraDoc.DocumentObjectModel.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/MigraDoc.Rendering.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/MigraDoc.RtfRendering.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Polly.Core/8.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Polly.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Polly.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Polly.Extensions/8.4.2": {
+        "type": "package",
+        "dependencies": {
+          "Polly.Core": "8.4.2"
+        },
+        "compile": {
+          "lib/net8.0/Polly.Extensions.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Polly.Extensions.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Polly.RateLimiting/8.4.2": {
+        "type": "package",
+        "dependencies": {
+          "Polly.Core": "8.4.2"
+        },
+        "compile": {
+          "lib/net8.0/Polly.RateLimiting.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Polly.RateLimiting.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SourceGear.sqlite3/3.50.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "native": {
+          "runtimes/win-x64/native/e_sqlite3.dll": {}
+        },
+        "build": {
+          "buildTransitive/net9.0/SourceGear.sqlite3.targets": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_e_sqlite3/3.0.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.config.e_sqlite3": "3.0.2",
+          "SourceGear.sqlite3": "3.50.4.2"
+        }
+      },
+      "SQLitePCLRaw.config.e_sqlite3/3.0.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.provider.e_sqlite3": "3.0.2"
+        },
+        "compile": {
+          "lib/net8.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/3.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/3.0.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "3.0.2"
+        },
+        "compile": {
+          "lib/net8.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "System.Security.Cryptography.Pkcs/8.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Biblia.Web.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Microsoft.Data.Sqlite": "10.0.10",
+          "PDFsharp-MigraDoc": "6.2.4",
+          "SQLitePCLRaw.bundle_e_sqlite3": "3.0.2"
         },
         "compile": {
           "bin/placeholder/Biblia.Web.Core.dll": {}
@@ -1603,154 +2145,6 @@
         "polly.ratelimiting.nuspec"
       ]
     },
-    "SkiaSharp/4.148.0": {
-      "sha512": "t+oZDnzvi0en060BFDTmJ16C0zjsiXRrtOe70luIuIi/exVZtl1obrYh8D+IoHlGtp7bqzEBVncafbAl0ttmPQ==",
-      "type": "package",
-      "path": "skiasharp/4.148.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "icon.png",
-        "interactive-extensions/dotnet/SkiaSharp.DotNet.Interactive.dll",
-        "lib/net10.0-android36.0/SkiaSharp.dll",
-        "lib/net10.0-android36.0/SkiaSharp.pdb",
-        "lib/net10.0-android36.0/SkiaSharp.xml",
-        "lib/net10.0-ios26.0/SkiaSharp.dll",
-        "lib/net10.0-ios26.0/SkiaSharp.pdb",
-        "lib/net10.0-maccatalyst26.0/SkiaSharp.dll",
-        "lib/net10.0-maccatalyst26.0/SkiaSharp.pdb",
-        "lib/net10.0-macos26.0/SkiaSharp.dll",
-        "lib/net10.0-macos26.0/SkiaSharp.pdb",
-        "lib/net10.0-tizen10.0/SkiaSharp.dll",
-        "lib/net10.0-tizen10.0/SkiaSharp.pdb",
-        "lib/net10.0-tvos26.0/SkiaSharp.dll",
-        "lib/net10.0-tvos26.0/SkiaSharp.pdb",
-        "lib/net10.0-windows10.0.19041/SkiaSharp.dll",
-        "lib/net10.0-windows10.0.19041/SkiaSharp.pdb",
-        "lib/net10.0/SkiaSharp.dll",
-        "lib/net10.0/SkiaSharp.pdb",
-        "lib/net462/SkiaSharp.dll",
-        "lib/net462/SkiaSharp.pdb",
-        "lib/net48/SkiaSharp.dll",
-        "lib/net48/SkiaSharp.pdb",
-        "lib/net6.0-tizen8.0/SkiaSharp.dll",
-        "lib/net6.0-tizen8.0/SkiaSharp.pdb",
-        "lib/net6.0/SkiaSharp.dll",
-        "lib/net6.0/SkiaSharp.pdb",
-        "lib/net9.0-android35.0/SkiaSharp.dll",
-        "lib/net9.0-android35.0/SkiaSharp.pdb",
-        "lib/net9.0-android35.0/SkiaSharp.xml",
-        "lib/net9.0-ios18.0/SkiaSharp.dll",
-        "lib/net9.0-ios18.0/SkiaSharp.pdb",
-        "lib/net9.0-maccatalyst18.0/SkiaSharp.dll",
-        "lib/net9.0-maccatalyst18.0/SkiaSharp.pdb",
-        "lib/net9.0-macos15.0/SkiaSharp.dll",
-        "lib/net9.0-macos15.0/SkiaSharp.pdb",
-        "lib/net9.0-tizen8.0/SkiaSharp.dll",
-        "lib/net9.0-tizen8.0/SkiaSharp.pdb",
-        "lib/net9.0-tvos18.0/SkiaSharp.dll",
-        "lib/net9.0-tvos18.0/SkiaSharp.pdb",
-        "lib/net9.0-windows10.0.19041/SkiaSharp.dll",
-        "lib/net9.0-windows10.0.19041/SkiaSharp.pdb",
-        "lib/net9.0/SkiaSharp.dll",
-        "lib/net9.0/SkiaSharp.pdb",
-        "lib/netstandard2.0/SkiaSharp.dll",
-        "lib/netstandard2.0/SkiaSharp.pdb",
-        "lib/netstandard2.1/SkiaSharp.dll",
-        "lib/netstandard2.1/SkiaSharp.pdb",
-        "ref/net10.0-android36.0/SkiaSharp.dll",
-        "ref/net10.0-ios26.0/SkiaSharp.dll",
-        "ref/net10.0-maccatalyst26.0/SkiaSharp.dll",
-        "ref/net10.0-macos26.0/SkiaSharp.dll",
-        "ref/net10.0-tizen10.0/SkiaSharp.dll",
-        "ref/net10.0-tvos26.0/SkiaSharp.dll",
-        "ref/net10.0-windows10.0.19041/SkiaSharp.dll",
-        "ref/net10.0/SkiaSharp.dll",
-        "ref/net462/SkiaSharp.dll",
-        "ref/net48/SkiaSharp.dll",
-        "ref/net6.0-tizen8.0/SkiaSharp.dll",
-        "ref/net6.0/SkiaSharp.dll",
-        "ref/net9.0-android35.0/SkiaSharp.dll",
-        "ref/net9.0-ios18.0/SkiaSharp.dll",
-        "ref/net9.0-maccatalyst18.0/SkiaSharp.dll",
-        "ref/net9.0-macos15.0/SkiaSharp.dll",
-        "ref/net9.0-tizen8.0/SkiaSharp.dll",
-        "ref/net9.0-tvos18.0/SkiaSharp.dll",
-        "ref/net9.0-windows10.0.19041/SkiaSharp.dll",
-        "ref/net9.0/SkiaSharp.dll",
-        "ref/netstandard2.0/SkiaSharp.dll",
-        "ref/netstandard2.1/SkiaSharp.dll",
-        "skiasharp.4.148.0.nupkg.sha512",
-        "skiasharp.nuspec"
-      ]
-    },
-    "SkiaSharp.NativeAssets.macOS/4.148.0": {
-      "sha512": "1iESVxlqNNbQUiFODuyQJ/5dYUNYwGzZBUyaKNU3pJRM8zPFUkdMW0UZcZPvd6xwrjn53HYklJyKvetXC6ri+A==",
-      "type": "package",
-      "path": "skiasharp.nativeassets.macos/4.148.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "THIRD-PARTY-NOTICES.txt",
-        "build/net462/SkiaSharp.NativeAssets.macOS.targets",
-        "build/net48/SkiaSharp.NativeAssets.macOS.targets",
-        "buildTransitive/net10.0-macos26.0/SkiaSharp.NativeAssets.macOS.targets",
-        "buildTransitive/net462/SkiaSharp.NativeAssets.macOS.targets",
-        "buildTransitive/net48/SkiaSharp.NativeAssets.macOS.targets",
-        "buildTransitive/net9.0-macos15.0/SkiaSharp.NativeAssets.macOS.targets",
-        "icon.png",
-        "lib/net10.0-macos26.0/_._",
-        "lib/net10.0/_._",
-        "lib/net462/_._",
-        "lib/net48/_._",
-        "lib/net6.0/_._",
-        "lib/net9.0-macos15.0/_._",
-        "lib/net9.0/_._",
-        "lib/netstandard2.0/_._",
-        "lib/netstandard2.1/_._",
-        "runtimes/osx/native/libSkiaSharp.dylib",
-        "skiasharp.nativeassets.macos.4.148.0.nupkg.sha512",
-        "skiasharp.nativeassets.macos.nuspec"
-      ]
-    },
-    "SkiaSharp.NativeAssets.Win32/4.148.0": {
-      "sha512": "LegvQ9zAi9Tmot2YOLv8mcK+g3wbEYfCWUoC5JtyHaN8QrxsaMvfJ8pFPvnEOVuY8qXxs8vVqrO/x42/YaFDRA==",
-      "type": "package",
-      "path": "skiasharp.nativeassets.win32/4.148.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "THIRD-PARTY-NOTICES.txt",
-        "build/net462/SkiaSharp.NativeAssets.Win32.targets",
-        "build/net48/SkiaSharp.NativeAssets.Win32.targets",
-        "buildTransitive/net462/SkiaSharp.NativeAssets.Win32.targets",
-        "buildTransitive/net48/SkiaSharp.NativeAssets.Win32.targets",
-        "icon.png",
-        "lib/net10.0-windows10.0.19041/_._",
-        "lib/net10.0/_._",
-        "lib/net462/_._",
-        "lib/net48/_._",
-        "lib/net6.0/_._",
-        "lib/net9.0-windows10.0.19041/_._",
-        "lib/net9.0/_._",
-        "lib/netstandard2.0/_._",
-        "lib/netstandard2.1/_._",
-        "runtimes/win-arm64/native/libSkiaSharp.dll",
-        "runtimes/win-arm64/native/libSkiaSharp.pdb",
-        "runtimes/win-x64/native/libSkiaSharp.dll",
-        "runtimes/win-x64/native/libSkiaSharp.pdb",
-        "runtimes/win-x86/native/libSkiaSharp.dll",
-        "runtimes/win-x86/native/libSkiaSharp.pdb",
-        "skiasharp.nativeassets.win32.4.148.0.nupkg.sha512",
-        "skiasharp.nativeassets.win32.nuspec"
-      ]
-    },
     "SourceGear.sqlite3/3.50.4.2": {
       "sha512": "eV9HwQ88WyoU+reGVxJz1SwME9NbYnl9h2LOY15j0LGdXN4JkTJDk8JRRg/yNgt00O3Cn5/qnska10FEZNoU5g==",
       "type": "package",
@@ -1994,6 +2388,20 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+            "version": "[10.0.12, 10.0.12]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Runtime.win-x64",
+            "version": "[10.0.12, 10.0.12]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+            "version": "[10.0.12, 10.0.12]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -2417,6 +2825,11 @@
           "System.Xml.XPath": "(,4.3.32767]",
           "System.Xml.XPath.XDocument": "(,5.0.32767]"
         }
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
       }
     }
   }

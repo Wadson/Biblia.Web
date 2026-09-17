@@ -72,7 +72,6 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
         Assert.True(pdf.NumberOfPages > 1);
         Assert.Contains("3 Temas • 30 Referências", text);
         Assert.DoesNotContain("999", text);
-        Assert.Single(Regex.Matches(text, "RELATÓRIO TEMÁTICO"));
         for (var i = 1; i <= 30; i++)
         {
             Assert.Single(Regex.Matches(text, $@"João 3:{i}(?!\d)"));

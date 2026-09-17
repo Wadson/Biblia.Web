@@ -68,15 +68,6 @@ app.MapGet("/download/theme-report", (string path, IAppPaths paths) =>
     return full.StartsWith(allowed, StringComparison.OrdinalIgnoreCase) && Path.GetExtension(full).Equals(".pdf", StringComparison.OrdinalIgnoreCase) && File.Exists(full)
         ? Results.File(full, "application/pdf", Path.GetFileName(full)) : Results.NotFound();
 });
-app.MapGet("/download/card", (string path, IAppPaths paths) =>
-{
-    var full = Path.GetFullPath(path);
-    var allowed = Path.GetFullPath(Path.Combine(paths.CacheDirectory, "verse-cards", "exports")) + Path.DirectorySeparatorChar;
-    return full.StartsWith(allowed, StringComparison.OrdinalIgnoreCase) && File.Exists(full)
-        ? Results.File(full, "image/png", Path.GetFileName(full))
-        : Results.NotFound();
-});
-
 var openBrowser = builder.Configuration.GetValue("LocalHost:OpenBrowserOnStart", true)
     && !app.Environment.IsEnvironment("Testing");
 var closeServerWhenBrowserCloses = builder.Configuration.GetValue("LocalHost:CloseServerWhenBrowserCloses", true);

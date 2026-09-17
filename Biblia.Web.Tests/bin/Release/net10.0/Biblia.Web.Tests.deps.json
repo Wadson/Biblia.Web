@@ -800,61 +800,6 @@
           }
         }
       },
-      "SkiaSharp/4.148.0": {
-        "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "4.148.0",
-          "SkiaSharp.NativeAssets.macOS": "4.148.0"
-        },
-        "runtime": {
-          "lib/net10.0/SkiaSharp.dll": {
-            "assemblyVersion": "4.148.0.0",
-            "fileVersion": "4.148.0.0"
-          }
-        }
-      },
-      "SkiaSharp.NativeAssets.macOS/4.148.0": {
-        "runtimeTargets": {
-          "runtimes/osx/native/libSkiaSharp.dylib": {
-            "rid": "osx",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "SkiaSharp.NativeAssets.Win32/4.148.0": {
-        "runtimeTargets": {
-          "runtimes/win-arm64/native/libSkiaSharp.dll": {
-            "rid": "win-arm64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-arm64/native/libSkiaSharp.pdb": {
-            "rid": "win-arm64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-x64/native/libSkiaSharp.dll": {
-            "rid": "win-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-x64/native/libSkiaSharp.pdb": {
-            "rid": "win-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-x86/native/libSkiaSharp.dll": {
-            "rid": "win-x86",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-x86/native/libSkiaSharp.pdb": {
-            "rid": "win-x86",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "SourceGear.sqlite3/3.50.4.2": {
         "runtimeTargets": {
           "runtimes/android-arm/native/libe_sqlite3.so": {
@@ -1137,8 +1082,8 @@
         },
         "runtime": {
           "Biblia.Web.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
           }
         }
       },
@@ -1146,8 +1091,7 @@
         "dependencies": {
           "Microsoft.Data.Sqlite": "10.0.10",
           "PDFsharp-MigraDoc": "6.2.4",
-          "SQLitePCLRaw.bundle_e_sqlite3": "3.0.2",
-          "SkiaSharp": "4.148.0"
+          "SQLitePCLRaw.bundle_e_sqlite3": "3.0.2"
         },
         "runtime": {
           "Biblia.Web.Core.dll": {
@@ -1446,27 +1390,6 @@
       "sha512": "sha512-ehTImQ/eUyO07VYW2WvwSmU9rRH200SKJ/3jku9rOkyWE0A2JxNFmAVms8dSn49QLSjmjFRRSgfNyOgr/2PSmA==",
       "path": "polly.ratelimiting/8.4.2",
       "hashPath": "polly.ratelimiting.8.4.2.nupkg.sha512"
-    },
-    "SkiaSharp/4.148.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-t+oZDnzvi0en060BFDTmJ16C0zjsiXRrtOe70luIuIi/exVZtl1obrYh8D+IoHlGtp7bqzEBVncafbAl0ttmPQ==",
-      "path": "skiasharp/4.148.0",
-      "hashPath": "skiasharp.4.148.0.nupkg.sha512"
-    },
-    "SkiaSharp.NativeAssets.macOS/4.148.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1iESVxlqNNbQUiFODuyQJ/5dYUNYwGzZBUyaKNU3pJRM8zPFUkdMW0UZcZPvd6xwrjn53HYklJyKvetXC6ri+A==",
-      "path": "skiasharp.nativeassets.macos/4.148.0",
-      "hashPath": "skiasharp.nativeassets.macos.4.148.0.nupkg.sha512"
-    },
-    "SkiaSharp.NativeAssets.Win32/4.148.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-LegvQ9zAi9Tmot2YOLv8mcK+g3wbEYfCWUoC5JtyHaN8QrxsaMvfJ8pFPvnEOVuY8qXxs8vVqrO/x42/YaFDRA==",
-      "path": "skiasharp.nativeassets.win32/4.148.0",
-      "hashPath": "skiasharp.nativeassets.win32.4.148.0.nupkg.sha512"
     },
     "SourceGear.sqlite3/3.50.4.2": {
       "type": "package",

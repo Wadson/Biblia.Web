@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Projetos\\Biblia.Web\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B2648F6D-9DAE-C920-C5D3-E75F4B035200}|Biblia.Web\\Biblia.Web.csproj|d:\\projetos\\biblia.web\\biblia.web\\biblia.web.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{B2648F6D-9DAE-C920-C5D3-E75F4B035200}|Biblia.Web\\Biblia.Web.csproj|solutionrelative:biblia.web\\biblia.web.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 70,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 22,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,6 +103,18 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Biblia.Web",
+              "DocumentMoniker": "D:\\Projetos\\Biblia.Web\\Biblia.Web\\Biblia.Web.csproj",
+              "RelativeDocumentMoniker": "Biblia.Web\\Biblia.Web.csproj",
+              "ToolTip": "D:\\Projetos\\Biblia.Web\\Biblia.Web\\Biblia.Web.csproj",
+              "RelativeToolTip": "Biblia.Web\\Biblia.Web.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-09-16T23:42:34.799Z",
+              "EditorCaption": ""
             }
           ]
         },

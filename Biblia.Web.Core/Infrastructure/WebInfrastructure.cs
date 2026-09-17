@@ -7,7 +7,6 @@ using Biblia.Infrastructure.BibleDatabases;
 using Biblia.Infrastructure.Files;
 using Biblia.Infrastructure.Repositories;
 using Biblia.Infrastructure.Time;
-using Biblia.Infrastructure.Media;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Biblia.Infrastructure;
@@ -82,21 +81,6 @@ public static class WebInfrastructureRegistration
         services.AddSingleton<IPackagedBibleSource, WebPackagedBibleSource>();
         services.AddSingleton<IPdfService, PdfService>();
         services.AddSingleton<IBackupService, BackupService>();
-        services.AddSingleton<INatureMediaService, OfflineNatureMediaService>();
-        services.AddSingleton<IVerseCardService, SkiaVerseCardService>();
         return services;
     }
-}
-
-public sealed class OfflineNatureMediaService : INatureMediaService
-{
-    private static readonly IReadOnlyList<NaturePhoto> Backgrounds =
-    [
-        new(-1,"","","BíbliaTema","","","#0D3B66",true,"#2A9D8F"),
-        new(-2,"","","BíbliaTema","","","#264653",true,"#E9C46A"),
-        new(-3,"","","BíbliaTema","","","#6D597A",true,"#E56B6F")
-    ];
-    public IReadOnlyList<NaturePhoto> GetOfflineBackgrounds()=>Backgrounds;
-    public Task<IReadOnlyList<NaturePhoto>> SearchAsync(string query,int page=1,int pageSize=8,CancellationToken cancellationToken=default)=>Task.FromResult(Backgrounds);
-    public Task<string?> GetRenderFileAsync(NaturePhoto photo,CancellationToken cancellationToken=default)=>Task.FromResult<string?>(null);
 }
