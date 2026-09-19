@@ -1,12 +1,10 @@
 @page "/configuracoes"
 @rendermode InteractiveServer
-@inject Biblia.Application.Interfaces.IBackupService Backup
-@inject Biblia.Application.Interfaces.IAppPaths Paths
-<PageTitle>Configurações — BíbliaTema</PageTitle><PageHeader Title="Configurações" Eyebrow="SISTEMA" />
+<PageTitle>Configurações — BíbliaTema</PageTitle><PageHeader Title="Configurações" Eyebrow="SISTEMA" Subtitle="Ajuste os recursos do aplicativo e mantenha seus dados protegidos." />
 <div class="settings-page">
+<section class="panel settings-shortcuts"><div class="settings-block-heading"><span>1</span><div><p class="eyebrow">CONTEÚDO BÍBLICO</p><h2>Versões bíblicas</h2><p class="muted">Adicione, valide, ative ou desative as versões disponíveis para leitura, pesquisa e comparação.</p></div></div><a class="btn primary" href="/versoes"><AppIcon Name="versions" Size="sm" /> Gerenciar versões bíblicas</a></section>
+<section class="panel settings-shortcuts"><div class="settings-block-heading"><span>2</span><div><p class="eyebrow">ORGANIZAÇÃO</p><h2>Ordem dos temas e versículos</h2><p class="muted">Defina se os versículos seguem a ordem bíblica ou uma sequência manual.</p></div></div><a class="btn secondary" href="/temas/ordenacao">Configurar ordenação</a></section>
 <PdfTypographySettings />
 <UpdatePanel />
-<section class="panel settings-shortcuts"><div><h2>Organização dos temas</h2><p class="muted">Defina se os versículos de cada tema seguem a ordem bíblica ou uma sequência manual.</p></div><a class="btn secondary" href="/temas/ordenacao">Ordenação dos temas e versículos</a></section>
 <CompleteBackupPanel />
-<section class="panel"><h2>Sobre</h2><p><strong>BíbliaTema Web</strong> · versão 1.0.2 · .NET 10</p><p class="muted">Aplicativo local, responsivo e com tema claro único.</p><p><strong>Diretório de dados:</strong> <span class="muted">Pasta local segura do usuário (não exposta na interface publicada).</span></p></section>
 </div>

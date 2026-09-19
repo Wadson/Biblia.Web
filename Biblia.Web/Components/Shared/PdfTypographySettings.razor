@@ -4,8 +4,7 @@
 @inject ILogger<PdfTypographySettings> Logger
 
 <section class="panel typography-settings">
-    <h2>Personalização do relatório PDF</h2>
-    <p>Escolha os tamanhos em pontos (pt), em incrementos de 0,5 pt.</p>
+    <div class="settings-block-heading"><span>3</span><div><p class="eyebrow">RELATÓRIOS</p><h2>Personalização do relatório PDF</h2><p>Escolha os tamanhos em pontos (pt), em incrementos de 0,5 pt.</p></div></div>
     @if (error is not null) { <div class="notice" role="alert">@error</div> }
     @if (message is not null) { <div class="notice success" role="status">@message</div> }
     @if (loaded)

@@ -1,14 +1,11 @@
 @implements IAsyncDisposable
 @inject Biblia.Application.Interfaces.IBackupService Backup
 @inject Biblia.Application.Interfaces.IAppPaths Paths
-<section class="panel backup-settings"><h2>Backup e restauração</h2>
-<p>O backup completo inclui temas, referências, observações, blocos, ordem e todas as versões instaladas. Até 128 versões, 256 MB por Bíblia e 8 GB descompactados.</p>
-<p class="muted">Ao restaurar um backup completo, o catálogo volta ao estado salvo. Arquivos anteriores e versões extras ficam preservados para recuperação, sem aparecer como versões instaladas. Backups antigos não contêm Bíblias: os arquivos locais são preservados e reconciliados por código.</p>
+<section class="panel backup-settings"><div class="settings-block-heading"><span>5</span><div><p class="eyebrow">SEGURANÇA DOS DADOS</p><h2>Backup e restauração</h2><p>Proteja seus temas, referências, publicações, blocos e versões bíblicas.</p></div></div>
 @if(error is not null){<div class="notice error" role="alert">@error</div>}@if(note is not null){<div class="notice success" role="status">@note</div>}
-<button class="btn primary" disabled="@busy" @onclick="Create">Criar backup completo</button>
-@if(download is not null){<a class="btn success" href="@($"/download/backup-file?name={Uri.EscapeDataString(Path.GetFileName(download))}")">Baixar backup gerado</a>}
-<div class="form-grid"><label>Restaurar arquivo ZIP<InputFile OnChange="Choose" accept=".zip" disabled="@busy" /></label>
-@if(upload is not null){<ConfirmButton Label="Restaurar" Title="Restauração crítica" Message="Deseja restaurar este backup completo? Um backup de segurança será criado. Temas e catálogo voltarão ao estado salvo; arquivos anteriores serão preservados para recuperação." Summary="@filename" Danger="true" Disabled="@busy" OnConfirm="Restore" />}</div>
+<div class="backup-action-grid"><article class="backup-action create-backup"><div><span class="backup-action-icon"><AppIcon Name="file" Size="lg" /></span><h3>Fazer Backup</h3><p><strong>Cópia de Segurança</strong></p><p class="muted">Crie uma cópia completa dos dados para guardar em local seguro.</p></div><div><button class="btn primary" disabled="@busy" @onclick="Create">Fazer Backup</button>@if(download is not null){<a class="btn success" href="@($"/download/backup-file?name={Uri.EscapeDataString(Path.GetFileName(download))}")">Baixar cópia de segurança</a>}</div></article>
+<article class="backup-action restore-backup"><div><span class="backup-action-icon"><AppIcon Name="versions" Size="lg" /></span><h3>Restaurar Backup</h3><p><strong>Importar Cópia de Segurança</strong></p><p class="muted">Selecione um arquivo ZIP de backup criado pelo BíbliaTema.</p></div><div class="restore-controls"><label>Arquivo de backup ZIP<InputFile OnChange="Choose" accept=".zip" disabled="@busy" /></label>@if(upload is not null){<ConfirmButton Label="Restaurar cópia" Title="Restauração crítica" Message="Deseja restaurar este backup completo? Um backup de segurança será criado. Temas e catálogo voltarão ao estado salvo; arquivos anteriores serão preservados para recuperação." Summary="@filename" Danger="true" Disabled="@busy" OnConfirm="Restore" />}</div></article></div>
+<p class="backup-detail muted">O backup completo inclui temas, referências, observações, blocos, ordem e todas as versões instaladas. Ao restaurar, os arquivos anteriores são preservados para recuperação.</p>
 @if(busy){<p role="status">@stage</p><button class="btn secondary" @onclick="()=>cts.Cancel()">Cancelar processamento</button>}
 </section>
 @code{
