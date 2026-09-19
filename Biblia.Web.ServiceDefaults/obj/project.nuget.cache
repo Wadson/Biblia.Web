@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6qRDC698MhI=",
+  "dgSpecHash": "A3StcDvrK10=",
   "success": true,
   "projectFilePath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ServiceDefaults\\Biblia.Web.ServiceDefaults.csproj",
   "expectedPackageFiles": [
@@ -25,10 +25,7 @@
     "C:\\Users\\iConnect\\.nuget\\packages\\opentelemetry.instrumentation.runtime\\1.15.1\\opentelemetry.instrumentation.runtime.1.15.1.nupkg.sha512",
     "C:\\Users\\iConnect\\.nuget\\packages\\polly.core\\8.4.2\\polly.core.8.4.2.nupkg.sha512",
     "C:\\Users\\iConnect\\.nuget\\packages\\polly.extensions\\8.4.2\\polly.extensions.8.4.2.nupkg.sha512",
-    "C:\\Users\\iConnect\\.nuget\\packages\\polly.ratelimiting\\8.4.2\\polly.ratelimiting.8.4.2.nupkg.sha512",
-    "C:\\Users\\iConnect\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.12\\microsoft.netcore.app.runtime.win-x64.10.0.12.nupkg.sha512",
-    "C:\\Users\\iConnect\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.12\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.12.nupkg.sha512",
-    "C:\\Users\\iConnect\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.12\\microsoft.aspnetcore.app.runtime.win-x64.10.0.12.nupkg.sha512"
+    "C:\\Users\\iConnect\\.nuget\\packages\\polly.ratelimiting\\8.4.2\\polly.ratelimiting.8.4.2.nupkg.sha512"
   ],
   "logs": []
 }

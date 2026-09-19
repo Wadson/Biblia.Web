@@ -26,25 +26,24 @@
  @if(PreviewBlock() is { } preview){<ThemeTextPreview Block="preview" Prefix="@PreviewPrefix(preview)" Label="Prévia do bloco" />}
  <div class="toolbar block-editor-actions"><button class="btn primary" disabled="@busy" @onclick="SaveBlock">Salvar bloco</button> <button class="btn secondary" disabled="@busy" @onclick="()=>editing=false">Cancelar</button></div>
 </section>}
+@if(VisibleItems.Count==0){<p class="muted">Nenhum versículo ou bloco de texto vinculado a esta publicação.</p>}
+else{
 <div class="linked-list" aria-label="Sequência do tema">
-@{var markedItems=ThemeBlockMarkers.Apply(sequence.Items,x=>x.TextBlock);}
+@{var markedItems=ThemeBlockMarkers.Apply(VisibleItems,x=>x.TextBlock);}
 @for(var index=0;index<markedItems.Count;index++){
- var marked=markedItems[index];var item=marked.Item;var first=index==0;var last=index==sequence.Items.Count-1;
+ var marked=markedItems[index];var item=marked.Item;var first=index==0;var last=index==markedItems.Count-1;
  <article class="card" @key="item.Id">
- <div class="toolbar"><span class="badge">@(item.ReferenceId is null?"Bloco de texto":"Versículo")</span>
- @if(sequence.Mode==ThemeOrderingMode.Manual){<button class="btn secondary" aria-label="Mover item para cima" title="Mover item para cima" disabled="@(first||busy)" @onclick="()=>Move(item.Id,-1)"><AppIcon Name="up" Size="sm" /></button><button class="btn secondary" aria-label="Mover item para baixo" title="Mover item para baixo" disabled="@(last||busy)" @onclick="()=>Move(item.Id,1)"><AppIcon Name="down" Size="sm" /></button>}</div>
  @if(item.TextBlock is { } block){
- <ThemeTextPreview Block="block" Prefix="@marked.Prefix" />
- <button class="btn secondary" disabled="@busy" @onclick="()=>Edit(item)">Editar bloco</button>
- <ConfirmButton Label="Excluir bloco" Title="Excluir bloco de texto" Message="Deseja excluir este bloco? Os demais itens serão preservados." Danger="true" Disabled="@busy" OnConfirm="()=>Delete(item.Id)" />
+ <div class="toolbar"><span class="badge">Bloco de texto</span>@if(sequence.Mode==ThemeOrderingMode.Manual){<button class="btn secondary" aria-label="Mover item para cima" title="Mover item para cima" disabled="@(first||busy)" @onclick="()=>Move(item.Id,-1)"><AppIcon Name="up" Size="sm" /></button><button class="btn secondary" aria-label="Mover item para baixo" title="Mover item para baixo" disabled="@(last||busy)" @onclick="()=>Move(item.Id,1)"><AppIcon Name="down" Size="sm" /></button>}</div>
+ <div class="block-preview-row"><div class="block-preview"><ThemeTextPreview Block="block" Prefix="@marked.Prefix" /></div><div class="block-inline-actions"><button class="btn secondary block-icon-button" title="Editar bloco" aria-label="Editar bloco" disabled="@busy" @onclick="()=>Edit(item)"><AppIcon Name="edit" /></button><ConfirmButton Label="" Icon="delete" Title="Excluir bloco de texto" Message="Deseja excluir este bloco? Os demais itens serão preservados." Danger="true" CssClass="btn danger block-icon-button" Disabled="@busy" OnConfirm="()=>Delete(item.Id)" /></div></div>
  }else if(Linked.FirstOrDefault(x=>x.ReferenceId==item.ReferenceId) is { } verse){
- <div class="comparison-card-header"><div><strong>@verse.FormattedReference</strong><span class="badge">@verse.VersionCode</span></div><ConfirmButton Label="Desvincular" Title="Confirmar desvinculação" Message="A referência guardada será preservada." Summary="@verse.FormattedReference" Danger="true" CssClass="btn danger" Disabled="@busy" OnConfirm="()=>Unlink(verse)" /></div>
- <p>@verse.Text</p><label class="field">Observação<textarea maxlength="2000" rows="2" value="@Drafts.GetValueOrDefault(verse.ReferenceId,verse.Observation??string.Empty)" @oninput="e=>Drafts[verse.ReferenceId]=e.Value?.ToString()??string.Empty"></textarea></label>
- <ConfirmButton Label="Salvar observação" Title="Confirmar alteração" Message="Deseja salvar a observação deste vínculo?" Summary="@verse.FormattedReference" CssClass="btn secondary" Disabled="@busy" OnConfirm="()=>SaveObservation.InvokeAsync(verse)" />
+ <div class="verse-card-header"><div class="verse-card-reference"><strong>@verse.FormattedReference</strong><span class="badge">@verse.VersionCode</span>@if(sequence.Mode==ThemeOrderingMode.Manual){<button class="btn secondary verse-move-button" aria-label="Mover item para cima" title="Mover item para cima" disabled="@(first||busy)" @onclick="()=>Move(item.Id,-1)"><AppIcon Name="up" Size="sm" /></button><button class="btn secondary verse-move-button" aria-label="Mover item para baixo" title="Mover item para baixo" disabled="@(last||busy)" @onclick="()=>Move(item.Id,1)"><AppIcon Name="down" Size="sm" /></button>}</div><div class="verse-card-actions"><span class="badge">Versículo</span><ConfirmButton Label="Desvincular" Title="Confirmar desvinculação" Message="A referência guardada será preservada." Summary="@verse.FormattedReference" Danger="true" CssClass="btn danger verse-unlink-button" Disabled="@busy" OnConfirm="()=>Unlink(verse)" /></div></div>
+ <p class="verse-card-text">@verse.Text</p><div class="verse-observation-row"><textarea aria-label="Observação" maxlength="2000" rows="2" placeholder="Observação" value="@Drafts.GetValueOrDefault(verse.ReferenceId,verse.Observation??string.Empty)" @oninput="e=>Drafts[verse.ReferenceId]=e.Value?.ToString()??string.Empty"></textarea><ConfirmButton Label="Salvar" Title="Confirmar alteração" Message="Deseja salvar a observação deste vínculo?" Summary="@verse.FormattedReference" CssClass="btn primary" Disabled="@busy" OnConfirm="()=>SaveObservation.InvokeAsync(verse)" /></div>
  }
  </article>
 }
 </div>
+}
 @code{
  [Parameter] public long ThemeId{get;set;}
  [Parameter] public IReadOnlyList<ThemeVerseLinkDisplay> Linked{get;set;}=[];
@@ -53,6 +52,7 @@
  [Parameter] public EventCallback<ThemeVerseLinkDisplay> RemoveLink{get;set;}
  readonly string editorId="block-"+Guid.NewGuid().ToString("N");
  ThemeContentSequence sequence=new(ThemeOrderingMode.Canonical,[]);bool busy,editing,focusEditor;long? editingId;string text="",foreground="#172033",background="#EAF2FF";double size=11;bool bold,italic;TextMarkerStyle marker;string? error,notice;long previousTheme;ElementReference textInput;
+ IReadOnlyList<ThemeContentItem> VisibleItems=>sequence.Items.Where(item=>item.ReferenceId is null||Linked.Any(verse=>verse.ReferenceId==item.ReferenceId)).ToArray();
  protected override async Task OnAfterRenderAsync(bool firstRender){if(focusEditor&&editing){focusEditor=false;await textInput.FocusAsync();}}
  public Task OpenNewBlockAsync(){if(ThemeId==0||busy)return Task.CompletedTask;NewBlock();StateHasChanged();return Task.CompletedTask;}
  protected override async Task OnParametersSetAsync(){if(previousTheme!=ThemeId){editing=false;previousTheme=ThemeId;}await Reload();}
@@ -64,7 +64,20 @@
  async Task Run(Func<Task> action){if(busy)return;busy=true;error=null;try{await action();await Reload();}catch(Exception ex){error=ex.Message;}finally{busy=false;}}
  Task SaveBlock()=>Run(async()=>{await ContentService.SaveBlockAsync(ThemeId,editingId,new(text,new(foreground,background,size,marker,bold,italic)));editing=false;notice="Bloco de texto salvo. Ele faz parte da sequência do tema e será incluído no PDF.";});
  Task Delete(long id)=>Run(()=>ContentService.DeleteBlockAsync(ThemeId,id));
- Task Move(long id,int direction)=>Run(()=>ContentService.MoveAsync(ThemeId,id,direction));
+ Task Move(long id,int direction)=>Run(async()=>
+ {
+    var visibleIndex=VisibleItems.ToList().FindIndex(item=>item.Id==id);
+    var adjacentIndex=visibleIndex+direction;
+    if(visibleIndex<0||adjacentIndex<0||adjacentIndex>=VisibleItems.Count)
+        throw new InvalidOperationException("O item já está no limite da lista.");
+
+    var currentIndex=sequence.Items.ToList().FindIndex(item=>item.Id==id);
+    var adjacentId=VisibleItems[adjacentIndex].Id;
+    var adjacentFullIndex=sequence.Items.ToList().FindIndex(item=>item.Id==adjacentId);
+    var steps=Math.Abs(adjacentFullIndex-currentIndex);
+    for(var step=0;step<steps;step++)
+        await ContentService.MoveAsync(ThemeId,id,direction);
+ });
  Task Unlink(ThemeVerseLinkDisplay verse)=>Run(()=>RemoveLink.InvokeAsync(verse));
  string? PreviewError(){try{new ThemeTextBlock(text,new(foreground,background,size,marker,bold,italic)).Validate();return null;}catch(ArgumentException ex){return ex.Message;}}
  string PreviewPrefix(ThemeTextBlock block){
