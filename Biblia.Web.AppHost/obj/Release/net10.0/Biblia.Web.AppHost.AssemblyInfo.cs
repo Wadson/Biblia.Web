@@ -22,7 +22,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Biblia.Web.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce56122621866c984a0c95e38f65dcd8f02627dc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c6489693b5c75710520a2a8415ac70e7790181b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Biblia.Web.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Biblia.Web.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

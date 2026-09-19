@@ -1,0 +1,252 @@
+MANUAL DO USUÁRIO — BÍBLIATEMA WEB
+Versão do manual: setembro de 2026
+
+1. FINALIDADE DO APLICATIVO
+
+O BíbliaTema organiza estudos bíblicos por temas. Cada tema pode reunir referências e versículos de uma versão bíblica instalada, observações e blocos de texto. O conteúdo é vinculado a uma Publicação e pode ser exportado em um relatório PDF A4, com cabeçalho configurável e conteúdo separado por tema.
+
+O aplicativo é local: os dados permanecem no computador onde ele está instalado. Faça backup regularmente antes de operações importantes.
+
+
+2. POR ONDE COMEÇAR
+
+Siga esta ordem para montar o primeiro material:
+
+1. Abra “Versões bíblicas” e confirme que há pelo menos uma versão habilitada e ativa.
+2. Abra “Igreja / Ministério” e informe o nome da organização; opcionalmente anexe uma logomarca PNG ou JPG.
+3. Abra “Publicações” e crie uma publicação. Ela representa um PDF/projeto independente.
+4. Abra “Temas” e cadastre os temas do estudo.
+5. Abra “Vincular versículos”, escolha a publicação e o tema, selecione os versículos e salve a vinculação.
+6. Na mesma tela, inclua blocos de texto e, se necessário, ajuste a ordem do conteúdo.
+7. Abra “Relatórios”, escolha a publicação e gere o PDF.
+
+
+3. PAINEL INICIAL
+
+O Dashboard apresenta:
+
+- o versículo diário, com atalho para abrir o capítulo;
+- totais de temas, referências, referências comentadas, vínculos temáticos e versões instaladas;
+- atalhos para leitura, pesquisa, temas, vinculação e relatórios.
+
+Use esses números como uma visão rápida do andamento do estudo. O card “Versões instaladas” conta somente versões que estão instaladas, habilitadas e compatíveis.
+
+
+4. VERSÕES BÍBLICAS
+
+Abra “Versões bíblicas” para administrar as traduções disponíveis.
+
+Para anexar uma versão:
+
+1. Clique em “Escolher arquivo”.
+2. Selecione um arquivo .sqlite ou .db de até 256 MB.
+3. Informe o código real da tradução, por exemplo ACF ou NVT, e o nome da versão.
+4. Clique em “Anexar versão bíblica”.
+5. Aguarde a validação. Se houver referências duplicadas ou incompatibilidade no banco, corrija o arquivo antes de anexá-lo.
+
+Na lista de versões você pode:
+
+- “Definir ativa”: torna a versão padrão para leitura e telas que usam a versão ativa;
+- “Ativar” ou “Desativar”: controla se ela aparece nas listas de uso;
+- “Validar”: verifica a compatibilidade do banco bíblico;
+- “Remover”: disponível somente para versões importadas, não para versões empacotadas.
+
+Mantenha ao menos uma versão válida, habilitada e ativa.
+
+
+5. LER BÍBLIA
+
+Na tela “Ler Bíblia”:
+
+1. Escolha a versão, o livro e o capítulo.
+2. Clique em “Abrir”.
+3. Use “Anterior” e “Próximo” para navegar entre capítulos.
+4. Clique em um versículo para iniciar uma seleção.
+5. Clique em outro versículo para selecionar o intervalo entre eles. Clique novamente no mesmo versículo quando ele for o único selecionado para limpar a seleção.
+
+Com uma seleção ativa, use:
+
+- “Copiar seleção” para copiar o texto selecionado;
+- “Guardar referência” para salvar a referência na biblioteca de referências guardadas.
+
+
+6. PESQUISAR NA BÍBLIA E COMPARAR VERSÕES
+
+Pesquisar na Bíblia:
+
+1. Informe pelo menos dois caracteres no campo Texto.
+2. Escolha uma versão específica ou “Todas as versões instaladas”.
+3. Clique em “Pesquisar”.
+
+Comparação bíblica:
+
+1. Abra “Comparação bíblica”.
+2. Escolha livro, capítulo e versículo.
+3. Clique em “Comparar”.
+
+A comparação mostra a mesma passagem nas versões habilitadas. Uma versão ausente, ambígua ou indisponível será identificada no resultado.
+
+
+7. TEMAS
+
+A tela “Temas” é a base da organização do estudo.
+
+Para criar um tema:
+
+1. Digite o nome.
+2. Escolha a cor que identificará o tema.
+3. Clique em “Salvar”.
+
+Para alterar um tema, clique em “Editar”, modifique os dados e salve. A pesquisa de temas é instantânea: a lista é filtrada enquanto você digita. Escolha uma Publicação no filtro para ver a situação de cada tema naquela publicação:
+
+- Vinculado: o tema está completo na publicação;
+- Parcial: há conteúdo do tema, mas a vinculação não está completa;
+- Não vinculado: o tema ainda não faz parte da publicação.
+
+O botão “Versículos e blocos” abre a tela de vinculação já direcionada ao tema.
+
+
+8. PUBLICAÇÕES E CABEÇALHO DO PDF
+
+Uma Publicação separa um projeto PDF de outro. Portanto, use uma publicação distinta para cada sermão, apostila, encontro, campanha ou material que precise gerar separadamente.
+
+Em “Publicações” preencha:
+
+- Nome: identificação interna obrigatória da publicação;
+- Título do PDF;
+- Subtítulo;
+- Texto adicional do cabeçalho.
+
+Também é possível configurar a cor de fundo do cabeçalho e, para título, nome da igreja e texto adicional, cor, tamanho e estilos disponíveis. A área “Prévia do cabeçalho” mostra o resultado antes da emissão.
+
+Clique em “Salvar” para criar ou atualizar. Use “Novo” para iniciar uma publicação em branco e “Alterar” para editar uma publicação cadastrada. Excluir uma publicação exige confirmação.
+
+IMPORTANTE: selecione a publicação correta antes de vincular conteúdo ou gerar relatório. O mesmo tema pode ter conteúdos diferentes em publicações diferentes.
+
+
+9. IGREJA / MINISTÉRIO
+
+Nesta tela informe o nome da igreja ou ministério. Você pode anexar uma logomarca PNG ou JPG de até 5 MB. A logomarca e o nome são usados nos cabeçalhos dos PDFs.
+
+Use “Salvar” para gravar a identidade visual. “Remover logomarca” remove somente a imagem; o PDF continuará sendo gerado normalmente.
+
+
+10. VINCULAR VERSÍCULOS, OBSERVAÇÕES E BLOCOS
+
+Esta é a principal tela de montagem do conteúdo do PDF.
+
+10.1 Vincular versículos
+
+1. No campo “Publicação / PDF”, escolha o projeto que receberá o conteúdo.
+2. Escolha o Tema. O seletor mostra a cor ao lado de cada tema.
+3. Escolha Versão, Livro e Capítulo.
+4. Marque um ou mais versículos apresentados no capítulo.
+5. Clique em “Salvar vinculação”.
+
+Também é possível pesquisar palavras ou expressões em toda a Bíblia. Nos resultados, selecione os versículos desejados e salve a vinculação para o tema e publicação escolhidos.
+
+Depois de salvar, os versículos ficam na seção “Versículos já vinculados”. “Desvincular” retira o versículo apenas daquela publicação e daquele tema; a referência guardada é preservada.
+
+10.2 Adicionar observação a um versículo
+
+Na lista de conteúdo já vinculado, digite a anotação no campo “Observação” abaixo do versículo e clique em “Salvar”. A observação será incluída no PDF e também é considerada nos totais de referências comentadas.
+
+10.3 Adicionar bloco de texto
+
+1. Clique em “Adicionar bloco de texto”.
+2. Escreva o texto; ele pode ter múltiplas linhas.
+3. Configure cor do texto, cor de fundo, tamanho em pontos, marcador, negrito e itálico.
+4. Confira a prévia e clique em “Salvar bloco”.
+
+Use blocos para introduções, explicações, aplicações, tópicos ou transições entre passagens. Um novo bloco entra inicialmente ao fim da sequência do tema. O limite é de 10.000 caracteres por bloco.
+
+Os marcadores “Numeração” e “Numeração ordinal” são atualizados automaticamente conforme a posição dos blocos. Escolha cores com contraste suficiente; o editor exige contraste mínimo de 4,5:1.
+
+10.4 Editar ou excluir bloco
+
+No cartão de um bloco, use o botão de lápis para editar e o botão de lixeira para excluir. A exclusão do bloco não remove os versículos do tema.
+
+10.5 Mover blocos e versículos
+
+Por padrão, os versículos são apresentados em ordem bíblica automática. Para colocar um bloco entre versículos ou definir uma sequência personalizada:
+
+1. Clique em “Usar ordenação manual” na tela de vinculação, ou abra “Configurar ordenação”.
+2. Em modo manual, aparecem setas para cima e para baixo em cada bloco e em cada versículo.
+3. Use as setas para mover o item uma posição por vez. A alteração é salva imediatamente.
+
+Para voltar à ordem bíblica dos versículos, clique em “Usar ordem bíblica automática” e confirme. Os blocos mantêm suas posições; somente os versículos voltam à ordem de livros, capítulos e versículos.
+
+
+11. REFERÊNCIAS GUARDADAS
+
+Em “Referências guardadas” você consulta as passagens salvas a partir da tela de leitura. Use o campo de pesquisa para localizar por referência, comentário ou tema. O atalho “Vincular versículos a um tema” leva diretamente à tela de vinculação.
+
+Esta biblioteca ajuda a reutilizar e acompanhar as passagens do estudo, mas o conteúdo do PDF é definido pelos vínculos da publicação selecionada.
+
+
+12. ORDENAMENTO DOS TEMAS E VERSÍCULOS
+
+Em “Configurações” abra “Ordenação dos temas e versículos”. Pesquise um tema e escolha:
+
+- “Usar ordenação manual”: permite mover itens na tela de vinculação;
+- “Ativar automática”: restaura a ordem bíblica dos versículos.
+
+Esse ajuste é feito por tema. Ao retornar ao modo automático, a colocação dos blocos é mantida.
+
+
+13. GERAR, BAIXAR E IMPRIMIR O PDF
+
+1. Abra “Relatórios”.
+2. Escolha a “Publicação / PDF”. Esse campo é obrigatório e garante que um PDF não misture conteúdo de outra publicação.
+3. Escolha um tema específico ou “Todos os temas”.
+4. Ajuste o título, se necessário.
+5. Clique em “Gerar relatório” e confirme.
+6. Ao concluir, clique em “Baixar PDF gerado”.
+
+O relatório é emitido em PDF A4 e organiza o conteúdo por tema, seguindo a sequência definida para os versículos e blocos. O cabeçalho utiliza os dados e estilos da publicação e a identidade visual cadastrada.
+
+Para imprimir, abra o PDF baixado no leitor de PDF do computador e use a opção Imprimir desse leitor (normalmente Ctrl+P). Revise a prévia de impressão, escolha a impressora e confirme. Para gerar um arquivo separado, volte a Relatórios, escolha outra publicação e gere novamente.
+
+
+14. PERSONALIZAÇÃO DO PDF
+
+Em “Configurações”, na área “Personalização do relatório PDF”, ajuste os tamanhos em pontos para:
+
+- referência bíblica;
+- texto do versículo;
+- observação.
+
+A prévia mostra os tamanhos escolhidos. Clique em “Salvar tamanhos” para aplicar aos próximos PDFs. “Restaurar tamanhos padrão” altera somente esses três tamanhos.
+
+
+15. BACKUP E RESTAURAÇÃO
+
+Em “Configurações”, use a seção “Backup e restauração” para proteger os dados. Crie um backup antes de importar versões, fazer alterações grandes nos temas ou restaurar informações.
+
+Ao restaurar um backup, siga as mensagens da tela e não feche o aplicativo durante o processamento. Uma restauração substitui os dados atuais pelo conteúdo do backup escolhido.
+
+
+16. BOAS PRÁTICAS
+
+- Crie uma publicação antes de iniciar os vínculos.
+- Use temas curtos e objetivos; a cor ajuda a reconhecê-los.
+- Confirme a publicação no topo da tela de vinculação antes de salvar.
+- Prefira observações breves e claras.
+- Use blocos para explicações que não pertencem ao texto bíblico.
+- Ative ordem manual somente quando a sequência pedagógica for importante.
+- Gere e confira o PDF antes de imprimir várias cópias.
+- Faça backup periódico.
+
+
+17. SOLUÇÃO RÁPIDA DE DÚVIDAS
+
+Não vejo uma versão na lista: confirme que ela está instalada, habilitada e compatível em “Versões bíblicas”.
+
+Não consigo gerar PDF: escolha uma publicação e verifique se ela possui temas e conteúdo vinculado.
+
+O versículo não aparece no PDF: confirme que ele foi salvo na publicação e no tema corretos, e que não foi desvinculado.
+
+Quero trocar a ordem: ative “Usar ordenação manual” e mova itens pelas setas.
+
+Quero separar materiais: crie uma nova publicação e selecione-a antes de vincular ou gerar o relatório.
+

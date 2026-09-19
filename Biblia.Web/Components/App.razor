@@ -18,7 +18,7 @@
 <body>
     <Routes @rendermode="InteractiveServer" />
     <script src="@Assets["_framework/blazor.web.js"]"></script>
-    <script>window.bibliaTema={goBack:function(){if(history.length>1){history.back();return true;}return false;},scrollToVerse:function(verse){document.getElementById('verse-'+verse)?.scrollIntoView({behavior:'smooth',block:'center'});}};</script>
+    <script>window.bibliaTema={goBack:function(){if(history.length>1){history.back();return true;}return false;},scrollToVerse:function(verse){document.getElementById('verse-'+verse)?.scrollIntoView({behavior:'smooth',block:'center'});},scrollToHelpTopic:function(topic){document.getElementById(topic)?.scrollIntoView({behavior:'smooth',block:'start'});}};</script>
 </body>
 
 </html>

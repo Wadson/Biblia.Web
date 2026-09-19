@@ -150,9 +150,10 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\refint\Biblia.Web.
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.pdb
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.genruntimeconfig.cache
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\ref\Biblia.Web.dll
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-1z57qisdrq-1z57qisdrq.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-1z57qisdrq-1z57qisdrq.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\3sm1rmrewi-{0}-j0zou3zsss-j0zou3zsss.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\Components\Pages\Help.razor.rz.scp.css
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-job6sg7t0x-job6sg7t0x.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-job6sg7t0x-job6sg7t0x.gz
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.CSharp.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.Core.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.dll
