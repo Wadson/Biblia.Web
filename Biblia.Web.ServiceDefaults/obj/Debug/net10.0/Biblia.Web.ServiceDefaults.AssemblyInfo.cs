@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Biblia.Web.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1950252951d242c0677628a76abee5244f8978dc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5b70115433a7e9a03c2cdebc0d255ad4b556c3c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Biblia.Web.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Biblia.Web.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

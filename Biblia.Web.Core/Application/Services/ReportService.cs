@@ -92,7 +92,7 @@ public sealed class ReportService(
             publication?.OrganizationFontSize??11, publication?.SubtitleFontSize??9, publication?.HeaderDetailFontSize??8,
             publication?.TitleBold??true,publication?.TitleItalic??false,branding?.Logo,branding?.LogoContentType,
             publication?.LogoWidth,publication?.LogoHeight);
-        return new(request.TitleOverride?.Trim()??publication?.Title??"Temas e versículos", clock.UtcNow,
+        return new(request.TitleOverride?.Trim()??publication?.Title??publication?.Name??"Temas e versículos", clock.UtcNow,
             sections.Count, sections.Sum(x => x.References.Count), sections,header);
     }
 }

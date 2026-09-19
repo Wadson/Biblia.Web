@@ -8,15 +8,16 @@
 <PageTitle>Relatórios — BíbliaTema</PageTitle><PageHeader Title="Relatório de temas e versículos" Eyebrow="SISTEMA" Subtitle="Exporte os vínculos temáticos em PDF A4." />
 @if(error is not null){<div class="notice error" role="alert">@error</div>}@if(note is not null){<div class="notice success" role="status">@note</div>}
 <div class="report-page">@if(stats is not null){<div class="report-summary-grid"><div class="report-stat-card"><AppIcon Name="theme" /><b>@stats.Themes</b><span>Temas</span></div><div class="report-stat-card"><AppIcon Name="book" /><b>@stats.References</b><span>Referências</span></div><div class="report-stat-card"><AppIcon Name="compare" /><b>@stats.ThemeVerseLinks</b><span>Vínculos</span></div></div>}
-<section class="panel report-filter-card"><header><p class="eyebrow">GERAR RELATÓRIO</p><h2>Configure os dados para emissão do PDF</h2></header><div class="form-grid report-filter-grid"><label>Publicação / PDF *<select @bind="publicationId" @bind:after="PublicationChanged"><option value="0">Selecione</option>@foreach(var p in publications){<option value="@p.Id">@p.Name</option>}</select></label><label>Tema<select @bind="themeId"><option value="0">Todos os temas</option>@foreach(var t in themes){<option value="@t.Id">@t.Name</option>}</select></label><label class="report-title-field">Título do PDF<input @bind="title" /></label><div class="report-actions"><ConfirmButton Label="Gerar relatório" Title="Confirmar geração" Message="Deseja gerar o relatório PDF com os filtros informados?" Summary="@Summary" Disabled="@(publicationId==0)" OnConfirm="Generate" /></div></div>
-@if(pdfPath is not null){<p><a class="btn success" href="@($"/download/theme-report?path={Uri.EscapeDataString(pdfPath)}")">Baixar PDF gerado</a></p>}</section></div>
+<section class="panel report-filter-card"><header class="report-filter-header"><div class="report-step"><span>1</span><div><p class="eyebrow">GERAR RELATÓRIO</p><h2>Configure a publicação</h2><p>Escolha o livro e os temas que farão parte do PDF.</p></div></div><div class="report-publication-context"><AppIcon Name="book" Size="sm" /><span>@(SelectedPublication?.Title??SelectedPublication?.Name??"Nenhuma publicação selecionada")</span></div></header><div class="form-grid report-filter-grid"><label><span>Publicação / PDF <b>*</b></span><select @bind="publicationId"><option value="0">Selecione a publicação</option>@foreach(var p in publications){<option value="@p.Id">@(p.Title??p.Name)</option>}</select></label><label><span>Tema</span><select @bind="themeId" disabled="@(publicationId==0)"><option value="0">Todos os temas</option>@foreach(var t in themes){<option value="@t.Id">@t.Name</option>}</select></label><div class="report-actions"><p>@(publicationId==0?"Selecione uma publicação para habilitar a geração.":"O título definido na publicação será usado automaticamente no PDF.")</p><ConfirmButton Label="Gerar relatório" Title="Confirmar geração" Message="Deseja gerar o relatório PDF com os filtros informados?" Summary="@Summary" Disabled="@(publicationId==0)" OnConfirm="Generate" /></div></div>
+</section>@if(pdfPath is not null){<section class="panel report-download-card"><div class="report-download-step"><span>2</span><div><p class="eyebrow">BAIXAR PDF</p><h2>Seu relatório está pronto</h2><p>O arquivo foi gerado com sucesso. Baixe o PDF para salvar, compartilhar ou imprimir.</p></div></div><a class="report-download-button" href="@($"/download/theme-report?path={Uri.EscapeDataString(pdfPath)}")"><AppIcon Name="download" Size="md" /><span>Baixar PDF gerado</span><small>Arquivo pronto para download</small></a></section>}</div>
 @code {
     ReportsOverview? stats;
     IReadOnlyList<Theme> themes = [];
     IReadOnlyList<Publication> publications=[];
     long themeId;
-    long publicationId; string? title;
+    long publicationId;
     string? pdfPath, error, note;
+    Publication? SelectedPublication => publications.FirstOrDefault(x=>x.Id==publicationId);
     string Summary => $"Publicação: {publications.FirstOrDefault(x=>x.Id==publicationId)?.Name??"não selecionada"} | Tema: {(themeId == 0 ? "Todos" : themes.FirstOrDefault(x => x.Id == themeId)?.Name)}";
     protected override async Task OnInitializedAsync()
     {
@@ -32,7 +33,7 @@
             pdfPath = null;
             note = null;
             if(publicationId==0)throw new InvalidOperationException("Selecione a publicação para gerar o relatório.");
-            var report = await ReportService.BuildThemesAsync(new(themeId == 0 ? null : themeId,publicationId,title));
+            var report = await ReportService.BuildThemesAsync(new(themeId == 0 ? null : themeId,publicationId));
             pdfPath = await Pdf.CreateThemeVersePdfAsync(report);
             note = $"Relatório gerado com {report.ThemeCount} tema(s) e {report.ReferenceCount} referência(s).";
         }
@@ -42,5 +43,4 @@
             error = ex.Message;
         }
     }
-    Task PublicationChanged(){title=publications.FirstOrDefault(x=>x.Id==publicationId)?.Title;return Task.CompletedTask;}
 }

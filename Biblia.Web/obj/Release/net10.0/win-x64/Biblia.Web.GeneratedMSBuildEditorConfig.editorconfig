@@ -111,6 +111,10 @@ build_metadata.AdditionalFiles.CssScope = b-gw5f3cw3p3
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-8r6qbizv74
 
+[D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/LinkOverview.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMaW5rT3ZlcnZpZXcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-di3zd5fkxa
+
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Pages/Publications.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQdWJsaWNhdGlvbnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-e4xn436g91

@@ -90,7 +90,6 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\Componen
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\bundle\Biblia.Web.styles.css
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\projectbundle\Biblia.Web.bundle.scp.css
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\2baeu0w6l9-{0}-30v6emrn79-30v6emrn79.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\htlrqt0ndl-{0}-mrcjpe4bqk-mrcjpe4bqk.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\u4s1z3use7-{0}-t1cqhe9u97-t1cqhe9u97.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ux8qd6jihy-{0}-c2jlpeoesf-c2jlpeoesf.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\2mjmpj0hqh-{0}-sejl45xvog-sejl45xvog.gz
@@ -135,7 +134,6 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\2t6l7n0
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\6g0daszdcw-{0}-nk9co1dr89-nk9co1dr89.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\49wn33pu4r-{0}-4d85u1mtcx-4d85u1mtcx.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\vz7t7mpmf1-{0}-wrhrqilip3-wrhrqilip3.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\jyermyiwi6-{0}-jb11qntn9g-jb11qntn9g.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\awsg1krhdv-{0}-ogg0o4dxea-ogg0o4dxea.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\p22ttt572u-{0}-9hsif5t8mt-9hsif5t8mt.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\upw5u1em64-{0}-dwu72t6gfx-dwu72t6gfx.gz
@@ -150,10 +148,12 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\refint\Biblia.Web.
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.pdb
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.genruntimeconfig.cache
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\ref\Biblia.Web.dll
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\3sm1rmrewi-{0}-j0zou3zsss-j0zou3zsss.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\Components\Pages\Help.razor.rz.scp.css
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-job6sg7t0x-job6sg7t0x.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-job6sg7t0x-job6sg7t0x.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\3sm1rmrewi-{0}-325cyq1csk-325cyq1csk.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\htlrqt0ndl-{0}-dl6qcx3oa3-dl6qcx3oa3.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\jyermyiwi6-{0}-dig5sredvc-dig5sredvc.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-imbb53sjic-imbb53sjic.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-imbb53sjic-imbb53sjic.gz
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.CSharp.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.Core.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.dll
@@ -484,3 +484,8 @@ D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\mscordbi.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\mscorrc.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\msquic.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\aspnetcorev2_inprocess.dll
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-herrakbv5j-herrakbv5j.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-herrakbv5j-herrakbv5j.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\Components\Pages\LinkOverview.razor.rz.scp.css
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-u42nz7z0ez-u42nz7z0ez.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-u42nz7z0ez-u42nz7z0ez.gz
