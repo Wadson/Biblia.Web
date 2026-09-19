@@ -362,6 +362,239 @@
           }
         }
       }
+    },
+    "net10.0/win-x64": {
+      "Microsoft.Data.Sqlite/10.0.10": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Data.Sqlite.Core": "10.0.10",
+          "SQLitePCLRaw.bundle_e_sqlite3": "2.1.11",
+          "SQLitePCLRaw.core": "2.1.11"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
+      "Microsoft.Data.Sqlite.Core/10.0.10": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.1.11"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Data.Sqlite.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Data.Sqlite.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
+        }
+      },
+      "PDFsharp/6.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "System.Security.Cryptography.Pkcs": "8.0.1"
+        },
+        "compile": {
+          "lib/net10.0/PdfSharp.BarCodes.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Charting.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Cryptography.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Quality.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Shared.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Snippets.dll": {
+            "related": ".pdb"
+          },
+          "lib/net10.0/PdfSharp.System.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.WPFonts.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.dll": {
+            "related": ".BarCodes.pdb;.BarCodes.xml;.Charting.pdb;.Charting.xml;.Cryptography.pdb;.Cryptography.xml;.pdb;.Quality.pdb;.Quality.xml;.Shared.pdb;.Shared.xml;.Snippets.pdb;.System.pdb;.System.xml;.WPFonts.pdb;.WPFonts.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/PdfSharp.BarCodes.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Charting.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Cryptography.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Quality.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Shared.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.Snippets.dll": {
+            "related": ".pdb"
+          },
+          "lib/net10.0/PdfSharp.System.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.WPFonts.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/PdfSharp.dll": {
+            "related": ".BarCodes.pdb;.BarCodes.xml;.Charting.pdb;.Charting.xml;.Cryptography.pdb;.Cryptography.xml;.pdb;.Quality.pdb;.Quality.xml;.Shared.pdb;.Shared.xml;.Snippets.pdb;.System.pdb;.System.xml;.WPFonts.pdb;.WPFonts.xml;.xml"
+          }
+        }
+      },
+      "PDFsharp-MigraDoc/6.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "PDFsharp": "6.2.4",
+          "System.Security.Cryptography.Pkcs": "8.0.1"
+        },
+        "compile": {
+          "lib/net10.0/MigraDoc.DocumentObjectModel.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/MigraDoc.Rendering.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/MigraDoc.RtfRendering.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/MigraDoc.DocumentObjectModel.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/MigraDoc.Rendering.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net10.0/MigraDoc.RtfRendering.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SourceGear.sqlite3/3.50.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "native": {
+          "runtimes/win-x64/native/e_sqlite3.dll": {}
+        },
+        "build": {
+          "buildTransitive/net9.0/SourceGear.sqlite3.targets": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_e_sqlite3/3.0.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.config.e_sqlite3": "3.0.2",
+          "SourceGear.sqlite3": "3.50.4.2"
+        }
+      },
+      "SQLitePCLRaw.config.e_sqlite3/3.0.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.provider.e_sqlite3": "3.0.2"
+        },
+        "compile": {
+          "lib/net8.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/3.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/3.0.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "3.0.2"
+        },
+        "compile": {
+          "lib/net8.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "System.Security.Cryptography.Pkcs/8.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -823,7 +1056,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\iConnect\\.nuget\\packages\\": {},
+    "C:\\Users\\WRSoft\\.nuget\\packages\\": {},
     "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -832,14 +1065,14 @@
       "projectUniqueName": "D:\\Projetos\\Biblia.Web\\Biblia.Web.Core\\Biblia.Web.Core.csproj",
       "projectName": "Biblia.Web.Core",
       "projectPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.Core\\Biblia.Web.Core.csproj",
-      "packagesPath": "C:\\Users\\iConnect\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\WRSoft\\.nuget\\packages\\",
       "outputPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\iConnect\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\WRSoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -899,6 +1132,20 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+            "version": "[10.0.12, 10.0.12]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Runtime.win-x64",
+            "version": "[10.0.12, 10.0.12]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+            "version": "[10.0.12, 10.0.12]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -1179,6 +1426,11 @@
           "System.Xml.XPath": "(,4.3.32767]",
           "System.Xml.XPath.XDocument": "(,5.0.32767]"
         }
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
       }
     }
   }
