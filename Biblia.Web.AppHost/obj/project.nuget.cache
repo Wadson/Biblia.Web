@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MPC2hxVBerk=",
+  "dgSpecHash": "m4t53OUNc3s=",
   "success": true,
   "projectFilePath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.AppHost\\Biblia.Web.AppHost.csproj",
   "expectedPackageFiles": [
@@ -75,7 +75,10 @@
     "C:\\Users\\WRSoft\\.nuget\\packages\\streamjsonrpc\\2.25.29\\streamjsonrpc.2.25.29.nupkg.sha512",
     "C:\\Users\\WRSoft\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.11\\system.diagnostics.eventlog.10.0.11.nupkg.sha512",
     "C:\\Users\\WRSoft\\.nuget\\packages\\system.io.hashing\\10.0.8\\system.io.hashing.10.0.8.nupkg.sha512",
-    "C:\\Users\\WRSoft\\.nuget\\packages\\yamldotnet\\16.3.0\\yamldotnet.16.3.0.nupkg.sha512"
+    "C:\\Users\\WRSoft\\.nuget\\packages\\yamldotnet\\16.3.0\\yamldotnet.16.3.0.nupkg.sha512",
+    "C:\\Users\\WRSoft\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.12\\microsoft.netcore.app.runtime.win-x64.10.0.12.nupkg.sha512",
+    "C:\\Users\\WRSoft\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.12\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.12.nupkg.sha512",
+    "C:\\Users\\WRSoft\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.12\\microsoft.aspnetcore.app.runtime.win-x64.10.0.12.nupkg.sha512"
   ],
   "logs": []
 }

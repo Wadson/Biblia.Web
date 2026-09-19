@@ -60,6 +60,7 @@ public sealed class AppDatabaseTests
             await references.UpdateThemeObservationAsync(reference.Id, theme.Id, "Aplicação pastoral");
             var themeLink = Assert.Single(await references.GetThemeLinksAsync(theme.Id));
             Assert.Equal("Aplicação pastoral", themeLink.Observation);
+            Assert.Equal(1, await references.CountReferencesWithCommentsAsync());
             Assert.Equal(1, await references.CountThemeLinksAsync());
             Assert.False(await TableExistsAsync(database, "Message"));
             Assert.False(await TableExistsAsync(database, "MessageTopic"));

@@ -18,7 +18,7 @@ public sealed class ReportService(
     {
         var items = await references.SearchAsync(null, ct);
         return new((await themes.GetAllAsync(ct)).Count, items.Count,
-            items.Count(x => !string.IsNullOrWhiteSpace(x.Reference.Comment)), await references.CountThemeLinksAsync(ct));
+            await references.CountReferencesWithCommentsAsync(ct), await references.CountThemeLinksAsync(ct));
     }
 
     public async Task<ThemeVerseReport> BuildThemesAsync(ThemeVerseReportRequest request, CancellationToken ct = default)

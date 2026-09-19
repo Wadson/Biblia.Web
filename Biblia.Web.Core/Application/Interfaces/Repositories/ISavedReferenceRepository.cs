@@ -19,6 +19,8 @@ public interface ISavedReferenceRepository
     Task<LinkVersesToThemeResult> LinkBatchToThemeAsync(long themeId, long preferredVersionId, IReadOnlyCollection<VerseSelection> selections, bool replaceExistingPreferredVersion, CancellationToken cancellationToken = default);
     Task<IReadOnlyList<ReferenceTheme>> GetThemeLinksAsync(long themeId, CancellationToken cancellationToken = default);
     Task UpdateThemeObservationAsync(long referenceId, long themeId, string? observation, CancellationToken cancellationToken = default);
+    Task<int> CountReferencesWithCommentsAsync(CancellationToken cancellationToken = default) =>
+        throw new NotSupportedException("Contagem de referências comentadas não implementada pelo repositório.");
     Task<int> CountThemeLinksAsync(CancellationToken cancellationToken = default);
     Task DeleteAsync(long id, CancellationToken cancellationToken = default);
 }

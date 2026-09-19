@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4tS5QhOHy3Y=",
+  "dgSpecHash": "CFwzdVLeRtU=",
   "success": true,
   "projectFilePath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.Tests\\Biblia.Web.Tests.csproj",
   "expectedPackageFiles": [
@@ -58,7 +58,10 @@
     "C:\\Users\\WRSoft\\.nuget\\packages\\xunit.v3.extensibility.core\\3.2.2\\xunit.v3.extensibility.core.3.2.2.nupkg.sha512",
     "C:\\Users\\WRSoft\\.nuget\\packages\\xunit.v3.mtp-v1\\3.2.2\\xunit.v3.mtp-v1.3.2.2.nupkg.sha512",
     "C:\\Users\\WRSoft\\.nuget\\packages\\xunit.v3.runner.common\\3.2.2\\xunit.v3.runner.common.3.2.2.nupkg.sha512",
-    "C:\\Users\\WRSoft\\.nuget\\packages\\xunit.v3.runner.inproc.console\\3.2.2\\xunit.v3.runner.inproc.console.3.2.2.nupkg.sha512"
+    "C:\\Users\\WRSoft\\.nuget\\packages\\xunit.v3.runner.inproc.console\\3.2.2\\xunit.v3.runner.inproc.console.3.2.2.nupkg.sha512",
+    "C:\\Users\\WRSoft\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.12\\microsoft.netcore.app.runtime.win-x64.10.0.12.nupkg.sha512",
+    "C:\\Users\\WRSoft\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.12\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.12.nupkg.sha512",
+    "C:\\Users\\WRSoft\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.12\\microsoft.aspnetcore.app.runtime.win-x64.10.0.12.nupkg.sha512"
   ],
   "logs": []
 }

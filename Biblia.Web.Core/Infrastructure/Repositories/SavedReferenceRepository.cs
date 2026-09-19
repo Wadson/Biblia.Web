@@ -222,6 +222,24 @@ public sealed class SavedReferenceRepository : SqliteRepositoryBase, ISavedRefer
         return Convert.ToInt32(await command.ExecuteScalarAsync(cancellationToken));
     }
 
+    public async Task<int> CountReferencesWithCommentsAsync(CancellationToken cancellationToken = default)
+    {
+        await using var connection = await Database.OpenConnectionAsync(cancellationToken);
+        await using var command = connection.CreateCommand();
+        command.CommandText = """
+            SELECT COUNT(*)
+            FROM SavedReference r
+            WHERE TRIM(COALESCE(r.Comment, '')) <> ''
+               OR EXISTS (
+                   SELECT 1
+                   FROM ReferenceTheme rt
+                   WHERE rt.ReferenceId = r.Id
+                     AND TRIM(COALESCE(rt.Observation, '')) <> ''
+               );
+            """;
+        return Convert.ToInt32(await command.ExecuteScalarAsync(cancellationToken));
+    }
+
     private static string? CleanObservation(string? value)
     {
         var cleaned = value?.Trim();
