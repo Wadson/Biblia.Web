@@ -1,0 +1,1 @@
+.update-panel{display:flex;align-items:center;justify-content:space-between;gap:20px}.update-panel h2,.update-panel p{margin:0}.update-panel h2{margin:3px 0 6px}.update-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.update-actions .btn{white-space:nowrap}@media(max-width:700px){.update-panel{align-items:flex-start;flex-direction:column}}

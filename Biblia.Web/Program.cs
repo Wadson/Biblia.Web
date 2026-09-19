@@ -11,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
 builder.Services.AddApplication().AddWebInfrastructure();
+builder.Services.Configure<Biblia.Web.Services.UpdateOptions>(builder.Configuration.GetSection(Biblia.Web.Services.UpdateOptions.SectionName));
+builder.Services.AddHttpClient("updates", client => client.Timeout = TimeSpan.FromSeconds(20));
+builder.Services.AddSingleton<Biblia.Web.Services.IAppUpdateService, Biblia.Web.Services.AppUpdateService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

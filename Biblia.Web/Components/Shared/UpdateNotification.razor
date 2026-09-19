@@ -1,0 +1,21 @@
+@inject Biblia.Web.Services.IAppUpdateService Updates
+@inject Microsoft.Extensions.Options.IOptions<Biblia.Web.Services.UpdateOptions> UpdateOptions
+
+@if (update is not null)
+{
+    <div class="update-notification" role="status">
+        <strong>Nova versão @update.AvailableVersion disponível.</strong>
+        <span>@update.Description</span>
+        <a href="/configuracoes">Ver atualização</a>
+    </div>
+}
+
+@code {
+    Biblia.Web.Services.UpdateInfo? update;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UpdateOptions.Value.CheckOnStartup)
+            update = (await Updates.CheckAsync()).Update;
+    }
+}

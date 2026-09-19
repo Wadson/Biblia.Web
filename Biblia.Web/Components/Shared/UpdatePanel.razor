@@ -1,0 +1,71 @@
+@inject Biblia.Web.Services.IAppUpdateService Updates
+
+<section class="panel update-panel">
+    <div>
+        <p class="eyebrow">ATUALIZAÇÕES</p>
+        <h2>Atualização do aplicativo</h2>
+        @if (update is null)
+        {
+            <p class="muted">@message</p>
+        }
+        else
+        {
+            <p><strong>Versão @update.AvailableVersion</strong> disponível. @update.Description</p>
+            <p class="muted">Versão instalada: @update.CurrentVersion</p>
+        }
+    </div>
+    <div class="update-actions">
+        <button class="btn secondary" disabled="@checking" @onclick="CheckAsync">@(checking ? "Verificando..." : "Verificar agora")</button>
+        @if (update is not null && downloadedInstaller is null)
+        {
+            <button class="btn primary" disabled="@downloading" @onclick="DownloadAsync">@(downloading ? $"Baixando {progress:P0}" : "Baixar atualização")</button>
+        }
+        @if (downloadedInstaller is not null)
+        {
+            <ConfirmButton Label="Instalar e reiniciar" ConfirmLabel="Instalar agora" CssClass="btn primary" ConfirmCssClass="btn primary" Title="Instalar atualização" Message="O aplicativo será fechado para iniciar o instalador baixado. Deseja continuar?" Summary="A atualização será instalada em seguida." OnConfirm="Install" />
+        }
+    </div>
+</section>
+
+@code {
+    Biblia.Web.Services.UpdateInfo? update;
+    string? downloadedInstaller;
+    string message = "Verifique se existe uma nova versão publicada.";
+    bool checking, downloading;
+    double progress;
+
+    protected override Task OnInitializedAsync() => CheckAsync();
+
+    async Task CheckAsync()
+    {
+        checking = true;
+        downloadedInstaller = null;
+        try
+        {
+            var result = await Updates.CheckAsync();
+            update = result.Update;
+            message = result.Error ?? (update is null ? "Você já está usando a versão mais recente." : "");
+        }
+        finally { checking = false; }
+    }
+
+    async Task DownloadAsync()
+    {
+        if (update is null) return;
+        downloading = true;
+        progress = 0;
+        try
+        {
+            downloadedInstaller = await Updates.DownloadAsync(update, new Progress<double>(value => { progress = value; InvokeAsync(StateHasChanged); }));
+            message = "Download concluído. Confirme para instalar e reiniciar o aplicativo.";
+        }
+        catch (Exception exception) { message = $"Não foi possível baixar a atualização: {exception.Message}"; }
+        finally { downloading = false; }
+    }
+
+    Task Install()
+    {
+        if (downloadedInstaller is not null) Updates.Install(downloadedInstaller);
+        return Task.CompletedTask;
+    }
+}
