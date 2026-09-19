@@ -17,8 +17,10 @@ public sealed class ReportService(
     public async Task<ReportsOverview> GetOverviewAsync(CancellationToken ct = default)
     {
         var items = await references.SearchAsync(null, ct);
+        var installedVersions = (await versions.GetAllAsync(ct)).Count(version =>
+            version.IsInstalled && version.IsEnabled && version.ValidationStatus != BibleVersionValidationStatus.Incompatible);
         return new((await themes.GetAllAsync(ct)).Count, items.Count,
-            await references.CountReferencesWithCommentsAsync(ct), await references.CountThemeLinksAsync(ct));
+            await references.CountReferencesWithCommentsAsync(ct), await references.CountThemeLinksAsync(ct), installedVersions);
     }
 
     public async Task<ThemeVerseReport> BuildThemesAsync(ThemeVerseReportRequest request, CancellationToken ct = default)

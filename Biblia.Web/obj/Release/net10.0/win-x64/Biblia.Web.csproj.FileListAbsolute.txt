@@ -151,8 +151,8 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\refint\Biblia.Web.
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.pdb
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.genruntimeconfig.cache
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\ref\Biblia.Web.dll
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-z4tmtm5jkc-z4tmtm5jkc.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-z4tmtm5jkc-z4tmtm5jkc.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-seis9b2r0z-seis9b2r0z.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-seis9b2r0z-seis9b2r0z.gz
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.CSharp.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.Core.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.dll
