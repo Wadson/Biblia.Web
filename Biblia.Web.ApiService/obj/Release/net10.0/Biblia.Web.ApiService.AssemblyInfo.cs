@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Biblia.Web.ApiService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+612e0eb336dcfa0173da40b02eeb51ff9763b06f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce56122621866c984a0c95e38f65dcd8f02627dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Biblia.Web.ApiService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Biblia.Web.ApiService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -89,7 +89,6 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\Componen
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\Components\Shared\ThemeContentEditor.razor.rz.scp.css
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\bundle\Biblia.Web.styles.css
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\projectbundle\Biblia.Web.bundle.scp.css
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\3sm1rmrewi-{0}-svpqnhrj6p-svpqnhrj6p.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\2baeu0w6l9-{0}-30v6emrn79-30v6emrn79.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\htlrqt0ndl-{0}-mrcjpe4bqk-mrcjpe4bqk.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\u4s1z3use7-{0}-t1cqhe9u97-t1cqhe9u97.gz
@@ -151,8 +150,9 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\refint\Biblia.Web.
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.pdb
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.genruntimeconfig.cache
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\ref\Biblia.Web.dll
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-seis9b2r0z-seis9b2r0z.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-seis9b2r0z-seis9b2r0z.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-1z57qisdrq-1z57qisdrq.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-1z57qisdrq-1z57qisdrq.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\3sm1rmrewi-{0}-j0zou3zsss-j0zou3zsss.gz
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.CSharp.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.Core.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.dll

@@ -71,6 +71,25 @@ button:focus-visible,.btn:focus-visible,[role="button"]:focus-visible,.sidebar-t
 .sidebar-toggle:focus,.sidebar-toggle:focus-visible{background:#ffffff28!important;color:#fff!important;border-color:#8ed1ee!important}
 .nav-list a:focus,.nav-list a:focus-visible{outline:3px solid #8ed1ee!important;outline-offset:2px;background:#ffffff28;color:#fff}
 
+/* Tema visual compartilhado: superfícies azul-claro, controles e cartões coerentes em todas as telas. */
+:root{--color-primary:#126cad;--primary-dark:#0b568c;--surface-page:#f2f8fc;--surface-card:#fff;--border:#c9dfeb;--text:#102c44;--text-muted:#587087;--theme-soft:#eaf6fc;--theme-soft-strong:#dceff9;--theme-shadow:0 8px 18px #17324d16}
+html,body{background:linear-gradient(135deg,#f5fbff 0%,#eef7fc 55%,#f7fbfe 100%);color:var(--text)}
+.content{max-width:1240px}
+.app-page-header{background:linear-gradient(110deg,#fff,#f2f9fd)!important;border-color:var(--border)!important;box-shadow:var(--theme-shadow)!important}
+.page-header h1,h1,.app-page-header .page-header-title h1{color:#0c416b!important}.eyebrow{color:#126cad!important}
+.panel,.card,.stats>div,.quick-grid>a{border-color:var(--border);background:linear-gradient(135deg,#fff,#f5fbfe);box-shadow:var(--theme-shadow)}
+.panel{border-radius:16px}.card{border-radius:14px}.table-wrap{border-color:var(--border);border-radius:14px;box-shadow:0 4px 12px #17324d0d}
+input,select,textarea{border-color:#b5d4e4;background:#fff;color:var(--text);border-radius:9px;box-shadow:inset 0 1px 3px #0c4a6c0d}
+input:hover,select:hover,textarea:hover{border-color:#79b9d8}input:focus,select:focus,textarea:focus{border-color:#287fb4;box-shadow:0 0 0 3px #b9e1f3!important}
+.btn.primary,.primary{background:#126cad;color:#fff;box-shadow:0 3px 8px #126cad30}.btn.primary:hover,.primary:hover{background:#0b568c;color:#fff}.btn.secondary,.secondary{background:#e7f2f8;color:#174f7d}.btn.secondary:hover,.secondary:hover{background:#d7eaf5;color:#103f69}
+.toolbar,.selection-toolbar,.pagination{border-color:var(--border)}.selection-toolbar,.primary-action-bar{border-color:var(--border);background:linear-gradient(110deg,#f8fcff,#eaf6fc);box-shadow:0 4px 12px #17324d12}
+th{background:#edf6fb;color:#315a76;border-color:var(--border)}td{border-color:#dceaf1}tbody tr:hover{background:#f4faff}
+.notice{border-left-color:#287fb4;background:#eaf6fc;color:#174f7d;border-radius:10px}.notice.success{background:#e9f8f0}.notice.error{background:#fff1f1}
+.search-result,.vertical-search-results>.card{border-color:var(--border);background:linear-gradient(135deg,#fff,#f5fbfe);box-shadow:0 4px 12px #17324d0d}.search-result:hover{border-color:#8bc5df;background:#eff8fd}
+.theme-summary,.passage-preview{background:#edf7fc;border-color:#8fc9e2}.theme-chips span{background:#edf6fb}.saved-reference-selection-toolbar{border-color:#c9dfeb;background:#eff8fd}
+.theme-picker-trigger{border-color:#b5d4e4;background:#fff;color:var(--text)}.theme-picker-trigger:hover{border-color:#79b9d8}.theme-picker-options{border-color:#a9cfe1;background:#fff;box-shadow:var(--theme-shadow)}.theme-picker-option:hover,.theme-picker-option.selected{background:#eaf6fc}
+.bible-version-actions .btn.btn-outline-primary{background:#fafdff!important;border-color:#4c9bc8!important;color:#126cad!important}.bible-version-actions .btn.btn-outline-primary:hover{background:#eaf6fc!important}
+
 /* Clique/touch também ativa este estado; evita o ButtonFace branco do navegador. */
 html body button:focus,html body button:focus-visible,html body button:active,html body .btn:focus,html body .btn:focus-visible,html body .btn:active,html body [role="button"]:focus,html body [role="button"]:focus-visible,html body [role="button"]:active{border:2px solid #0066cc!important;outline:3px solid #0066cc!important;outline-offset:2px;box-shadow:0 0 0 5px #b8d4f0!important}
 html body button:not(.secondary):not(.success):not(.danger):focus,html body button:not(.secondary):not(.success):not(.danger):focus-visible,html body button:not(.secondary):not(.success):not(.danger):active,html body .btn.primary:focus,html body .btn.primary:focus-visible,html body .btn.primary:active{background-color:#0066cc!important;color:#fff!important}

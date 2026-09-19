@@ -1,1 +1,135 @@
-.bible-reader-filters[b-sw75h5bdoc]{padding:18px}.bible-reader-filter-grid[b-sw75h5bdoc]{display:grid;grid-template-columns:minmax(230px,1.45fr) minmax(180px,1fr) minmax(130px,.72fr) auto;align-items:end;gap:16px;margin:0}.bible-reader-filter-grid label[b-sw75h5bdoc]{min-width:0}.bible-reader-filter-grid select[b-sw75h5bdoc],.bible-reader-filter-grid input[b-sw75h5bdoc]{width:100%;min-width:0}.bible-reader-filter-grid .btn[b-sw75h5bdoc]{min-height:40px;margin:0}@media(max-width:900px){.bible-reader-filter-grid[b-sw75h5bdoc]{grid-template-columns:repeat(2,minmax(0,1fr))}.bible-reader-filter-grid .btn[b-sw75h5bdoc]{width:max-content}}@media(max-width:560px){.bible-reader-filters[b-sw75h5bdoc]{padding:14px}.bible-reader-filter-grid[b-sw75h5bdoc]{grid-template-columns:1fr;gap:12px}.bible-reader-filter-grid .btn[b-sw75h5bdoc]{width:100%}}
+.bible-reader-filters[b-sw75h5bdoc] {
+    padding: 20px;
+    border: 1px solid #c5dce9;
+    border-radius: 16px;
+    background: linear-gradient(110deg, #f7fcff, #eaf6fc);
+    box-shadow: 0 8px 18px #17324d1c;
+}
+
+.bible-reader-filter-grid[b-sw75h5bdoc] {
+    display: grid;
+    grid-template-columns: minmax(230px, 1.45fr) minmax(180px, 1fr) minmax(130px, .72fr) auto;
+    align-items: end;
+    gap: 16px;
+    margin: 0;
+}
+
+.bible-reader-filter-grid label[b-sw75h5bdoc] {
+    min-width: 0;
+    color: #17324d;
+    font-weight: 700;
+}
+
+.bible-reader-filter-grid select[b-sw75h5bdoc],
+.bible-reader-filter-grid input[b-sw75h5bdoc] {
+    width: 100%;
+    min-width: 0;
+    min-height: 43px;
+    margin-top: 6px;
+    border: 1px solid #b5d4e4;
+    border-radius: 10px;
+    background-color: #e2f2fb;
+    color: #102c44;
+    box-shadow: inset 0 1px 3px #0c4a6c12;
+}
+
+.bible-reader-filter-grid .btn[b-sw75h5bdoc] {
+    min-height: 43px;
+    margin: 0;
+    padding-inline: 22px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #145e9830;
+}
+
+.toolbar[b-sw75h5bdoc] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin: 20px 8px;
+    color: #174f7d;
+}
+
+.toolbar strong[b-sw75h5bdoc] {
+    color: #1c527d;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.toolbar .btn.secondary[b-sw75h5bdoc] {
+    padding: 8px 4px;
+    border: 0;
+    background: transparent;
+    color: #366d98;
+    box-shadow: none;
+}
+
+.toolbar .btn.secondary:hover[b-sw75h5bdoc] {
+    background: #dceef8;
+    color: #103f69;
+}
+
+section.panel[b-sw75h5bdoc] {
+    overflow: hidden;
+    padding: 18px 20px;
+    border: 1px solid #c9e0eb;
+    border-radius: 16px;
+    background: linear-gradient(120deg, #fff, #f1f9fd);
+    box-shadow: 0 8px 18px #17324d16;
+}
+
+.verse[b-sw75h5bdoc] {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    align-items: start;
+    gap: 14px;
+    padding: 11px 2px;
+    border-radius: 9px;
+    color: #142c3c;
+    font-size: 1.04rem;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.verse:hover[b-sw75h5bdoc] {
+    background: #e6f4fb;
+}
+
+.verse.selected[b-sw75h5bdoc] {
+    background: #d8f1fb;
+    box-shadow: inset 3px 0 #287fb4;
+}
+
+.verse-num[b-sw75h5bdoc] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: #174f7d;
+    color: #fff;
+    font-size: .83rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.notice[b-sw75h5bdoc] {
+    margin: 16px 0;
+    border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+    .bible-reader-filter-grid[b-sw75h5bdoc] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bible-reader-filter-grid .btn[b-sw75h5bdoc] { width: max-content; }
+}
+
+@media (max-width: 560px) {
+    .bible-reader-filters[b-sw75h5bdoc] { padding: 14px; }
+    .bible-reader-filter-grid[b-sw75h5bdoc] { grid-template-columns: 1fr; gap: 12px; }
+    .bible-reader-filter-grid .btn[b-sw75h5bdoc] { width: 100%; }
+    .toolbar[b-sw75h5bdoc] { flex-wrap: wrap; margin-inline: 0; }
+    .toolbar strong[b-sw75h5bdoc] { order: -1; width: 100%; }
+    section.panel[b-sw75h5bdoc] { padding: 14px; }
+    .verse[b-sw75h5bdoc] { grid-template-columns: 28px minmax(0, 1fr); gap: 10px; font-size: 1rem; }
+}
