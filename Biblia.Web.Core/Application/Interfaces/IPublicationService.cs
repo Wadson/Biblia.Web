@@ -19,4 +19,7 @@ public interface IPublicationService
  Task<PublicationThemeStatus> GetThemeStatusAsync(long publicationId,long themeId,CancellationToken ct=default);
  Task LinkCompleteThemeAsync(long publicationId,long themeId,CancellationToken ct=default);
  Task UnlinkThemeAsync(long publicationId,long themeId,CancellationToken ct=default);
+ Task LinkThemeAsync(long publicationId,long themeId,CancellationToken ct=default);
+ Task<IReadOnlyList<Theme>> GetLinkedThemesAsync(long publicationId,CancellationToken ct=default);
+ Task<IReadOnlyList<Publication>> GetLinkedPublicationsAsync(long themeId,CancellationToken ct=default);
 }

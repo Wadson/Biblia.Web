@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Projetos\\Biblia.Web\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{B2648F6D-9DAE-C920-C5D3-E75F4B035200}|Biblia.Web\\Biblia.Web.csproj|d:\\projetos\\biblia.web\\biblia.web\\components\\shared\\themecontenteditor.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{B2648F6D-9DAE-C920-C5D3-E75F4B035200}|Biblia.Web\\Biblia.Web.csproj|solutionrelative:biblia.web\\components\\shared\\themecontenteditor.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2648F6D-9DAE-C920-C5D3-E75F4B035200}|Biblia.Web\\Biblia.Web.csproj|d:\\projetos\\biblia.web\\biblia.web\\components\\shared\\themecontenteditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B2648F6D-9DAE-C920-C5D3-E75F4B035200}|Biblia.Web\\Biblia.Web.csproj|solutionrelative:biblia.web\\components\\shared\\themecontenteditor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,31 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 70,
-          "SelectedChildIndex": 24,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:5:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:6:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:7:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:8:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:9:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:10:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -90,7 +61,15 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:10:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:12:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:9:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",
@@ -110,36 +89,15 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:8:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:13:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ThemeContentEditor.razor.css",
-              "DocumentMoniker": "D:\\Projetos\\Biblia.Web\\Biblia.Web\\Components\\Shared\\ThemeContentEditor.razor.css",
-              "RelativeDocumentMoniker": "Biblia.Web\\Components\\Shared\\ThemeContentEditor.razor.css",
-              "ToolTip": "D:\\Projetos\\Biblia.Web\\Biblia.Web\\Components\\Shared\\ThemeContentEditor.razor.css",
-              "RelativeToolTip": "Biblia.Web\\Components\\Shared\\ThemeContentEditor.razor.css",
-              "ViewState": "AgIAAHACAAAAAAAAAAAowIwCAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-09-20T01:57:31.709Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ThemeContentEditor.razor",
-              "DocumentMoniker": "D:\\Projetos\\Biblia.Web\\Biblia.Web\\Components\\Shared\\ThemeContentEditor.razor",
-              "RelativeDocumentMoniker": "Biblia.Web\\Components\\Shared\\ThemeContentEditor.razor",
-              "ToolTip": "D:\\Projetos\\Biblia.Web\\Biblia.Web\\Components\\Shared\\ThemeContentEditor.razor",
-              "RelativeToolTip": "Biblia.Web\\Components\\Shared\\ThemeContentEditor.razor",
-              "ViewState": "AgIAAAECAAAAAAAAAAAAwBsCAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-09-20T01:57:14.028Z"
             }
           ]
         },

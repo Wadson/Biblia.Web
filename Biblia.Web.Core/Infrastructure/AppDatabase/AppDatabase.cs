@@ -7,7 +7,7 @@ namespace Biblia.Infrastructure.AppDatabase;
 
 public sealed class AppDatabase : IAppDatabase
 {
-    public const int CurrentSchemaVersion = 8;
+    public const int CurrentSchemaVersion = 9;
     private readonly ILogger<AppDatabase> _logger;
     private readonly SemaphoreSlim _initializationGate = new(1, 1);
     private bool _initialized;
@@ -115,6 +115,7 @@ public sealed class AppDatabase : IAppDatabase
         if (version < 6) await ApplyMigration6Async(connection, cancellationToken);
         if (version < 7) await ApplyMigration7Async(connection, cancellationToken);
         if (version < 8) await ApplyMigration8Async(connection, cancellationToken);
+        if (version < 9) await ApplyMigration9Async(connection, cancellationToken);
         _initialized = true;
         _logger.LogInformation("Banco do aplicativo inicializado no schema {SchemaVersion}.", CurrentSchemaVersion);
     }
@@ -212,6 +213,8 @@ public sealed class AppDatabase : IAppDatabase
     {await using var tx=connection.BeginTransaction();var columns=new[]{("OrganizationFontSize","REAL NULL CHECK(OrganizationFontSize IS NULL OR OrganizationFontSize BETWEEN 7 AND 36)"),("OrganizationTextColorHex","TEXT NULL"),("SubtitleFontSize","REAL NULL CHECK(SubtitleFontSize IS NULL OR SubtitleFontSize BETWEEN 7 AND 36)"),("SubtitleTextColorHex","TEXT NULL"),("HeaderDetailFontSize","REAL NULL CHECK(HeaderDetailFontSize IS NULL OR HeaderDetailFontSize BETWEEN 7 AND 36)"),("HeaderDetailTextColorHex","TEXT NULL"),("LogoWidth","REAL NULL CHECK(LogoWidth IS NULL OR LogoWidth BETWEEN 20 AND 160)"),("LogoHeight","REAL NULL CHECK(LogoHeight IS NULL OR LogoHeight BETWEEN 20 AND 100)")};foreach(var column in columns)if(!await ColumnExistsAsync(connection,column.Item1,ct)){await using var alter=connection.CreateCommand();alter.Transaction=tx;alter.CommandText=$"ALTER TABLE Publication ADD COLUMN {column.Item1} {column.Item2};";await alter.ExecuteNonQueryAsync(ct);}await using var cmd=connection.CreateCommand();cmd.Transaction=tx;cmd.CommandText="INSERT INTO SchemaMigration(Version,AppliedAt) VALUES(7,$now);";cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O"));await cmd.ExecuteNonQueryAsync(ct);await tx.CommitAsync(ct);}
     private static async Task ApplyMigration8Async(SqliteConnection connection,CancellationToken ct)
     {await using var tx=connection.BeginTransaction();if(!await ColumnExistsAsync(connection,"TitleTextColorHex",ct)){await using var alter=connection.CreateCommand();alter.Transaction=tx;alter.CommandText="ALTER TABLE Publication ADD COLUMN TitleTextColorHex TEXT NULL;";await alter.ExecuteNonQueryAsync(ct);}await using var cmd=connection.CreateCommand();cmd.Transaction=tx;cmd.CommandText="""UPDATE Publication SET TitleTextColorHex=HeaderTextColorHex WHERE TitleTextColorHex IS NULL;UPDATE Publication SET OrganizationTextColorHex=HeaderTextColorHex WHERE OrganizationTextColorHex IS NULL;UPDATE Publication SET SubtitleTextColorHex=HeaderTextColorHex WHERE SubtitleTextColorHex IS NULL;UPDATE Publication SET HeaderDetailTextColorHex=HeaderTextColorHex WHERE HeaderDetailTextColorHex IS NULL;INSERT INTO SchemaMigration(Version,AppliedAt) VALUES(8,$now);""";cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O"));await cmd.ExecuteNonQueryAsync(ct);await tx.CommitAsync(ct);}
+    private static async Task ApplyMigration9Async(SqliteConnection connection,CancellationToken ct)
+    {await using var tx=connection.BeginTransaction();await using var cmd=connection.CreateCommand();cmd.Transaction=tx;cmd.CommandText="""CREATE TABLE IF NOT EXISTS PublicationTheme(PublicationId INTEGER NOT NULL REFERENCES Publication(Id) ON DELETE CASCADE,ThemeId INTEGER NOT NULL REFERENCES Theme(Id) ON DELETE CASCADE,CreatedAt TEXT NOT NULL,PRIMARY KEY(PublicationId,ThemeId));INSERT OR IGNORE INTO PublicationTheme(PublicationId,ThemeId,CreatedAt) SELECT PublicationId,ThemeId,MIN(CreatedAt) FROM PublicationContent GROUP BY PublicationId,ThemeId;INSERT INTO SchemaMigration(Version,AppliedAt) VALUES(9,$now);""";cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O"));await cmd.ExecuteNonQueryAsync(ct);await tx.CommitAsync(ct);}
 
     private static async Task<bool> ColumnExistsAsync(SqliteConnection connection,string column,CancellationToken ct)
     {await using var cmd=connection.CreateCommand();cmd.CommandText="PRAGMA table_info(Publication);";await using var reader=await cmd.ExecuteReaderAsync(ct);while(await reader.ReadAsync(ct))if(string.Equals(reader.GetString(1),column,StringComparison.OrdinalIgnoreCase))return true;return false;}
