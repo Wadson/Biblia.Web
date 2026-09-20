@@ -248,22 +248,10 @@ else
                         </div>
                     </div>
                     <p class="verse-card-text">@verse.Text</p>
-                    <div class="verse-observation-row">
-                        <textarea @key="verse.ReferenceId"
-                                  aria-label="Observação"
-                                  maxlength="2000"
-                                  rows="2"
-                                  placeholder="Observação"
-                                  value="@ObservationDraft(verse)"
-                                  @oninput="e => SetObservationDraft(verse.ReferenceId, e.Value?.ToString())"></textarea>
-                        <ConfirmButton Label="Salvar"
-                                       Title="Confirmar alteração"
-                                       Message="Deseja salvar a observação deste vínculo?"
-                                       Summary="@verse.FormattedReference"
-                                       CssClass="btn primary"
-                                       Disabled="@busy"
-                                       OnConfirm="() => SaveObservation.InvokeAsync(verse)" />
-                    </div>
+                    <VerseObservationEditor @key="verse.ReferenceId"
+                                            Verse="verse"
+                                            Disabled="@busy"
+                                            OnSave="SaveObservation" />
                 }
             </article>
         }
@@ -274,7 +262,6 @@ else
     [Parameter] public long ThemeId { get; set; }
     [Parameter] public long PublicationId { get; set; }
     [Parameter] public IReadOnlyList<ThemeVerseLinkDisplay> Linked { get; set; } = Array.Empty<ThemeVerseLinkDisplay>();
-    [Parameter] public Dictionary<long, string> Drafts { get; set; } = new();
     [Parameter] public EventCallback<ThemeVerseLinkDisplay> SaveObservation { get; set; }
     [Parameter] public EventCallback<ThemeVerseLinkDisplay> RemoveLink { get; set; }
 
@@ -302,15 +289,6 @@ else
     private IReadOnlyList<ThemeContentItem> visibleItems => sequence.Items
         .Where(item => item.ReferenceId is null || Linked.Any(verse => verse.ReferenceId == item.ReferenceId))
         .ToArray();
-
-    // Cada editor de observação pertence somente à referência exibida. O @key no
-    // textarea impede que o navegador reaproveite o valor visual de outro item
-    // quando blocos ou versículos são inseridos, removidos ou reordenados.
-    private string ObservationDraft(ThemeVerseLinkDisplay verse) =>
-        Drafts.TryGetValue(verse.ReferenceId, out var draft) ? draft : verse.Observation ?? string.Empty;
-
-    private void SetObservationDraft(long referenceId, string? value) =>
-        Drafts[referenceId] = value ?? string.Empty;
 
     protected override async Task OnParametersSetAsync()
     {

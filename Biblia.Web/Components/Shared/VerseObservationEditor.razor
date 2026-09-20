@@ -1,0 +1,41 @@
+@using Biblia.Domain.Entities
+
+<div class="verse-observation-row">
+    <textarea aria-label="Observação"
+              maxlength="2000"
+              rows="2"
+              placeholder="Observação"
+              @bind-value="observation"
+              @bind-value:event="oninput"></textarea>
+    <ConfirmButton Label="Salvar"
+                   Title="Confirmar alteração"
+                   Message="Deseja salvar a observação deste vínculo?"
+                   Summary="@Verse.FormattedReference"
+                   CssClass="btn primary"
+                   Disabled="@Disabled"
+                   OnConfirm="Save" />
+</div>
+
+@code {
+    [Parameter, EditorRequired] public ThemeVerseLinkDisplay Verse { get; set; } = default!;
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public EventCallback<ThemeVerseLinkDisplay> OnSave { get; set; }
+
+    private long loadedReferenceId;
+    private DateTimeOffset loadedUpdatedAt;
+    private string observation = string.Empty;
+
+    protected override void OnParametersSet()
+    {
+        // A observação é carregada somente do vínculo ReferenceTheme recebido.
+        // Este componente não conhece nem recebe ThemeTextBlock.
+        if (loadedReferenceId != Verse.ReferenceId || loadedUpdatedAt != Verse.UpdatedAt)
+        {
+            loadedReferenceId = Verse.ReferenceId;
+            loadedUpdatedAt = Verse.UpdatedAt;
+            observation = Verse.Observation ?? string.Empty;
+        }
+    }
+
+    private Task Save() => OnSave.InvokeAsync(Verse with { Observation = observation });
+}

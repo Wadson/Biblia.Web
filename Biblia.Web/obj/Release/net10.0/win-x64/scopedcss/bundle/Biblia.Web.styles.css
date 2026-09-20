@@ -1267,3 +1267,21 @@ input:focus-visible[b-lpvop5rumi], button:focus-visible[b-lpvop5rumi] { outline:
 .update-notification[b-wtzm441571]{display:flex;align-items:center;gap:10px;padding:10px 18px;background:#e5f7eb;border-bottom:1px solid #b9e5c8;color:#185d35;font-size:14px}.update-notification a[b-wtzm441571]{margin-left:auto;color:#075fa9;font-weight:700}@media(max-width:700px){.update-notification[b-wtzm441571]{align-items:flex-start;flex-wrap:wrap}.update-notification a[b-wtzm441571]{margin-left:0}}
 /* /Components/Shared/UpdatePanel.razor.rz.scp.css */
 .update-panel[b-t4jylsrd2i]{display:flex;align-items:center;justify-content:space-between;gap:20px}.update-panel h2[b-t4jylsrd2i],.update-panel p[b-t4jylsrd2i]{margin:0}.update-panel h2[b-t4jylsrd2i]{margin:3px 0 6px}.update-actions[b-t4jylsrd2i]{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.update-actions .btn[b-t4jylsrd2i]{white-space:nowrap}@media(max-width:700px){.update-panel[b-t4jylsrd2i]{align-items:flex-start;flex-direction:column}}
+/* /Components/Shared/VerseObservationEditor.razor.rz.scp.css */
+.verse-observation-row[b-9cnvigajg8] {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.verse-observation-row textarea[b-9cnvigajg8] {
+    flex: 1;
+    min-inline-size: 0;
+    resize: vertical;
+}
+
+.verse-observation-row .btn[b-9cnvigajg8] {
+    block-size: 40px;
+    padding: 7px 12px;
+    white-space: nowrap;
+}

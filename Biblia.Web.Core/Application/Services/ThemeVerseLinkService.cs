@@ -99,4 +99,30 @@ public sealed class ThemeVerseLinkService(
         await references.UpdateThemeObservationAsync(referenceId, themeId, observation, cancellationToken);
         logger.LogInformation("Observação do vínculo {ThemeId}/{ReferenceId} atualizada", themeId, referenceId);
     }
+
+    public async Task SanitizePublicationObservationsAsync(long publicationId, long themeId, CancellationToken cancellationToken = default)
+    {
+        if (publications is null || publicationId <= 0 || themeId <= 0) return;
+
+        var blockContents = (await publications.GetContentAsync(publicationId, themeId, cancellationToken))
+            .Where(item => item.TextBlock is not null)
+            .Select(item => NormalizeBlockText(item.TextBlock!.Content))
+            .Where(value => value.Length > 0)
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
+        if (blockContents.Count == 0) return;
+
+        foreach (var link in await references.GetThemeLinksAsync(themeId, cancellationToken))
+        {
+            if (string.IsNullOrWhiteSpace(link.Observation)) continue;
+            if (!blockContents.Contains(NormalizeBlockText(link.Observation))) continue;
+            await references.UpdateThemeObservationAsync(link.ReferenceId, themeId, null, cancellationToken);
+            logger.LogWarning("Observação contaminada por bloco removida do vínculo {ThemeId}/{ReferenceId}", themeId, link.ReferenceId);
+        }
+    }
+
+    private static string NormalizeBlockText(string value)
+    {
+        var normalized = string.Join(' ', value.Trim().Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
+        return System.Text.RegularExpressions.Regex.Replace(normalized, @"^(?:\d+[ºo.]\s*)+", string.Empty, System.Text.RegularExpressions.RegexOptions.CultureInvariant);
+    }
 }

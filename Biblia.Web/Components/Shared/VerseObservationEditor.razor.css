@@ -1,0 +1,17 @@
+.verse-observation-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.verse-observation-row textarea {
+    flex: 1;
+    min-inline-size: 0;
+    resize: vertical;
+}
+
+.verse-observation-row .btn {
+    block-size: 40px;
+    padding: 7px 12px;
+    white-space: nowrap;
+}

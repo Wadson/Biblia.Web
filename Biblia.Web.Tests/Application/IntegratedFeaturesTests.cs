@@ -108,6 +108,33 @@ public sealed class IntegratedFeaturesTests
         Assert.Equal("Nota atualizada",(await f.Link.GetLinkedAsync(theme.Id,"QA")).Single().Observation);
         Assert.Equal("Nota do outro tema",(await f.Link.GetLinkedAsync(otherTheme.Id,"QA")).Single().Observation);
     }
+    [Fact]
+    public async Task EmptyObservationNeverReceivesThemeTextBlockContent()
+    {
+        await using var f=await Fixture.Create();var theme=await f.Theme();var now=DateTimeOffset.UtcNow;
+        var publication=await f.Publications.SaveAsync(new Publication(0,"Publicação sem observação",null,null,null,null,null,null,false,false,null,now,now));
+        const string blockContent="9º Seja um Exemplo Para que as Outras Pessoas Possam Seguir";
+
+        await f.Content.SaveBlockAsync(theme.Id,null,new(blockContent,new()));
+        await f.Link.LinkToPublicationAsync(publication.Id,theme.Id,"QA",[new(54,4,12,12)],false);
+        await f.Publications.SynchronizeLegacyThemeContentAsync(publication.Id,theme.Id);
+
+        var linked=Assert.Single(await f.Link.GetLinkedAsync(theme.Id,"QA"));
+        Assert.Null(linked.Observation);
+
+        var stored=Assert.Single(await f.References.GetThemeLinksAsync(theme.Id));
+        Assert.Null(stored.Observation);
+
+        var report=await f.Reports.BuildThemesAsync(new(theme.Id,PublicationId:publication.Id));
+        var section=Assert.Single(report.Sections);
+        Assert.Null(Assert.Single(section.References).Observation);
+        Assert.Contains(section.Content!,item=>item.TextBlock?.Content==blockContent);
+
+        var reference=Assert.Single(await f.Link.GetLinkedAsync(theme.Id,"QA"));
+        await f.Link.UpdateObservationAsync(theme.Id,reference.ReferenceId,"9º "+blockContent);
+        await f.Link.SanitizePublicationObservationsAsync(publication.Id,theme.Id);
+        Assert.Null(Assert.Single(await f.Link.GetLinkedAsync(theme.Id,"QA")).Observation);
+    }
     [Theory]
     [InlineData("")] [InlineData("   ")] [InlineData("too-long")]
     public async Task RejectInvalidBlockText(string text)

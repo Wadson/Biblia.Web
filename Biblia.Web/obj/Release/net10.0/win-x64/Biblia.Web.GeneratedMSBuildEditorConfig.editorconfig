@@ -162,3 +162,7 @@ build_metadata.AdditionalFiles.CssScope = b-wtzm441571
 [D:/Projetos/Biblia.Web/Biblia.Web/Components/Shared/UpdatePanel.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcVXBkYXRlUGFuZWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-t4jylsrd2i
+
+[D:/Projetos/Biblia.Web/Biblia.Web/Components/Shared/VerseObservationEditor.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcVmVyc2VPYnNlcnZhdGlvbkVkaXRvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-9cnvigajg8
