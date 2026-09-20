@@ -249,12 +249,13 @@ else
                     </div>
                     <p class="verse-card-text">@verse.Text</p>
                     <div class="verse-observation-row">
-                        <textarea aria-label="Observação"
+                        <textarea @key="verse.ReferenceId"
+                                  aria-label="Observação"
                                   maxlength="2000"
                                   rows="2"
                                   placeholder="Observação"
-                                  value="@Drafts.GetValueOrDefault(verse.ReferenceId, verse.Observation ?? string.Empty)"
-                                  @oninput="e => Drafts[verse.ReferenceId] = e.Value?.ToString() ?? string.Empty"></textarea>
+                                  value="@ObservationDraft(verse)"
+                                  @oninput="e => SetObservationDraft(verse.ReferenceId, e.Value?.ToString())"></textarea>
                         <ConfirmButton Label="Salvar"
                                        Title="Confirmar alteração"
                                        Message="Deseja salvar a observação deste vínculo?"
@@ -301,6 +302,15 @@ else
     private IReadOnlyList<ThemeContentItem> visibleItems => sequence.Items
         .Where(item => item.ReferenceId is null || Linked.Any(verse => verse.ReferenceId == item.ReferenceId))
         .ToArray();
+
+    // Cada editor de observação pertence somente à referência exibida. O @key no
+    // textarea impede que o navegador reaproveite o valor visual de outro item
+    // quando blocos ou versículos são inseridos, removidos ou reordenados.
+    private string ObservationDraft(ThemeVerseLinkDisplay verse) =>
+        Drafts.TryGetValue(verse.ReferenceId, out var draft) ? draft : verse.Observation ?? string.Empty;
+
+    private void SetObservationDraft(long referenceId, string? value) =>
+        Drafts[referenceId] = value ?? string.Empty;
 
     protected override async Task OnParametersSetAsync()
     {
