@@ -189,7 +189,7 @@
     margin-inline: auto;
     padding: 10px 32px 14px;
     background: #fff;
-    border: 1.5px solid var(--be-border); /* borda mais destacada */
+    border: 3px solid #0b6fae;
     border-radius: var(--be-radius);
     box-shadow: 0 10px 28px rgb(10 62 82 / 78%);
 }
@@ -511,7 +511,7 @@
 .block-preview-surface[b-0t6wlis4bg] {
     display: flex;
     align-items: stretch;
-    min-block-size: 40px;
+    min-block-size: 36px;
     margin-block-start: 4px;
     border: 1.5px solid #c8cce0; /* borda mais destacada */
     border-radius: var(--be-preview-radius); /* mais arredondada */
@@ -537,7 +537,7 @@
 .block-preview-body[b-0t6wlis4bg] {
     flex: 1;
     min-inline-size: 0;
-    padding: 5px 10px;
+    padding: 5px 10px 2px;
 }
 
 .block-editor .block-preview-body .theme-text-preview[b-0t6wlis4bg] {
