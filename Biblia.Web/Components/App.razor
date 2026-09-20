@@ -19,6 +19,17 @@
     <Routes @rendermode="InteractiveServer" />
     <script src="@Assets["_framework/blazor.web.js"]"></script>
     <script>window.bibliaTema={goBack:function(){if(history.length>1){history.back();return true;}return false;},scrollToVerse:function(verse){document.getElementById('verse-'+verse)?.scrollIntoView({behavior:'smooth',block:'center'});},scrollToHelpTopic:function(topic){document.getElementById(topic)?.scrollIntoView({behavior:'smooth',block:'start'});}};</script>
+    <script>
+        (() => {
+            const key = "biblia-web-browser-session";
+            const id = sessionStorage.getItem(key) || crypto.randomUUID();
+            sessionStorage.setItem(key, id);
+            const endpoint = name => `/_biblia/${name}?id=${encodeURIComponent(id)}`;
+            const notifyOpen = () => fetch(endpoint("browser-open"), { method: "POST", keepalive: true }).catch(() => {});
+            notifyOpen();
+            window.addEventListener("pagehide", () => navigator.sendBeacon(endpoint("browser-closed"), ""));
+        })();
+    </script>
 </body>
 
 </html>

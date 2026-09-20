@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Net;
 using Biblia.Application;
 using Biblia.Application.Interfaces;
 using Biblia.Infrastructure;
@@ -25,6 +26,74 @@ builder.WebHost.UseUrls($"http://{builder.Configuration["LocalHost:Host"] ?? "12
 
 var app = builder.Build();
 await app.Services.GetRequiredService<IAppInitializationService>().InitializeAsync();
+var closeServerWhenBrowserCloses = builder.Configuration.GetValue("LocalHost:CloseServerWhenBrowserCloses", true);
+var browserSessions = new System.Collections.Concurrent.ConcurrentDictionary<string, byte>();
+var browserSessionGate = new object();
+CancellationTokenSource? pendingBrowserShutdown = null;
+
+void CancelPendingBrowserShutdown()
+{
+    lock (browserSessionGate)
+    {
+        pendingBrowserShutdown?.Cancel();
+        pendingBrowserShutdown?.Dispose();
+        pendingBrowserShutdown = null;
+    }
+}
+
+void ScheduleBrowserShutdownWhenIdle()
+{
+    if (!closeServerWhenBrowserCloses || !browserSessions.IsEmpty)
+        return;
+
+    CancellationToken token;
+    lock (browserSessionGate)
+    {
+        pendingBrowserShutdown?.Cancel();
+        pendingBrowserShutdown?.Dispose();
+        pendingBrowserShutdown = new CancellationTokenSource();
+        token = pendingBrowserShutdown.Token;
+    }
+
+    _ = Task.Run(async () =>
+    {
+        try
+        {
+            // Gives a page refresh time to register its session again.
+            await Task.Delay(TimeSpan.FromSeconds(3), token);
+            if (browserSessions.IsEmpty && !token.IsCancellationRequested)
+                app.Lifetime.StopApplication();
+        }
+        catch (OperationCanceledException) { }
+    });
+}
+
+app.MapPost("/_biblia/browser-open", (HttpContext context) =>
+{
+    if (!closeServerWhenBrowserCloses || context.Connection.RemoteIpAddress is not { } remoteAddress || !IPAddress.IsLoopback(remoteAddress))
+        return Results.NotFound();
+
+    var id = context.Request.Query["id"].ToString();
+    if (string.IsNullOrWhiteSpace(id))
+        return Results.BadRequest();
+
+    browserSessions[id] = 0;
+    CancelPendingBrowserShutdown();
+    return Results.NoContent();
+});
+
+app.MapPost("/_biblia/browser-closed", (HttpContext context) =>
+{
+    if (!closeServerWhenBrowserCloses || context.Connection.RemoteIpAddress is not { } remoteAddress || !IPAddress.IsLoopback(remoteAddress))
+        return Results.NotFound();
+
+    var id = context.Request.Query["id"].ToString();
+    if (!string.IsNullOrWhiteSpace(id))
+        browserSessions.TryRemove(id, out _);
+
+    ScheduleBrowserShutdownWhenIdle();
+    return Results.NoContent();
+});
 
 app.Use(async (context, next) =>
 {
@@ -73,7 +142,6 @@ app.MapGet("/download/theme-report", (string path, IAppPaths paths) =>
 });
 var openBrowser = builder.Configuration.GetValue("LocalHost:OpenBrowserOnStart", true)
     && !app.Environment.IsEnvironment("Testing");
-var closeServerWhenBrowserCloses = builder.Configuration.GetValue("LocalHost:CloseServerWhenBrowserCloses", true);
 var configuredBrowserExecutable = builder.Configuration["LocalHost:BrowserExecutable"];
 if (openBrowser)
 {

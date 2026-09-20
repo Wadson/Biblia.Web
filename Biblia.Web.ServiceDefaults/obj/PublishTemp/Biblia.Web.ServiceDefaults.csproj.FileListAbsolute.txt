@@ -1,0 +1,13 @@
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\bin\PublishTemp\Biblia.Web.ServiceDefaults.deps.json
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\bin\PublishTemp\Biblia.Web.ServiceDefaults.dll
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\bin\PublishTemp\Biblia.Web.ServiceDefaults.pdb
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\Biblia.Web.ServiceDefaults.csproj.AssemblyReference.cache
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\Biblia.Web.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\Biblia.Web.ServiceDefaults.AssemblyInfoInputs.cache
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\Biblia.Web.ServiceDefaults.AssemblyInfo.cs
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\Biblia.Web.ServiceDefaults.csproj.CoreCompileInputs.cache
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\Biblia.Web.ServiceDefaults.sourcelink.json
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\Biblia.Web.ServiceDefaults.dll
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\refint\Biblia.Web.ServiceDefaults.dll
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\Biblia.Web.ServiceDefaults.pdb
+D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\obj\PublishTemp\ref\Biblia.Web.ServiceDefaults.dll

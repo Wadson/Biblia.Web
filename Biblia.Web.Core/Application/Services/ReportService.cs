@@ -75,6 +75,7 @@ public sealed class ReportService(
             if (content is null) sections.Add(new(theme, ordered));
             else
             {
+                if(publication is not null){await publications!.SynchronizeLegacyThemeContentAsync(publication.Id,theme.Id,ct);await publications.ApplyAutomaticOrderingAsync(publication.Id,theme.Id,ct);}
                 var sequence = publication is null ? await content.GetAsync(theme.Id, ct) : null;
                 var byId = items.ToDictionary(x => x.SavedReferenceId);
                 var source = publication is null ? sequence!.Items.Select(x=>new PublicationContentItem(x.Id,0,theme.Id,x.SortOrder,x.ReferenceId,x.TextBlock)) : await publications!.GetContentAsync(publication.Id,theme.Id,ct);

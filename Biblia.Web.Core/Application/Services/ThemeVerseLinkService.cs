@@ -50,6 +50,7 @@ public sealed class ThemeVerseLinkService(
         if(publicationId<=0 || publications is null || await publications.GetAsync(publicationId,cancellationToken) is null) throw new InvalidOperationException("Selecione uma publicação válida.");
         var result=await LinkAsync(themeId,versionCode,selections,replaceExistingPreferredVersion,cancellationToken);
         foreach(var s in selections){var saved=await references.FindCanonicalAsync(s.BookReferenceId,s.Chapter,s.VerseStart,s.VerseEnd,cancellationToken);if(saved is not null)await publications.AddReferenceAsync(publicationId,themeId,saved.Id,cancellationToken);}
+        await publications.ApplyAutomaticOrderingAsync(publicationId,themeId,cancellationToken);
         return result;
     }
     public Task UnlinkFromPublicationAsync(long publicationId,long themeId,long referenceId,CancellationToken cancellationToken=default)=>publications is null?throw new InvalidOperationException("Serviço de publicação indisponível."):publications.RemoveReferenceAsync(publicationId,themeId,referenceId,cancellationToken);

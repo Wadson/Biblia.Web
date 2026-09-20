@@ -1,0 +1,8 @@
+  Biblia.Web.Core -> D:\Projetos\Biblia.Web\Biblia.Web.Core\bin\Debug\net10.0\Biblia.Web.Core.dll
+  Biblia.Web.ServiceDefaults -> D:\Projetos\Biblia.Web\Biblia.Web.ServiceDefaults\bin\Debug\net10.0\Biblia.Web.ServiceDefaults.dll
+  Biblia.Web -> D:\Projetos\Biblia.Web\Biblia.Web\bin\Debug\net10.0\win-x64\Biblia.Web.dll
+  Biblia.Web.Tests -> D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Biblia.Web.Tests.dll
+Execução de teste para D:\Projetos\Biblia.Web\Biblia.Web.Tests\bin\Debug\net10.0\Biblia.Web.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+
+Aprovado!  – Com falha:     0, Aprovado:     1, Ignorado:     0, Total:     1, Duração: 1 s - Biblia.Web.Tests.dll (net10.0)

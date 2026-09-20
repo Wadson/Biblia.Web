@@ -7,7 +7,7 @@
   "targets": {
     ".NETCoreApp,Version=v10.0": {},
     ".NETCoreApp,Version=v10.0/win-x64": {
-      "Biblia.Web/1.0.0": {
+      "Biblia.Web/1.0.2": {
         "dependencies": {
           "Biblia.Web.Core": "1.0.0",
           "Biblia.Web.ServiceDefaults": "1.0.0"
@@ -396,7 +396,7 @@
     }
   },
   "libraries": {
-    "Biblia.Web/1.0.0": {
+    "Biblia.Web/1.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

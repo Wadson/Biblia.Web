@@ -11,8 +11,11 @@ public interface IPublicationService
  Task AddReferenceAsync(long publicationId,long themeId,long referenceId,CancellationToken ct=default);
  Task RemoveReferenceAsync(long publicationId,long themeId,long referenceId,CancellationToken ct=default);
  Task<IReadOnlyList<PublicationContentItem>> GetContentAsync(long publicationId,long themeId,CancellationToken ct=default);
+ Task ApplyAutomaticOrderingAsync(long publicationId,long themeId,CancellationToken ct=default);
+ Task SynchronizeLegacyThemeContentAsync(long publicationId,long themeId,CancellationToken ct=default);
  Task MoveContentAsync(long publicationId,long themeId,long id,int delta,CancellationToken ct=default);
  Task<long> SaveTextBlockAsync(long publicationId,long themeId,long? id,ThemeTextBlock block,CancellationToken ct=default);
+ Task DeleteTextBlockAsync(long publicationId,long themeId,long id,CancellationToken ct=default);
  Task<PublicationThemeStatus> GetThemeStatusAsync(long publicationId,long themeId,CancellationToken ct=default);
  Task LinkCompleteThemeAsync(long publicationId,long themeId,CancellationToken ct=default);
  Task UnlinkThemeAsync(long publicationId,long themeId,CancellationToken ct=default);

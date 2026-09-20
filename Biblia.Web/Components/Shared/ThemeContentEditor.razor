@@ -1,90 +1,541 @@
 @using Biblia.Domain.Entities
 @using Biblia.Domain.Rules
 @inject Biblia.Application.Interfaces.IThemeContentService ContentService
-<div class="toolbar">
-    <button class="btn primary" disabled="@(ThemeId==0||busy)" @onclick="OpenNewBlockAsync">Adicionar bloco de texto</button>
-    <a class="btn theme-order-action" href="@($"/temas/ordenacao?themeId={ThemeId}")"><AppIcon Name="settings" /> Configurar ordenação</a>
-    @if(ThemeId>0&&sequence.Mode==ThemeOrderingMode.Canonical){<button class="btn theme-order-action" disabled="@busy" @onclick="()=>ChangeMode(ThemeOrderingMode.Manual)"><AppIcon Name="compare" /> Usar ordenação manual</button>}
-    @if(ThemeId>0&&sequence.Mode==ThemeOrderingMode.Manual){<ConfirmButton Label="Usar ordem bíblica automática" Title="Restaurar ordem bíblica" Message="Ao ativar a ordenação automática, os versículos voltarão à ordem dos livros, capítulos e versículos da Bíblia. Deseja continuar? Os blocos manterão suas posições." Disabled="@busy" OnConfirm="()=>ChangeMode(ThemeOrderingMode.Canonical)" />}
-</div>
-@if(error is not null){<div class="notice error" role="alert">@error</div>}
-@if(notice is not null){<p class="notice success" role="status">@notice</p>}
-@if(busy){<p role="status">Salvando conteúdo…</p>}
-@if(ThemeId>0){<p class="muted">@(sequence.Mode==ThemeOrderingMode.Manual?"Ordem manual: use as setas. Alterações são salvas imediatamente.":"Ordem bíblica automática. Ative o modo manual para mover itens. Os blocos mantêm seus espaços na lista; os versículos são ordenados entre eles.")</p>}
-@if(editing){
-<section class="panel block-editor" aria-label="Editor de bloco de texto">
- <h3>@(editingId is null?"Adicionar bloco de texto":"Editar bloco de texto")</h3>
- <label class="field">Texto multilinha<textarea @ref="textInput" rows="6" maxlength="10000" @bind="text" @bind:event="oninput" placeholder="Escreva a introdução, explicação ou aplicação deste tema."></textarea></label>
- <p class="muted character-count">@text.Length / 10.000 caracteres</p>
- <div class="block-format-grid">
- <label>Cor do texto<input type="color" @bind="foreground" /></label><label>Cor de fundo<input type="color" @bind="background" /></label>
- <label>Tamanho (pt)<input type="number" min="7" max="24" step="0.5" @bind="size" /></label>
- <label>Marcador<select @bind="marker"><option value="@TextMarkerStyle.None">Sem marcador</option><option value="@TextMarkerStyle.Bullet">Ponto</option><option value="@TextMarkerStyle.Numbered">Numeração</option><option value="@TextMarkerStyle.Dash">Traço</option><option value="@TextMarkerStyle.OrdinalNumbered">Numeração ordinal</option></select></label>
- <div class="block-emphasis"><label class="check-pair" for="@(editorId+"-bold")"><input id="@(editorId+"-bold")" type="checkbox" @bind="bold" /> Negrito</label><label class="check-pair" for="@(editorId+"-italic")"><input id="@(editorId+"-italic")" type="checkbox" @bind="italic" /> Itálico</label></div>
- </div><p class="muted">Numeração e numeração ordinal seguem a ordem dos blocos no tema e são atualizadas automaticamente ao mover os itens. Contraste mínimo: 4,5:1. O novo bloco entra no final da sequência; use a ordenação manual e as setas para colocá-lo entre os versículos.</p>
- @if(PreviewError() is { } validation){<p class="validation-message" role="status">@validation</p>}
- @if(PreviewBlock() is { } preview){<ThemeTextPreview Block="preview" Prefix="@PreviewPrefix(preview)" Label="Prévia do bloco" />}
- <div class="toolbar block-editor-actions"><button class="btn primary" disabled="@busy" @onclick="SaveBlock">Salvar bloco</button> <button class="btn secondary" disabled="@busy" @onclick="()=>editing=false">Cancelar</button></div>
-</section>}
-@if(VisibleItems.Count==0){<p class="muted">Nenhum versículo ou bloco de texto vinculado a esta publicação.</p>}
-else{
-<div class="linked-list" aria-label="Sequência do tema">
-@{var markedItems=ThemeBlockMarkers.Apply(VisibleItems,x=>x.TextBlock);}
-@for(var index=0;index<markedItems.Count;index++){
- var marked=markedItems[index];var item=marked.Item;var first=index==0;var last=index==markedItems.Count-1;
- <article class="card" @key="item.Id">
- @if(item.TextBlock is { } block){
- <div class="toolbar"><span class="badge">Bloco de texto</span>@if(sequence.Mode==ThemeOrderingMode.Manual){<button class="btn secondary" aria-label="Mover item para cima" title="Mover item para cima" disabled="@(first||busy)" @onclick="()=>Move(item.Id,-1)"><AppIcon Name="up" Size="sm" /></button><button class="btn secondary" aria-label="Mover item para baixo" title="Mover item para baixo" disabled="@(last||busy)" @onclick="()=>Move(item.Id,1)"><AppIcon Name="down" Size="sm" /></button>}</div>
- <div class="block-preview-row"><div class="block-preview"><ThemeTextPreview Block="block" Prefix="@marked.Prefix" /></div><div class="block-inline-actions"><button class="btn secondary block-icon-button" title="Editar bloco" aria-label="Editar bloco" disabled="@busy" @onclick="()=>Edit(item)"><AppIcon Name="edit" /></button><ConfirmButton Label="" Icon="delete" Title="Excluir bloco de texto" Message="Deseja excluir este bloco? Os demais itens serão preservados." Danger="true" CssClass="btn danger block-icon-button" Disabled="@busy" OnConfirm="()=>Delete(item.Id)" /></div></div>
- }else if(Linked.FirstOrDefault(x=>x.ReferenceId==item.ReferenceId) is { } verse){
- <div class="verse-card-header"><div class="verse-card-reference"><strong>@verse.FormattedReference</strong><span class="badge">@verse.VersionCode</span>@if(sequence.Mode==ThemeOrderingMode.Manual){<button class="btn secondary verse-move-button" aria-label="Mover item para cima" title="Mover item para cima" disabled="@(first||busy)" @onclick="()=>Move(item.Id,-1)"><AppIcon Name="up" Size="sm" /></button><button class="btn secondary verse-move-button" aria-label="Mover item para baixo" title="Mover item para baixo" disabled="@(last||busy)" @onclick="()=>Move(item.Id,1)"><AppIcon Name="down" Size="sm" /></button>}</div><div class="verse-card-actions"><span class="badge">Versículo</span><ConfirmButton Label="Desvincular" Title="Confirmar desvinculação" Message="A referência guardada será preservada." Summary="@verse.FormattedReference" Danger="true" CssClass="btn danger verse-unlink-button" Disabled="@busy" OnConfirm="()=>Unlink(verse)" /></div></div>
- <p class="verse-card-text">@verse.Text</p><div class="verse-observation-row"><textarea aria-label="Observação" maxlength="2000" rows="2" placeholder="Observação" value="@Drafts.GetValueOrDefault(verse.ReferenceId,verse.Observation??string.Empty)" @oninput="e=>Drafts[verse.ReferenceId]=e.Value?.ToString()??string.Empty"></textarea><ConfirmButton Label="Salvar" Title="Confirmar alteração" Message="Deseja salvar a observação deste vínculo?" Summary="@verse.FormattedReference" CssClass="btn primary" Disabled="@busy" OnConfirm="()=>SaveObservation.InvokeAsync(verse)" /></div>
- }
- </article>
-}
-</div>
-}
-@code{
- [Parameter] public long ThemeId{get;set;}
- [Parameter] public IReadOnlyList<ThemeVerseLinkDisplay> Linked{get;set;}=[];
- [Parameter] public Dictionary<long,string> Drafts{get;set;}=[];
- [Parameter] public EventCallback<ThemeVerseLinkDisplay> SaveObservation{get;set;}
- [Parameter] public EventCallback<ThemeVerseLinkDisplay> RemoveLink{get;set;}
- readonly string editorId="block-"+Guid.NewGuid().ToString("N");
- ThemeContentSequence sequence=new(ThemeOrderingMode.Canonical,[]);bool busy,editing,focusEditor;long? editingId;string text="",foreground="#172033",background="#EAF2FF";double size=11;bool bold,italic;TextMarkerStyle marker;string? error,notice;long previousTheme;ElementReference textInput;
- IReadOnlyList<ThemeContentItem> VisibleItems=>sequence.Items.Where(item=>item.ReferenceId is null||Linked.Any(verse=>verse.ReferenceId==item.ReferenceId)).ToArray();
- protected override async Task OnAfterRenderAsync(bool firstRender){if(focusEditor&&editing){focusEditor=false;await textInput.FocusAsync();}}
- public Task OpenNewBlockAsync(){if(ThemeId==0||busy)return Task.CompletedTask;NewBlock();StateHasChanged();return Task.CompletedTask;}
- protected override async Task OnParametersSetAsync(){if(previousTheme!=ThemeId){editing=false;previousTheme=ThemeId;}await Reload();}
- async Task Reload(){try{sequence=ThemeId==0?new(ThemeOrderingMode.Canonical,[]):await ContentService.GetAsync(ThemeId);}catch(Exception ex){error=ex.Message;}}
- void NewBlock(){editingId=null;text="";foreground="#172033";background="#EAF2FF";size=11;bold=italic=false;marker=TextMarkerStyle.None;error=notice=null;editing=focusEditor=true;}
- void Edit(ThemeContentItem item){var b=item.TextBlock!;editingId=item.Id;text=b.Content;foreground=b.Style.TextColorHex;background=b.Style.BackgroundColorHex;size=b.Style.FontSize;marker=b.Style.MarkerStyle;bold=b.Style.IsBold;italic=b.Style.IsItalic;error=notice=null;editing=focusEditor=true;}
- ThemeTextBlock? PreviewBlock(){try{return new ThemeTextBlock(text,new(foreground,background,size,marker,bold,italic)).Validate();}catch(ArgumentException){return null;}}
- Task ChangeMode(ThemeOrderingMode mode)=>Run(async()=>{await ContentService.SetModeAsync(ThemeId,mode,true);notice=mode==ThemeOrderingMode.Manual?"Ordenação manual ativada. Use as setas para intercalar blocos e versículos.":"Ordem bíblica aplicada. As posições dos blocos foram preservadas.";});
- async Task Run(Func<Task> action){if(busy)return;busy=true;error=null;try{await action();await Reload();}catch(Exception ex){error=ex.Message;}finally{busy=false;}}
- Task SaveBlock()=>Run(async()=>{await ContentService.SaveBlockAsync(ThemeId,editingId,new(text,new(foreground,background,size,marker,bold,italic)));editing=false;notice="Bloco de texto salvo. Ele faz parte da sequência do tema e será incluído no PDF.";});
- Task Delete(long id)=>Run(()=>ContentService.DeleteBlockAsync(ThemeId,id));
- Task Move(long id,int direction)=>Run(async()=>
- {
-    var visibleIndex=VisibleItems.ToList().FindIndex(item=>item.Id==id);
-    var adjacentIndex=visibleIndex+direction;
-    if(visibleIndex<0||adjacentIndex<0||adjacentIndex>=VisibleItems.Count)
-        throw new InvalidOperationException("O item já está no limite da lista.");
+@inject Biblia.Application.Interfaces.IPublicationService PublicationService
 
-    var currentIndex=sequence.Items.ToList().FindIndex(item=>item.Id==id);
-    var adjacentId=VisibleItems[adjacentIndex].Id;
-    var adjacentFullIndex=sequence.Items.ToList().FindIndex(item=>item.Id==adjacentId);
-    var steps=Math.Abs(adjacentFullIndex-currentIndex);
-    for(var step=0;step<steps;step++)
-        await ContentService.MoveAsync(ThemeId,id,direction);
- });
- Task Unlink(ThemeVerseLinkDisplay verse)=>Run(()=>RemoveLink.InvokeAsync(verse));
- string? PreviewError(){try{new ThemeTextBlock(text,new(foreground,background,size,marker,bold,italic)).Validate();return null;}catch(ArgumentException ex){return ex.Message;}}
- string PreviewPrefix(ThemeTextBlock block){
-    var items=sequence.Items.ToList();
-    var index=items.FindIndex(x=>x.Id==editingId);
-    if(index>=0)items[index]=items[index] with{TextBlock=block};
-    else {index=items.Count;items.Add(new(0,ThemeId,index,null,block));}
-    return ThemeBlockMarkers.Apply(items,x=>x.TextBlock)[index].Prefix;
- }
+<div class="toolbar">
+    <button class="btn primary"
+            disabled="@(ThemeId == 0 || busy)"
+            @onclick="OpenNewBlockAsync">
+        Adicionar bloco de texto
+    </button>
+
+    <a class="btn theme-order-action"
+       href="@($"/temas/ordenacao?themeId={ThemeId}")">
+        <AppIcon Name="settings" /> Configurar ordenação
+    </a>
+
+    @if (ThemeId > 0 && sequence.Mode == ThemeOrderingMode.Canonical)
+    {
+        <button class="btn theme-order-action"
+                disabled="@busy"
+                @onclick="() => ChangeMode(ThemeOrderingMode.Manual)">
+            <AppIcon Name="compare" /> Usar ordenação manual
+        </button>
+    }
+
+    @if (ThemeId > 0 && sequence.Mode == ThemeOrderingMode.Manual)
+    {
+        <ConfirmButton Label="Usar ordem bíblica automática"
+                       Title="Restaurar ordem bíblica"
+                       Message="Ao ativar a ordenação automática, os versículos voltarão à ordem dos livros, capítulos e versículos da Bíblia. Deseja continuar? Os blocos manterão suas posições."
+                       Disabled="@busy"
+                       OnConfirm="() => ChangeMode(ThemeOrderingMode.Canonical)" />
+    }
+</div>
+
+@if (error is not null)
+{
+    <div class="notice error" role="alert">@error</div>
+}
+
+@if (notice is not null)
+{
+    <p class="notice success" role="status">@notice</p>
+}
+
+@if (busy)
+{
+    <p role="status">Salvando conteúdo…</p>
+}
+
+@if (ThemeId > 0)
+{
+    <p class="muted">
+        @(sequence.Mode == ThemeOrderingMode.Manual
+            ? "Ordem manual: use as setas. Alterações são salvas imediatamente."
+            : "Ordem bíblica automática. Ative o modo manual para mover itens. Os blocos mantêm seus espaços na lista; os versículos são ordenados entre eles.")
+    </p>
+}
+
+@if (editing)
+{
+    <section class="panel block-editor" aria-label="Editor de bloco de texto">
+        <header class="block-editor-heading">
+            <h3>@(editingId is null ? "Novo bloco de texto" : "Editar bloco de texto")</h3>
+            <span class="block-info-inline"
+                  tabindex="0"
+                  role="img"
+                  aria-label="Informações sobre a ordenação e os marcadores. Numeração e numeração ordinal seguem a ordem dos blocos no tema e são atualizadas automaticamente ao mover os itens. O novo bloco entra no final da sequência; use a ordenação manual e as setas para colocá-lo entre os versículos.">
+                i
+            </span>
+        </header>
+
+        <div class="block-textarea-wrap">
+            <textarea class="block-textarea"
+                      @ref="textInput"
+                      rows="4"
+                      maxlength="10000"
+                      @bind="text"
+                      @bind:event="oninput"
+                      @bind:after="RecomputePreview"
+                      placeholder="Escreva a introdução, explicação ou aplicação deste tema."
+                      aria-label="Texto do bloco"></textarea>
+            <span class="block-edit-indicator" aria-hidden="true">✎</span>
+            <p class="character-count" aria-live="polite">@text.Length / 10.000 caracteres</p>
+        </div>
+
+        <div class="block-format-grid">
+            <label>
+                <span>Cor do texto</span>
+                <input type="color" @bind="foreground" @bind:after="RecomputePreview" class="input-color" aria-label="Cor do texto" />
+            </label>
+            <label>
+                <span>Cor de fundo</span>
+                <input type="color" @bind="background" @bind:after="RecomputePreview" class="input-color" aria-label="Cor de fundo" />
+            </label>
+            <label>
+                <span>Tamanho (pt)</span>
+                <input type="number" min="7" max="24" step="0.5"
+                       @bind="size" @bind:after="NormalizeSize"
+                       class="input-size" aria-label="Tamanho da fonte em pontos" />
+            </label>
+            <label>
+                <span>Marcador</span>
+                <select @bind="marker" @bind:after="RecomputePreview" class="select-marker" aria-label="Estilo do marcador">
+                    <option value="@TextMarkerStyle.None">Sem marcador</option>
+                    <option value="@TextMarkerStyle.Bullet">Ponto</option>
+                    <option value="@TextMarkerStyle.Numbered">Numeração</option>
+                    <option value="@TextMarkerStyle.Dash">Traço</option>
+                    <option value="@TextMarkerStyle.OrdinalNumbered">Numeração ordinal</option>
+                </select>
+            </label>
+            <div class="block-emphasis" role="group" aria-label="Ênfase do texto">
+                <label class="check-pair" for="@(editorId + "-bold")">
+                    <input id="@(editorId + "-bold")" type="checkbox" @bind="bold" @bind:after="RecomputePreview" />
+                    <span>Negrito</span>
+                </label>
+                <label class="check-pair" for="@(editorId + "-italic")">
+                    <input id="@(editorId + "-italic")" type="checkbox" @bind="italic" @bind:after="RecomputePreview" />
+                    <span>Itálico</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="block-editor-actions">
+            <button class="btn primary" disabled="@busy" @onclick="SaveBlock">
+                Salvar bloco
+            </button>
+            <button class="btn block-cancel-button" disabled="@busy" @onclick="CancelEdit">
+                Cancelar
+            </button>
+        </div>
+
+        @if (previewValidation is { } validation)
+        {
+            <p class="validation-message" role="status">@validation</p>
+        }
+        else if (previewBlock is { } preview)
+        {
+            <div class="block-preview-surface">
+                <span class="block-preview-label">Pré-visualização</span>
+                <div class="block-preview-body">
+                    <ThemeTextPreview Block="preview"
+                                      Prefix="@PreviewPrefix(preview)"
+                                      Label="Prévia do bloco" />
+                </div>
+            </div>
+        }
+    </section>
+}
+
+@if (visibleItems.Count == 0)
+{
+    <p class="muted">Nenhum versículo ou bloco de texto vinculado a esta publicação.</p>
+}
+else
+{
+    <div class="linked-list" aria-label="Sequência do tema">
+        @{
+            var markedItems = ThemeBlockMarkers.Apply(visibleItems, x => x.TextBlock);
+        }
+        @for (var index = 0; index < markedItems.Count; index++)
+        {
+            var marked = markedItems[index];
+            var item = marked.Item;
+            var isFirst = index == 0;
+            var isLast = index == markedItems.Count - 1;
+
+            <article class="card linked-content-item" @key="item.Id">
+                @if (item.TextBlock is { } block)
+                {
+                    <div class="toolbar">
+                        <span class="badge">Bloco de texto</span>
+                        @if (sequence.Mode == ThemeOrderingMode.Manual)
+                        {
+                            <button class="btn secondary item-move-button"
+                                    aria-label="Mover item para cima"
+                                    title="Mover item para cima"
+                                    disabled="@(isFirst || busy)"
+                                    @onclick="() => Move(item.Id, -1)">
+                                <AppIcon Name="up" Size="sm" />
+                            </button>
+                            <button class="btn secondary item-move-button"
+                                    aria-label="Mover item para baixo"
+                                    title="Mover item para baixo"
+                                    disabled="@(isLast || busy)"
+                                    @onclick="() => Move(item.Id, 1)">
+                                <AppIcon Name="down" Size="sm" />
+                            </button>
+                        }
+                    </div>
+                    <div class="block-preview-row">
+                        <div class="block-preview">
+                            <ThemeTextPreview Block="block" Prefix="@marked.Prefix" />
+                        </div>
+                        <div class="block-inline-actions">
+                            <button class="btn secondary block-icon-button"
+                                    title="Editar bloco"
+                                    aria-label="Editar bloco"
+                                    disabled="@busy"
+                                    @onclick="() => Edit(item)">
+                                <AppIcon Name="edit" />
+                            </button>
+                            <ConfirmButton Label=""
+                                           Icon="delete"
+                                           Title="Excluir bloco de texto"
+                                           Message="Deseja excluir este bloco? Os demais itens serão preservados."
+                                           Danger="true"
+                                           CssClass="btn danger block-icon-button"
+                                           Disabled="@busy"
+                                           OnConfirm="() => Delete(item.Id)" />
+                        </div>
+                    </div>
+                }
+                else if (Linked.FirstOrDefault(x => x.ReferenceId == item.ReferenceId) is { } verse)
+                {
+                    <div class="verse-card-header">
+                        <div class="verse-card-reference">
+                            <strong>@verse.FormattedReference</strong>
+                            <span class="badge">@verse.VersionCode</span>
+                            @if (sequence.Mode == ThemeOrderingMode.Manual)
+                            {
+                                <button class="btn secondary verse-move-button item-move-button"
+                                        aria-label="Mover item para cima"
+                                        title="Mover item para cima"
+                                        disabled="@(isFirst || busy)"
+                                        @onclick="() => Move(item.Id, -1)">
+                                    <AppIcon Name="up" Size="sm" />
+                                </button>
+                                <button class="btn secondary verse-move-button item-move-button"
+                                        aria-label="Mover item para baixo"
+                                        title="Mover item para baixo"
+                                        disabled="@(isLast || busy)"
+                                        @onclick="() => Move(item.Id, 1)">
+                                    <AppIcon Name="down" Size="sm" />
+                                </button>
+                            }
+                        </div>
+                        <div class="verse-card-actions">
+                            <span class="badge">Versículo</span>
+                            <ConfirmButton Label="Desvincular"
+                                           Title="Confirmar desvinculação"
+                                           Message="A referência guardada será preservada."
+                                           Summary="@verse.FormattedReference"
+                                           Danger="true"
+                                           CssClass="btn danger verse-unlink-button"
+                                           Disabled="@busy"
+                                           OnConfirm="() => Unlink(verse)" />
+                        </div>
+                    </div>
+                    <p class="verse-card-text">@verse.Text</p>
+                    <div class="verse-observation-row">
+                        <textarea aria-label="Observação"
+                                  maxlength="2000"
+                                  rows="2"
+                                  placeholder="Observação"
+                                  value="@Drafts.GetValueOrDefault(verse.ReferenceId, verse.Observation ?? string.Empty)"
+                                  @oninput="e => Drafts[verse.ReferenceId] = e.Value?.ToString() ?? string.Empty"></textarea>
+                        <ConfirmButton Label="Salvar"
+                                       Title="Confirmar alteração"
+                                       Message="Deseja salvar a observação deste vínculo?"
+                                       Summary="@verse.FormattedReference"
+                                       CssClass="btn primary"
+                                       Disabled="@busy"
+                                       OnConfirm="() => SaveObservation.InvokeAsync(verse)" />
+                    </div>
+                }
+            </article>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public long ThemeId { get; set; }
+    [Parameter] public long PublicationId { get; set; }
+    [Parameter] public IReadOnlyList<ThemeVerseLinkDisplay> Linked { get; set; } = Array.Empty<ThemeVerseLinkDisplay>();
+    [Parameter] public Dictionary<long, string> Drafts { get; set; } = new();
+    [Parameter] public EventCallback<ThemeVerseLinkDisplay> SaveObservation { get; set; }
+    [Parameter] public EventCallback<ThemeVerseLinkDisplay> RemoveLink { get; set; }
+
+    private readonly string editorId = "block-" + Guid.NewGuid().ToString("N");
+
+    private ThemeContentSequence sequence = new(ThemeOrderingMode.Canonical, Array.Empty<ThemeContentItem>());
+    private bool busy, editing, focusEditor;
+    private long? editingId;
+    private string text = string.Empty;
+    private string foreground = "#172033";
+    private string background = "#EAF2FF";
+    private double size = 11;
+    private bool bold, italic;
+    private TextMarkerStyle marker;
+    private string? error, notice;
+    private long previousTheme;
+    private ElementReference textInput;
+
+    // Preview unificado: calculado uma vez por render via OnParametersSet.
+    private ThemeTextBlock? previewBlock;
+    private string? previewValidation;
+    private string? previewPrefix;
+
+    private IReadOnlyList<ThemeContentItem> visibleItems => sequence.Items
+        .Where(item => item.ReferenceId is null || Linked.Any(verse => verse.ReferenceId == item.ReferenceId))
+        .ToArray();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (previousTheme != ThemeId)
+        {
+            editing = false;
+            previousTheme = ThemeId;
+        }
+
+        await Reload();
+        RecomputePreview();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (focusEditor && editing)
+        {
+            focusEditor = false;
+            await textInput.FocusAsync();
+        }
+    }
+
+    public Task OpenNewBlockAsync()
+    {
+        if (ThemeId == 0 || busy) return Task.CompletedTask;
+        NewBlock();
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private async Task Reload()
+    {
+        try
+        {
+            var themeSequence = ThemeId == 0
+                ? new ThemeContentSequence(ThemeOrderingMode.Canonical, Array.Empty<ThemeContentItem>())
+                : await ContentService.GetAsync(ThemeId);
+
+            if (PublicationId > 0)
+            {
+                await PublicationService.SynchronizeLegacyThemeContentAsync(PublicationId, ThemeId);
+                await PublicationService.ApplyAutomaticOrderingAsync(PublicationId, ThemeId);
+            }
+
+            sequence = PublicationId == 0
+                ? themeSequence
+                : new(themeSequence.Mode,
+                    (await PublicationService.GetContentAsync(PublicationId, ThemeId))
+                        .Select(x => new ThemeContentItem(x.Id, ThemeId, x.SortOrder, x.ReferenceId, x.TextBlock))
+                        .ToArray());
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+    }
+
+    private void NewBlock()
+    {
+        editingId = null;
+        text = string.Empty;
+        foreground = "#172033";
+        background = "#EAF2FF";
+        size = 11;
+        bold = italic = false;
+        marker = TextMarkerStyle.None;
+        error = notice = null;
+        editing = focusEditor = true;
+        RecomputePreview();
+    }
+
+    private void Edit(ThemeContentItem item)
+    {
+        var b = item.TextBlock!;
+        editingId = item.Id;
+        text = b.Content;
+        foreground = b.Style.TextColorHex;
+        background = b.Style.BackgroundColorHex;
+        size = Math.Clamp(b.Style.FontSize, 7, 24);
+        marker = b.Style.MarkerStyle;
+        bold = b.Style.IsBold;
+        italic = b.Style.IsItalic;
+        error = notice = null;
+        editing = focusEditor = true;
+        RecomputePreview();
+    }
+
+    private void CancelEdit()
+    {
+        editing = false;
+        previewBlock = null;
+        previewValidation = null;
+        previewPrefix = null;
+    }
+
+    private void NormalizeSize()
+    {
+        size = Math.Clamp(size, 7, 24);
+        RecomputePreview();
+    }
+
+    /// <summary>
+    /// Reconstrói o preview e o prefixo de marcador em uma única passagem.
+    /// Chamado em OnParametersSet e nas mutações de estado do editor.
+    /// </summary>
+    private void RecomputePreview()
+    {
+        try
+        {
+            var previewSize = Math.Clamp(size, 7, 24);
+            previewBlock = new ThemeTextBlock(
+                text,
+                new(foreground, background, previewSize, marker, bold, italic)).Validate();
+            previewValidation = null;
+            previewPrefix = PreviewPrefix(previewBlock);
+        }
+        catch (ArgumentException ex)
+        {
+            previewBlock = null;
+            previewPrefix = null;
+            previewValidation = ex.Message;
+        }
+    }
+
+    /// <summary>
+    /// Projeta o bloco atual na sequência (edição ou inserção) e devolve o prefixo
+    /// de marcador que o item receberia na renderização final.
+    /// </summary>
+    private string PreviewPrefix(ThemeTextBlock block)
+    {
+        var items = sequence.Items.ToList();
+
+        var index = editingId is { } id
+            ? items.FindIndex(x => x.Id == id)
+            : -1;
+
+        if (index >= 0)
+        {
+            items[index] = items[index] with { TextBlock = block };
+        }
+        else
+        {
+            var nextOrder = items.Count == 0 ? 0 : items.Max(x => x.SortOrder) + 1;
+            items.Add(new ThemeContentItem(
+                Id: 0,
+                ThemeId: ThemeId,
+                SortOrder: nextOrder,
+                ReferenceId: null,
+                TextBlock: block));
+            index = items.Count - 1;
+        }
+
+        var marked = ThemeBlockMarkers.Apply(items, x => x.TextBlock);
+        return index >= 0 && index < marked.Count ? marked[index].Prefix : string.Empty;
+    }
+
+    private Task ChangeMode(ThemeOrderingMode mode) => Run(async () =>
+    {
+        await ContentService.SetModeAsync(ThemeId, mode, true);
+        if (PublicationId > 0)
+        {
+            await PublicationService.ApplyAutomaticOrderingAsync(PublicationId, ThemeId);
+        }
+        notice = mode == ThemeOrderingMode.Manual
+            ? "Ordenação manual ativada. Use as setas para intercalar blocos e versículos."
+            : "Ordem bíblica aplicada. As posições dos blocos foram preservadas.";
+    });
+
+    private async Task Run(Func<Task> action)
+    {
+        if (busy) return;
+        busy = true;
+        error = null;
+        try
+        {
+            await action();
+            await Reload();
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+        finally
+        {
+            busy = false;
+        }
+    }
+
+    private Task SaveBlock() => Run(async () =>
+    {
+        var block = new ThemeTextBlock(text, new(foreground, background, size, marker, bold, italic));
+        if (PublicationId > 0)
+        {
+            await PublicationService.SaveTextBlockAsync(PublicationId, ThemeId, editingId, block);
+        }
+        else
+        {
+            await ContentService.SaveBlockAsync(ThemeId, editingId, block);
+        }
+        editing = false;
+        previewBlock = null;
+        previewValidation = null;
+        previewPrefix = null;
+        notice = "Bloco de texto salvo. Ele faz parte da sequência do tema e será incluído no PDF.";
+    });
+
+    private Task Delete(long id) => Run(() => PublicationId > 0
+        ? PublicationService.DeleteTextBlockAsync(PublicationId, ThemeId, id)
+        : ContentService.DeleteBlockAsync(ThemeId, id));
+
+    private Task Move(long id, int direction) => Run(async () =>
+    {
+        if (PublicationId > 0)
+        {
+            await PublicationService.MoveContentAsync(PublicationId, ThemeId, id, direction);
+            return;
+        }
+
+        var visible = visibleItems;
+        var visibleIndex = visible.ToList().FindIndex(item => item.Id == id);
+        var adjacentIndex = visibleIndex + direction;
+        if (visibleIndex < 0 || adjacentIndex < 0 || adjacentIndex >= visible.Count)
+        {
+            throw new InvalidOperationException("O item já está no limite da lista.");
+        }
+
+        var currentIndex = sequence.Items.ToList().FindIndex(item => item.Id == id);
+        var adjacentId = visible[adjacentIndex].Id;
+        var adjacentFullIndex = sequence.Items.ToList().FindIndex(item => item.Id == adjacentId);
+        var steps = Math.Abs(adjacentFullIndex - currentIndex);
+        for (var step = 0; step < steps; step++)
+        {
+            await ContentService.MoveAsync(ThemeId, id, direction);
+        }
+    });
+
+    private Task Unlink(ThemeVerseLinkDisplay verse) => Run(() => RemoveLink.InvokeAsync(verse));
 }

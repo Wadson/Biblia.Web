@@ -60,6 +60,33 @@ public sealed class IntegratedFeaturesTests
         await f.Content.SetModeAsync(theme.Id,ThemeOrderingMode.Canonical,true);restored=await f.Content.GetAsync(theme.Id);
         Assert.Equal(block.Id,restored.Items[blockIndex].Id);Assert.Equal(new[]{1,66},(await f.Reports.BuildThemesAsync(new(theme.Id))).Sections[0].References.Select(x=>x.BookReferenceId));
     }
+    [Fact]
+    public async Task ManualPublicationOrderIsPersistedAndUsedByThePdfReport()
+    {
+        await using var f=await Fixture.Create();var theme=await f.Theme();var now=DateTimeOffset.UtcNow;
+        var publication=await f.Publications.SaveAsync(new Publication(0,"Publicação de ordem manual",null,null,null,null,null,null,false,false,null,now,now));
+        await f.Link.LinkToPublicationAsync(publication.Id,theme.Id,"QA",[new(66,1,1,1),new(1,1,1,1)],false);
+        await f.Content.SetModeAsync(theme.Id,ThemeOrderingMode.Manual);
+        await f.Content.SaveBlockAsync(theme.Id,null,new("Introdução",new()));var blockId=(await f.Content.GetAsync(theme.Id)).Items.Last().Id;
+        await f.Content.MoveAsync(theme.Id,blockId,-1);await f.Content.MoveAsync(theme.Id,blockId,-1);
+        await f.Publications.SynchronizeLegacyThemeContentAsync(publication.Id,theme.Id);
+        var persisted=await f.Publications.GetContentAsync(publication.Id,theme.Id);
+        Assert.Null(persisted[0].ReferenceId);Assert.Equal("Introdução",persisted[0].TextBlock!.Content);
+        var report=await f.Reports.BuildThemesAsync(new(theme.Id,PublicationId:publication.Id));
+        Assert.Collection(report.Sections.Single().Content!,item=>Assert.Equal("Introdução",item.TextBlock!.Content),item=>Assert.Equal(1,item.Reference!.BookReferenceId),item=>Assert.Equal(66,item.Reference!.BookReferenceId));
+    }
+    [Fact]
+    public async Task AutomaticPublicationOrderIsPersistedAndUsedByThePdfReport()
+    {
+        await using var f=await Fixture.Create();var theme=await f.Theme();var now=DateTimeOffset.UtcNow;
+        var publication=await f.Publications.SaveAsync(new Publication(0,"Publicação automática",null,null,null,null,null,null,false,false,null,now,now));
+        await f.Link.LinkToPublicationAsync(publication.Id,theme.Id,"QA",[new(66,1,1,1),new(1,1,1,1)],false);
+        var persisted=await f.Publications.GetContentAsync(publication.Id,theme.Id);
+        var genesis=await f.References.FindCanonicalAsync(1,1,1,1);
+        Assert.Equal(genesis!.Id,persisted[0].ReferenceId);
+        var report=await f.Reports.BuildThemesAsync(new(theme.Id,PublicationId:publication.Id));
+        Assert.Equal(new[]{1,66},report.Sections.Single().Content!.Select(x=>x.Reference!.BookReferenceId));
+    }
     [Theory]
     [InlineData("")] [InlineData("   ")] [InlineData("too-long")]
     public async Task RejectInvalidBlockText(string text)
@@ -272,7 +299,7 @@ public sealed class IntegratedFeaturesTests
     private sealed class Fixture:IAsyncDisposable
     {
         public string Root{get;}=Path.Combine(Path.GetTempPath(),"Biblia.Integrated",Guid.NewGuid().ToString("N"));public string Source=>Path.Combine(CanonicalThemeFlowTests.FindBibles(),"ACF.sqlite");
-        public ServiceProvider Services=null!;public IClock Clock=>Services.GetRequiredService<IClock>();public AppDatabase Db=>Services.GetRequiredService<AppDatabase>();public IThemeRepository Themes=>Services.GetRequiredService<IThemeRepository>();public IBibleVersionCatalogRepository Catalog=>Services.GetRequiredService<IBibleVersionCatalogRepository>();public ISavedReferenceRepository References=>Services.GetRequiredService<ISavedReferenceRepository>();public IThemeVerseLinkService Link=>Services.GetRequiredService<IThemeVerseLinkService>();public IThemeContentService Content=>Services.GetRequiredService<IThemeContentService>();public IReportService Reports=>Services.GetRequiredService<IReportService>();public IPdfService Pdf=>Services.GetRequiredService<IPdfService>();public IBibleRepository Bible=>Services.GetRequiredService<IBibleRepository>();public IBibleVersionImportService Import=>Services.GetRequiredService<IBibleVersionImportService>();public IBibleVersionManager Manager=>Services.GetRequiredService<IBibleVersionManager>();public IBackupService Backup=>Services.GetRequiredService<IBackupService>();
+        public ServiceProvider Services=null!;public IClock Clock=>Services.GetRequiredService<IClock>();public AppDatabase Db=>Services.GetRequiredService<AppDatabase>();public IThemeRepository Themes=>Services.GetRequiredService<IThemeRepository>();public IBibleVersionCatalogRepository Catalog=>Services.GetRequiredService<IBibleVersionCatalogRepository>();public ISavedReferenceRepository References=>Services.GetRequiredService<ISavedReferenceRepository>();public IThemeVerseLinkService Link=>Services.GetRequiredService<IThemeVerseLinkService>();public IThemeContentService Content=>Services.GetRequiredService<IThemeContentService>();public IPublicationService Publications=>Services.GetRequiredService<IPublicationService>();public IReportService Reports=>Services.GetRequiredService<IReportService>();public IPdfService Pdf=>Services.GetRequiredService<IPdfService>();public IBibleRepository Bible=>Services.GetRequiredService<IBibleRepository>();public IBibleVersionImportService Import=>Services.GetRequiredService<IBibleVersionImportService>();public IBibleVersionManager Manager=>Services.GetRequiredService<IBibleVersionManager>();public IBackupService Backup=>Services.GetRequiredService<IBackupService>();
         public static async Task<Fixture> Create(){var f=new Fixture();Directory.CreateDirectory(f.Root);var services=new ServiceCollection();services.AddLogging();services.AddApplication().AddWebInfrastructure();services.AddSingleton<IAppPaths>(new Paths(f.Root));services.AddSingleton<IBibleVersionManifestProvider>(new ManifestProvider());f.Services=services.BuildServiceProvider();await f.Db.InitializeAsync();var result=await f.Import.ImportAsync(f.Source,"QA","Bíblia QA");Assert.True(result.Succeeded);await f.Manager.SetActiveVersionAsync("QA");return f;}
         public Task<Theme> Theme()=>Themes.CreateAsync("Tema de teste","#1769AA",null);
         public async ValueTask DisposeAsync(){await Services.DisposeAsync();if(Directory.Exists(Root))Directory.Delete(Root,true);}
