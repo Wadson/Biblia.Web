@@ -156,5 +156,5 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\refint\Biblia.Web.
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.pdb
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\Biblia.Web.genruntimeconfig.cache
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\ref\Biblia.Web.dll
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-xy4xx9jyxv-xy4xx9jyxv.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-xy4xx9jyxv-xy4xx9jyxv.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-abtt8ni81l-abtt8ni81l.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-abtt8ni81l-abtt8ni81l.gz

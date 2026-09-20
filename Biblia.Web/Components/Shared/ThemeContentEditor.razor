@@ -92,7 +92,7 @@
             </label>
             <label>
                 <span>Cor de fundo</span>
-                <input type="color" @bind="background" @bind:after="RecomputePreview" class="input-color" aria-label="Cor de fundo" />
+                <input type="color" @bind="background" @bind:after="AdjustForegroundForBackground" class="input-color" aria-label="Cor de fundo" />
             </label>
             <label>
                 <span>Tamanho (pt)</span>
@@ -120,15 +120,14 @@
                     <span>Itálico</span>
                 </label>
             </div>
-        </div>
-
-        <div class="block-editor-actions">
-            <button class="btn primary" disabled="@busy" @onclick="SaveBlock">
-                Salvar bloco
-            </button>
-            <button class="btn block-cancel-button" disabled="@busy" @onclick="CancelEdit">
-                Cancelar
-            </button>
+            <div class="block-editor-actions">
+                <button class="btn primary" disabled="@busy" @onclick="SaveBlock">
+                    Salvar bloco
+                </button>
+                <button class="btn block-cancel-button" disabled="@busy" @onclick="CancelEdit">
+                    Cancelar
+                </button>
+            </div>
         </div>
 
         @if (previewValidation is { } validation)
@@ -141,7 +140,7 @@
                 <span class="block-preview-label">Pré-visualização</span>
                 <div class="block-preview-body">
                     <ThemeTextPreview Block="preview"
-                                      Prefix="@PreviewPrefix(preview)"
+                                      Prefix="@(previewPrefix ?? string.Empty)"
                                       Label="Prévia do bloco" />
                 </div>
             </div>
@@ -291,6 +290,7 @@ else
     private TextMarkerStyle marker;
     private string? error, notice;
     private long previousTheme;
+    private ThemeTextStyle? lastSavedStyle;
     private ElementReference textInput;
 
     // Preview unificado: calculado uma vez por render via OnParametersSet.
@@ -308,6 +308,7 @@ else
         {
             editing = false;
             previousTheme = ThemeId;
+            lastSavedStyle = null;
         }
 
         await Reload();
@@ -362,11 +363,13 @@ else
     {
         editingId = null;
         text = string.Empty;
-        foreground = "#172033";
-        background = "#EAF2FF";
-        size = 11;
-        bold = italic = false;
-        marker = TextMarkerStyle.None;
+        var style = lastSavedStyle ?? new ThemeTextStyle();
+        foreground = style.TextColorHex;
+        background = style.BackgroundColorHex;
+        size = style.FontSize;
+        bold = style.IsBold;
+        italic = style.IsItalic;
+        marker = style.MarkerStyle;
         error = notice = null;
         editing = focusEditor = true;
         RecomputePreview();
@@ -399,6 +402,26 @@ else
     private void NormalizeSize()
     {
         size = Math.Clamp(size, 7, 24);
+        RecomputePreview();
+    }
+
+    private void AdjustForegroundForBackground()
+    {
+        if (background.Length == 7 && background[0] == '#'
+            && int.TryParse(background.AsSpan(1, 2), System.Globalization.NumberStyles.HexNumber, null, out var red)
+            && int.TryParse(background.AsSpan(3, 2), System.Globalization.NumberStyles.HexNumber, null, out var green)
+            && int.TryParse(background.AsSpan(5, 2), System.Globalization.NumberStyles.HexNumber, null, out var blue))
+        {
+            static double Linearize(int channel)
+            {
+                var value = channel / 255d;
+                return value <= .04045 ? value / 12.92 : Math.Pow((value + .055) / 1.055, 2.4);
+            }
+
+            var luminance = .2126 * Linearize(red) + .7152 * Linearize(green) + .0722 * Linearize(blue);
+            foreground = luminance > .179 ? "#000000" : "#FFFFFF";
+        }
+
         RecomputePreview();
     }
 
@@ -500,6 +523,7 @@ else
         {
             await ContentService.SaveBlockAsync(ThemeId, editingId, block);
         }
+        lastSavedStyle = block.Style;
         editing = false;
         previewBlock = null;
         previewValidation = null;
