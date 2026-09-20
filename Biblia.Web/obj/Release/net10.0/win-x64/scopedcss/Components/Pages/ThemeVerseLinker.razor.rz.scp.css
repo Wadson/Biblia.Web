@@ -4,3 +4,8 @@
 
 /* Barra fixa de ações: destaque visual sem competir com os botões. */
 .primary-action-bar[b-ps86aemdw6]{border:2px solid #287fb4;background:linear-gradient(110deg,#e8f6fd,#d7edf8);box-shadow:0 7px 18px #0c4a6c33,0 0 0 3px #ffffffb8}
+
+.step-title-line[b-ps86aemdw6]{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.step-title-line h2[b-ps86aemdw6],.step-title-line p[b-ps86aemdw6]{margin:0}.step-title-line h2[b-ps86aemdw6]{display:inline-flex;align-items:center;gap:7px}.step-title-line h2 .app-icon[b-ps86aemdw6]{width:20px;height:20px;color:#1769aa}.step-title-line p[b-ps86aemdw6]{font-size:13px}
+
+/* Identidade visual do bloco de seleção, sem alterar a estrutura do componente. */
+.selection-step .step-heading[b-ps86aemdw6]{position:relative;padding-right:88px}.selection-step .step-heading[b-ps86aemdw6]::after{position:absolute;top:0;right:0;width:68px;height:68px;background:url('/appicon.png') center/contain no-repeat;content:""}.selection-step .step-title-line h2 .app-icon[b-ps86aemdw6]{display:none}@media(max-width:700px){.selection-step .step-heading[b-ps86aemdw6]{padding-right:58px}.selection-step .step-heading[b-ps86aemdw6]::after{width:46px;height:46px}}

@@ -4,3 +4,8 @@
 
 /* Barra fixa de ações: destaque visual sem competir com os botões. */
 .primary-action-bar{border:2px solid #287fb4;background:linear-gradient(110deg,#e8f6fd,#d7edf8);box-shadow:0 7px 18px #0c4a6c33,0 0 0 3px #ffffffb8}
+
+.step-title-line{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.step-title-line h2,.step-title-line p{margin:0}.step-title-line h2{display:inline-flex;align-items:center;gap:7px}.step-title-line h2 .app-icon{width:20px;height:20px;color:#1769aa}.step-title-line p{font-size:13px}
+
+/* Identidade visual do bloco de seleção, sem alterar a estrutura do componente. */
+.selection-step .step-heading{position:relative;padding-right:88px}.selection-step .step-heading::after{position:absolute;top:0;right:0;width:68px;height:68px;background:url('/appicon.png') center/contain no-repeat;content:""}.selection-step .step-title-line h2 .app-icon{display:none}@media(max-width:700px){.selection-step .step-heading{padding-right:58px}.selection-step .step-heading::after{width:46px;height:46px}}
