@@ -165,13 +165,32 @@ public sealed class SavedReferenceRepository : SqliteRepositoryBase, ISavedRefer
                     update.Parameters.AddWithValue("$version", preferredVersionId); update.Parameters.AddWithValue("$now", _clock.UtcNow.ToString("O")); update.Parameters.AddWithValue("$id", referenceId);
                     await update.ExecuteNonQueryAsync(cancellationToken);
                 }
+                var observation = CleanObservation(selection.Observation);
                 await using var link = connection.CreateCommand(); link.Transaction = transaction;
                 link.CommandText = "INSERT OR IGNORE INTO ReferenceTheme(ReferenceId,ThemeId,Observation,CreatedAt,UpdatedAt,BibleVersionId) VALUES($reference,$theme,$observation,$now,$now,$version);";
                 link.Parameters.AddWithValue("$version", preferredVersionId);
                 link.Parameters.AddWithValue("$reference", referenceId); link.Parameters.AddWithValue("$theme", themeId);
-                AddNullable(link.Parameters, "$observation", CleanObservation(selection.Observation));
+                AddNullable(link.Parameters, "$observation", observation);
                 link.Parameters.AddWithValue("$now", _clock.UtcNow.ToString("O"));
-                if (await link.ExecuteNonQueryAsync(cancellationToken) == 1) linked++; else alreadyLinked++;
+                if (await link.ExecuteNonQueryAsync(cancellationToken) == 1) linked++;
+                else
+                {
+                    alreadyLinked++;
+                    // A referência pode já pertencer ao tema (inclusive por outra
+                    // publicação). Nesse caso, a observação informada nesta nova
+                    // vinculação precisa ser persistida, e não silenciosamente ignorada.
+                    if (observation is not null)
+                    {
+                        await using var updateObservation = connection.CreateCommand();
+                        updateObservation.Transaction = transaction;
+                        updateObservation.CommandText = "UPDATE ReferenceTheme SET Observation=$observation,UpdatedAt=$updated WHERE ReferenceId=$reference AND ThemeId=$theme;";
+                        AddNullable(updateObservation.Parameters, "$observation", observation);
+                        updateObservation.Parameters.AddWithValue("$updated", _clock.UtcNow.ToString("O"));
+                        updateObservation.Parameters.AddWithValue("$reference", referenceId);
+                        updateObservation.Parameters.AddWithValue("$theme", themeId);
+                        await updateObservation.ExecuteNonQueryAsync(cancellationToken);
+                    }
+                }
             }
             await transaction.CommitAsync(cancellationToken);
             return new(selections.Count, created, reused, linked, alreadyLinked);

@@ -87,6 +87,27 @@ public sealed class IntegratedFeaturesTests
         var report=await f.Reports.BuildThemesAsync(new(theme.Id,PublicationId:publication.Id));
         Assert.Equal(new[]{1,66},report.Sections.Single().Content!.Select(x=>x.Reference!.BookReferenceId));
     }
+    [Fact]
+    public async Task PublicationLinkPersistsObservationForNewAndPreviouslyLinkedVerse()
+    {
+        await using var f=await Fixture.Create();var theme=await f.Theme();var otherTheme=await f.Themes.CreateAsync("Tema independente","#1769AA",null);var now=DateTimeOffset.UtcNow;
+        var publication=await f.Publications.SaveAsync(new Publication(0,"Publicação com observação",null,null,null,null,null,null,false,false,null,now,now));
+
+        await f.Link.LinkToPublicationAsync(publication.Id,theme.Id,"QA",[new(1,1,1,1,"Nota inicial")],false);
+        var first=(await f.Link.GetLinkedAsync(theme.Id,"QA")).Single();
+        Assert.Equal("Nota inicial",first.Observation);
+
+        await f.Link.LinkToPublicationAsync(publication.Id,theme.Id,"QA",[new(1,1,1,1,"Nota atualizada")],false);
+        var linked=(await f.Link.GetLinkedAsync(theme.Id,"QA")).Single();
+        Assert.Equal("Nota atualizada",linked.Observation);
+
+        var report=await f.Reports.BuildThemesAsync(new(theme.Id,PublicationId:publication.Id));
+        Assert.Equal("Nota atualizada",report.Sections.Single().References.Single().Observation);
+
+        await f.Link.LinkAsync(otherTheme.Id,"QA",[new(1,1,1,1,"Nota do outro tema")],false);
+        Assert.Equal("Nota atualizada",(await f.Link.GetLinkedAsync(theme.Id,"QA")).Single().Observation);
+        Assert.Equal("Nota do outro tema",(await f.Link.GetLinkedAsync(otherTheme.Id,"QA")).Single().Observation);
+    }
     [Theory]
     [InlineData("")] [InlineData("   ")] [InlineData("too-long")]
     public async Task RejectInvalidBlockText(string text)

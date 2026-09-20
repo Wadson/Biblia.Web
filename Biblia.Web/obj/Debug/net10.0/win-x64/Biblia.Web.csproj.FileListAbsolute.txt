@@ -156,6 +156,5 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\staticwebassets.buil
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\staticwebassets.development.json
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\staticwebassets.build.endpoints.json
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\swae.build.ex.cache
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\staticwebassets.upToDateCheck.txt
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\i3ph4seoj4-{0}-bxjjq3yxnm-bxjjq3yxnm.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\ncdu3ooug3-{0}-bxjjq3yxnm-bxjjq3yxnm.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\i3ph4seoj4-{0}-9kbxifnope-9kbxifnope.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\ncdu3ooug3-{0}-9kbxifnope-9kbxifnope.gz
