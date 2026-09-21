@@ -10,14 +10,14 @@
         "projectUniqueName": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ApiService\\Biblia.Web.ApiService.csproj",
         "projectName": "Biblia.Web.ApiService",
         "projectPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ApiService\\Biblia.Web.ApiService.csproj",
-        "packagesPath": "C:\\Users\\WRSoft\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\iConnect\\.nuget\\packages\\",
         "outputPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ApiService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\WRSoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iConnect\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -505,14 +505,14 @@
         "projectUniqueName": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ServiceDefaults\\Biblia.Web.ServiceDefaults.csproj",
         "projectName": "Biblia.Web.ServiceDefaults",
         "projectPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ServiceDefaults\\Biblia.Web.ServiceDefaults.csproj",
-        "packagesPath": "C:\\Users\\WRSoft\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\iConnect\\.nuget\\packages\\",
         "outputPath": "D:\\Projetos\\Biblia.Web\\Biblia.Web.ServiceDefaults\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\WRSoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iConnect\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
