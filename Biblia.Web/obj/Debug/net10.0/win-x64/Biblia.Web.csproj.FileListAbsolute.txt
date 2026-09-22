@@ -154,9 +154,10 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\staticwebassets.deve
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\staticwebassets.build.endpoints.json
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\swae.build.ex.cache
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\scopedcss\Components\Shared\VerseObservationEditor.razor.rz.scp.css
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\i3ph4seoj4-{0}-3t9h4m0asn-3t9h4m0asn.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\ncdu3ooug3-{0}-3t9h4m0asn-3t9h4m0asn.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\3sm1rmrewi-{0}-mnfvyxvd78-mnfvyxvd78.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\htlrqt0ndl-{0}-dl6qcx3oa3-dl6qcx3oa3.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\jyermyiwi6-{0}-dig5sredvc-dig5sredvc.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\3sm1rmrewi-{0}-xal3h1snyk-xal3h1snyk.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\htlrqt0ndl-{0}-mrcjpe4bqk-mrcjpe4bqk.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\jyermyiwi6-{0}-jb11qntn9g-jb11qntn9g.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\scopedcss\Components\Pages\BibleSearch.razor.rz.scp.css
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\i3ph4seoj4-{0}-ncv63k2lni-ncv63k2lni.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\ncdu3ooug3-{0}-ncv63k2lni-ncv63k2lni.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\staticwebassets.upToDateCheck.txt

@@ -34,7 +34,7 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
         Assert.Equal("BíbliaTema", pdf.Information.Author);
         Assert.Equal("Relatório de temas e versículos", pdf.Information.Subject);
         var text = Text(pdf);
-        Assert.Contains("1 Tema • 1 Referência", text);
+        Assert.Contains("Resumo: 1 Tema | 1 Referência", text);
         Assert.Contains("ação, fé, bênção e paz — “graça”", text);
         Assert.Contains("Observação do vínculo: coração e união.", text);
         Assert.Contains(Now.ToLocalTime().ToString("dd/MM/yyyy 'às' HH:mm", CultureInfo.GetCultureInfo("pt-BR")), text);
@@ -58,7 +58,7 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
     {
         using var pdf = PdfDocument.Open(await Generate(Report(new ThemeVerseReportSection(Theme(1, color), []))));
         Assert.Contains("Nenhum versículo vinculado a este tema.", Text(pdf));
-        Assert.Contains("1 Tema • 0 Referências", Text(pdf));
+        Assert.Contains("Resumo: 1 Tema | 0 Referências", Text(pdf));
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
         using var pdf = PdfDocument.Open(await Generate(report));
         var text = Text(pdf);
         Assert.True(pdf.NumberOfPages > 1);
-        Assert.Contains("3 Temas • 30 Referências", text);
+        Assert.Contains("Resumo: 3 Temas | 30 Referências", text);
         Assert.DoesNotContain("999", text);
         for (var i = 1; i <= 30; i++)
         {
@@ -82,7 +82,7 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
             Assert.Contains($"Página {page.Number} de {pdf.NumberOfPages}", page.Text);
             Assert.InRange(page.Width, 595, 596);
             Assert.InRange(page.Height, 841, 843);
-            Assert.All(page.Letters, l => { Assert.InRange(l.BoundingBox.Left, 39, 557); Assert.InRange(l.BoundingBox.Bottom, 12, 803); });
+            Assert.All(page.Letters, l => { Assert.InRange(l.BoundingBox.Left, 39, 557); Assert.InRange(l.BoundingBox.Bottom, 12, 812); });
             // TOC mentions are links, not body headers requiring a card on that page.
             foreach (var section in sections.Where(s => !page.Text.Contains("SUMÁRIO") && page.Text.Contains(s.Theme.Name)))
                 Assert.Contains(section.References, r => page.Text.Contains(r.FormattedReference));
@@ -106,7 +106,7 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
         foreach (var page in pdf.GetPages())
         {
             Assert.Contains("Santidade", page.Text);
-            Assert.All(page.Letters, l => Assert.InRange(l.BoundingBox.Bottom, 12, 803));
+            Assert.All(page.Letters, l => Assert.InRange(l.BoundingBox.Bottom, 12, 812));
         }
     }
 
@@ -157,7 +157,7 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
         var output = Environment.GetEnvironmentVariable("BIBLIATEMA_PDF_QA_DIR");
         if (output is not null) { Directory.CreateDirectory(output); File.Copy(path, Path.Combine(output, "relatorio-qa.pdf"), true); }
         using var pdf = PdfDocument.Open(path);
-        Assert.Contains("3 Temas • 30 Referências", Text(pdf));
+        Assert.Contains("Resumo: 3 Temas | 30 Referências", Text(pdf));
     }
 
     [Fact]
@@ -176,7 +176,7 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
             for(var i=1;i<=95;i++)Assert.Single(Regex.Matches(text,$"LinhaQA{i:D3}"));
             foreach(var page in pdf.GetPages()){
                 Assert.Contains($"Página {page.Number} de {pdf.NumberOfPages}",page.Text);
-                Assert.All(page.Letters,l=>{Assert.InRange(l.BoundingBox.Left,39,557);Assert.InRange(l.BoundingBox.Bottom,12,803);});
+                Assert.All(page.Letters,l=>{Assert.InRange(l.BoundingBox.Left,39,557);Assert.InRange(l.BoundingBox.Bottom,12,812);});
                 var words=page.GetWords().Where(w=>w.Text.StartsWith("LinhaQA")).ToArray();
                 if(words.Length>1)Assert.All(words,w=>Assert.InRange(Math.Abs(w.BoundingBox.Left-words[0].BoundingBox.Left),0,.1));
             }

@@ -1,0 +1,1 @@
+.search-font-controls{display:inline-flex;gap:4px;margin-left:auto}.search-font-controls .btn{min-width:35px;padding-inline:7px;font-weight:800}.vertical-search-results .card p{font-size:var(--search-verse-font-size,17px);line-height:1.55}@media(max-width:560px){.search-font-controls{margin-left:0}}

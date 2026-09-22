@@ -7,7 +7,7 @@ namespace Biblia.Infrastructure.AppDatabase;
 
 public sealed class AppDatabase : IAppDatabase
 {
-    public const int CurrentSchemaVersion = 9;
+    public const int CurrentSchemaVersion = 10;
     private readonly ILogger<AppDatabase> _logger;
     private readonly SemaphoreSlim _initializationGate = new(1, 1);
     private bool _initialized;
@@ -116,6 +116,7 @@ public sealed class AppDatabase : IAppDatabase
         if (version < 7) await ApplyMigration7Async(connection, cancellationToken);
         if (version < 8) await ApplyMigration8Async(connection, cancellationToken);
         if (version < 9) await ApplyMigration9Async(connection, cancellationToken);
+        if (version < 10) await ApplyMigration10Async(connection, cancellationToken);
         _initialized = true;
         _logger.LogInformation("Banco do aplicativo inicializado no schema {SchemaVersion}.", CurrentSchemaVersion);
     }
@@ -216,8 +217,34 @@ public sealed class AppDatabase : IAppDatabase
     private static async Task ApplyMigration9Async(SqliteConnection connection,CancellationToken ct)
     {await using var tx=connection.BeginTransaction();await using var cmd=connection.CreateCommand();cmd.Transaction=tx;cmd.CommandText="""CREATE TABLE IF NOT EXISTS PublicationTheme(PublicationId INTEGER NOT NULL REFERENCES Publication(Id) ON DELETE CASCADE,ThemeId INTEGER NOT NULL REFERENCES Theme(Id) ON DELETE CASCADE,CreatedAt TEXT NOT NULL,PRIMARY KEY(PublicationId,ThemeId));INSERT OR IGNORE INTO PublicationTheme(PublicationId,ThemeId,CreatedAt) SELECT PublicationId,ThemeId,MIN(CreatedAt) FROM PublicationContent GROUP BY PublicationId,ThemeId;INSERT INTO SchemaMigration(Version,AppliedAt) VALUES(9,$now);""";cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O"));await cmd.ExecuteNonQueryAsync(ct);await tx.CommitAsync(ct);}
 
-    private static async Task<bool> ColumnExistsAsync(SqliteConnection connection,string column,CancellationToken ct)
-    {await using var cmd=connection.CreateCommand();cmd.CommandText="PRAGMA table_info(Publication);";await using var reader=await cmd.ExecuteReaderAsync(ct);while(await reader.ReadAsync(ct))if(string.Equals(reader.GetString(1),column,StringComparison.OrdinalIgnoreCase))return true;return false;}
+    private static async Task ApplyMigration10Async(SqliteConnection connection,CancellationToken ct)
+    {
+        await using var tx=connection.BeginTransaction();
+        if(!await ColumnExistsAsync(connection,"PublicationContent","Observation",ct))
+        { await using var cmd=connection.CreateCommand(); cmd.Transaction=tx; cmd.CommandText="ALTER TABLE PublicationContent ADD COLUMN Observation TEXT NULL;"; await cmd.ExecuteNonQueryAsync(ct); }
+        if(!await ColumnExistsAsync(connection,"PublicationContent","BibleVersionId",ct))
+        { await using var cmd=connection.CreateCommand(); cmd.Transaction=tx; cmd.CommandText="ALTER TABLE PublicationContent ADD COLUMN BibleVersionId INTEGER NULL REFERENCES BibleVersionCatalog(Id) ON DELETE SET NULL;"; await cmd.ExecuteNonQueryAsync(ct); }
+        if(!await ColumnExistsAsync(connection,"PublicationTheme","OrderingMode",ct))
+        { await using var cmd=connection.CreateCommand(); cmd.Transaction=tx; cmd.CommandText="ALTER TABLE PublicationTheme ADD COLUMN OrderingMode INTEGER NOT NULL DEFAULT 0 CHECK(OrderingMode IN(0,1));"; await cmd.ExecuteNonQueryAsync(ct); }
+        await using(var cmd=connection.CreateCommand())
+        { cmd.Transaction=tx; cmd.CommandText="""
+            UPDATE PublicationContent
+            SET Observation=(SELECT Observation FROM ReferenceTheme rt WHERE rt.ThemeId=PublicationContent.ThemeId AND rt.ReferenceId=PublicationContent.ReferenceId),
+                BibleVersionId=(SELECT BibleVersionId FROM ReferenceTheme rt WHERE rt.ThemeId=PublicationContent.ThemeId AND rt.ReferenceId=PublicationContent.ReferenceId)
+            WHERE ReferenceId IS NOT NULL AND (Observation IS NULL OR BibleVersionId IS NULL);
+            CREATE INDEX IF NOT EXISTS IX_PublicationContent_Context ON PublicationContent(PublicationId,ThemeId);
+            CREATE INDEX IF NOT EXISTS IX_PublicationContent_Context_Order ON PublicationContent(PublicationId,ThemeId,SortOrder);
+            CREATE INDEX IF NOT EXISTS IX_PublicationContent_Context_Reference ON PublicationContent(PublicationId,ThemeId,ReferenceId);
+            INSERT OR IGNORE INTO PublicationTheme(PublicationId,ThemeId,CreatedAt)
+              SELECT PublicationId,ThemeId,MIN(CreatedAt) FROM PublicationContent GROUP BY PublicationId,ThemeId;
+            INSERT INTO SchemaMigration(Version,AppliedAt) VALUES(10,$now);
+            """; cmd.Parameters.AddWithValue("$now",DateTimeOffset.UtcNow.ToString("O")); await cmd.ExecuteNonQueryAsync(ct); }
+        await tx.CommitAsync(ct);
+    }
+
+    private static Task<bool> ColumnExistsAsync(SqliteConnection connection,string column,CancellationToken ct) => ColumnExistsAsync(connection,"Publication",column,ct);
+    private static async Task<bool> ColumnExistsAsync(SqliteConnection connection,string table,string column,CancellationToken ct)
+    {await using var cmd=connection.CreateCommand();cmd.CommandText=$"PRAGMA table_info({table});";await using var reader=await cmd.ExecuteReaderAsync(ct);while(await reader.ReadAsync(ct))if(string.Equals(reader.GetString(1),column,StringComparison.OrdinalIgnoreCase))return true;return false;}
 
     private static Task EnsureMigrationTableAsync(SqliteConnection connection, CancellationToken cancellationToken) =>
         ExecuteNonQueryAsync(connection, """

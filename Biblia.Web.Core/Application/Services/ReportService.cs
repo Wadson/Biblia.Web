@@ -31,8 +31,12 @@ public sealed class ReportService(
         var catalog = (await versions.GetAllAsync(ct)).ToDictionary(v => v.Id);
         var booksByVersion = new Dictionary<long, Dictionary<int, string>>();
 
+        var publicationThemeIds=publication is null?null:(await publications!.GetLinkedThemesAsync(publication.Id,ct)).Select(x=>x.Id).ToHashSet();
+        if(request.ThemeId is long requestedThemeId && publicationThemeIds is not null && !publicationThemeIds.Contains(requestedThemeId))
+            throw new InvalidOperationException("O tema selecionado não está vinculado à publicação informada.");
         var selected = (await themes.GetAllAsync(ct))
             .Where(x => request.ThemeId is null || x.Id == request.ThemeId)
+            .Where(x => publicationThemeIds is null || publicationThemeIds.Contains(x.Id))
             .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase).ToArray();
         if (request.ThemeId is not null && selected.Length == 0) throw new KeyNotFoundException("Tema não encontrado.");
 
@@ -41,11 +45,12 @@ public sealed class ReportService(
         {
             ct.ThrowIfCancellationRequested();
             var items = new List<ThemeVerseReportReference>();
-            var links = await references.GetThemeLinksAsync(theme.Id, ct);
-            var allowed=publication is null?null:(await publications!.GetContentAsync(publication.Id,theme.Id,ct)).Where(x=>x.ReferenceId is not null).Select(x=>x.ReferenceId!.Value).ToHashSet();
+            var publicationContent=publication is null?[]:(await publications!.GetContentAsync(publication.Id,theme.Id,ct)).Where(x=>x.ReferenceId is not null).ToArray();
+            var links = publication is null
+                ? (await references.GetThemeLinksAsync(theme.Id, ct)).Select(x=>(ReferenceId:x.ReferenceId,x.Observation,x.BibleVersionId)).ToArray()
+                : publicationContent.Select(x=>(ReferenceId:x.ReferenceId!.Value,x.Observation,x.BibleVersionId)).ToArray();
             foreach (var link in links.DistinctBy(x => x.ReferenceId))
             {
-                if(allowed is not null&&!allowed.Contains(link.ReferenceId))continue;
                 ct.ThrowIfCancellationRequested();
                 var saved = await references.GetAsync(link.ReferenceId, ct)
                     ?? throw new InvalidOperationException($"Referência vinculada ao tema '{theme.Name}' não encontrada.");
@@ -69,19 +74,16 @@ public sealed class ReportService(
                     saved.BookReferenceId, saved.Chapter, saved.VerseStart, saved.VerseEnd, version.Code));
             }
             var ordered = items.OrderBy(x => BibleCanonicalOrder.Key(x)).ToArray();
-            // A publication owns its composition. Do not emit a global theme merely because it
-            // exists; it must have at least one reference explicitly included in this publication.
-            if (publication is not null && items.Count == 0) continue;
             if (content is null) sections.Add(new(theme, ordered));
             else
             {
-                if(publication is not null){await publications!.SynchronizeLegacyThemeContentAsync(publication.Id,theme.Id,ct);await publications.ApplyAutomaticOrderingAsync(publication.Id,theme.Id,ct);}
                 var sequence = publication is null ? await content.GetAsync(theme.Id, ct) : null;
                 var byId = items.ToDictionary(x => x.SavedReferenceId);
                 var source = publication is null ? sequence!.Items.Select(x=>new PublicationContentItem(x.Id,0,theme.Id,x.SortOrder,x.ReferenceId,x.TextBlock)) : await publications!.GetContentAsync(publication.Id,theme.Id,ct);
                 var mixed = source.Where(x=>x.ReferenceId is null||byId.ContainsKey(x.ReferenceId.Value)).Select(x => x.ReferenceId is long id
                     ? new ThemeReportContentItem(byId[id], null) : new ThemeReportContentItem(null,x.TextBlock)).ToArray();
-                sections.Add(new(theme,mixed.Where(x=>x.Reference is not null).Select(x=>x.Reference!).ToArray(),mixed,publication is null?sequence!.Mode:ThemeOrderingMode.Manual));
+                var mode=publication is null?sequence!.Mode:await publications!.GetOrderingModeAsync(publication.Id,theme.Id,ct);
+                sections.Add(new(theme,mixed.Where(x=>x.Reference is not null).Select(x=>x.Reference!).ToArray(),mixed,mode));
             }
         }
         var branding=publications is null?null:await publications.GetBrandingAsync(ct);

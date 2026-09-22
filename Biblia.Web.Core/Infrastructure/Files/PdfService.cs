@@ -59,16 +59,17 @@ public sealed class PdfService : IPdfService
 // and safe splitting of oversized content, which cannot be split inside a MigraDoc table row.
 internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken ct, PdfReportTypographyOptions typography) : IDisposable
 {
-    private const double TopMargin = 40, InnerMargin = 58, OuterMargin = 40, Bottom = 795;
+    private const double TopMargin = 18, InnerMargin = 58, OuterMargin = 40, Bottom = 795;
     private const double Width = 497.28, TocNumberWidth = 36, TocEntryGap = 4, TocHeadingHeight = 35;
     private double Margin => BindingMargin(document.PageCount);
     private static double BindingMargin(int pageNumber) => pageNumber % 2 == 1 ? InnerMargin : OuterMargin;
     private const double Padding = 13, Gap = 10, LineHeight = 14, Radius = 9;
+    private const double BlockVerticalPadding = 6;
     private const string Blue = "#2458CB", Ink = "#172033", Muted = "#65758B";
     private const string Background = "#FFFFFF", Border = "#DCE4EE", CardBorder = "#B8CFF0";
     private const string Amber = "#EC9B0B", NoteBackground = "#FFFAE8", NoteInk = "#85450C";
     private static readonly CultureInfo Portuguese = CultureInfo.GetCultureInfo("pt-BR");
-    private readonly XFont body = Font(9.5), bold = Font(9.5, true), small = Font(8);
+    private readonly XFont body = Font(9.5), bold = Font(9.5, true), small = Font(8), footerFont = Font(9);
     private readonly XFont tocReference = Font(10, true), heading = Font(16, true);
     private readonly XFont reference = Font(typography.PdfReferenceFontSize, true);
     private readonly XFont verse = Font(typography.PdfVerseTextFontSize), verseBold = Font(typography.PdfVerseTextFontSize, true);
@@ -121,7 +122,7 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
         graphics.Dispose();
         graphics = null!;
         CompleteTableOfContents();
-        Footer(report.GeneratedAt.ToLocalTime().Year);
+        Footer(report);
     }
 
     private static string CreateThemeBookmarkName(ThemeVerseReportSection section, int index) =>
@@ -222,12 +223,7 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
         var organizationColor=SafeHeaderColor(options.OrganizationTextColorHex,"#C7DCFF");
         var subtitleColor=SafeHeaderColor(options.SubtitleTextColorHex,"#FFFFFF");
         var detailColor=SafeHeaderColor(options.HeaderDetailTextColorHex,"#C7DCFF");
-        var labels = Array.Empty<string>();
-        var values = new[] { "GERADO EM: " + report.GeneratedAt.ToLocalTime().ToString("dd/MM/yyyy 'às' HH:mm", Portuguese),
-            "RESUMO DO FILTRO: " + Count(report.Sections.Count, "Tema", "Temas") + " • " + Count(report.Sections.Sum(s => s.References.Count), "Referência", "Referências") };
-        var columnWidth = (Width - 36) / 2;
-        var lines = values.Select(v => Wrap(v, bold, columnWidth - 12)).ToArray();
-        var height = 111 + lines.Max(l => l.Count) * LineHeight;
+        var height = 111;
         Box(Margin, y, Width, height, headerBackground, headerBackground);
         var logoOffset=0d;
         if(options.Logo is {Length:>0})try
@@ -242,16 +238,10 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
             graphics.DrawImage(image,Margin+18,y+10,logoWidth,logoHeight);logoOffset=logoWidth+9;
         }catch{ /* Invalid branding must never block PDF generation. */ }
         if(!string.IsNullOrWhiteSpace(options.OrganizationName))Text(options.OrganizationName, Font(options.OrganizationFontSize, true), organizationColor, Margin + 18+logoOffset, y + 15);
-        graphics.DrawLine(new XPen(Color("#6288DF"), .5), Margin + 18, y + 40, Margin + Width - 18, y + 40);
         var style=(options.TitleBold?XFontStyleEx.Bold:XFontStyleEx.Regular)|(options.TitleItalic?XFontStyleEx.Italic:XFontStyleEx.Regular);
         Text(report.Title, new XFont("Open Sans",options.TitleFontSize,style,new XPdfFontOptions(PdfFontEncoding.Unicode)), titleColor, Margin + 18, y + 48);
         if(!string.IsNullOrWhiteSpace(options.Subtitle))Text(options.Subtitle,Font(options.SubtitleFontSize),subtitleColor,Margin+18,y+76);
         if(!string.IsNullOrWhiteSpace(options.HeaderText))Text(options.HeaderText,Font(options.HeaderDetailFontSize),detailColor,Margin+18+logoOffset,y+28);
-        for (var i = 0; i < values.Length; i++)
-        {
-            var x = Margin + 18 + i * columnWidth;
-            DrawLines(lines[i], x, y + 98, "#FFFFFF");
-        }
         y += height + 20;
     }
 
@@ -293,7 +283,7 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
         var spacing=style.FontSize*1.5;
         var indent=prefix.Length==0?0:graphics.MeasureString(prefix+" ",font).Width+3;
         var lines=block.Lines().SelectMany(line=>Wrap(line,font,Width-2*Padding-indent)).ToList();
-        var fullHeight=lines.Count*spacing+2*Padding;
+        var fullHeight=lines.Count*spacing+2*BlockVerticalPadding;
         if(y+fullHeight>Bottom && fullHeight<=Bottom-TopMargin-ThemeHeight(section))
         {
             NewPage();
@@ -303,13 +293,13 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
         while(offset<lines.Count)
         {
             ct.ThrowIfCancellationRequested();
-            var capacity=(int)Math.Floor((Bottom-y-2*Padding)/spacing);
-            if(capacity<1){NewPage();ThemeHeader(section,true,2*Padding+spacing);continue;}
+            var capacity=(int)Math.Floor((Bottom-y-2*BlockVerticalPadding)/spacing);
+            if(capacity<1){NewPage();ThemeHeader(section,true,2*BlockVerticalPadding+spacing);continue;}
             var count=Math.Min(capacity,lines.Count-offset);
-            var height=count*spacing+2*Padding;
+            var height=count*spacing+2*BlockVerticalPadding;
             Box(Margin,y,Width,height,style.BackgroundColorHex,CardBorder);
-            if(offset==0 && prefix.Length>0) Text(prefix,font,style.TextColorHex,Margin+Padding,y+Padding);
-            DrawLines(lines.Skip(offset).Take(count),Margin+Padding+indent,y+Padding,style.TextColorHex,spacing);
+            if(offset==0 && prefix.Length>0) Text(prefix,font,style.TextColorHex,Margin+Padding,y+BlockVerticalPadding);
+            DrawLines(lines.Skip(offset).Take(count),Margin+Padding+indent,y+BlockVerticalPadding,style.TextColorHex,spacing);
             y+=height+Gap;offset+=count;
         }
     }
@@ -321,8 +311,7 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
         var note = string.IsNullOrWhiteSpace(item.Observation) ? new List<Line>() : Wrap(item.Observation, observation, Width - 4 * Padding);
         var titleHeight = title.Count * ReferenceLine + 7;
         var fullHeight = 2 * Padding + titleHeight + passage.Count * VerseLine + (note.Count > 0 ? NoteOverhead + note.Count * ObservationLine : 0);
-        var freshCapacity = Bottom - TopMargin - ThemeHeight(section);
-        if (y + fullHeight > Bottom && (fullHeight <= freshCapacity || Bottom - y < titleHeight + 2 * Padding + 3 * Math.Max(VerseLine, ObservationLine)))
+        if (y + fullHeight > Bottom && Bottom - y < titleHeight + 2 * Padding + Math.Max(VerseLine, ObservationLine))
         {
             NewPage();
             ThemeHeader(section, true);
@@ -343,8 +332,6 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
                 throw new InvalidOperationException("Cabeçalho da referência excede a área útil do relatório.");
             var height = 2 * Padding + titleHeight + (continued ? LineHeight : 0) + takePassage * VerseLine + (takeNote > 0 ? NoteOverhead + takeNote * ObservationLine : 0);
             Box(Margin, top, Width, height, "#FFFFFF", CardBorder);
-            if (note.Count > 0)
-                graphics.DrawLine(new XPen(Color(Amber), 3), Margin + 1.5, top + 5, Margin + 1.5, top + height - 5);
             y += Padding;
             DrawLines(title, Margin + Padding, y, Blue, ReferenceLine);
             y += titleHeight;
@@ -439,16 +426,17 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
     }
     private static string SafeHeaderColor(string? hex,string fallback) => hex is not null && Regex.IsMatch(hex,"^#[0-9a-fA-F]{6}$") ? hex : fallback;
 
-    private void Footer(int year)
+    private void Footer(ThemeVerseReport report)
     {
+        var generatedAt=report.GeneratedAt.ToLocalTime().ToString("dd/MM/yyyy 'às' HH:mm", Portuguese);
+        var summary=$"Resumo: {Count(report.Sections.Count, "Tema", "Temas")} | {Count(report.Sections.Sum(s => s.References.Count), "Referência", "Referências")}";
         for (var i = 0; i < document.PageCount; i++)
         {
             ct.ThrowIfCancellationRequested();
             using var footer = XGraphics.FromPdfPage(document.Pages[i], XGraphicsPdfPageOptions.Append);
             var left = BindingMargin(i + 1);
-            footer.DrawString($"BíbliaTema • {year}", small, Brush(Muted), new XPoint(left, 817), XStringFormats.TopLeft);
-            footer.DrawString($"Página {i + 1} de {document.PageCount}", small, Brush(Muted),
-                new XRect(left, 817, Width, 12), XStringFormats.TopRight);
+            footer.DrawString($"BíbliaTema • {report.GeneratedAt.ToLocalTime().Year}  |  {generatedAt}  |  {summary}  |  Página {i + 1} de {document.PageCount}",
+                footerFont, Brush(Muted), new XRect(left, 817, Width, 12), XStringFormats.TopLeft);
         }
     }
 

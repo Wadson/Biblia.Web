@@ -9,3 +9,11 @@
 
 /* Identidade visual do bloco de seleção, sem alterar a estrutura do componente. */
 .selection-step .step-heading[b-ps86aemdw6]{position:relative;padding-right:88px}.selection-step .step-heading[b-ps86aemdw6]::after{position:absolute;top:0;right:0;width:68px;height:68px;background:url('/appicon.png') center/contain no-repeat;content:""}.selection-step .step-title-line h2 .app-icon[b-ps86aemdw6]{display:none}@media(max-width:700px){.selection-step .step-heading[b-ps86aemdw6]{padding-right:58px}.selection-step .step-heading[b-ps86aemdw6]::after{width:46px;height:46px}}
+
+/* Destaque da área Bíblia, seguindo somente a paleta dos controles de Ler Bíblia. */
+.selection-step[b-ps86aemdw6]{border-color:#c5dce9;background:linear-gradient(110deg,#f7fcff,#eaf6fc)}
+.selection-step .linker-reference-fields label[b-ps86aemdw6]{color:#17324d;font-weight:700}
+.selection-step .linker-reference-fields select[b-ps86aemdw6]{min-height:43px;margin-top:6px;border:1px solid #b5d4e4;border-radius:10px;background-color:#e2f2fb;color:#102c44;box-shadow:inset 0 1px 3px #0c4a6c12}
+.selection-step.is-highlighted[b-ps86aemdw6]{animation:linker-selection-highlight-b-ps86aemdw6 1.8s ease-out}
+@keyframes linker-selection-highlight-b-ps86aemdw6{0%,55%{box-shadow:0 0 0 4px #2f94cf80,0 0 28px #2f94cf66}100%{box-shadow:0 0 0 0 transparent}}
+.linker-font-controls[b-ps86aemdw6]{display:inline-flex;gap:4px;margin-left:auto}.linker-font-controls .btn[b-ps86aemdw6]{min-width:35px;padding-inline:7px;font-weight:800}.linker-verse-text[b-ps86aemdw6]{font-size:var(--linker-verse-font-size,17px);line-height:1.55}@media(max-width:700px){.linker-font-controls[b-ps86aemdw6]{margin-left:0}}

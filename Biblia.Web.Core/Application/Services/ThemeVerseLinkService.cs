@@ -48,8 +48,13 @@ public sealed class ThemeVerseLinkService(
     public async Task<LinkVersesToThemeResult> LinkToPublicationAsync(long publicationId,long themeId,string versionCode,IReadOnlyCollection<VerseSelection> selections,bool replaceExistingPreferredVersion,CancellationToken cancellationToken=default)
     {
         if(publicationId<=0 || publications is null || await publications.GetAsync(publicationId,cancellationToken) is null) throw new InvalidOperationException("Selecione uma publicação válida.");
+        // A interface só oferece temas já vinculados; esta garantia mantém compatibilidade
+        // com integrações legadas sem copiar conteúdo de outra publicação.
+        if(!(await publications.GetLinkedThemesAsync(publicationId,cancellationToken)).Any(x=>x.Id==themeId)) await publications.LinkThemeAsync(publicationId,themeId,cancellationToken);
+        var version=await versions.GetByCodeAsync(versionCode,cancellationToken)??throw new KeyNotFoundException("Versão bíblica não encontrada.");
         var result=await LinkAsync(themeId,versionCode,selections,replaceExistingPreferredVersion,cancellationToken);
-        foreach(var linkedPublication in await publications.GetLinkedPublicationsAsync(themeId,cancellationToken)){foreach(var s in selections){var saved=await references.FindCanonicalAsync(s.BookReferenceId,s.Chapter,s.VerseStart,s.VerseEnd,cancellationToken);if(saved is not null)await publications.AddReferenceAsync(linkedPublication.Id,themeId,saved.Id,cancellationToken);}await publications.ApplyAutomaticOrderingAsync(linkedPublication.Id,themeId,cancellationToken);}
+        foreach(var s in selections){var saved=await references.FindCanonicalAsync(s.BookReferenceId,s.Chapter,s.VerseStart,s.VerseEnd,cancellationToken);if(saved is not null)await publications.AddReferenceAsync(publicationId,themeId,saved.Id,version.Id,s.Observation,cancellationToken);}
+        await publications.ApplyAutomaticOrderingAsync(publicationId,themeId,cancellationToken);
         return result;
     }
     public Task UnlinkFromPublicationAsync(long publicationId,long themeId,long referenceId,CancellationToken cancellationToken=default)=>publications is null?throw new InvalidOperationException("Serviço de publicação indisponível."):publications.RemoveReferenceAsync(publicationId,themeId,referenceId,cancellationToken);
@@ -98,6 +103,33 @@ public sealed class ThemeVerseLinkService(
         await references.UpdateThemeObservationAsync(referenceId, themeId, observation, cancellationToken);
         logger.LogInformation("Observação do vínculo {ThemeId}/{ReferenceId} atualizada", themeId, referenceId);
     }
+
+    public async Task<IReadOnlyList<ThemeVerseLinkDisplay>> GetPublicationLinkedAsync(long publicationId,long themeId,string versionCode,CancellationToken cancellationToken=default)
+    {
+        if(publications is null) throw new InvalidOperationException("Serviço de publicação indisponível.");
+        var content=(await publications.GetContentAsync(publicationId,themeId,cancellationToken)).Where(x=>x.ReferenceId is not null).ToArray();
+        if(content.Length==0)return [];
+        var catalog=(await versions.GetAllAsync(cancellationToken)).ToDictionary(x=>x.Id);
+        var requested=string.IsNullOrWhiteSpace(versionCode)?null:await versions.GetByCodeAsync(versionCode,cancellationToken);
+        var booksByVersion=new Dictionary<long,Dictionary<int,string>>(); var versesByVersion=new Dictionary<(long,int,int),IReadOnlyList<BibleVerse>>();
+        var output=new List<ThemeVerseLinkDisplay>();
+        foreach(var item in content)
+        {
+            var saved=await references.GetAsync(item.ReferenceId!.Value,cancellationToken); if(saved is null)continue;
+            var versionId=item.BibleVersionId??requested?.Id??throw new InvalidOperationException("A referência vinculada não possui versão bíblica.");
+            if(!catalog.TryGetValue(versionId,out var version))throw new InvalidOperationException("A versão bíblica vinculada não foi encontrada.");
+            if(!booksByVersion.TryGetValue(versionId,out var books)) booksByVersion[versionId]=books=(await bible.GetBooksAsync(version.Code,cancellationToken)).ToDictionary(x=>x.BookReferenceId,x=>x.Name);
+            var cacheKey=(versionId,saved.BookReferenceId,saved.Chapter);
+            if(!versesByVersion.TryGetValue(cacheKey,out var chapterVerses)) versesByVersion[cacheKey]=chapterVerses=await bible.GetVersesAsync(version.Code,saved.BookReferenceId,saved.Chapter,cancellationToken);
+            var book=books.GetValueOrDefault(saved.BookReferenceId,$"Livro {saved.BookReferenceId}");
+            output.Add(new(saved.Id,themeId,book,saved.BookReferenceId,saved.Chapter,saved.VerseStart,
+                BibleReferenceFormatter.Format(book,saved.Chapter,saved.VerseStart,saved.VerseEnd),string.Join(" ",chapterVerses.Where(x=>x.Verse>=saved.VerseStart&&x.Verse<=saved.VerseEnd).Select(x=>x.Text)),version.Code,version.DisplayName,item.Observation,saved.CreatedAt,saved.UpdatedAt,saved.VerseEnd));
+        }
+        return output;
+    }
+
+    public Task UpdatePublicationObservationAsync(long publicationId,long themeId,long referenceId,string? observation,CancellationToken cancellationToken=default)
+        => publications is null ? throw new InvalidOperationException("Serviço de publicação indisponível.") : publications.UpdateReferenceObservationAsync(publicationId,themeId,referenceId,observation,cancellationToken);
 
     public async Task SanitizePublicationObservationsAsync(long publicationId, long themeId, CancellationToken cancellationToken = default)
     {

@@ -1,0 +1,2 @@
+:root{--font-size-xs:12px;--font-size-sm:13px;--font-size-base:14px;--font-size-md:16px;--font-size-lg:20px;--font-size-xl:24px}
+html,body{font-size:var(--font-size-base);line-height:1.45}input,select,textarea,button{font:inherit}input,select,textarea,.btn,button.btn,label,table{font-size:var(--font-size-base)}th{font-size:var(--font-size-sm)}.page-header h1,h1{font-size:var(--font-size-xl)}.panel h2{font-size:var(--font-size-lg)}.muted{font-size:var(--font-size-sm)}

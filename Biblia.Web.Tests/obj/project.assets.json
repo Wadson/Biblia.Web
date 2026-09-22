@@ -1422,7 +1422,7 @@
           }
         }
       },
-      "Biblia.Web/1.0.2": {
+      "Biblia.Web/1.0.6": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
@@ -3452,7 +3452,7 @@
         "xunit.v3.runner.inproc.console.nuspec"
       ]
     },
-    "Biblia.Web/1.0.2": {
+    "Biblia.Web/1.0.6": {
       "type": "project",
       "path": "../Biblia.Web/Biblia.Web.csproj",
       "msbuildProject": "../Biblia.Web/Biblia.Web.csproj"
@@ -3470,7 +3470,7 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Biblia.Web >= 1.0.2",
+      "Biblia.Web >= 1.0.6",
       "Biblia.Web.Core >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 18.0.1",
       "PdfPig >= 0.1.14",

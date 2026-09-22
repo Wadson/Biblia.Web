@@ -92,7 +92,7 @@
             </label>
             <label>
                 <span>Cor de fundo</span>
-                <input type="color" @bind="background" @bind:after="AdjustForegroundForBackground" class="input-color" aria-label="Cor de fundo" />
+                <input type="color" @bind="background" @bind:after="RecomputePreview" class="input-color" aria-label="Cor de fundo" />
             </label>
             <label>
                 <span>Tamanho (pt)</span>
@@ -112,12 +112,12 @@
             </label>
             <div class="block-emphasis" role="group" aria-label="Ênfase do texto">
                 <label class="check-pair" for="@(editorId + "-bold")">
-                    <input id="@(editorId + "-bold")" type="checkbox" @bind="bold" @bind:after="RecomputePreview" />
                     <span>Negrito</span>
+                    <input id="@(editorId + "-bold")" type="checkbox" @bind="bold" @bind:after="RecomputePreview" />
                 </label>
                 <label class="check-pair" for="@(editorId + "-italic")">
-                    <input id="@(editorId + "-italic")" type="checkbox" @bind="italic" @bind:after="RecomputePreview" />
                     <span>Itálico</span>
+                    <input id="@(editorId + "-italic")" type="checkbox" @bind="italic" @bind:after="RecomputePreview" />
                 </label>
             </div>
             <div class="block-editor-actions">
@@ -328,15 +328,9 @@ else
                 ? new ThemeContentSequence(ThemeOrderingMode.Canonical, Array.Empty<ThemeContentItem>())
                 : await ContentService.GetAsync(ThemeId);
 
-            if (PublicationId > 0)
-            {
-                await PublicationService.SynchronizeLegacyThemeContentAsync(PublicationId, ThemeId);
-                await PublicationService.ApplyAutomaticOrderingAsync(PublicationId, ThemeId);
-            }
-
             sequence = PublicationId == 0
                 ? themeSequence
-                : new(themeSequence.Mode,
+                : new(await PublicationService.GetOrderingModeAsync(PublicationId, ThemeId),
                     (await PublicationService.GetContentAsync(PublicationId, ThemeId))
                         .Select(x => new ThemeContentItem(x.Id, ThemeId, x.SortOrder, x.ReferenceId, x.TextBlock))
                         .ToArray());
@@ -390,26 +384,6 @@ else
     private void NormalizeSize()
     {
         size = Math.Clamp(size, 7, 24);
-        RecomputePreview();
-    }
-
-    private void AdjustForegroundForBackground()
-    {
-        if (background.Length == 7 && background[0] == '#'
-            && int.TryParse(background.AsSpan(1, 2), System.Globalization.NumberStyles.HexNumber, null, out var red)
-            && int.TryParse(background.AsSpan(3, 2), System.Globalization.NumberStyles.HexNumber, null, out var green)
-            && int.TryParse(background.AsSpan(5, 2), System.Globalization.NumberStyles.HexNumber, null, out var blue))
-        {
-            static double Linearize(int channel)
-            {
-                var value = channel / 255d;
-                return value <= .04045 ? value / 12.92 : Math.Pow((value + .055) / 1.055, 2.4);
-            }
-
-            var luminance = .2126 * Linearize(red) + .7152 * Linearize(green) + .0722 * Linearize(blue);
-            foreground = luminance > .179 ? "#000000" : "#FFFFFF";
-        }
-
         RecomputePreview();
     }
 
@@ -470,11 +444,11 @@ else
 
     private Task ChangeMode(ThemeOrderingMode mode) => Run(async () =>
     {
-        await ContentService.SetModeAsync(ThemeId, mode, true);
         if (PublicationId > 0)
         {
-            await PublicationService.ApplyAutomaticOrderingAsync(PublicationId, ThemeId);
+            await PublicationService.SetOrderingModeAsync(PublicationId, ThemeId, mode);
         }
+        else await ContentService.SetModeAsync(ThemeId, mode, true);
         notice = mode == ThemeOrderingMode.Manual
             ? "Ordenação manual ativada. Use as setas para intercalar blocos e versículos."
             : "Ordem bíblica aplicada. As posições dos blocos foram preservadas.";

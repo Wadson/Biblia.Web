@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Biblia.Web.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9d25b451a8cb52ade3311094c050fc723a63d7c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d15dfef33a2fa2f29404248330f4529e5dc211f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Biblia.Web.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Biblia.Web.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

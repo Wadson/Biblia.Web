@@ -23,5 +23,8 @@ public sealed record Publication
 }
 
 public sealed record OrganizationBranding(long Id,string Name,byte[]? Logo,string? LogoContentType,DateTimeOffset CreatedAt,DateTimeOffset UpdatedAt);
-public sealed record PublicationContentItem(long Id,long PublicationId,long ThemeId,int SortOrder,long? ReferenceId,ThemeTextBlock? TextBlock);
+/// <summary>Conteúdo exclusivo de uma combinação publicação/tema.</summary>
+public sealed record PublicationContentItem(
+    long Id, long PublicationId, long ThemeId, int SortOrder, long? ReferenceId,
+    ThemeTextBlock? TextBlock, string? Observation = null, long? BibleVersionId = null);
 public enum PublicationThemeStatus { None, Partial, Complete }

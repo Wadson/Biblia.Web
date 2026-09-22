@@ -13,13 +13,6 @@ public sealed record ThemeTextStyle(string TextColorHex = "#172033", string Back
             throw new ArgumentException("Use cores no formato #RRGGBB.");
         if (!double.IsFinite(FontSize) || FontSize is < 7 or > 24 || !Enum.IsDefined(MarkerStyle))
             throw new ArgumentException("Fonte entre 7 e 24 pt e marcador válido são obrigatórios.");
-        static double Light(string s)
-        {
-            double Channel(int n) { var v = Convert.ToInt32(s.Substring(n, 2),16)/255d; return v <= .04045 ? v/12.92 : Math.Pow((v+.055)/1.055,2.4); }
-            return .2126*Channel(1)+.7152*Channel(3)+.0722*Channel(5);
-        }
-        var a=Light(TextColorHex); var b=Light(BackgroundColorHex);
-        if ((Math.Max(a,b)+.05)/(Math.Min(a,b)+.05)<4.5) throw new ArgumentException("Contraste insuficiente. Escolha texto escuro com fundo claro ou o inverso (mínimo 4,5:1).");
     }
 }
 public sealed record ThemeTextBlock(string Content, ThemeTextStyle Style)

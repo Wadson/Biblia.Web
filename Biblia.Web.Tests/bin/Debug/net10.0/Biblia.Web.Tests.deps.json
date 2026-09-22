@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v10.0": {
       "Biblia.Web.Tests/1.0.0": {
         "dependencies": {
-          "Biblia.Web": "1.0.2",
+          "Biblia.Web": "1.0.5",
           "Biblia.Web.Core": "1.0.0",
           "Microsoft.NET.Test.Sdk": "18.0.1",
           "PdfPig": "0.1.14",
@@ -1075,15 +1075,15 @@
           }
         }
       },
-      "Biblia.Web/1.0.2": {
+      "Biblia.Web/1.0.5": {
         "dependencies": {
           "Biblia.Web.Core": "1.0.0",
           "Biblia.Web.ServiceDefaults": "1.0.0"
         },
         "runtime": {
           "Biblia.Web.dll": {
-            "assemblyVersion": "1.0.3.0",
-            "fileVersion": "1.0.3.0"
+            "assemblyVersion": "1.0.5.0",
+            "fileVersion": "1.0.5.0"
           }
         }
       },
@@ -1482,7 +1482,7 @@
       "path": "xunit.v3.runner.inproc.console/3.2.2",
       "hashPath": "xunit.v3.runner.inproc.console.3.2.2.nupkg.sha512"
     },
-    "Biblia.Web/1.0.2": {
+    "Biblia.Web/1.0.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

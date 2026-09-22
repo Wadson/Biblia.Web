@@ -18,7 +18,7 @@
 <body>
     <Routes @rendermode="InteractiveServer" />
     <script src="@Assets["_framework/blazor.web.js"]"></script>
-    <script>window.bibliaTema={goBack:function(){if(history.length>1){history.back();return true;}return false;},scrollToVerse:function(verse){document.getElementById('verse-'+verse)?.scrollIntoView({behavior:'smooth',block:'center'});},scrollToHelpTopic:function(topic){document.getElementById(topic)?.scrollIntoView({behavior:'smooth',block:'start'});}};</script>
+    <script>window.bibliaTema={goBack:function(){if(history.length>1){history.back();return true;}return false;},scrollToVerse:function(verse){document.getElementById('verse-'+verse)?.scrollIntoView({behavior:'smooth',block:'center'});},scrollToHelpTopic:function(topic){document.getElementById(topic)?.scrollIntoView({behavior:'smooth',block:'start'});},scrollToLinkerSelection:function(){const target=document.getElementById('encontre-versiculos');if(!target)return;const top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-12);window.scrollTo({top:top,behavior:'smooth'});target.classList.remove('is-highlighted');void target.offsetWidth;target.classList.add('is-highlighted');setTimeout(()=>target.classList.remove('is-highlighted'),1800);}};</script>
     <script>
         (() => {
             const key = "biblia-web-browser-session";

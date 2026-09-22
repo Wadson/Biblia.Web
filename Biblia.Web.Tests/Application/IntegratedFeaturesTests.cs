@@ -69,7 +69,6 @@ public sealed class IntegratedFeaturesTests
         await f.Content.SetModeAsync(theme.Id,ThemeOrderingMode.Manual);
         await f.Content.SaveBlockAsync(theme.Id,null,new("Introdução",new()));var blockId=(await f.Content.GetAsync(theme.Id)).Items.Last().Id;
         await f.Content.MoveAsync(theme.Id,blockId,-1);await f.Content.MoveAsync(theme.Id,blockId,-1);
-        await f.Publications.SynchronizeLegacyThemeContentAsync(publication.Id,theme.Id);
         var persisted=await f.Publications.GetContentAsync(publication.Id,theme.Id);
         Assert.Null(persisted[0].ReferenceId);Assert.Equal("Introdução",persisted[0].TextBlock!.Content);
         var report=await f.Reports.BuildThemesAsync(new(theme.Id,PublicationId:publication.Id));
@@ -128,12 +127,10 @@ public sealed class IntegratedFeaturesTests
         var report=await f.Reports.BuildThemesAsync(new(theme.Id,PublicationId:publication.Id));
         var section=Assert.Single(report.Sections);
         Assert.Null(Assert.Single(section.References).Observation);
-        Assert.Contains(section.Content!,item=>item.TextBlock?.Content==blockContent);
+        Assert.DoesNotContain(section.Content!,item=>item.TextBlock?.Content==blockContent);
 
-        var reference=Assert.Single(await f.Link.GetLinkedAsync(theme.Id,"QA"));
-        await f.Link.UpdateObservationAsync(theme.Id,reference.ReferenceId,"9º "+blockContent);
-        await f.Link.SanitizePublicationObservationsAsync(publication.Id,theme.Id);
-        Assert.Null(Assert.Single(await f.Link.GetLinkedAsync(theme.Id,"QA")).Observation);
+        // Blocos globais legados não fazem parte da publicação e, portanto, não interferem
+        // na observação armazenada para o vínculo PublicationId + ThemeId.
     }
     [Theory]
     [InlineData("")] [InlineData("   ")] [InlineData("too-long")]
@@ -143,8 +140,10 @@ public sealed class IntegratedFeaturesTests
         await Assert.ThrowsAsync<ArgumentException>(()=>f.Content.SaveBlockAsync(t.Id,null,new(text,new())));Assert.Empty((await f.Content.GetAsync(t.Id)).Items);
     }
     [Theory]
-    [InlineData("red","#FFFFFF",11)] [InlineData("#FFFFFF","#FFFFFF",11)] [InlineData("#000000","#FFFFFF",6)] [InlineData("#000000","#FFFFFF",25)]
+    [InlineData("red","#FFFFFF",11)] [InlineData("#000000","#FFFFFF",6)] [InlineData("#000000","#FFFFFF",25)]
     public void ValidateStyle(string foreground,string background,double size)=>Assert.Throws<ArgumentException>(()=>new ThemeTextStyle(foreground,background,size).Validate());
+    [Fact]
+    public void ValidateStyleAllowsAnyValidColorCombination()=>new ThemeTextStyle("#FFFFFF","#FFFFFF",11).Validate();
     [Fact]
     public async Task MoveBoundsConcurrentMovesAndCascadeDeleteMaintainUniquePositions()
     {
