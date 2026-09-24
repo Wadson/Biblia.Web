@@ -155,9 +155,9 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\ref\Biblia.Web.dll
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\3sm1rmrewi-{0}-xal3h1snyk-xal3h1snyk.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\Components\Shared\VerseObservationEditor.razor.rz.scp.css
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\scopedcss\Components\Pages\BibleSearch.razor.rz.scp.css
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-ubnlt3jh3a-ubnlt3jh3a.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-ubnlt3jh3a-ubnlt3jh3a.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\staticwebassets.upToDateCheck.txt
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\i3ph4seoj4-{0}-2hyiunjn4b-2hyiunjn4b.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Release\net10.0\win-x64\compressed\ncdu3ooug3-{0}-2hyiunjn4b-2hyiunjn4b.gz
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.CSharp.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.Core.dll
 D:\Projetos\Biblia.Web\Biblia.Web\bin\Release\net10.0\win-x64\Microsoft.VisualBasic.dll

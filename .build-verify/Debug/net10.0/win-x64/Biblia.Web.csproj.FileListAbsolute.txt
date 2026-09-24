@@ -1,0 +1,2 @@
+D:\Projetos\Biblia.Web\.build-verify\Debug\net10.0\win-x64\EmbeddedAttribute.cs
+D:\Projetos\Biblia.Web\.build-verify\Debug\net10.0\win-x64\ValidatableTypeAttribute.cs

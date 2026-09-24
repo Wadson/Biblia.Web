@@ -158,6 +158,5 @@ D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\3sm1rmrew
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\htlrqt0ndl-{0}-mrcjpe4bqk-mrcjpe4bqk.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\jyermyiwi6-{0}-jb11qntn9g-jb11qntn9g.gz
 D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\scopedcss\Components\Pages\BibleSearch.razor.rz.scp.css
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\i3ph4seoj4-{0}-ncv63k2lni-ncv63k2lni.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\ncdu3ooug3-{0}-ncv63k2lni-ncv63k2lni.gz
-D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\staticwebassets.upToDateCheck.txt
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\i3ph4seoj4-{0}-ubnlt3jh3a-ubnlt3jh3a.gz
+D:\Projetos\Biblia.Web\Biblia.Web\obj\Debug\net10.0\win-x64\compressed\ncdu3ooug3-{0}-ubnlt3jh3a-ubnlt3jh3a.gz

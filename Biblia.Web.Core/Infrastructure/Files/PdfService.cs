@@ -283,12 +283,9 @@ internal sealed class ThemeReportLayout(PdfDocument document, CancellationToken 
         var spacing=style.FontSize*1.5;
         var indent=prefix.Length==0?0:graphics.MeasureString(prefix+" ",font).Width+3;
         var lines=block.Lines().SelectMany(line=>Wrap(line,font,Width-2*Padding-indent)).ToList();
-        var fullHeight=lines.Count*spacing+2*BlockVerticalPadding;
-        if(y+fullHeight>Bottom && fullHeight<=Bottom-TopMargin-ThemeHeight(section))
-        {
-            NewPage();
-            ThemeHeader(section,true,fullHeight);
-        }
+        // Blocks are splittable. Do not move an otherwise long block wholesale to a
+        // new page: render as many wrapped lines as fit in the current usable area,
+        // then continue it after the repeated theme header on the next page.
         var offset=0;
         while(offset<lines.Count)
         {

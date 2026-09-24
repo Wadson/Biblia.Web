@@ -120,6 +120,19 @@ public sealed class ThemeVersePdfServiceTests : IDisposable
     }
 
     [Fact]
+    public async Task LargeTextBlockWrapsAndUsesRemainingPageSpace()
+    {
+        var content=string.Join(" ",Enumerable.Range(1,500).Select(i=>$"bloco{i:D4} esperança"));
+        var block=new ThemeTextBlock(content,new("#172033","#EAF2FF",12,TextMarkerStyle.None,false,false));
+        var section=new ThemeVerseReportSection(Theme(1),[Reference(1)],[new(null,block),new(Reference(1),null)],ThemeOrderingMode.Manual);
+        using var pdf=PdfDocument.Open(await Generate(Report(section)));
+        var text=Text(pdf);
+        for(var i=1;i<=500;i++)Assert.Single(Regex.Matches(text,$"bloco{i:D4}"));
+        Assert.Contains("João 3:1",text);
+        Assert.True(pdf.NumberOfPages>=2);
+    }
+
+    [Fact]
     public async Task ConcurrentGenerationUsesDistinctFilesAndEmbeddedFonts()
     {
         var service = new PdfService(new TestPaths(root));
