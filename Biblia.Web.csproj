@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ApplicationIcon>icon\appicon.ico</ApplicationIcon>
+    <Version>1.0.11</Version>
+    <AssemblyVersion>1.0.11.0</AssemblyVersion>
+    <FileVersion>1.0.11.0</FileVersion>
+    <InformationalVersion>1.0.11</InformationalVersion>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <PackageIcon>appicon.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Biblia.Web.ApiService\**\*.cs;Biblia.Web.AppHost\**\*.cs;Biblia.Web.Core\**\*.cs;Biblia.Web.ServiceDefaults\**\*.cs;Biblia.Web.Tests\**\*.cs;tools\**\*.cs;tmp\**\*.cs;output\**\*.cs;.build-verify\**\*.cs;.build-verify-output\**\*.cs;.codex-publish\**\*.cs;.codex-rebuild\**\*.cs" />
+    <Content Remove="Biblia.Web.ApiService\**\*;Biblia.Web.AppHost\**\*;Biblia.Web.Core\**\*;Biblia.Web.ServiceDefaults\**\*;Biblia.Web.Tests\**\*;tools\**\*;tmp\**\*;output\**\*;.build-verify\**\*;.build-verify-output\**\*;.codex-publish\**\*;.codex-rebuild\**\*" />
+    <EmbeddedResource Remove="Biblia.Web.ApiService\**\*;Biblia.Web.AppHost\**\*;Biblia.Web.Core\**\*;Biblia.Web.ServiceDefaults\**\*;Biblia.Web.Tests\**\*;tools\**\*;tmp\**\*;output\**\*;.build-verify\**\*;.build-verify-output\**\*;.codex-publish\**\*;.codex-rebuild\**\*" />
+    <None Remove="Biblia.Web.ApiService\**\*;Biblia.Web.AppHost\**\*;Biblia.Web.Core\**\*;Biblia.Web.ServiceDefaults\**\*;Biblia.Web.Tests\**\*;tools\**\*;tmp\**\*;output\**\*;.build-verify\**\*;.build-verify-output\**\*;.codex-publish\**\*;.codex-rebuild\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="Biblia.Web.Core\Biblia.Web.Core.csproj" />
+    <ProjectReference Include="Biblia.Web.ServiceDefaults\Biblia.Web.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Content\Bibles\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Update="Content\Bibles\*.sqlite" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="icon\appicon.ico" Link="appicon.ico" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon\appicon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
